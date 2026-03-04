@@ -1,0 +1,9 @@
+imports/
+reports/
+templates/
+__pycache__/
+*.pyc
+.streamlit/
+ClanTrack.bat
+ClanTrack.vbs
+ClanTrack.ico
