@@ -2927,6 +2927,22 @@ def main():
         initial_sidebar_state="expanded"
     )
 
+    # Password gate (cloud only — local access is unrestricted)
+    if not IS_LOCAL:
+        if "authenticated" not in st.session_state:
+            st.session_state.authenticated = False
+        if not st.session_state.authenticated:
+            st.markdown("### ClanTrack — Clan Cervecero")
+            pwd = st.text_input("Contraseña", type="password")
+            if pwd:
+                app_pwd = st.secrets.get("APP_PASSWORD", "clan2026")
+                if pwd == app_pwd:
+                    st.session_state.authenticated = True
+                    st.rerun()
+                else:
+                    st.error("Contraseña incorrecta")
+            return
+
     # Custom CSS
     st.markdown("""
     <style>
