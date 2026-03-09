@@ -2154,6 +2154,273 @@ def page_sugerido():
             'Cobertura (dias)': fmt_coverage, 'Cajas Sug.': '{:,.0f}'
         }), use_container_width=True, hide_index=True)
 
+    # ── Store-level SUGERIDO_EXPORT (OC format) ──
+    st.divider()
+    st.markdown("### Orden de Compra — Detalle por Tienda")
+    st.caption("Formato SUGERIDO_EXPORT compatible con Walmart. Filtra solo productos activos con pedido > 0.")
+
+    oc_df = query_df(f"""
+        WITH ventas AS (
+            SELECT producto, store_nbr, SUM(venta_und) as venta_4sem
+            FROM retail_link WHERE tipo_registro='VENTA' AND semana_wm IN ({ph})
+            GROUP BY producto, store_nbr
+        ),
+        inventario AS (
+            SELECT producto, store_nbr, MAX(inv_actual) as inv
+            FROM retail_link WHERE tipo_registro='INVENTARIO' AND semana_wm=?
+            GROUP BY producto, store_nbr
+        )
+        SELECT COALESCE(v.producto, i.producto) as producto,
+               COALESCE(v.store_nbr, i.store_nbr) as store_nbr,
+               COALESCE(v.venta_4sem, 0) as venta_4sem,
+               COALESCE(i.inv, 0) as inv,
+               p.item_wm, p.und_x_caja, p.ingreso_und_wm, p.codigo_barras,
+               p.costo_und_usd, t.nombre as tienda
+        FROM ventas v
+        FULL OUTER JOIN inventario i ON v.producto = i.producto AND v.store_nbr = i.store_nbr
+        LEFT JOIN productos p ON COALESCE(v.producto, i.producto) = p.producto
+        LEFT JOIN tiendas t ON COALESCE(v.store_nbr, i.store_nbr) = t.no_tienda
+        WHERE p.estado = 'Activo'
+    """, [*sale_weeks, inv_week])
+
+    if not oc_df.empty:
+        import math as _math
+
+        def _calc_oc_row(row):
+            venta = row['venta_4sem']
+            inv = row['inv']
+            uxc = row['und_x_caja'] or 20
+            rot = venta / days_period if venta > 0 else 0
+            cob = (inv / rot) if rot > 0 else (999 if inv > 0 else 0)
+            obj = rot * (target_days + lead_time)
+            sug = max(0, int(obj - inv))
+            cajas = max(1, _math.ceil(sug / uxc)) if sug > 0 else 0
+            if cajas == 0:
+                pri, just = 4, "Stock OK"
+            elif inv <= 0 or cob <= 5:
+                pri, just = 1, f"URGENTE - Cob {cob:.1f}d"
+            elif cob <= 10:
+                pri, just = 2, f"Cob {cob:.1f}d -> obj {target_days}d"
+            else:
+                pri, just = 3, f"Cob {cob:.1f}d -> obj {target_days}d"
+            return pd.Series({
+                'Descripcion Articulo': row['producto'],
+                'Item No.': row['item_wm'],
+                'Pais': 'GT',
+                'Costo Unit Q': row['ingreso_und_wm'],
+                'Costo Unit USD': row['costo_und_usd'],
+                'Codigo Barras': row['codigo_barras'],
+                'Proveedor': 'CLAN CERVECERO SA',
+                'No. Proveedor': 258977,
+                'Und x Caja': uxc,
+                'Cajas Sugeridas': cajas,
+                'Und Sugeridas': cajas * uxc,
+                'No. Tienda': row['store_nbr'],
+                'Tienda': row['tienda'] or f"T-{row['store_nbr']}",
+                'Inventario Actual': inv,
+                'Prioridad': pri,
+                'Justificacion': just,
+            })
+
+        oc_export = oc_df.apply(_calc_oc_row, axis=1)
+        oc_export = oc_export[oc_export['Cajas Sugeridas'] > 0].sort_values(
+            ['Prioridad', 'Descripcion Articulo', 'No. Tienda']
+        ).reset_index(drop=True)
+
+        if oc_export.empty:
+            st.success("Sin pedidos necesarios — todo el inventario cumple el objetivo.")
+        else:
+            c1, c2, c3 = st.columns(3)
+            c1.metric("Lineas OC", len(oc_export))
+            c2.metric("Total Cajas", fmt_int(oc_export['Cajas Sugeridas'].sum()))
+            c3.metric("Costo Est.",
+                       fmt_q((oc_export['Cajas Sugeridas'] * oc_export['Und x Caja'] * oc_export['Costo Unit Q']).sum()))
+
+            st.dataframe(oc_export, use_container_width=True, hide_index=True)
+            download_df(oc_export, "sugerido_export_oc", "Descargar OC (CSV)")
+
+            # Excel download
+            if IS_LOCAL:
+                try:
+                    from generate_sugerido import generate_sugerido
+                    if st.button("Generar Excel OC", type="primary", use_container_width=True):
+                        with st.spinner("Generando..."):
+                            fp, _, _ = generate_sugerido(
+                                delivery_date=f"Viernes {datetime.now().strftime('%d %b %Y')}"
+                            )
+                            st.success(f"Guardado: {fp}")
+                except ImportError:
+                    pass
+
+
+# ═══════════════════════════════════════════
+# PAGE: TRASTIENDA (backroom analysis)
+# ═══════════════════════════════════════════
+
+def page_trastienda():
+    st.markdown("## Trastienda — Producto Fuera de Piso")
+    st.caption("Identifica producto con inventario alto y ventas bajas: "
+               "probablemente no llega al piso de ventas.")
+
+    inv_week = query_val("SELECT MAX(semana_wm) FROM retail_link WHERE tipo_registro='INVENTARIO'")
+    if not inv_week:
+        st.warning("Sin datos de inventario.")
+        return
+
+    sale_weeks = query_df("""
+        SELECT DISTINCT semana_wm FROM retail_link
+        WHERE tipo_registro='VENTA' ORDER BY semana_wm DESC LIMIT 4
+    """)['semana_wm'].tolist()
+
+    if not sale_weeks:
+        st.warning("Sin datos de ventas.")
+        return
+
+    ph = ','.join(['?'] * len(sale_weeks))
+    days_period = len(sale_weeks) * 7
+
+    col_inv, col_cov = st.columns(2)
+    with col_inv:
+        min_inv = st.slider("Inventario minimo para alertar", 5, 50, 10)
+    with col_cov:
+        min_cov = st.slider("Cobertura minima sospechosa (dias)", 30, 180, 60)
+
+    # Store-level data
+    df = query_df(f"""
+        WITH ventas AS (
+            SELECT producto, store_nbr, SUM(venta_und) as venta_4sem
+            FROM retail_link WHERE tipo_registro='VENTA' AND semana_wm IN ({ph})
+            GROUP BY producto, store_nbr
+        ),
+        inventario AS (
+            SELECT producto, store_nbr, MAX(inv_actual) as inv
+            FROM retail_link WHERE tipo_registro='INVENTARIO' AND semana_wm=?
+            GROUP BY producto, store_nbr
+        ),
+        network AS (
+            SELECT producto,
+                   AVG(CASE WHEN venta_4sem > 0 THEN venta_4sem * 1.0 / {days_period} ELSE NULL END) as avg_rot,
+                   COUNT(CASE WHEN venta_4sem > 0 THEN 1 END) as tiendas_vendiendo
+            FROM ventas GROUP BY producto
+        )
+        SELECT i.producto as Producto,
+               i.store_nbr as "No. Tienda",
+               COALESCE(t.nombre, 'T-' || i.store_nbr) as Tienda,
+               i.inv as Inventario,
+               COALESCE(v.venta_4sem, 0) as "Venta {days_period}d",
+               CASE
+                   WHEN COALESCE(v.venta_4sem, 0) = 0 THEN 9999
+                   ELSE ROUND(i.inv * {days_period}.0 / v.venta_4sem, 1)
+               END as "Cobertura",
+               ROUND(n.avg_rot, 2) as "Rot Red /dia",
+               n.tiendas_vendiendo as "Tiendas Vendiendo",
+               p.ingreso_und_wm as costo_q,
+               p.marca as Marca
+        FROM inventario i
+        LEFT JOIN ventas v ON i.producto = v.producto AND i.store_nbr = v.store_nbr
+        LEFT JOIN network n ON i.producto = n.producto
+        LEFT JOIN productos p ON i.producto = p.producto
+        LEFT JOIN tiendas t ON i.store_nbr = t.no_tienda
+        WHERE p.estado = 'Activo'
+          AND i.inv >= {min_inv}
+          AND (COALESCE(v.venta_4sem, 0) = 0
+               OR i.inv * {days_period}.0 / COALESCE(v.venta_4sem, 1) > {min_cov})
+          AND n.avg_rot > 0.05
+        ORDER BY i.inv * COALESCE(p.ingreso_und_wm, 1) DESC
+    """, [*sale_weeks, inv_week])
+
+    if df.empty:
+        st.success("Sin alertas de trastienda con los filtros actuales.")
+        return
+
+    # Value calculation
+    df['Valor Parado Q'] = df['Inventario'] * df['costo_q']
+
+    # ── Summary metrics ──
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Alertas", len(df))
+    c2.metric("Unidades Paradas", fmt_int(df['Inventario'].sum()))
+    c3.metric("Valor Parado", fmt_q(df['Valor Parado Q'].sum()))
+    c4.metric("Tiendas Afectadas", df['No. Tienda'].nunique())
+
+    zero_sales = df[df[f'Venta {days_period}d'] == 0]
+    if not zero_sales.empty:
+        st.error(f"**{len(zero_sales)} combinaciones con CERO ventas en {days_period} dias** "
+                 f"— Q{zero_sales['Valor Parado Q'].sum():,.0f} parados. "
+                 "Producto que nadie ve no se vende.")
+
+    st.divider()
+
+    # ── By Store (route planning) ──
+    st.markdown("### Rutas — Por Tienda")
+    st.caption("Priorizadas por valor parado. Cada tienda es una visita de merchandising.")
+
+    store_summary = df.groupby(['No. Tienda', 'Tienda']).agg(
+        Productos=('Producto', 'count'),
+        Unidades=('Inventario', 'sum'),
+        **{'Valor Q': ('Valor Parado Q', 'sum')},
+        Zero_Venta=(f'Venta {days_period}d', lambda x: (x == 0).sum()),
+    ).reset_index().sort_values('Valor Q', ascending=False)
+
+    def color_route(row):
+        if row['Valor Q'] > 5000:
+            return ['background-color: #FFEBEE'] * len(row)
+        elif row['Valor Q'] > 2000:
+            return ['background-color: #FFF8E1'] * len(row)
+        return [''] * len(row)
+
+    st.dataframe(
+        store_summary.style.apply(color_route, axis=1).format({
+            'Unidades': '{:,.0f}', 'Valor Q': 'Q{:,.0f}', 'Zero_Venta': '{:.0f}'
+        }),
+        use_container_width=True, hide_index=True,
+    )
+    download_df(store_summary, "rutas_trastienda")
+
+    # ── By Product ──
+    st.markdown("### Por Producto")
+    st.caption("Productos con problema sistemico de colocacion.")
+
+    # Total stores per product
+    total_stores = query_df(f"""
+        SELECT producto, COUNT(DISTINCT store_nbr) as total
+        FROM retail_link WHERE tipo_registro='INVENTARIO' AND semana_wm=?
+        GROUP BY producto
+    """, [inv_week])
+    total_map = dict(zip(total_stores['producto'], total_stores['total']))
+
+    prod_summary = df.groupby(['Producto', 'Marca']).agg(
+        Alertas=('No. Tienda', 'count'),
+        Unidades=('Inventario', 'sum'),
+        **{'Valor Q': ('Valor Parado Q', 'sum')},
+    ).reset_index()
+    prod_summary['Total Tiendas'] = prod_summary['Producto'].map(total_map)
+    prod_summary['% Afectadas'] = (prod_summary['Alertas'] / prod_summary['Total Tiendas'] * 100).round(0)
+    prod_summary = prod_summary.sort_values('% Afectadas', ascending=False)
+
+    st.dataframe(
+        prod_summary.style.format({
+            'Unidades': '{:,.0f}', 'Valor Q': 'Q{:,.0f}', '% Afectadas': '{:.0f}%'
+        }),
+        use_container_width=True, hide_index=True,
+    )
+
+    # ── Detail table ──
+    st.divider()
+    st.markdown("### Detalle Completo")
+    display_cols = ['Producto', 'Marca', 'Tienda', 'Inventario',
+                    f'Venta {days_period}d', 'Cobertura', 'Rot Red /dia',
+                    'Tiendas Vendiendo', 'Valor Parado Q']
+    st.dataframe(
+        df[display_cols].style.format({
+            'Inventario': '{:,.0f}', f'Venta {days_period}d': '{:,.0f}',
+            'Cobertura': lambda v: 'Sin ventas' if v >= 9999 else f'{v:.0f}d',
+            'Valor Parado Q': 'Q{:,.0f}',
+        }),
+        use_container_width=True, hide_index=True,
+    )
+    download_df(df[display_cols], "trastienda_detalle")
+
 
 # ═══════════════════════════════════════════
 # PAGE: CLAIMS / DEVOLUCIONES
@@ -2963,10 +3230,10 @@ def main():
         st.divider()
 
         nav_pages = ["Alertas", "Dashboard", "Semanal", "Tendencias", "Productos",
-             "Tiendas", "Rentabilidad", "Sugerido", "Claims",
+             "Tiendas", "Rentabilidad", "Sugerido", "Trastienda", "Claims",
              "Upload", "Sistema"] if IS_LOCAL else [
              "Alertas", "Dashboard", "Semanal", "Tendencias", "Productos",
-             "Tiendas", "Rentabilidad", "Sugerido", "Claims", "Sistema"]
+             "Tiendas", "Rentabilidad", "Sugerido", "Trastienda", "Claims", "Sistema"]
         page = st.radio(
             "Navegacion",
             nav_pages,
@@ -3012,6 +3279,7 @@ def main():
         "Tiendas": page_tiendas,
         "Rentabilidad": page_rentabilidad,
         "Sugerido": page_sugerido,
+        "Trastienda": page_trastienda,
         "Claims": page_claims,
         "Upload": page_upload,
         "Sistema": page_status,
