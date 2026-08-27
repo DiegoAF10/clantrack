@@ -288,7 +288,7 @@ def fmt_int(val):
 
 def download_df(df, filename, label="Descargar CSV"):
     csv = df.to_csv(index=False).encode('utf-8')
-    st.download_button(label, csv, f"{filename}.csv", "text/csv", width="stretch")
+    st.download_button(label, csv, f"{filename}.csv", "text/csv", use_container_width=True)
 
 
 def delta_color(val):
@@ -703,9 +703,9 @@ def page_alertas():
                 df_display = alert['df'].reset_index(drop=True)
                 try:
                     styled = df_display.style.format(alert.get('fmt', {}), na_rep='—')
-                    st.dataframe(styled, width="stretch", hide_index=True)
+                    st.dataframe(styled, use_container_width=True, hide_index=True)
                 except Exception:
-                    st.dataframe(df_display, width="stretch", hide_index=True)
+                    st.dataframe(df_display, use_container_width=True, hide_index=True)
                 # Action hints
                 title_lower = alert['title'].lower()
                 if 'oos' in title_lower or 'cobertura' in title_lower:
@@ -884,7 +884,7 @@ def page_dashboard():
         fig.update_yaxes(title_text="Venta Q", secondary_y=False, tickformat=",")
         fig.update_yaxes(title_text="Unidades", secondary_y=True, tickformat=",")
 
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, use_container_width=True)
 
     st.divider()
 
@@ -911,7 +911,7 @@ def page_dashboard():
             fig_p.update_layout(margin=dict(l=10, r=10, t=10, b=10),
                                yaxis={'categoryorder': 'total ascending'},
                                showlegend=True, legend=dict(orientation="h", y=-0.15))
-            st.plotly_chart(fig_p, width="stretch")
+            st.plotly_chart(fig_p, use_container_width=True)
 
     with col_right:
         st.markdown(f"### Top 10 Tiendas ({n_weeks} sem)")
@@ -933,7 +933,7 @@ def page_dashboard():
             fig_s.update_layout(margin=dict(l=10, r=10, t=10, b=10),
                                yaxis={'categoryorder': 'total ascending'},
                                showlegend=True, legend=dict(orientation="h", y=-0.15))
-            st.plotly_chart(fig_s, width="stretch")
+            st.plotly_chart(fig_s, use_container_width=True)
 
     # ── PARETO: Revenue concentration ──
     st.divider()
@@ -975,7 +975,7 @@ def page_dashboard():
                                      legend=dict(orientation="h", y=1.12))
             fig_pareto.update_yaxes(title_text="Venta Q", tickformat=",", secondary_y=False)
             fig_pareto.update_yaxes(title_text="% Acumulado", tickformat=".0f", secondary_y=True)
-            st.plotly_chart(fig_pareto, width="stretch")
+            st.plotly_chart(fig_pareto, use_container_width=True)
 
     with col_formato:
         st.markdown("### Ventas por Formato de Tienda")
@@ -993,13 +993,13 @@ def page_dashboard():
             fig_fmt = px.pie(by_format, values='Q', names='Formato',
                             color_discrete_sequence=px.colors.qualitative.Set2, height=300)
             fig_fmt.update_layout(margin=dict(l=10, r=10, t=10, b=10))
-            st.plotly_chart(fig_fmt, width="stretch")
+            st.plotly_chart(fig_fmt, use_container_width=True)
 
             by_format['Q/Tienda'] = by_format['Q'] / by_format['Tiendas'].replace(0, 1)
             by_format['Und/Tienda'] = by_format['Und'] / by_format['Tiendas'].replace(0, 1)
             st.dataframe(by_format.style.format({
                 'Und': '{:,.0f}', 'Q': 'Q{:,.0f}', 'Q/Tienda': 'Q{:,.0f}', 'Und/Tienda': '{:,.0f}'
-            }), width="stretch", hide_index=True)
+            }), use_container_width=True, hide_index=True)
 
     # ── ALERTS SUMMARY (compact — full detail on Alertas page) ──
     st.divider()
@@ -1156,7 +1156,7 @@ def page_semanal():
                      height=350)
         fig.update_layout(margin=dict(l=10, r=10, t=10, b=10),
                          legend=dict(orientation="h", y=1.1))
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, use_container_width=True)
 
         # Table
         st.dataframe(
@@ -1164,7 +1164,7 @@ def page_semanal():
                 'Und Actual': '{:,.0f}', 'Q Actual': 'Q{:,.0f}',
                 'Und Anterior': '{:,.0f}', 'Var %': '{:+.1%}'
             }),
-            width="stretch", hide_index=True
+            use_container_width=True, hide_index=True
         )
         download_df(prods, f"semanal_productos_{selected}")
 
@@ -1195,7 +1195,7 @@ def page_semanal():
                 'Und Actual': '{:,.0f}', 'Q Actual': 'Q{:,.0f}',
                 'Und Anterior': '{:,.0f}', 'Var %': '{:+.1%}'
             }),
-            width="stretch", hide_index=True
+            use_container_width=True, hide_index=True
         )
         download_df(stores, f"semanal_tiendas_{selected}")
 
@@ -1321,7 +1321,7 @@ def page_tendencias():
                      legend=dict(orientation="h", y=1.1), hovermode="x unified")
     fig.update_yaxes(title_text="Venta Q", tickformat=",", secondary_y=False)
     fig.update_yaxes(title_text="Unidades", tickformat=",", secondary_y=True)
-    st.plotly_chart(fig, width="stretch")
+    st.plotly_chart(fig, use_container_width=True)
 
     # ── Variation chart ──
     st.markdown("### Variación %")
@@ -1331,7 +1331,7 @@ def page_tendencias():
                           marker_color=colors))
     fig2.update_layout(height=250, margin=dict(l=20, r=20, t=10, b=20),
                       yaxis_tickformat=".0%")
-    st.plotly_chart(fig2, width="stretch")
+    st.plotly_chart(fig2, use_container_width=True)
 
     # ── Margin trend ──
     st.markdown("### Margen Walmart")
@@ -1343,7 +1343,7 @@ def page_tendencias():
                               fillcolor='rgba(142,36,170,0.1)'))
     fig3.update_layout(height=250, margin=dict(l=20, r=20, t=10, b=20),
                       yaxis_tickformat=".0%")
-    st.plotly_chart(fig3, width="stretch")
+    st.plotly_chart(fig3, use_container_width=True)
 
     # ── YoY Comparison ──
     if period == "Mensual" and len(data) > 12:
@@ -1369,14 +1369,14 @@ def page_tendencias():
                 ))
             fig_yoy.update_layout(height=350, margin=dict(l=20, r=20, t=10, b=20),
                                  yaxis_tickformat=",", hovermode="x unified")
-            st.plotly_chart(fig_yoy, width="stretch")
+            st.plotly_chart(fig_yoy, use_container_width=True)
 
     # Data table
     with st.expander("Ver datos"):
         st.dataframe(data[[x_col, 'und', 'q', 'margen_q', 'margen_pct']].style.format({
             'und': '{:,.0f}', 'q': 'Q{:,.0f}',
             'margen_q': 'Q{:,.0f}', 'margen_pct': '{:.1%}'
-        }), width="stretch", hide_index=True)
+        }), use_container_width=True, hide_index=True)
 
     # ── Sell-Through Rate (Sell-Out / Sell-In) ──
     st.divider()
@@ -1456,7 +1456,7 @@ def page_tendencias():
                              hovermode="x unified")
         fig_st.update_yaxes(title_text="Unidades", tickformat=",", secondary_y=False)
         fig_st.update_yaxes(title_text="ST Rate %", tickformat=".0f", secondary_y=True)
-        st.plotly_chart(fig_st, width="stretch")
+        st.plotly_chart(fig_st, use_container_width=True)
 
         # ST by product
         with st.expander("Sell-Through por Producto"):
@@ -1469,7 +1469,7 @@ def page_tendencias():
             st.dataframe(st_prod.style.format({
                 'Sell-In (Und)': '{:,.0f}', 'Sell-Out (Und)': '{:,.0f}',
                 'ST Rate %': '{:.1f}%'
-            }), width="stretch", hide_index=True)
+            }), use_container_width=True, hide_index=True)
             download_df(st_prod, "sell_through_producto")
     else:
         st.info("No hay datos cruzados de Sell-In y Sell-Out para calcular Sell-Through.")
@@ -1511,7 +1511,7 @@ def page_tendencias():
         fig_seas.update_layout(height=300, margin=dict(l=20, r=20, t=30, b=20),
                                yaxis_title="Indice (100 = promedio)",
                                showlegend=False)
-        st.plotly_chart(fig_seas, width="stretch")
+        st.plotly_chart(fig_seas, use_container_width=True)
 
         with st.expander("Datos de estacionalidad"):
             seas_display = seasonality[['Mes', 'total_und', 'total_q', 'anios', 'idx_und', 'idx_q']].rename(columns={
@@ -1521,7 +1521,7 @@ def page_tendencias():
             st.dataframe(seas_display.style.format({
                 'Und Total': '{:,.0f}', 'Q Total': 'Q{:,.0f}',
                 'Idx Und': '{:.1f}', 'Idx Q': '{:.1f}'
-            }), width="stretch", hide_index=True)
+            }), use_container_width=True, hide_index=True)
             download_df(seas_display, "estacionalidad")
 
 
@@ -1644,7 +1644,7 @@ def page_productos():
                       secondary_y=True)
         fig.update_layout(height=350, margin=dict(l=20, r=20, t=10, b=20),
                          legend=dict(orientation="h", y=1.1), hovermode="x unified")
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, use_container_width=True)
 
     # Inventory trend — combine inv_historico (historical) + inv_actual (recent)
     st.markdown("### Inventario Historico")
@@ -1684,7 +1684,7 @@ def page_productos():
 
         fig_inv.update_layout(height=250, margin=dict(l=20, r=20, t=10, b=20),
                              legend=dict(orientation="h", y=1.1))
-        st.plotly_chart(fig_inv, width="stretch")
+        st.plotly_chart(fig_inv, use_container_width=True)
     else:
         st.info("Sin datos de inventario para este producto.")
 
@@ -1702,7 +1702,7 @@ def page_productos():
 
     if not by_store.empty:
         st.dataframe(by_store.style.format({'Und': '{:,.0f}', 'Q': 'Q{:,.0f}'}),
-                    width="stretch", hide_index=True)
+                    use_container_width=True, hide_index=True)
         download_df(by_store, f"producto_tiendas_{selected_prod[:20]}")
 
 
@@ -1809,7 +1809,7 @@ def page_tiendas():
                       secondary_y=True)
         fig.update_layout(height=350, margin=dict(l=20, r=20, t=10, b=20),
                          legend=dict(orientation="h", y=1.1), hovermode="x unified")
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, use_container_width=True)
 
     # Product breakdown
     st.markdown("### Ventas por Producto")
@@ -1827,10 +1827,10 @@ def page_tiendas():
         fig_p = px.pie(by_prod.head(10), values='Und', names='Producto',
                       color_discrete_sequence=px.colors.qualitative.Set2, height=350)
         fig_p.update_layout(margin=dict(l=10, r=10, t=10, b=10))
-        st.plotly_chart(fig_p, width="stretch")
+        st.plotly_chart(fig_p, use_container_width=True)
 
         st.dataframe(by_prod.style.format({'Und': '{:,.0f}', 'Q': 'Q{:,.0f}'}),
-                    width="stretch", hide_index=True)
+                    use_container_width=True, hide_index=True)
         download_df(by_prod, f"tienda_productos_{selected[:20]}")
 
 
@@ -1896,7 +1896,7 @@ def page_rentabilidad():
                            legend=dict(orientation="h", y=1.1), hovermode="x unified")
         fig_m.update_yaxes(title_text="Monto Q", tickformat=",", secondary_y=False)
         fig_m.update_yaxes(title_text="Margen %", tickformat=".0%", secondary_y=True)
-        st.plotly_chart(fig_m, width="stretch")
+        st.plotly_chart(fig_m, use_container_width=True)
 
         # Monthly table
         monthly_display = monthly.rename(columns={
@@ -1907,7 +1907,7 @@ def page_rentabilidad():
         st.dataframe(monthly_display[['Mes', 'Ingreso Bruto', 'Costo', 'Central.', 'Ingreso Neto', 'Margen', 'Margen %', 'Und']].style.format({
             'Ingreso Bruto': 'Q{:,.0f}', 'Costo': 'Q{:,.0f}', 'Central.': 'Q{:,.0f}',
             'Ingreso Neto': 'Q{:,.0f}', 'Margen': 'Q{:,.0f}', 'Margen %': '{:.1%}', 'Und': '{:,.0f}'
-        }), width="stretch", hide_index=True)
+        }), use_container_width=True, hide_index=True)
         download_df(monthly_display, "rentabilidad_mensual")
         st.divider()
 
@@ -1942,7 +1942,7 @@ def page_rentabilidad():
     ))
     fig_wf.update_layout(height=400, margin=dict(l=20, r=20, t=30, b=20),
                          showlegend=False)
-    st.plotly_chart(fig_wf, width="stretch")
+    st.plotly_chart(fig_wf, use_container_width=True)
 
     # KPIs
     c1, c2, c3, c4 = st.columns(4)
@@ -1974,12 +1974,12 @@ def page_rentabilidad():
                       height=350)
         fig_b.update_layout(margin=dict(l=20, r=20, t=10, b=20),
                            legend=dict(orientation="h", y=1.1))
-        st.plotly_chart(fig_b, width="stretch")
+        st.plotly_chart(fig_b, use_container_width=True)
 
         st.dataframe(brands.style.format({
             'Und': '{:,.0f}', 'Ingreso Bruto': 'Q{:,.0f}',
             'Costo': 'Q{:,.0f}', 'Margen': 'Q{:,.0f}', 'Margen %': '{:.1%}'
-        }), width="stretch", hide_index=True)
+        }), use_container_width=True, hide_index=True)
         download_df(brands, "rentabilidad_marcas")
 
     # By Product
@@ -2004,7 +2004,7 @@ def page_rentabilidad():
             'Und': '{:,.0f}', 'Ingreso Bruto': 'Q{:,.0f}', 'Costo': 'Q{:,.0f}',
             'Central.': 'Q{:,.0f}', 'Margen': 'Q{:,.0f}', 'Margen %': '{:.1%}'
         }),
-        width="stretch", hide_index=True)
+        use_container_width=True, hide_index=True)
         download_df(prods, "rentabilidad_productos")
 
 
@@ -2142,7 +2142,7 @@ def page_sugerido():
             f'Venta {days_period}d': '{:,.0f}', 'Inventario': '{:,.0f}',
             'Cobertura (dias)': fmt_coverage, 'Cajas Sug.': '{:,.0f}', 'Und Sug.': '{:,.0f}'
         })
-        st.dataframe(styled, width="stretch", hide_index=True)
+        st.dataframe(styled, use_container_width=True, hide_index=True)
         download_df(actionable[display_cols], "pedido_sugerido")
 
     # All products overview
@@ -2152,7 +2152,7 @@ def page_sugerido():
                                   'Cobertura (dias)', 'Cajas Sug.']].style.format({
             f'Venta {days_period}d': '{:,.0f}', 'Inventario': '{:,.0f}',
             'Cobertura (dias)': fmt_coverage, 'Cajas Sug.': '{:,.0f}'
-        }), width="stretch", hide_index=True)
+        }), use_container_width=True, hide_index=True)
 
     # ── Store-level SUGERIDO_EXPORT (OC format) ──
     st.divider()
@@ -2236,14 +2236,14 @@ def page_sugerido():
             c3.metric("Costo Est.",
                        fmt_q((oc_export['Cajas Sugeridas'] * oc_export['Und x Caja'] * oc_export['Costo Unit Q']).sum()))
 
-            st.dataframe(oc_export, width="stretch", hide_index=True)
+            st.dataframe(oc_export, use_container_width=True, hide_index=True)
             download_df(oc_export, "sugerido_export_oc", "Descargar OC (CSV)")
 
             # Excel download
             if IS_LOCAL:
                 try:
                     from generate_sugerido import generate_sugerido
-                    if st.button("Generar Excel OC", type="primary", width="stretch"):
+                    if st.button("Generar Excel OC", type="primary", use_container_width=True):
                         with st.spinner("Generando..."):
                             fp, _, _ = generate_sugerido(
                                 delivery_date=f"Viernes {datetime.now().strftime('%d %b %Y')}"
@@ -2373,7 +2373,7 @@ def page_trastienda():
         store_summary.style.apply(color_route, axis=1).format({
             'Unidades': '{:,.0f}', 'Valor Q': 'Q{:,.0f}', 'Zero_Venta': '{:.0f}'
         }),
-        width="stretch", hide_index=True,
+        use_container_width=True, hide_index=True,
     )
     download_df(store_summary, "rutas_trastienda")
 
@@ -2402,7 +2402,7 @@ def page_trastienda():
         prod_summary.style.format({
             'Unidades': '{:,.0f}', 'Valor Q': 'Q{:,.0f}', '% Afectadas': '{:.0f}%'
         }),
-        width="stretch", hide_index=True,
+        use_container_width=True, hide_index=True,
     )
 
     # ── Detail table ──
@@ -2417,7 +2417,7 @@ def page_trastienda():
             'Cobertura': lambda v: 'Sin ventas' if v >= 9999 else f'{v:.0f}d',
             'Valor Parado Q': 'Q{:,.0f}',
         }),
-        width="stretch", hide_index=True,
+        use_container_width=True, hide_index=True,
     )
     download_df(df[display_cols], "trastienda_detalle")
 
@@ -2474,7 +2474,7 @@ def page_claims():
     st.dataframe(conc_df.style.format({
         'Registros': '{:,.0f}',
         'Monto Q': 'Q{:,.0f}',
-    }), width="stretch", hide_index=True)
+    }), use_container_width=True, hide_index=True)
     download_df(conc_df, "claims_conciliacion")
 
     st.info("""
@@ -2505,12 +2505,12 @@ Los montos NO deben sumar — cada fuente mide una etapa diferente del proceso.
         fig = px.bar(by_prod, x='Producto', y='Precio Q',
                     color_discrete_sequence=[RED], height=300)
         fig.update_layout(margin=dict(l=20, r=20, t=10, b=20))
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, use_container_width=True)
 
         st.dataframe(by_prod.style.format({
             'Unidades': '{:,.0f}', 'Precio Q': 'Q{:,.0f}',
             'Costo Q': 'Q{:,.0f}', 'Tiendas': '{:,.0f}'
-        }), width="stretch", hide_index=True)
+        }), use_container_width=True, hide_index=True)
         download_df(by_prod, "claims_por_producto")
 
         # Claims per 1000 units sold
@@ -2537,11 +2537,11 @@ Los montos NO deben sumar — cada fuente mide una etapa diferente del proceso.
         fig = px.bar(by_store, x='Tienda', y='Precio Q',
                     color_discrete_sequence=[ORANGE], height=300)
         fig.update_layout(margin=dict(l=20, r=20, t=10, b=20))
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, use_container_width=True)
 
         st.dataframe(by_store.style.format({
             'Unidades': '{:,.0f}', 'Precio Q': 'Q{:,.0f}', 'SKUs': '{:,.0f}'
-        }), width="stretch", hide_index=True)
+        }), use_container_width=True, hide_index=True)
         download_df(by_store, "claims_por_tienda_rl")
 
     # ── Correo por tienda ──
@@ -2563,7 +2563,7 @@ Los montos NO deben sumar — cada fuente mide una etapa diferente del proceso.
         st.dataframe(correo_store.style.format({
             'Unidades': '{:,.0f}', 'Valor Neto Q': 'Q{:,.0f}',
             'Valor Total Q': 'Q{:,.0f}', 'Docs': '{:,.0f}'
-        }), width="stretch", hide_index=True)
+        }), use_container_width=True, hide_index=True)
         download_df(correo_store, "claims_por_tienda_correo")
 
     # ── Tendencia semanal (RL claims) ──
@@ -2592,7 +2592,7 @@ Los montos NO deben sumar — cada fuente mide una etapa diferente del proceso.
             yaxis2=dict(overlaying='y', side='right', tickformat=','),
             legend=dict(orientation="h", y=1.1)
         )
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, use_container_width=True)
 
 
 # ═══════════════════════════════════════════
@@ -3136,7 +3136,7 @@ def page_upload():
     with st.expander("Historial de importaciones"):
         history = query_df("SELECT * FROM import_log ORDER BY id DESC LIMIT 20")
         if not history.empty:
-            st.dataframe(history, width="stretch", hide_index=True)
+            st.dataframe(history, use_container_width=True, hide_index=True)
 
 
 # ═══════════════════════════════════════════
@@ -3251,7 +3251,7 @@ def main():
         # Sync button — only on local machine
         if IS_LOCAL:
             st.divider()
-            if st.button("Sincronizar Cloud", type="primary", width="stretch"):
+            if st.button("Sincronizar Cloud", type="primary", use_container_width=True):
                 with st.spinner("Subiendo datos..."):
                     try:
                         _git = lambda cmd: subprocess.run(

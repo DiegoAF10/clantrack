@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Selección de ítems nuevos — Clan × Walmart · Paiz</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body{ font-family:'Segoe UI', Arial, sans-serif; background:#f2efe8; color:#23281f; padding:34px 5vw; }
+h1{ font-size:26px; letter-spacing:-.3px; }
+.sub{ color:#6d7263; font-size:14px; margin-top:4px; }
+.top{ display:flex; justify-content:space-between; align-items:flex-end; border-bottom:3px solid #23281f; padding-bottom:14px; }
+table{ width:100%; border-collapse:collapse; margin-top:18px; background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 1px 6px rgba(0,0,0,.07); }
+th{ text-align:left; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; background:#23281f; color:#f2efe8; padding:10px 14px; }
+td{ padding:10px 14px; border-bottom:1px solid #e4e0d4; font-size:14.5px; vertical-align:middle; }
+tr.off td{ opacity:.38; }
+input[type=checkbox]{ width:20px; height:20px; accent-color:#3e6b35; cursor:pointer; }
+input[type=text]{ width:110px; padding:7px 9px; border:1.5px solid #c9c4b4; border-radius:7px; font-size:14.5px; background:#fbfaf6; }
+input.pvp{ font-weight:700; }
+input.nueva{ width:96%; }
+.marca{ font-weight:700; }
+.det{ color:#6d7263; font-size:12.5px; }
+.panel{ position:sticky; bottom:0; margin-top:22px; background:#23281f; color:#f2efe8; border-radius:12px; padding:14px 20px; display:flex; gap:14px; align-items:center; box-shadow:0 -2px 14px rgba(0,0,0,.15); }
+.panel .estado{ flex:1; font-size:14px; }
+button{ border:0; border-radius:8px; padding:11px 20px; font-size:14px; font-weight:700; cursor:pointer; }
+#agregar{ background:transparent; color:#3e6b35; border:1.5px dashed #3e6b35; margin-top:12px; }
+#copiar{ background:#f8d068; color:#23281f; }
+#limpiar{ background:transparent; color:#f2efe8; border:1px solid rgba(242,239,232,.4); }
+#aviso{ font-size:13px; color:#9fdc8f; display:none; }
+</style>
+</head>
+<body>
+<div class="top">
+  <div>
+    <h1>Ítems nuevos · selección final y PVP</h1>
+    <div class="sub">Marcá las que van, poné el PVP final con IVA (Q pegada, ej. Q33.50) y agregá las que falten. Todo se guarda solo en esta máquina.</div>
+  </div>
+  <div class="sub">Clan Cervecero × Walmart · Paiz — agosto 2026</div>
+</div>
+
+<table id="tabla">
+  <tr><th style="width:56px;">Va</th><th>Marca / referencia</th><th style="width:270px;">Detalle</th><th style="width:130px;">PVP final</th><th style="width:220px;">Nota (formato, condición…)</th></tr>
+</table>
+<button id="agregar">+ agregar otra cerveza</button>
+
+<div class="panel">
+  <div class="estado" id="estado">—</div>
+  <span id="aviso">Copiado — pegámelo en el chat</span>
+  <button id="limpiar">Reiniciar</button>
+  <button id="copiar">Copiar selección para Claude</button>
+</div>
+
+<script>
+const BASE = [
+  { marca:"Guinness Draught", det:"Irlanda · stout nitro · lata — nuestro #1 nacional", va:true, pvp:"Q50", nota:"caja 24" },
+  { marca:"Blue Moon Belgian White", det:"EE. UU. · witbier · BOTELLA", va:true, pvp:"Q18.75", nota:"caja 24" },
+  { marca:"Murphy's Irish Stout", det:"Irlanda · stout draught · lata", va:true, pvp:"Q25", nota:"caja 24" },
+  { marca:"Samuel Adams Boston Lager", det:"EE. UU. · lager · lata 16 oz", va:true, pvp:"Q25", nota:"caja 24" },
+  { marca:"Yuengling Lager", det:"EE. UU. · lager · lata", va:true, pvp:"Q25", nota:"caja 24" },
+  { marca:"Grolsch Premium Lager", det:"Países Bajos · lager · lata 500 ml", va:true, pvp:"Q25", nota:"caja 24" },
+  { marca:"Pilsner Urquell", det:"Chequia · pilsner original 1842 · lata", va:true, pvp:"Q25", nota:"caja 24" },
+  { marca:"Kronenbourg 1664", det:"Francia · lager · lata — 2,207 u en bodega", va:false, pvp:"", nota:"" },
+  { marca:"San Miguel Especial", det:"España · lager · lata — 2,448 u en bodega", va:false, pvp:"", nota:"" },
+  { marca:"Landshark Lager", det:"EE. UU. · lager playera — el mayor inventario de la casa (12,863 u)", va:false, pvp:"", nota:"" },
+  { marca:"Carlsberg", det:"Dinamarca · pilsner — confirmar formato lata (2,400 u)", va:false, pvp:"", nota:"" },
+  { marca:"Lagunitas IPA", det:"EE. UU. · ipa · lata (540 u)", va:false, pvp:"", nota:"" },
+  { marca:"Paulaner Hefe-Weißbier", det:"Alemania · trigo · lata 500 ml (1,335 u)", va:false, pvp:"", nota:"" },
+];
+const K = "clan-items-nuevos-ago26-v2";
+const tabla = document.getElementById("tabla");
+let estado = JSON.parse(localStorage.getItem(K) || "null") || { filas: BASE };
+
+function fila(f, i){
+  const tr = document.createElement("tr");
+  tr.className = f.va ? "" : "off";
+  tr.innerHTML = `
+    <td><input type="checkbox" ${f.va?"checked":""} data-i="${i}" data-k="va"></td>
+    <td>${f.det!==undefined && !f.editable ? `<span class="marca">${f.marca}</span>` : `<input type="text" class="nueva" placeholder="Marca y referencia" value="${f.marca||""}" data-i="${i}" data-k="marca">`}</td>
+    <td class="det">${f.det||""}</td>
+    <td><input type="text" class="pvp" placeholder="Q0.00" value="${f.pvp||""}" data-i="${i}" data-k="pvp"></td>
+    <td><input type="text" style="width:96%" placeholder="—" value="${f.nota||""}" data-i="${i}" data-k="nota"></td>`;
+  return tr;
+}
+function pintar(){
+  [...tabla.querySelectorAll("tr")].slice(1).forEach(r=>r.remove());
+  estado.filas.forEach((f,i)=>tabla.appendChild(fila(f,i)));
+  const on = estado.filas.filter(f=>f.va);
+  const conP = on.filter(f=>(f.pvp||"").trim());
+  document.getElementById("estado").textContent =
+    `${on.length} seleccionadas de ${estado.filas.length} · ${conP.length} con PVP`;
+  localStorage.setItem(K, JSON.stringify(estado));
+}
+tabla.addEventListener("input", e=>{
+  const i=+e.target.dataset.i, k=e.target.dataset.k;
+  if(k==null) return;
+  estado.filas[i][k] = k==="va" ? e.target.checked : e.target.value;
+  if(k==="va") pintar(); else {
+    localStorage.setItem(K, JSON.stringify(estado));
+    const on = estado.filas.filter(f=>f.va), conP = on.filter(f=>(f.pvp||"").trim());
+    document.getElementById("estado").textContent = `${on.length} seleccionadas de ${estado.filas.length} · ${conP.length} con PVP`;
+  }
+});
+document.getElementById("agregar").onclick = ()=>{
+  estado.filas.push({ marca:"", det:"", va:true, pvp:"", nota:"", editable:true });
+  pintar();
+};
+document.getElementById("limpiar").onclick = ()=>{
+  if(confirm("¿Reiniciar todo a la lista original?")){ localStorage.removeItem(K); location.reload(); }
+};
+document.getElementById("copiar").onclick = ()=>{
+  const on = estado.filas.filter(f=>f.va && (f.marca||"").trim());
+  const out = ["SELECCION ITEMS NUEVOS CLAN x WALMART (final, firmada por Diego):",
+    ...on.map(f=>`- ${f.marca} | PVP: ${f.pvp||"SIN PVP"} | ${f.nota||""}`.trim()),
+    `Descartadas: ${estado.filas.filter(f=>!f.va).map(f=>f.marca).join(", ")||"ninguna"}`];
+  navigator.clipboard.writeText(out.join("\n")).then(()=>{
+    const a=document.getElementById("aviso"); a.style.display="inline";
+    setTimeout(()=>a.style.display="none", 2600);
+  });
+};
+pintar();
+</script>
+</body>
+</html>

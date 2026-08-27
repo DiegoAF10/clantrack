@@ -1,0 +1,3463 @@
+{
+  "meta": {
+    "titulo": "Reporte de hallazgos de mercaderistas - Clan Cervecero en Walmart (WM) y Paiz",
+    "generado_el": "2026-08-24T12:40:00-06:00",
+    "fuente": {
+      "canal": "WhatsApp Web",
+      "grupo": "CLAN CERVECERO WM-PAIZ",
+      "miembros": 24,
+      "creado_por": "~Marleny Soto-Compartidos",
+      "creado_el": "2026-08-12 (miercoles)",
+      "mensaje_fijado": "WM-SP-GT-AB-COLOCACION DE PRODUCTO RENOVACION DEPARTAMENTO 96.pdf (nota prioritaria, 17 kB)"
+    },
+    "ventana_analizada": {
+      "desde": "2026-08-14T11:02:00-06:00",
+      "hasta": "2026-08-24T12:11:00-06:00"
+    },
+    "mensajes_procesados": 67,
+    "tiendas_con_reporte": 17,
+    "cliente_marca": "Clan Cervecero",
+    "moneda": "GTQ (Q)",
+    "advertencias": [
+      "Los datos provienen de reportes de texto libre enviados por mercaderistas; se transcriben tal cual y se normalizan solo los codigos de item evidentemente mal digitados (ver seccion calidad_de_datos).",
+      "Las fotos adjuntas (evidencia de visibilidad y capturas de handheld) no se analizaron; solo se contabilizan.",
+      "Cuando el reporte original no distingue fisico vs sistema se registra en 'inventario_reportado'.",
+      "BRECHA DE SINCRONIZACION: la sesion de WhatsApp Web se relinkeo a otro navegador y su historial descargado arranca el 20/08/2026 19:02. El tramo entre el 18/08 14:01 (ultimo mensaje de la v1) y el 20/08 19:02 no es recuperable desde el navegador; si hubo reportes en 19/08 o el 20/08 temprano, no estan aqui. Para cerrarlo hace falta exportar el chat desde el telefono."
+    ],
+    "version": 2,
+    "version_anterior": {
+      "version": 1,
+      "generado_el": "2026-08-18T14:10:00-06:00",
+      "ventana": "2026-08-14 a 2026-08-18"
+    }
+  },
+  "resumen_ejecutivo": {
+    "cobertura": {
+      "paiz": [
+        "Liberacion",
+        "Vista Hermosa",
+        "Pradera",
+        "Americas",
+        "San Lucas",
+        "Naranjo",
+        "Utatlan",
+        "San Cristobal",
+        "Coban",
+        "Huehuetenango",
+        "Pacific Center",
+        "Mega 6",
+        "Pinula"
+      ],
+      "walmart": [
+        "Villa Nueva",
+        "Puerta Parada",
+        "Naranjo",
+        "Roosevelt"
+      ],
+      "sin_reporte_aun": [
+        "Paiz Chiquimula"
+      ],
+      "nuevas_en_v2": [
+        "Paiz San Cristobal",
+        "Walmart Roosevelt",
+        "Paiz Coban",
+        "Paiz Huehuetenango",
+        "Paiz Pacific Center",
+        "Paiz Mega 6",
+        "Paiz Pinula"
+      ],
+      "revisitadas_en_v2": [
+        "Walmart Villa Nueva (reconteo)",
+        "Paiz Vista Hermosa (solo visibilidad)"
+      ],
+      "total_tiendas": 17
+    },
+    "hallazgos_clave": [
+      "Paiz Mega 6: 12 de 18 SKU de Clan Cervecero figuran como BORRADO en el maestro de articulos de la tienda; solo 3 siguen ACTIVO. Esto ya no es quiebre de stock, es baja de surtido, y confirma desde otro angulo lo visto en Paiz Americas el 17/08.",
+      "Paiz Pinula (24/08): se encontro producto VENCIDO en sala. No se especifico SKU ni cantidad. Escalado a Jelver Miranda GSP.",
+      "Paiz Pacific Center: Trooper FOTD con vencimiento 31/12/2026, a 4 meses, y ya marcado como liquidado. Desplaza al lote de Paiz Pradera como el mas critico de la red.",
+      "Walmart Villa Nueva: siete dias despues, la brecha bajo de 247 a 204 unidades (solo 17% recuperado). Siete SKU siguen exactamente igual, sin una sola unidad aparecida.",
+      "Walmart Roosevelt (nuevo): 615 unidades, el punto mas grande de la red, con sistema y fisico cuadrados al 100%. Pero 135 u (22%) estan inmovilizadas por reempaques tras una modulacion de hace 15 dias.",
+      "Se sumaron 7 tiendas nuevas y quedo cubierto Paiz Coban, uno de los dos pendientes de la v1. Solo falta Paiz Chiquimula.",
+      "Se confirma la unica llegada futura de toda la red: Sapporo Black, 20 u el 12/09/2026 en Walmart Roosevelt.",
+      "El quiebre total de Belhaven y Hobgoblin se sostiene en las 6 tiendas nuevas que los evaluaron: 13 tiendas consecutivas en cero."
+    ],
+    "riesgos_priorizados": [
+      {
+        "prioridad": 1,
+        "riesgo": "Baja de surtido: 12 SKU con opcion BORRADO en el maestro de articulos",
+        "tienda": "Paiz Mega 6",
+        "fecha": "2026-08-21",
+        "nota": "revisar si el mismo estatus aplica en el resto de tiendas Paiz"
+      },
+      {
+        "prioridad": 2,
+        "riesgo": "Exclusion de Clan Cervecero del nuevo planograma de cervezas",
+        "tienda": "Paiz Americas",
+        "fecha": "2026-08-17",
+        "estado": "sin respuesta 7 dias despues del escalamiento"
+      },
+      {
+        "prioridad": 3,
+        "riesgo": "Producto vencido en sala",
+        "tienda": "Paiz Pinula",
+        "fecha": "2026-08-24",
+        "nota": "SKU y cantidad sin identificar"
+      },
+      {
+        "prioridad": 4,
+        "riesgo": "Faltante fisico vs sistema persistente",
+        "tienda": "Walmart Villa Nueva",
+        "unidades_gap": 204,
+        "nota": "era 247 el 14/08"
+      },
+      {
+        "prioridad": 5,
+        "riesgo": "Lote proximo a vencer ya en liquidacion: Trooper FOTD 31/12/2026",
+        "tienda": "Paiz Pacific Center",
+        "unidades": 10
+      },
+      {
+        "prioridad": 6,
+        "riesgo": "135 unidades inmovilizadas en reempaques tras modulacion",
+        "tienda": "Walmart Roosevelt"
+      },
+      {
+        "prioridad": 7,
+        "riesgo": "Faltante fisico vs sistema",
+        "tienda": "Walmart Naranjo",
+        "unidades_gap_confirmado": 153,
+        "estado": "sin reconteo desde el 18/08"
+      },
+      {
+        "prioridad": 8,
+        "riesgo": "Distribucion cero de lineas completas (Belhaven, Hobgoblin)",
+        "alcance": "13 tiendas"
+      }
+    ]
+  },
+  "catalogo_items": [
+    {
+      "item": "75437618",
+      "descripcion": "Belhaven Best Lata 400ml",
+      "marca": "Belhaven"
+    },
+    {
+      "item": "75437619",
+      "descripcion": "Belhaven Black Lata 400ml",
+      "marca": "Belhaven"
+    },
+    {
+      "item": "75437620",
+      "descripcion": "Belhaven MacCallums Stout 440ml",
+      "marca": "Belhaven"
+    },
+    {
+      "item": "75244433",
+      "descripcion": "Wychwood Hobgoblin Gold 500ml",
+      "marca": "Wychwood",
+      "codigos_erroneos_vistos": [
+        "75234433"
+      ]
+    },
+    {
+      "item": "75244435",
+      "descripcion": "Wychwood Hobgoblin Ruby 500ml",
+      "marca": "Wychwood"
+    },
+    {
+      "item": "75244436",
+      "descripcion": "Wychwood Hobgoblin Stout 500ml",
+      "marca": "Wychwood"
+    },
+    {
+      "item": "75437616",
+      "descripcion": "Hofbrau Dunkel 500ml",
+      "marca": "Hofbrau",
+      "codigos_erroneos_vistos": [
+        "73437616"
+      ]
+    },
+    {
+      "item": "75437615",
+      "descripcion": "Hofbrau Helles Lager Lata 500ml",
+      "marca": "Hofbrau"
+    },
+    {
+      "item": "75253329",
+      "descripcion": "Hofbrau Munchner Weisse 500ml",
+      "marca": "Hofbrau"
+    },
+    {
+      "item": "75437614",
+      "descripcion": "Hofbrau Munchen Original 500ml",
+      "marca": "Hofbrau"
+    },
+    {
+      "item": "75437617",
+      "descripcion": "Hofbrau Session Lager Lata 500ml",
+      "marca": "Hofbrau"
+    },
+    {
+      "item": "75437613",
+      "descripcion": "North Coast Old Rasputin Imperial Stout Lata 473ml",
+      "marca": "North Coast",
+      "nota": "Paiz San Lucas lo reporta como 568ml"
+    },
+    {
+      "item": "75437612",
+      "descripcion": "North Coast Scrimshaw Pilsner Lata 473ml",
+      "marca": "North Coast",
+      "nota": "Paiz San Lucas lo reporta como 568ml"
+    },
+    {
+      "item": "75437610",
+      "descripcion": "Sapporo Premium Black 650ml",
+      "marca": "Sapporo",
+      "nota": "algunos reportes escriben 659ml"
+    },
+    {
+      "item": "75214932",
+      "descripcion": "Sapporo Reserve Gold 650ml",
+      "marca": "Sapporo",
+      "codigos_erroneos_vistos": [
+        "75124932"
+      ]
+    },
+    {
+      "item": "75214930",
+      "descripcion": "Sapporo Premium Silver 650ml",
+      "marca": "Sapporo"
+    },
+    {
+      "item": "75244431",
+      "descripcion": "St Peter's Cream Stout 500ml",
+      "marca": "St Peter's"
+    },
+    {
+      "item": "75253328",
+      "descripcion": "St Peter's Suffolk Gold sin gluten 500ml",
+      "marca": "St Peter's"
+    },
+    {
+      "item": "75437623",
+      "descripcion": "Trooper Fear of the Dark 500ml",
+      "marca": "Trooper"
+    },
+    {
+      "item": "75437621",
+      "descripcion": "Trooper Original Lata 500ml",
+      "marca": "Trooper"
+    }
+  ],
+  "equipo": {
+    "coordinacion": [
+      {
+        "nombre": "Pablo R",
+        "telefono": "+502 3058 1616",
+        "rol": "Coordinacion / solicita presentacion de cartera con Diego Arriaza"
+      },
+      {
+        "nombre": "Victor Hugo",
+        "telefono": "+502 5213 8334",
+        "rol": "Supervision - replica notas prioritarias al equipo"
+      },
+      {
+        "nombre": "SERGIO",
+        "telefono": "+502 3161 8122",
+        "rol": "Escalamiento de planograma"
+      },
+      {
+        "nombre": "Marleny Soto",
+        "telefono": "n/d",
+        "rol": "Creadora del grupo"
+      },
+      {
+        "nombre": "Dayana Soza",
+        "telefono": "n/d",
+        "rol": "Administracion del grupo (fijo mensaje, agrego miembros)"
+      },
+      {
+        "nombre": "Diego Arriaza",
+        "telefono": "n/d",
+        "rol": "Marca / emisor de nota prioritaria comercial"
+      },
+      {
+        "nombre": "Jelver Miranda",
+        "telefono": "n/d",
+        "rol": "GSP - receptor del escalamiento de producto vencido en Paiz Pinula"
+      }
+    ],
+    "mercaderistas_reportando": [
+      {
+        "nombre": "Marisela De Leon",
+        "telefono": "+502 4814 5239",
+        "tiendas": [
+          "Paiz Liberacion",
+          "Paiz Vista Hermosa",
+          "Paiz Pradera",
+          "Paiz Americas",
+          "Paiz Vista Hermosa (revisita 21/08)"
+        ],
+        "reportes": 5
+      },
+      {
+        "nombre": "Elizabeth",
+        "telefono": "+502 3090 2543",
+        "tiendas": [
+          "Paiz San Lucas"
+        ],
+        "reportes": 1
+      },
+      {
+        "nombre": "Daya",
+        "telefono": "+502 4318 9092",
+        "tiendas": [
+          "Paiz Naranjo",
+          "Walmart Naranjo",
+          "Paiz Utatlan"
+        ],
+        "reportes": 3
+      },
+      {
+        "nombre": "Zetino",
+        "telefono": "+502 5498 9079",
+        "tiendas": [
+          "Walmart Puerta Parada",
+          "Paiz Pinula"
+        ],
+        "reportes": 2
+      },
+      {
+        "nombre": "n/d",
+        "telefono": "+502 5846 2159",
+        "tiendas": [
+          "Walmart Villa Nueva",
+          "Walmart Villa Nueva (reconteo 21/08)",
+          "Paiz Pacific Center"
+        ],
+        "reportes": 3
+      },
+      {
+        "nombre": "Ross Barrios",
+        "telefono": "+502 5848 1051",
+        "tiendas": [
+          "Paiz San Cristobal"
+        ],
+        "reportes": 1
+      },
+      {
+        "nombre": "Victor Hugo",
+        "telefono": "+502 5213 8334",
+        "tiendas": [
+          "Walmart Roosevelt"
+        ],
+        "reportes": 1,
+        "nota": "pasa de rol de supervision a reportar punto de venta"
+      },
+      {
+        "nombre": "Eduardo Yat",
+        "telefono": "+502 5509 1347",
+        "tiendas": [
+          "Paiz Coban"
+        ],
+        "reportes": 2,
+        "nota": "agregado al grupo por veronicabai26 el 20/08"
+      },
+      {
+        "nombre": "Cinthya",
+        "telefono": "+502 3949 0174",
+        "tiendas": [
+          "Paiz Huehuetenango"
+        ],
+        "reportes": 1
+      },
+      {
+        "nombre": "n/d",
+        "telefono": "+502 5151 0119",
+        "tiendas": [
+          "Paiz Mega 6"
+        ],
+        "reportes": 1
+      }
+    ],
+    "sectores_declarados": [
+      {
+        "senior": "Gladys Diaz",
+        "reportado_por": "veronicabai26 (+502 3954 5274)",
+        "sector": "Nor Oriente",
+        "pdvs": [
+          {
+            "tienda": "Paiz Coban",
+            "jr": "Eduardo Yat",
+            "estado": "CUBIERTO: reporto el 21/08 y 22/08 (visibilidad, sin inventario numerico)"
+          },
+          {
+            "tienda": "Paiz Chiquimula",
+            "jr": "Sucely Guerra",
+            "estado": "sin reporte de inventario en la ventana analizada"
+          }
+        ]
+      }
+    ]
+  },
+  "reportes_por_tienda": [
+    {
+      "id": "PAIZ-LIBERACION",
+      "cadena": "Paiz",
+      "tienda": "Paiz Liberacion",
+      "fecha": "2026-08-14",
+      "hora": "13:56",
+      "reportado_por": {
+        "nombre": "Marisela De Leon",
+        "telefono": "+502 4814 5239"
+      },
+      "tipo_reporte": "liberacion de inventario",
+      "campos_reportados": [
+        "inventario_reportado"
+      ],
+      "items": [
+        {
+          "item": "75437618",
+          "descripcion": "Belhaven Best Lata",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75437619",
+          "descripcion": "Belhaven Black Lata",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75437620",
+          "descripcion": "Belhaven MacCallums",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75244433",
+          "descripcion": "Hobgoblin Gold 500",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75244435",
+          "descripcion": "Hobgoblin Ruby 500",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75244436",
+          "descripcion": "Hobgoblin Stout 500",
+          "inventario_reportado": 2
+        },
+        {
+          "item": "75437616",
+          "descripcion": "HB Dunkel 500ml",
+          "inventario_reportado": 19
+        },
+        {
+          "item": "75437615",
+          "descripcion": "HB Helles Lager Lata",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75253329",
+          "descripcion": "HB Munchner 500ml",
+          "inventario_reportado": 14
+        },
+        {
+          "item": "75437614",
+          "descripcion": "HB Original 500ml",
+          "inventario_reportado": 12
+        },
+        {
+          "item": "75437617",
+          "descripcion": "HB Session Lata",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75437612",
+          "descripcion": "NC Scrimshaw Lata",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75437613",
+          "descripcion": "NC Old Rasputin Lata",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75437610",
+          "descripcion": "Sapporo Black 650ml",
+          "inventario_reportado": 13
+        },
+        {
+          "item": "75214932",
+          "descripcion": "Sapporo Gold 650ml",
+          "inventario_reportado": 14,
+          "codigo_original_mensaje": "75124932"
+        },
+        {
+          "item": "75214930",
+          "descripcion": "Sapporo Silver",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75244431",
+          "descripcion": "St Peter's Stout 500",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75253328",
+          "descripcion": "St Peter's Suffolk 500",
+          "inventario_reportado": 8
+        },
+        {
+          "item": "75437623",
+          "descripcion": "Trooper FOTD 500ml",
+          "inventario_reportado": 17
+        },
+        {
+          "item": "75437621",
+          "descripcion": "Trooper Original Lata",
+          "inventario_reportado": 14,
+          "codigo_original_mensaje": "75437621."
+        }
+      ],
+      "totales": {
+        "skus_reportados": 20,
+        "skus_en_cero": 11,
+        "unidades_totales": 113
+      },
+      "observaciones": [],
+      "evidencia_fotografica": 0
+    },
+    {
+      "id": "PAIZ-VISTA-HERMOSA",
+      "cadena": "Paiz",
+      "tienda": "Paiz Vista Hermosa",
+      "fecha": "2026-08-14",
+      "hora": "13:56",
+      "reportado_por": {
+        "nombre": "Marisela De Leon",
+        "telefono": "+502 4814 5239"
+      },
+      "tipo_reporte": "liberacion de inventario + visibilidad",
+      "campos_reportados": [
+        "inventario_reportado",
+        "estado_comercial",
+        "fecha_vencimiento"
+      ],
+      "items": [
+        {
+          "item": "75437618",
+          "descripcion": "Belhaven Best Lata",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75437619",
+          "descripcion": "Belhaven Black Lata",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75437620",
+          "descripcion": "Belhaven MacCallums",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75244433",
+          "descripcion": "Hobgoblin Gold 500",
+          "inventario_reportado": 0,
+          "estado_comercial": "liquidacion",
+          "nota": "sin codigo en el mensaje original"
+        },
+        {
+          "item": "75244435",
+          "descripcion": "Hobgoblin Ruby 500",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75244436",
+          "descripcion": "Hobgoblin Stout 500",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75437616",
+          "descripcion": "HB Dunkel 500ml",
+          "inventario_reportado": 20,
+          "fecha_vencimiento": "2027-06-30"
+        },
+        {
+          "item": "75437615",
+          "descripcion": "HB Helles Lager Lata",
+          "inventario_reportado": 20,
+          "pendiente_ajuste_unidades": 20
+        },
+        {
+          "item": "75253329",
+          "descripcion": "HB Munchner 500ml",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75437614",
+          "descripcion": "HB Original 500ml",
+          "inventario_reportado": 13
+        },
+        {
+          "item": "75437617",
+          "descripcion": "HB Session Lata",
+          "inventario_reportado": 20
+        },
+        {
+          "item": "75437612",
+          "descripcion": "NC Scrimshaw Lata",
+          "inventario_reportado": 20
+        },
+        {
+          "item": "75437613",
+          "descripcion": "NC Old Rasputin Lata",
+          "inventario_reportado": 18
+        },
+        {
+          "item": "75437610",
+          "descripcion": "Sapporo Black 650ml",
+          "inventario_reportado": 19
+        },
+        {
+          "item": "75214932",
+          "descripcion": "Sapporo Gold 650ml",
+          "inventario_reportado": 3,
+          "codigo_original_mensaje": "75124932"
+        },
+        {
+          "item": "75214930",
+          "descripcion": "Sapporo Silver",
+          "inventario_reportado": 7
+        },
+        {
+          "item": "75244431",
+          "descripcion": "St Peter's Stout 500",
+          "inventario_reportado": 0,
+          "estado_comercial": "liquidacion"
+        },
+        {
+          "item": "75253328",
+          "descripcion": "St Peter's Suffolk 500",
+          "inventario_reportado": 5,
+          "estado_comercial": "liquidacion"
+        },
+        {
+          "item": "75437623",
+          "descripcion": "Trooper FOTD 500ml",
+          "inventario_reportado": 17
+        },
+        {
+          "item": "75437621",
+          "descripcion": "Trooper Original Lata",
+          "inventario_reportado": 94,
+          "alerta": "valor atipico: 5x el promedio de la red, validar conteo"
+        }
+      ],
+      "totales": {
+        "skus_reportados": 20,
+        "skus_en_cero": 8,
+        "unidades_totales": 256
+      },
+      "observaciones": [
+        "Pendiente de ajuste: HB Helles Lager Lata, 20 unidades.",
+        "Se compartio evidencia de visibilidad de la tienda."
+      ],
+      "evidencia_fotografica": 3
+    },
+    {
+      "id": "WM-VILLA-NUEVA",
+      "cadena": "Walmart",
+      "tienda": "Walmart Villa Nueva",
+      "fecha": "2026-08-14",
+      "hora": "18:43",
+      "reportado_por": {
+        "nombre": "n/d",
+        "telefono": "+502 5846 2159"
+      },
+      "tipo_reporte": "conteo fisico vs sistema",
+      "campos_reportados": [
+        "fisico",
+        "sistema"
+      ],
+      "items": [
+        {
+          "item": "75437618",
+          "descripcion": "Belhaven Best Lata",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75437619",
+          "descripcion": "Belhaven Black Lata",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75437620",
+          "descripcion": "Belhaven MacCallums",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75244433",
+          "descripcion": "Hobgoblin Gold 500",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75244435",
+          "descripcion": "Hobgoblin Ruby 500",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75244436",
+          "descripcion": "Hobgoblin Stout 500",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75437616",
+          "descripcion": "HB Dunkel 500ml",
+          "fisico": 10,
+          "sistema": 27,
+          "diferencia": -17
+        },
+        {
+          "item": "75437615",
+          "descripcion": "HB Helles Lager Lata",
+          "fisico": 0,
+          "sistema": 20,
+          "diferencia": -20,
+          "estado": "se estan buscando"
+        },
+        {
+          "item": "75253329",
+          "descripcion": "HB Munchner 500ml",
+          "fisico": 0,
+          "sistema": 2,
+          "diferencia": -2
+        },
+        {
+          "item": "75437614",
+          "descripcion": "HB Original 500ml",
+          "fisico": 0,
+          "sistema": 27,
+          "diferencia": -27
+        },
+        {
+          "item": "75437617",
+          "descripcion": "HB Session Lata",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75437613",
+          "descripcion": "NC Old Rasputin Lata",
+          "fisico": 0,
+          "sistema": 13,
+          "diferencia": -13
+        },
+        {
+          "item": "75437612",
+          "descripcion": "NC Scrimshaw Lata",
+          "fisico": 0,
+          "sistema": 20,
+          "diferencia": -20
+        },
+        {
+          "item": "75437610",
+          "descripcion": "Sapporo Black 650ml",
+          "fisico": 0,
+          "sistema": 31,
+          "diferencia": -31
+        },
+        {
+          "item": "75214932",
+          "descripcion": "Sapporo Gold 650ml",
+          "fisico": 0,
+          "sistema": 26,
+          "diferencia": -26
+        },
+        {
+          "item": "75214930",
+          "descripcion": "Sapporo Silver 650ml",
+          "fisico": 0,
+          "sistema": 61,
+          "diferencia": -61
+        },
+        {
+          "item": "75244431",
+          "descripcion": "St Peter's Stout 500",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75253328",
+          "descripcion": "St Peter's Suffolk 500",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75437623",
+          "descripcion": "Trooper FOTD 500ml",
+          "fisico": 0,
+          "sistema": 10,
+          "diferencia": -10
+        },
+        {
+          "item": "75437621",
+          "descripcion": "Trooper Original Lata",
+          "fisico": 0,
+          "sistema": 20,
+          "diferencia": -20,
+          "estado": "se estan buscando"
+        }
+      ],
+      "totales": {
+        "skus_reportados": 20,
+        "skus_sin_fisico": 19,
+        "sistema_total": 257,
+        "fisico_total": 10,
+        "gap_unidades": -247
+      },
+      "observaciones": [
+        "Encargado de pasillo de cervezas indica que por tema de toma de inventario estan ordenando bodegas; el producto podria estar en bodega y no en piso.",
+        "HB Helles Lager Lata y Trooper Original marcados explicitamente como 'se estan buscando'."
+      ],
+      "evidencia_fotografica": 2
+    },
+    {
+      "id": "PAIZ-PRADERA",
+      "cadena": "Paiz",
+      "tienda": "Paiz Pradera",
+      "fecha": "2026-08-14",
+      "hora": "19:11",
+      "reportado_por": {
+        "nombre": "Marisela De Leon",
+        "telefono": "+502 4814 5239"
+      },
+      "tipo_reporte": "inventario + fechas de vencimiento",
+      "campos_reportados": [
+        "inventario_reportado",
+        "fecha_vencimiento",
+        "estado_comercial"
+      ],
+      "items": [
+        {
+          "item": "75437618",
+          "descripcion": "Belhaven Best Lata",
+          "inventario_reportado": 0,
+          "fecha_vencimiento": null
+        },
+        {
+          "item": "75437619",
+          "descripcion": "Belhaven Black Lata",
+          "inventario_reportado": 0,
+          "fecha_vencimiento": null
+        },
+        {
+          "item": "75437620",
+          "descripcion": "Belhaven MacCallums",
+          "inventario_reportado": 0,
+          "fecha_vencimiento": null
+        },
+        {
+          "item": "75244433",
+          "descripcion": "Hobgoblin Gold 500",
+          "inventario_reportado": 0,
+          "estado_comercial": "liquidacion"
+        },
+        {
+          "item": "75244435",
+          "descripcion": "Hobgoblin Ruby 500",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75244436",
+          "descripcion": "Hobgoblin Stout 500",
+          "inventario_reportado": 0,
+          "fecha_vencimiento": null
+        },
+        {
+          "item": "75437616",
+          "descripcion": "HB Dunkel 500ml",
+          "inventario_reportado": 24,
+          "fecha_vencimiento": "2027-06-30"
+        },
+        {
+          "item": "75437615",
+          "descripcion": "HB Helles Lager Lata",
+          "inventario_reportado": 0,
+          "fecha_vencimiento": null
+        },
+        {
+          "item": "75253329",
+          "descripcion": "HB Munchner 500ml",
+          "inventario_reportado": 0,
+          "fecha_vencimiento": null
+        },
+        {
+          "item": "75437614",
+          "descripcion": "HB Original 500ml",
+          "inventario_reportado": 1,
+          "fecha_vencimiento": "2027-12-31"
+        },
+        {
+          "item": "75437617",
+          "descripcion": "HB Session Lata",
+          "inventario_reportado": 0,
+          "fecha_vencimiento": null
+        },
+        {
+          "item": "75437612",
+          "descripcion": "NC Scrimshaw Lata",
+          "inventario_reportado": 16,
+          "fecha_vencimiento": "2027-12-20"
+        },
+        {
+          "item": "75437613",
+          "descripcion": "NC Old Rasputin Lata",
+          "inventario_reportado": 8,
+          "fecha_vencimiento": "2027-12-25"
+        },
+        {
+          "item": "75437610",
+          "descripcion": "Sapporo Black 650ml",
+          "inventario_reportado": 21,
+          "fecha_vencimiento": "2027-12-31"
+        },
+        {
+          "item": "75214932",
+          "descripcion": "Sapporo Gold 650ml",
+          "inventario_reportado": 0,
+          "codigo_original_mensaje": "75124932"
+        },
+        {
+          "item": "75214930",
+          "descripcion": "Sapporo Silver",
+          "inventario_reportado": 12,
+          "fecha_vencimiento": "2028-07-31"
+        },
+        {
+          "item": "75244431",
+          "descripcion": "St Peter's Stout 500",
+          "inventario_reportado": 0,
+          "estado_comercial": "liquidacion"
+        },
+        {
+          "item": "75253328",
+          "descripcion": "St Peter's Suffolk 500",
+          "inventario_reportado": 17,
+          "estado_comercial": "liquidacion"
+        },
+        {
+          "item": "75437623",
+          "descripcion": "Trooper FOTD 500ml",
+          "inventario_reportado": 10,
+          "fecha_vencimiento": "2027-02-20",
+          "alerta": "vencimiento mas proximo de toda la red"
+        },
+        {
+          "item": "75437621",
+          "descripcion": "Trooper Original Lata",
+          "inventario_reportado": 46,
+          "fecha_vencimiento": "2027-12-25"
+        }
+      ],
+      "totales": {
+        "skus_reportados": 20,
+        "skus_en_cero": 11,
+        "unidades_totales": 155
+      },
+      "observaciones": [],
+      "evidencia_fotografica": 1
+    },
+    {
+      "id": "PAIZ-AMERICAS",
+      "cadena": "Paiz",
+      "tienda": "Paiz Americas",
+      "fecha": "2026-08-17",
+      "hora": "09:19",
+      "reportado_por": {
+        "nombre": "Marisela De Leon",
+        "telefono": "+502 4814 5239"
+      },
+      "tipo_reporte": "incidencia de planograma",
+      "campos_reportados": [],
+      "items": [],
+      "totales": null,
+      "observaciones": [
+        "Se esta ejecutando un nuevo planograma en el area de cervezas.",
+        "Ningun producto de la marca Clan Cervecero viene incluido en el planograma.",
+        "Escalado en el grupo a @SERGIO, @Marleny Soto y @Pablo R."
+      ],
+      "severidad": "critica",
+      "evidencia_fotografica": 4
+    },
+    {
+      "id": "WM-PUERTA-PARADA",
+      "cadena": "Walmart",
+      "tienda": "Walmart Puerta Parada",
+      "fecha": "2026-08-17",
+      "hora": "16:36",
+      "reportado_por": {
+        "nombre": "Zetino",
+        "telefono": "+502 5498 9079"
+      },
+      "tipo_reporte": "observacion cualitativa de anaquel",
+      "campos_reportados": [],
+      "items": [],
+      "totales": {
+        "presentaciones_de_cerveza_disponibles": 4,
+        "resto_skus": 0
+      },
+      "observaciones": [
+        "Solo hay 4 presentaciones de cerveza en piso; el resto de SKU esta en cero.",
+        "Otros productos salieron a Q0.25 en liquidacion."
+      ],
+      "severidad": "alta",
+      "evidencia_fotografica": 8
+    },
+    {
+      "id": "PAIZ-SAN-LUCAS",
+      "cadena": "Paiz",
+      "tienda": "Paiz San Lucas",
+      "fecha": "2026-08-17",
+      "hora": "16:59",
+      "reportado_por": {
+        "nombre": "Elizabeth",
+        "telefono": "+502 3090 2543"
+      },
+      "tipo_reporte": "inventario + precio + modulacion (el mas completo de la ventana)",
+      "campos_reportados": [
+        "inventario",
+        "precio_gtq",
+        "en_gondola",
+        "modulado",
+        "nota_prioritaria"
+      ],
+      "items": [
+        {
+          "item": "75437621",
+          "descripcion": "Trooper Original 500ml",
+          "inventario": 30,
+          "precio_gtq": 26.7,
+          "en_gondola": true,
+          "codigo_original_mensaje": "7543 7621"
+        },
+        {
+          "item": "75437623",
+          "descripcion": "Trooper FOTD 500ml",
+          "inventario": 11,
+          "precio_gtq": 47.9,
+          "en_gondola": true
+        },
+        {
+          "item": "75253328",
+          "descripcion": "St Peter's Suffolk 500ml",
+          "inventario": 0,
+          "precio_gtq": 30.2
+        },
+        {
+          "item": "75244431",
+          "descripcion": "St Peter's Stout 500ml",
+          "inventario": 0,
+          "precio_gtq": 20.0
+        },
+        {
+          "item": "75214930",
+          "descripcion": "Sapporo Silver 650ml",
+          "inventario": 13,
+          "precio_gtq": 69.0
+        },
+        {
+          "item": "75214932",
+          "descripcion": "Sapporo Gold 650ml",
+          "inventario": 0,
+          "precio_gtq": 69.0
+        },
+        {
+          "item": "75437610",
+          "descripcion": "Sapporo Black 650ml",
+          "inventario": 15,
+          "precio_gtq": 74.3
+        },
+        {
+          "item": "75437612",
+          "descripcion": "NC Scrimshaw Lata 568ml",
+          "inventario": 10,
+          "precio_gtq": 63.8
+        },
+        {
+          "item": "75437613",
+          "descripcion": "NC Old Rasputin Lata 568ml",
+          "inventario": 9,
+          "precio_gtq": 63.8,
+          "en_gondola": true
+        },
+        {
+          "item": "75437617",
+          "descripcion": "HB Session Lata",
+          "inventario": 0,
+          "precio_gtq": 23.3
+        },
+        {
+          "item": "75437614",
+          "descripcion": "HB Original 500ml",
+          "inventario": 19,
+          "precio_gtq": 32.1,
+          "en_gondola": true
+        },
+        {
+          "item": "75253329",
+          "descripcion": "HB Munchner 500ml",
+          "inventario": 0,
+          "precio_gtq": 33.75
+        },
+        {
+          "item": "75437615",
+          "descripcion": "HB Helles Lager Lata 500ml",
+          "inventario": 6,
+          "precio_gtq": 23.3,
+          "en_gondola": true,
+          "modulado": false,
+          "nota_prioritaria": "solicitada"
+        },
+        {
+          "item": "75437616",
+          "descripcion": "HB Dunkel 500ml",
+          "inventario": 16,
+          "precio_gtq": 32.1
+        },
+        {
+          "item": "75244436",
+          "descripcion": "Hobgoblin Stout 500ml",
+          "inventario": 0,
+          "precio_gtq": 50.0
+        },
+        {
+          "item": "75244433",
+          "descripcion": "Hobgoblin Gold 500ml",
+          "inventario": 0,
+          "precio_gtq": 20.0
+        },
+        {
+          "item": "75437620",
+          "descripcion": "Belhaven MacCallums 440ml",
+          "inventario": 6,
+          "precio_gtq": 26.7,
+          "modulado": false,
+          "nota_prioritaria": "necesaria"
+        },
+        {
+          "item": "75437619",
+          "descripcion": "Belhaven Black 440ml",
+          "inventario": 0,
+          "precio_gtq": 26.7,
+          "modulado": false,
+          "nota_prioritaria": "necesaria"
+        },
+        {
+          "item": "75437618",
+          "descripcion": "Belhaven Best Lata",
+          "inventario": 0,
+          "precio_gtq": 26.7,
+          "modulado": false,
+          "nota_prioritaria": "necesaria"
+        }
+      ],
+      "totales": {
+        "skus_reportados": 19,
+        "skus_en_cero": 9,
+        "unidades_totales": 135,
+        "skus_no_modulados": 4,
+        "sku_no_evaluado": "75244435 Hobgoblin Ruby 500 (no aparece en el reporte)"
+      },
+      "observaciones": [
+        "Los SKU con inventario que no estan en gondola se buscaran en bodega (seguimiento comprometido).",
+        "Se adjuntaron capturas de handheld como respaldo de modulacion y de items en liquidacion o sin producto."
+      ],
+      "evidencia_fotografica": 20
+    },
+    {
+      "id": "PAIZ-NARANJO",
+      "cadena": "Paiz",
+      "tienda": "Paiz Naranjo",
+      "fecha": "2026-08-18",
+      "hora": "13:43",
+      "reportado_por": {
+        "nombre": "Daya",
+        "telefono": "+502 4318 9092"
+      },
+      "tipo_reporte": "visibilidad (solo evidencia fotografica)",
+      "campos_reportados": [],
+      "items": [],
+      "totales": null,
+      "observaciones": [
+        "Se comparte visibilidad de Clan Cervecero. No se reporto inventario numerico."
+      ],
+      "evidencia_fotografica": 2
+    },
+    {
+      "id": "WM-NARANJO",
+      "cadena": "Walmart",
+      "tienda": "Walmart Naranjo",
+      "fecha": "2026-08-18",
+      "hora": "13:54",
+      "reportado_por": {
+        "nombre": "Daya",
+        "telefono": "+502 4318 9092"
+      },
+      "tipo_reporte": "conteo sistema vs fisico",
+      "campos_reportados": [
+        "sistema",
+        "fisico"
+      ],
+      "items": [
+        {
+          "item": "75437618",
+          "descripcion": "Belhaven Best Lata 400ml",
+          "sistema": 0,
+          "fisico": 0
+        },
+        {
+          "item": "75437619",
+          "descripcion": "Belhaven Black Lata 400ml",
+          "sistema": 0,
+          "fisico": 0
+        },
+        {
+          "item": "75437620",
+          "descripcion": "Belhaven MacCallums Stout 400ml",
+          "sistema": 0,
+          "fisico": 0
+        },
+        {
+          "item": "75244433",
+          "descripcion": "Wychwood Hobgoblin Gold 500ml",
+          "sistema": 0,
+          "fisico": 0,
+          "codigo_original_mensaje": "75234433"
+        },
+        {
+          "item": "75244435",
+          "descripcion": "Wychwood Hobgoblin Ruby 500ml",
+          "sistema": 0,
+          "fisico": 0
+        },
+        {
+          "item": "75244436",
+          "descripcion": "Wychwood Hobgoblin Stout 500ml",
+          "sistema": 0,
+          "fisico": 0
+        },
+        {
+          "item": "75437616",
+          "descripcion": "Hofbrau Dunkel 500ml",
+          "sistema": 60,
+          "fisico": null,
+          "nota": "campo fisico ilegible en el mensaje ('//////')",
+          "codigo_original_mensaje": "73437616"
+        },
+        {
+          "item": "75437615",
+          "descripcion": "Hofbrau Helles Lager Lata 500ml",
+          "sistema": 0,
+          "fisico": 0
+        },
+        {
+          "item": "75253329",
+          "descripcion": "Hofbrau Munchner Weisse 500ml",
+          "sistema": 0,
+          "fisico": 0
+        },
+        {
+          "item": "75437614",
+          "descripcion": "Hofbrau Munchen Original 500ml",
+          "sistema": 20,
+          "fisico": null,
+          "nota": "campo fisico ilegible en el mensaje ('////////')"
+        },
+        {
+          "item": "75437617",
+          "descripcion": "Hofbrau Session Lager Lata 500ml",
+          "sistema": 0,
+          "fisico": 0
+        },
+        {
+          "item": "75437613",
+          "descripcion": "North Coast Old Rasputin Lata 473ml",
+          "sistema": 0,
+          "fisico": 0
+        },
+        {
+          "item": "75437612",
+          "descripcion": "North Coast Scrimshaw Lata 473ml",
+          "sistema": 0,
+          "fisico": 0
+        },
+        {
+          "item": "75437610",
+          "descripcion": "Sapporo Premium Black 650ml",
+          "sistema": 9,
+          "fisico": null,
+          "nota": "campo fisico ilegible en el mensaje ('/////////')"
+        },
+        {
+          "item": "75214932",
+          "descripcion": "Sapporo Reserve Gold 650ml",
+          "sistema": 6,
+          "fisico": 6,
+          "diferencia": 0
+        },
+        {
+          "item": "75214930",
+          "descripcion": "Sapporo Premium Silver 650ml",
+          "sistema": 52,
+          "fisico": 18,
+          "diferencia": -34
+        },
+        {
+          "item": "75244431",
+          "descripcion": "St Peter's Cream Stout 500ml",
+          "sistema": 0,
+          "fisico": 0
+        },
+        {
+          "item": "75253328",
+          "descripcion": "St Peter's Suffolk Gold sin gluten 500ml",
+          "sistema": 33,
+          "fisico": 28,
+          "diferencia": -5,
+          "estado": "en area de merma"
+        },
+        {
+          "item": "75437623",
+          "descripcion": "Trooper FOTD Lata 500ml",
+          "sistema": 15,
+          "fisico": null,
+          "nota": "campo fisico ilegible en el mensaje ('////_')"
+        },
+        {
+          "item": "75437621",
+          "descripcion": "Trooper Original Lata 650ml",
+          "sistema": 169,
+          "fisico": 55,
+          "diferencia": -114
+        }
+      ],
+      "totales": {
+        "skus_reportados": 20,
+        "sistema_total": 364,
+        "fisico_confirmado": 107,
+        "gap_confirmado": -153,
+        "skus_sin_fisico_legible": 4
+      },
+      "observaciones": [
+        "St Peter's Suffolk Gold (28 u) esta ubicado en el area de merma.",
+        "4 SKU con inventario en sistema pero campo fisico no legible; requieren reconteo."
+      ],
+      "evidencia_fotografica": 2
+    },
+    {
+      "id": "PAIZ-UTATLAN",
+      "cadena": "Paiz",
+      "tienda": "Paiz Utatlan",
+      "fecha": "2026-08-18",
+      "hora": "14:01",
+      "reportado_por": {
+        "nombre": "Daya",
+        "telefono": "+502 4318 9092"
+      },
+      "tipo_reporte": "fisico vs sistema + planograma + ubicacion",
+      "campos_reportados": [
+        "fisico",
+        "sistema",
+        "fecha_vencimiento",
+        "en_planograma",
+        "ubicacion"
+      ],
+      "items": [
+        {
+          "item": "75253328",
+          "descripcion": "St Peter's Suffolk 500",
+          "fisico": 0,
+          "sistema": 8,
+          "diferencia": -8
+        },
+        {
+          "item": "75437615",
+          "descripcion": "HB Helles Lager Lata",
+          "fisico": 0,
+          "sistema": 8,
+          "diferencia": -8,
+          "en_planograma": false
+        },
+        {
+          "item": "75214930",
+          "descripcion": "Sapporo Silver 650ml",
+          "fisico": 20,
+          "sistema": 20,
+          "diferencia": 0,
+          "fecha_vencimiento": "2028-07-31"
+        },
+        {
+          "item": "75437610",
+          "descripcion": "Sapporo Black 650ml",
+          "fisico": 20,
+          "sistema": 20,
+          "diferencia": 0,
+          "fecha_vencimiento": "2027-12-25",
+          "en_planograma": false,
+          "ubicacion": "espacio adicional"
+        },
+        {
+          "item": "75437616",
+          "descripcion": "HB Dunkel 500ml",
+          "fisico": 26,
+          "sistema": 26,
+          "diferencia": 0,
+          "fecha_vencimiento": "2027-06-30",
+          "en_planograma": true,
+          "ubicacion": "gondola y espacio adicional"
+        },
+        {
+          "item": "75437623",
+          "descripcion": "Trooper FOTD 500ml",
+          "fisico": 0,
+          "sistema": 20,
+          "diferencia": -20,
+          "en_planograma": true
+        },
+        {
+          "item": "75437614",
+          "descripcion": "HB Original 500ml",
+          "fisico": 11,
+          "sistema": 11,
+          "diferencia": 0,
+          "fecha_vencimiento": "2027-06-30",
+          "en_planograma": true,
+          "ubicacion": "espacio adicional"
+        },
+        {
+          "item": "75437621",
+          "descripcion": "Trooper Original Lata",
+          "fisico": 3,
+          "sistema": 3,
+          "diferencia": 0,
+          "fecha_vencimiento": "2027-12-20",
+          "en_planograma": false,
+          "ubicacion": "gondola"
+        }
+      ],
+      "totales": {
+        "skus_reportados": 8,
+        "sistema_total": 116,
+        "fisico_total": 80,
+        "gap_unidades": -36
+      },
+      "observaciones": [
+        "Reporte parcial: solo 8 de los 20 SKU de la marca fueron cubiertos.",
+        "3 SKU (HB Helles, Sapporo Black, Trooper Original) no vienen en plano; dos de ellos se colocaron en espacio adicional o gondola por gestion del mercaderista."
+      ],
+      "evidencia_fotografica": 1
+    },
+    {
+      "id": "PAIZ-SAN-CRISTOBAL",
+      "cadena": "Paiz",
+      "tienda": "Paiz San Cristobal",
+      "fecha": "2026-08-20",
+      "hora": "19:02",
+      "reportado_por": {
+        "nombre": "Ross Barrios",
+        "telefono": "+502 5848 1051"
+      },
+      "tipo_reporte": "inventario sistema vs fisico + vencimiento + llegadas + modulacion",
+      "campos_reportados": [
+        "sistema",
+        "fisico",
+        "fecha_vencimiento",
+        "llegada",
+        "modulado",
+        "resurtible"
+      ],
+      "items": [
+        {
+          "item": "75437618",
+          "descripcion": "Belhaven Best Lata",
+          "sistema": 0,
+          "fisico": null,
+          "llegada": 0,
+          "modulado": false
+        },
+        {
+          "item": "75437619",
+          "descripcion": "Belhaven Black Lata",
+          "sistema": 8,
+          "fisico": 8,
+          "diferencia": 0,
+          "fecha_vencimiento": "2027-10-25",
+          "llegada": 0
+        },
+        {
+          "item": "75437620",
+          "descripcion": "Belhaven MacCallums",
+          "sistema": 20,
+          "fisico": null,
+          "modulado": false,
+          "estado": "se esta buscando",
+          "alerta": "20 u en sistema sin verificacion fisica"
+        },
+        {
+          "item": "75244433",
+          "descripcion": "Hobgoblin Gold 500",
+          "sistema": 0,
+          "fisico": 0,
+          "llegada": 0
+        },
+        {
+          "item": "75244435",
+          "descripcion": "Hobgoblin Ruby 500",
+          "sistema": 0,
+          "fisico": null,
+          "llegada": 0
+        },
+        {
+          "item": "75244436",
+          "descripcion": "Hobgoblin Stout 500",
+          "sistema": 0,
+          "fisico": 0,
+          "llegada": 0
+        },
+        {
+          "item": "75437616",
+          "descripcion": "HB Dunkel 500ml",
+          "sistema": 26,
+          "fisico": 26,
+          "diferencia": 0,
+          "fecha_vencimiento": "2027-06-30"
+        },
+        {
+          "item": "75437615",
+          "descripcion": "HB Helles Lager Lata",
+          "sistema": 1,
+          "fisico": 1,
+          "diferencia": 0,
+          "fecha_vencimiento": "2027-12-22",
+          "llegada": 0,
+          "resurtible": false
+        },
+        {
+          "item": "75253329",
+          "descripcion": "HB Munchner 500ml",
+          "sistema": 1,
+          "fisico": null,
+          "estado": "se esta buscando",
+          "llegada": 0
+        },
+        {
+          "item": "75437614",
+          "descripcion": "HB Original 500ml",
+          "sistema": 15,
+          "fisico": 15,
+          "diferencia": 0,
+          "fecha_vencimiento": "2027-06-20"
+        },
+        {
+          "item": "75437617",
+          "descripcion": "HB Session Lata",
+          "sistema": 13,
+          "fisico": 13,
+          "diferencia": 0,
+          "fecha_vencimiento": "2027-11-27"
+        },
+        {
+          "item": "75437613",
+          "descripcion": "NC Old Rasputin Lata",
+          "sistema": 16,
+          "fisico": 16,
+          "diferencia": 0,
+          "fecha_vencimiento": "2027-12-25"
+        },
+        {
+          "item": "75437612",
+          "descripcion": "NC Scrimshaw Lata",
+          "sistema": 19,
+          "fisico": 19,
+          "diferencia": 0,
+          "fecha_vencimiento": "2027-12-10"
+        },
+        {
+          "item": "75437610",
+          "descripcion": "Sapporo Black 650ml",
+          "sistema": 8,
+          "fisico": null,
+          "estado": "se esta buscando"
+        },
+        {
+          "item": "75214932",
+          "descripcion": "Sapporo Gold 650ml",
+          "sistema": 1,
+          "fisico": 1,
+          "diferencia": 0,
+          "fecha_vencimiento": "2027-12-25",
+          "llegada": 0,
+          "resurtible": false,
+          "nota": "reportado dos veces en el mismo mensaje (como 'Sapporo Gold' y como 'Sapporo reserve'); se cuenta una sola vez"
+        },
+        {
+          "item": "75214930",
+          "descripcion": "Sapporo Silver 650ml",
+          "sistema": 12,
+          "fisico": 12,
+          "diferencia": 0,
+          "fecha_vencimiento": "2027-12-25"
+        },
+        {
+          "item": "75244431",
+          "descripcion": "St Peter's Stout 500",
+          "sistema": 0,
+          "fisico": null,
+          "llegada": 0
+        },
+        {
+          "item": "75253328",
+          "descripcion": "St Peter's Suffolk 500",
+          "sistema": 1,
+          "fisico": 1,
+          "diferencia": 0,
+          "fecha_vencimiento": null,
+          "llegada": 0
+        },
+        {
+          "item": "75437623",
+          "descripcion": "Trooper FOTD 500ml",
+          "sistema": 22,
+          "fisico": 16,
+          "diferencia": -6,
+          "fecha_vencimiento": "2027-02-20"
+        },
+        {
+          "item": "75437621",
+          "descripcion": "Trooper Original Lata",
+          "sistema": 59,
+          "fisico": 61,
+          "diferencia": 2,
+          "fecha_vencimiento": "2027-12-20",
+          "alerta": "sobrante fisico: 2 unidades mas en piso que en sistema"
+        }
+      ],
+      "totales": {
+        "skus_reportados": 20,
+        "sistema_total": 222,
+        "fisico_total": 189,
+        "gap_skus_con_ambos_datos": -4,
+        "unidades_sin_verificacion_fisica": 29,
+        "skus_en_cero": 5
+      },
+      "observaciones": [
+        "3 SKU con existencia en sistema y sin conteo fisico, los tres marcados 'se esta buscando': Belhaven MacCallums (20 u), HB Munchner (1 u) y Sapporo Black (8 u).",
+        "Belhaven Best y Belhaven MacCallums marcados 'sin modular'.",
+        "HB Helles Lager y Sapporo Gold marcados 'no resurtible'.",
+        "Unico caso de sobrante fisico de toda la red: Trooper Original con 61 u en piso contra 59 en sistema."
+      ],
+      "evidencia_fotografica": 2
+    },
+    {
+      "id": "WM-ROOSEVELT",
+      "cadena": "Walmart",
+      "tienda": "Walmart Roosevelt",
+      "fecha": "2026-08-20",
+      "hora": "19:39",
+      "reportado_por": {
+        "nombre": "Victor Hugo",
+        "telefono": "+502 5213 8334"
+      },
+      "tipo_reporte": "inventario fisico vs sistema + estado logistico",
+      "campos_reportados": [
+        "fisico",
+        "sistema",
+        "fecha_vencimiento",
+        "proxima_llegada",
+        "estado_logistico"
+      ],
+      "items": [
+        {
+          "item": "75437618",
+          "descripcion": "Belhaven Best Lata 440ml",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75437619",
+          "descripcion": "Belhaven Black Lata 440ml",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75437620",
+          "descripcion": "Belhaven McCallum's Stout Lata 440ml",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75244435",
+          "descripcion": "Wychwood Hobgoblin Ruby 500ml",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75437616",
+          "descripcion": "Hofbrau Dunkel 500ml",
+          "fisico": 68,
+          "sistema": 68,
+          "diferencia": 0,
+          "estado_logistico": "producto empacado; se le da seguimiento porque fue modulado hace 15 dias y no viene en plano",
+          "alerta": "68 u inmovilizadas"
+        },
+        {
+          "item": "75437615",
+          "descripcion": "Hofbrau Helles Lager Lata 500ml",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75253329",
+          "descripcion": "Hofbrau Munchner Weisse 500ml",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75437614",
+          "descripcion": "Hofbrau Munchen Original 500ml",
+          "fisico": 111,
+          "sistema": 111,
+          "diferencia": 0,
+          "fecha_vencimiento": "2027-06-30"
+        },
+        {
+          "item": "75437617",
+          "descripcion": "Hofbrau Session Lager Lata 500ml",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75437613",
+          "descripcion": "North Coast Old Rasputin Lata 473ml",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75437612",
+          "descripcion": "North Coast Scrimshaw Lata 473ml",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75437610",
+          "descripcion": "Sapporo Premium Black 650ml",
+          "fisico": 20,
+          "sistema": 20,
+          "diferencia": 0,
+          "proxima_llegada": {
+            "fecha": "2026-09-12",
+            "unidades": 20
+          }
+        },
+        {
+          "item": "75214932",
+          "descripcion": "Sapporo Reserve Gold 650ml",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75214930",
+          "descripcion": "Sapporo Premium Silver 650ml",
+          "fisico": 36,
+          "sistema": 36,
+          "diferencia": 0,
+          "estado_logistico": "producto no ubicado; se le da seguimiento porque fue reempacado",
+          "alerta": "36 u sin ubicacion"
+        },
+        {
+          "item": "75244431",
+          "descripcion": "St Peter's Cream Stout 500ml",
+          "fisico": 12,
+          "sistema": 12,
+          "diferencia": 0,
+          "estado_logistico": "en reempaques desde la modulacion de hace 15 dias",
+          "alerta": "12 u inmovilizadas"
+        },
+        {
+          "item": "75253328",
+          "descripcion": "St Peter's Suffolk Gold 500ml",
+          "fisico": 165,
+          "sistema": 165,
+          "diferencia": 0,
+          "fecha_vencimiento": "2027-12-31"
+        },
+        {
+          "item": "75437623",
+          "descripcion": "Trooper FOTD Lata 500ml",
+          "fisico": 19,
+          "sistema": 19,
+          "diferencia": 0,
+          "estado_logistico": "en reempaques desde la modulacion de hace 15 dias",
+          "alerta": "19 u inmovilizadas"
+        },
+        {
+          "item": "75437621",
+          "descripcion": "Trooper Original Lata 500ml",
+          "fisico": 184,
+          "sistema": 184,
+          "diferencia": 0,
+          "fecha_vencimiento": "2027-06-30"
+        }
+      ],
+      "totales": {
+        "skus_reportados": 18,
+        "skus_en_cero": 10,
+        "sistema_total": 615,
+        "fisico_total": 615,
+        "gap_unidades": 0,
+        "unidades_inmovilizadas_o_sin_ubicar": 135
+      },
+      "observaciones": [
+        "Es el punto de venta con mayor inventario de la red: 615 unidades, mas que la suma de las siguientes tres tiendas.",
+        "Sistema y fisico cuadran al 100%, unico caso de la red.",
+        "Pero 135 unidades (22% del total) estan inmovilizadas: HB Dunkel 68 u empacado y fuera de plano, Sapporo Silver 36 u no ubicado tras reempaque, Trooper FOTD 19 u y St Peter's Stout 12 u en reempaques.",
+        "La causa comun declarada es una modulacion hecha 15 dias antes (aprox. 05/08/2026) tras la cual el producto fue reempacado.",
+        "Unica llegada futura confirmada de toda la red: Sapporo Black, 20 u el 12/09/2026.",
+        "No se reportaron Hobgoblin Gold (75244433) ni Hobgoblin Stout (75244436)."
+      ],
+      "evidencia_fotografica": 2
+    },
+    {
+      "id": "PAIZ-COBAN",
+      "cadena": "Paiz",
+      "tienda": "Paiz Coban",
+      "fecha": "2026-08-21",
+      "hora": "06:24",
+      "fecha_seguimiento": "2026-08-22",
+      "hora_seguimiento": "13:20",
+      "reportado_por": {
+        "nombre": "Eduardo Yat",
+        "telefono": "+502 5509 1347"
+      },
+      "tipo_reporte": "visibilidad y ejecucion en sala (sin inventario numerico)",
+      "campos_reportados": [],
+      "items": [],
+      "totales": null,
+      "observaciones": [
+        "Producto colocado, rotulado y con limpieza de anaquel realizada.",
+        "Seguimiento del 22/08: tres SKU se encuentran en area de liquidacion: Sapporo Gold 650ml, HB Munchner 500ml y HB Dunkel 500ml.",
+        "Cierra el pendiente A8 de la version 1 para esta tienda; Paiz Chiquimula sigue sin reportar.",
+        "No se levanto inventario numerico: no es comparable con el resto de tiendas."
+      ],
+      "evidencia_fotografica": 5
+    },
+    {
+      "id": "PAIZ-HUEHUETENANGO",
+      "cadena": "Paiz",
+      "tienda": "Paiz Huehuetenango",
+      "fecha": "2026-08-21",
+      "hora": "06:29",
+      "reportado_por": {
+        "nombre": "Cinthya",
+        "telefono": "+502 3949 0174"
+      },
+      "tipo_reporte": "aviso de bloqueo operativo",
+      "campos_reportados": [],
+      "items": [],
+      "totales": null,
+      "observaciones": [
+        "La tienda esta en inventario general; no se pudo levantar informacion de la marca."
+      ],
+      "severidad": "informativa",
+      "evidencia_fotografica": 0
+    },
+    {
+      "id": "PAIZ-PACIFIC-CENTER",
+      "cadena": "Paiz",
+      "tienda": "Paiz Pacific Center",
+      "fecha": "2026-08-21",
+      "hora": "12:21",
+      "reportado_por": {
+        "nombre": "n/d",
+        "telefono": "+502 5846 2159"
+      },
+      "tipo_reporte": "inventario + vencimientos + estado comercial",
+      "campos_reportados": [
+        "inventario_reportado",
+        "fecha_vencimiento",
+        "estado_comercial"
+      ],
+      "items": [
+        {
+          "item": "75437618",
+          "descripcion": "Belhaven Best Lata",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75437619",
+          "descripcion": "Belhaven Black Lata",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75437620",
+          "descripcion": "Belhaven MacCallums",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75244433",
+          "descripcion": "Hobgoblin Gold 500",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75244435",
+          "descripcion": "Hobgoblin Ruby 500",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75244436",
+          "descripcion": "Hobgoblin Stout 500",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75437616",
+          "descripcion": "HB Dunkel 500ml",
+          "inventario_reportado": 31,
+          "fecha_vencimiento": "2027-06-30"
+        },
+        {
+          "item": "75437615",
+          "descripcion": "HB Helles Lager Lata",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75253329",
+          "descripcion": "HB Munchner 500ml",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75437614",
+          "descripcion": "HB Original 500ml",
+          "inventario_reportado": 24,
+          "fecha_vencimiento": "2027-06-30"
+        },
+        {
+          "item": "75437617",
+          "descripcion": "HB Session Lata",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75437613",
+          "descripcion": "NC Old Rasputin Lata",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75437612",
+          "descripcion": "NC Scrimshaw Lata",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75437610",
+          "descripcion": "Sapporo Black 650ml",
+          "inventario_reportado": 27,
+          "fecha_vencimiento": "2027-12-25"
+        },
+        {
+          "item": "75214932",
+          "descripcion": "Sapporo Gold 650ml",
+          "inventario_reportado": 7,
+          "fecha_vencimiento": "2027-12-15"
+        },
+        {
+          "item": "75214930",
+          "descripcion": "Sapporo Silver 650ml",
+          "inventario_reportado": 6,
+          "fecha_vencimiento": "2028-07-31"
+        },
+        {
+          "item": "75244431",
+          "descripcion": "St Peter's Stout 500",
+          "inventario_reportado": 0
+        },
+        {
+          "item": "75253328",
+          "descripcion": "St Peter's Suffolk 500",
+          "inventario_reportado": 5,
+          "estado_comercial": "liquidado",
+          "fecha_vencimiento": "2027-12-31"
+        },
+        {
+          "item": "75437623",
+          "descripcion": "Trooper FOTD 500ml",
+          "inventario_reportado": 10,
+          "estado_comercial": "liquidado",
+          "fecha_vencimiento": "2026-12-31",
+          "alerta": "VENCIMIENTO MAS PROXIMO DE TODA LA RED: 4 meses"
+        },
+        {
+          "item": "75437621",
+          "descripcion": "Trooper Original Lata",
+          "inventario_reportado": 1,
+          "fecha_vencimiento": "2027-12-25"
+        }
+      ],
+      "totales": {
+        "skus_reportados": 20,
+        "skus_en_cero": 12,
+        "unidades_totales": 111
+      },
+      "observaciones": [
+        "Trooper FOTD con vencimiento 31/12/2026 y ya marcado como liquidado: es el lote mas critico de la red, a 4 meses de vencer.",
+        "St Peter's Suffolk tambien en liquidacion."
+      ],
+      "evidencia_fotografica": 1
+    },
+    {
+      "id": "PAIZ-MEGA-6",
+      "cadena": "Paiz",
+      "tienda": "Paiz Mega 6",
+      "fecha": "2026-08-21",
+      "hora": "18:00",
+      "reportado_por": {
+        "nombre": "n/d",
+        "telefono": "+502 5151 0119"
+      },
+      "tipo_reporte": "existencia + estatus de maestro de articulos (el unico reporte con estado de catalogo)",
+      "campos_reportados": [
+        "existencia",
+        "opcion_catalogo"
+      ],
+      "items": [
+        {
+          "item": "75437618",
+          "descripcion": "Belhaven Best Lata",
+          "existencia": 0,
+          "opcion_catalogo": "BORRADO"
+        },
+        {
+          "item": "75437619",
+          "descripcion": "Belhaven Black Lata",
+          "existencia": 0,
+          "opcion_catalogo": "BORRADO"
+        },
+        {
+          "item": "75437620",
+          "descripcion": "Belhaven MacCallums",
+          "existencia": 0,
+          "opcion_catalogo": "BORRADO"
+        },
+        {
+          "item": "75244433",
+          "descripcion": "Hobgoblin Gold 500",
+          "existencia": 0,
+          "opcion_catalogo": "BORRADO"
+        },
+        {
+          "item": "75244435",
+          "descripcion": "Hobgoblin Ruby 500",
+          "existencia": 2,
+          "opcion_catalogo": "BORRADO",
+          "alerta": "existencia viva con item borrado"
+        },
+        {
+          "item": "75244436",
+          "descripcion": "Hobgoblin Stout 500",
+          "existencia": 0,
+          "opcion_catalogo": "BORRADO"
+        },
+        {
+          "item": "75437616",
+          "descripcion": "HB Dunkel 500",
+          "existencia": 50,
+          "opcion_catalogo": "ACTIVO"
+        },
+        {
+          "item": "75253329",
+          "descripcion": "HB Munchner 500",
+          "existencia": 0,
+          "opcion_catalogo": "BORRADO"
+        },
+        {
+          "item": "75437614",
+          "descripcion": "HB Original 500",
+          "existencia": 11,
+          "opcion_catalogo": "ACTIVO"
+        },
+        {
+          "item": "75437617",
+          "descripcion": "HB Session Lata",
+          "existencia": 0,
+          "opcion_catalogo": "BORRADO"
+        },
+        {
+          "item": "75437613",
+          "descripcion": "NC Old Rasputin Lata",
+          "existencia": 0,
+          "opcion_catalogo": "BORRADO"
+        },
+        {
+          "item": "75437612",
+          "descripcion": "NC Scrimshaw Lata",
+          "existencia": 0,
+          "opcion_catalogo": "BORRADO"
+        },
+        {
+          "item": "75437610",
+          "descripcion": "Sapporo Black 650",
+          "existencia": 14,
+          "opcion_catalogo": "NO TRT"
+        },
+        {
+          "item": "75214932",
+          "descripcion": "Sapporo Gold 650",
+          "existencia": 0,
+          "opcion_catalogo": "INACTIVO"
+        },
+        {
+          "item": "75244431",
+          "descripcion": "St Peter's Stout 500",
+          "existencia": 1,
+          "opcion_catalogo": "BORRADO",
+          "alerta": "existencia viva con item borrado"
+        },
+        {
+          "item": "75253328",
+          "descripcion": "St Peter's Suffolk 500",
+          "existencia": 7,
+          "opcion_catalogo": "BORRADO",
+          "alerta": "existencia viva con item borrado"
+        },
+        {
+          "item": "75437623",
+          "descripcion": "Trooper FOTD 500",
+          "existencia": 20,
+          "opcion_catalogo": "ACTIVO"
+        },
+        {
+          "item": "75437621",
+          "descripcion": "Trooper Original Lata",
+          "existencia": 46,
+          "opcion_catalogo": "NO TRT"
+        }
+      ],
+      "totales": {
+        "skus_reportados": 18,
+        "unidades_totales": 151,
+        "borrados": 12,
+        "activos": 3,
+        "no_trt": 2,
+        "inactivos": 1,
+        "unidades_en_skus_borrados": 10
+      },
+      "observaciones": [
+        "HALLAZGO MAS GRAVE DE ESTA ACTUALIZACION: 12 de 18 SKU aparecen con opcion BORRADO en el maestro de articulos de la tienda. Solo 3 siguen ACTIVO (HB Dunkel, HB Original, Trooper FOTD).",
+        "Un item BORRADO no se resurte ni se repone automaticamente: es una baja de surtido, no un quiebre de stock.",
+        "3 SKU borrados conservan existencia (Hobgoblin Ruby 2 u, St Peter's Stout 1 u, St Peter's Suffolk 7 u): 10 unidades atrapadas sin ruta de reposicion.",
+        "Sapporo Black y Trooper Original con estatus 'NO TRT' (no tratado / sin tratamiento de reorden) pese a tener 60 unidades entre ambos.",
+        "No se reportaron HB Helles Lager (75437615) ni Sapporo Silver (75214930).",
+        "Este reporte y el de Paiz Americas del 17/08 apuntan al mismo fenomeno desde angulos distintos: salida de la marca del surtido, no falta de producto."
+      ],
+      "severidad": "critica",
+      "evidencia_fotografica": 1
+    },
+    {
+      "id": "WM-VILLA-NUEVA-R2",
+      "cadena": "Walmart",
+      "tienda": "Walmart Villa Nueva",
+      "fecha": "2026-08-21",
+      "hora": "18:21",
+      "reportado_por": {
+        "nombre": "n/d",
+        "telefono": "+502 5846 2159"
+      },
+      "tipo_reporte": "reconteo fisico vs sistema (seguimiento del reporte del 14/08)",
+      "campos_reportados": [
+        "fisico",
+        "sistema"
+      ],
+      "items": [
+        {
+          "item": "75437618",
+          "descripcion": "Belhaven Best Lata",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75437619",
+          "descripcion": "Belhaven Black Lata",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75437620",
+          "descripcion": "Belhaven MacCallums",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75244433",
+          "descripcion": "Hobgoblin Gold 500",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75244435",
+          "descripcion": "Hobgoblin Ruby 500",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75244436",
+          "descripcion": "Hobgoblin Stout 500",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75437616",
+          "descripcion": "HB Dunkel 500ml",
+          "fisico": 16,
+          "sistema": 27,
+          "diferencia": -11,
+          "vs_14_08": "fisico 10 -> 16 (+6)"
+        },
+        {
+          "item": "75437615",
+          "descripcion": "HB Helles Lager Lata",
+          "fisico": 0,
+          "sistema": 20,
+          "diferencia": -20,
+          "estado": "se estan buscando",
+          "vs_14_08": "sin cambio en 7 dias"
+        },
+        {
+          "item": "75253329",
+          "descripcion": "HB Munchner 500ml",
+          "fisico": 0,
+          "sistema": 2,
+          "diferencia": -2,
+          "vs_14_08": "sin cambio"
+        },
+        {
+          "item": "75437614",
+          "descripcion": "HB Original 500ml",
+          "fisico": 7,
+          "sistema": 27,
+          "diferencia": -20,
+          "vs_14_08": "fisico 0 -> 7 (+7)"
+        },
+        {
+          "item": "75437617",
+          "descripcion": "HB Session Lata",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75437613",
+          "descripcion": "NC Old Rasputin Lata",
+          "fisico": 0,
+          "sistema": 13,
+          "diferencia": -13,
+          "vs_14_08": "sin cambio"
+        },
+        {
+          "item": "75437612",
+          "descripcion": "NC Scrimshaw Lata",
+          "fisico": 0,
+          "sistema": 20,
+          "diferencia": -20,
+          "vs_14_08": "sin cambio"
+        },
+        {
+          "item": "75437610",
+          "descripcion": "Sapporo Black 650ml",
+          "fisico": 30,
+          "sistema": 30,
+          "diferencia": 0,
+          "vs_14_08": "RESUELTO: era 0 fisico / 31 sistema"
+        },
+        {
+          "item": "75214932",
+          "descripcion": "Sapporo Gold 650ml",
+          "fisico": 0,
+          "sistema": 26,
+          "diferencia": -26,
+          "vs_14_08": "sin cambio"
+        },
+        {
+          "item": "75214930",
+          "descripcion": "Sapporo Silver 650ml",
+          "fisico": 0,
+          "sistema": 61,
+          "diferencia": -61,
+          "vs_14_08": "sin cambio; es el faltante individual mas grande de la red"
+        },
+        {
+          "item": "75244431",
+          "descripcion": "St Peter's Stout 500",
+          "fisico": 0,
+          "sistema": 0
+        },
+        {
+          "item": "75253328",
+          "descripcion": "St Peter's Suffolk 500",
+          "fisico": 9,
+          "sistema": 9,
+          "diferencia": 0,
+          "vs_14_08": "nuevo ingreso: era 0/0"
+        },
+        {
+          "item": "75437623",
+          "descripcion": "Trooper FOTD 500ml",
+          "fisico": 0,
+          "sistema": 10,
+          "diferencia": -10,
+          "vs_14_08": "sin cambio"
+        },
+        {
+          "item": "75437621",
+          "descripcion": "Trooper Original Lata",
+          "fisico": 23,
+          "sistema": 44,
+          "diferencia": -21,
+          "estado": "se sigue en la busqueda",
+          "vs_14_08": "fisico 0 -> 23; sistema 20 -> 44"
+        }
+      ],
+      "totales": {
+        "skus_reportados": 20,
+        "sistema_total": 289,
+        "fisico_total": 85,
+        "gap_unidades": -204,
+        "gap_anterior_14_08": -247,
+        "mejora_unidades": 43
+      },
+      "observaciones": [
+        "Siete dias despues de la toma de inventario, la brecha bajo de 247 a 204 unidades: solo se recupero el 17%.",
+        "Sapporo Black quedo resuelto (30 u aparecidas) y entraron 9 u de St Peter's Suffolk.",
+        "Siete SKU siguen exactamente igual que el 14/08, sin una sola unidad recuperada: HB Munchner, NC Old Rasputin, NC Scrimshaw, Sapporo Gold, Sapporo Silver, HB Helles y Trooper FOTD.",
+        "Sapporo Silver concentra 61 de las 204 unidades faltantes (30%)."
+      ],
+      "severidad": "alta",
+      "evidencia_fotografica": 2
+    },
+    {
+      "id": "PAIZ-VISTA-HERMOSA-R2",
+      "cadena": "Paiz",
+      "tienda": "Paiz Vista Hermosa",
+      "fecha": "2026-08-21",
+      "hora": "19:40",
+      "reportado_por": {
+        "nombre": "Marisela De Leon",
+        "telefono": "+502 4814 5239"
+      },
+      "tipo_reporte": "visibilidad (solo evidencia fotografica)",
+      "campos_reportados": [],
+      "items": [],
+      "totales": null,
+      "observaciones": [
+        "Revisita de visibilidad sin inventario numerico; no actualiza las cifras del 14/08."
+      ],
+      "evidencia_fotografica": 1
+    },
+    {
+      "id": "PAIZ-PINULA",
+      "cadena": "Paiz",
+      "tienda": "Paiz Pinula",
+      "fecha": "2026-08-24",
+      "hora": "09:39",
+      "reportado_por": {
+        "nombre": "Zetino",
+        "telefono": "+502 5498 9079"
+      },
+      "tipo_reporte": "incidencia de calidad",
+      "campos_reportados": [],
+      "items": [],
+      "totales": null,
+      "observaciones": [
+        "Se encontro producto VENCIDO en la tienda.",
+        "El mensaje no especifica que SKU ni cuantas unidades.",
+        "Escalado a @~Jelver Miranda GSP.",
+        "Unico reporte del dia 24/08; Diego Arriaza acuso recibo a las 12:11."
+      ],
+      "severidad": "critica",
+      "evidencia_fotografica": 1
+    }
+  ],
+  "analisis_transversal": {
+    "skus_en_quiebre_total_en_todas_las_tiendas_reportadas": [
+      {
+        "item": "75437618",
+        "descripcion": "Belhaven Best Lata",
+        "tiendas_con_stock": 0,
+        "tiendas_evaluadas": 12,
+        "nota": "Universo v2: 6 tiendas de la v1 mas San Cristobal, Roosevelt, Pacific Center, Mega 6 y los reconteos. Sostenido en cero en todas."
+      },
+      {
+        "item": "75437619",
+        "descripcion": "Belhaven Black Lata",
+        "tiendas_con_stock": 0,
+        "tiendas_evaluadas": 12,
+        "nota": "Universo v2: 6 tiendas de la v1 mas San Cristobal, Roosevelt, Pacific Center, Mega 6 y los reconteos. Sostenido en cero en todas."
+      },
+      {
+        "item": "75244435",
+        "descripcion": "Hobgoblin Ruby 500",
+        "tiendas_con_stock": 0,
+        "tiendas_evaluadas": 12,
+        "nota": "Universo v2: 6 tiendas de la v1 mas San Cristobal, Roosevelt, Pacific Center, Mega 6 y los reconteos. Sostenido en cero en todas."
+      },
+      {
+        "item": "75244433",
+        "descripcion": "Hobgoblin Gold 500",
+        "tiendas_con_stock": 0,
+        "tiendas_evaluadas": 12,
+        "nota": "Universo v2: 6 tiendas de la v1 mas San Cristobal, Roosevelt, Pacific Center, Mega 6 y los reconteos. Sostenido en cero en todas."
+      }
+    ],
+    "skus_casi_en_quiebre": [
+      {
+        "item": "75437620",
+        "descripcion": "Belhaven MacCallums",
+        "unica_tienda_con_stock": "Paiz San Lucas",
+        "unidades": 6
+      },
+      {
+        "item": "75244436",
+        "descripcion": "Hobgoblin Stout 500",
+        "unica_tienda_con_stock": "Paiz Liberacion",
+        "unidades": 2
+      },
+      {
+        "item": "75244431",
+        "descripcion": "St Peter's Stout 500",
+        "unidades_totales_red": 0
+      }
+    ],
+    "brecha_sistema_vs_fisico": [
+      {
+        "tienda": "Walmart Villa Nueva",
+        "fecha": "2026-08-14",
+        "sistema": 257,
+        "fisico": 10,
+        "gap": -247,
+        "causa_declarada": "toma de inventario / bodega en reordenamiento"
+      },
+      {
+        "tienda": "Walmart Villa Nueva",
+        "fecha": "2026-08-21",
+        "sistema": 289,
+        "fisico": 85,
+        "gap": -204,
+        "evolucion": "+43 u recuperadas en 7 dias (17%)",
+        "skus_sin_movimiento": 7
+      },
+      {
+        "tienda": "Walmart Naranjo",
+        "fecha": "2026-08-18",
+        "sistema": 364,
+        "fisico_confirmado": 107,
+        "gap_confirmado": -153,
+        "skus_pendientes_de_conteo": 4,
+        "estado": "sin reconteo posterior"
+      },
+      {
+        "tienda": "Paiz Utatlan",
+        "fecha": "2026-08-18",
+        "sistema": 116,
+        "fisico": 80,
+        "gap": -36
+      },
+      {
+        "tienda": "Paiz San Cristobal",
+        "fecha": "2026-08-20",
+        "sistema": 222,
+        "fisico": 189,
+        "gap_skus_con_ambos_datos": -4,
+        "unidades_sin_verificar": 29
+      },
+      {
+        "tienda": "Walmart Roosevelt",
+        "fecha": "2026-08-20",
+        "sistema": 615,
+        "fisico": 615,
+        "gap": 0,
+        "nota": "cuadra al 100% pero 135 u inmovilizadas por reempaques"
+      }
+    ],
+    "problemas_de_planograma": [
+      {
+        "tienda": "Paiz Mega 6",
+        "detalle": "12 de 18 SKU con opcion BORRADO en el maestro de articulos; 3 ACTIVO, 2 NO TRT, 1 INACTIVO",
+        "severidad": "critica",
+        "fecha": "2026-08-21"
+      },
+      {
+        "tienda": "Paiz Americas",
+        "detalle": "marca completa fuera del nuevo planograma",
+        "severidad": "critica"
+      },
+      {
+        "tienda": "Paiz San Lucas",
+        "detalle": "HB Helles Lager lata, Belhaven Best, Belhaven Black y Belhaven MacCallums no modulados; se solicita nota prioritaria",
+        "severidad": "alta"
+      },
+      {
+        "tienda": "Paiz Utatlan",
+        "detalle": "HB Helles Lager, Sapporo Black y Trooper Original no vienen en plano",
+        "severidad": "media"
+      },
+      {
+        "tienda": "Walmart Roosevelt",
+        "detalle": "HB Dunkel (68 u) modulado hace 15 dias pero no viene en plano; producto empacado",
+        "severidad": "alta",
+        "fecha": "2026-08-20"
+      },
+      {
+        "tienda": "Paiz San Cristobal",
+        "detalle": "Belhaven Best y Belhaven MacCallums sin modular",
+        "severidad": "media",
+        "fecha": "2026-08-20"
+      }
+    ],
+    "liquidacion_y_merma": [
+      {
+        "tienda": "Paiz Vista Hermosa",
+        "items": [
+          "Hobgoblin Gold 500",
+          "St Peter's Stout 500",
+          "St Peter's Suffolk 500"
+        ],
+        "tipo": "liquidacion"
+      },
+      {
+        "tienda": "Paiz Pradera",
+        "items": [
+          "Hobgoblin Gold 500",
+          "St Peter's Stout 500",
+          "St Peter's Suffolk 500"
+        ],
+        "tipo": "liquidacion"
+      },
+      {
+        "tienda": "Walmart Naranjo",
+        "items": [
+          "St Peter's Suffolk Gold 500 (28 u)"
+        ],
+        "tipo": "merma"
+      },
+      {
+        "tienda": "Walmart Puerta Parada",
+        "items": [
+          "productos no especificados a Q0.25"
+        ],
+        "tipo": "liquidacion"
+      },
+      {
+        "tienda": "Paiz Coban",
+        "items": [
+          "Sapporo Gold 650ml",
+          "HB Munchner 500ml",
+          "HB Dunkel 500ml"
+        ],
+        "tipo": "liquidacion",
+        "fecha": "2026-08-22"
+      },
+      {
+        "tienda": "Paiz Pacific Center",
+        "items": [
+          "Trooper FOTD 500ml (10 u, vence 31/12/26)",
+          "St Peter's Suffolk 500 (5 u)"
+        ],
+        "tipo": "liquidacion",
+        "fecha": "2026-08-21"
+      },
+      {
+        "tienda": "Paiz Pinula",
+        "items": [
+          "SKU no identificado"
+        ],
+        "tipo": "producto vencido en sala",
+        "fecha": "2026-08-24"
+      }
+    ],
+    "vencimientos_reportados": [
+      {
+        "fecha": "2026-12-31",
+        "item": "75437623",
+        "descripcion": "Trooper FOTD 500ml",
+        "tienda": "Paiz Pacific Center",
+        "unidades": 10,
+        "estado": "liquidado",
+        "prioridad": "MAS PROXIMO DE LA RED - 4 meses"
+      },
+      {
+        "fecha": "2027-02-20",
+        "item": "75437623",
+        "descripcion": "Trooper FOTD 500ml",
+        "tienda": "Paiz Pradera",
+        "unidades": 10,
+        "prioridad": "la mas proxima de la red"
+      },
+      {
+        "fecha": "2027-06-30",
+        "item": "75437616",
+        "descripcion": "HB Dunkel 500ml",
+        "tiendas": [
+          "Paiz Vista Hermosa",
+          "Paiz Pradera",
+          "Paiz Utatlan"
+        ]
+      },
+      {
+        "fecha": "2027-06-30",
+        "item": "75437614",
+        "descripcion": "HB Original 500ml",
+        "tienda": "Paiz Utatlan"
+      },
+      {
+        "fecha": "2027-12-20",
+        "item": "75437612",
+        "descripcion": "NC Scrimshaw Lata",
+        "tienda": "Paiz Pradera"
+      },
+      {
+        "fecha": "2027-12-20",
+        "item": "75437621",
+        "descripcion": "Trooper Original Lata",
+        "tienda": "Paiz Utatlan"
+      },
+      {
+        "fecha": "2027-12-25",
+        "item": "75437613",
+        "descripcion": "NC Old Rasputin Lata",
+        "tienda": "Paiz Pradera"
+      },
+      {
+        "fecha": "2027-12-25",
+        "item": "75437610",
+        "descripcion": "Sapporo Black",
+        "tiendas": [
+          "Paiz Utatlan"
+        ]
+      },
+      {
+        "fecha": "2027-12-31",
+        "item": "75437610",
+        "descripcion": "Sapporo Black",
+        "tienda": "Paiz Pradera"
+      },
+      {
+        "fecha": "2027-12-31",
+        "item": "75437614",
+        "descripcion": "HB Original 500ml",
+        "tienda": "Paiz Pradera"
+      },
+      {
+        "fecha": "2028-07-31",
+        "item": "75214930",
+        "descripcion": "Sapporo Silver",
+        "tiendas": [
+          "Paiz Pradera",
+          "Paiz Utatlan"
+        ]
+      },
+      {
+        "fecha": "2027-06-20",
+        "item": "75437614",
+        "descripcion": "HB Original 500ml",
+        "tienda": "Paiz San Cristobal",
+        "unidades": 15
+      },
+      {
+        "fecha": "2027-10-25",
+        "item": "75437619",
+        "descripcion": "Belhaven Black Lata",
+        "tienda": "Paiz San Cristobal",
+        "unidades": 8,
+        "nota": "unica tienda de la red con existencia de Belhaven Black"
+      },
+      {
+        "fecha": "2027-11-27",
+        "item": "75437617",
+        "descripcion": "HB Session Lata",
+        "tienda": "Paiz San Cristobal",
+        "unidades": 13
+      },
+      {
+        "fecha": "2027-12-10",
+        "item": "75437612",
+        "descripcion": "NC Scrimshaw Lata",
+        "tienda": "Paiz San Cristobal",
+        "unidades": 19
+      },
+      {
+        "fecha": "2027-12-15",
+        "item": "75214932",
+        "descripcion": "Sapporo Gold 650ml",
+        "tienda": "Paiz Pacific Center",
+        "unidades": 7
+      },
+      {
+        "fecha": "2027-12-22",
+        "item": "75437615",
+        "descripcion": "HB Helles Lager Lata",
+        "tienda": "Paiz San Cristobal",
+        "unidades": 1,
+        "estado": "no resurtible"
+      }
+    ],
+    "precios_observados_gtq": {
+      "fuente": "Paiz San Lucas, 2026-08-17 (unica tienda que reporto precio)",
+      "detalle": [
+        {
+          "item": "75437610",
+          "descripcion": "Sapporo Black 650ml",
+          "precio": 74.3
+        },
+        {
+          "item": "75214930",
+          "descripcion": "Sapporo Silver 650ml",
+          "precio": 69.0
+        },
+        {
+          "item": "75214932",
+          "descripcion": "Sapporo Gold 650ml",
+          "precio": 69.0
+        },
+        {
+          "item": "75437612",
+          "descripcion": "NC Scrimshaw Lata",
+          "precio": 63.8
+        },
+        {
+          "item": "75437613",
+          "descripcion": "NC Old Rasputin Lata",
+          "precio": 63.8
+        },
+        {
+          "item": "75244436",
+          "descripcion": "Hobgoblin Stout 500ml",
+          "precio": 50.0
+        },
+        {
+          "item": "75437623",
+          "descripcion": "Trooper FOTD 500ml",
+          "precio": 47.9
+        },
+        {
+          "item": "75253329",
+          "descripcion": "HB Munchner 500ml",
+          "precio": 33.75
+        },
+        {
+          "item": "75437614",
+          "descripcion": "HB Original 500ml",
+          "precio": 32.1
+        },
+        {
+          "item": "75437616",
+          "descripcion": "HB Dunkel 500ml",
+          "precio": 32.1
+        },
+        {
+          "item": "75253328",
+          "descripcion": "St Peter's Suffolk 500ml",
+          "precio": 30.2
+        },
+        {
+          "item": "75437621",
+          "descripcion": "Trooper Original 500ml",
+          "precio": 26.7
+        },
+        {
+          "item": "75437618",
+          "descripcion": "Belhaven Best Lata",
+          "precio": 26.7
+        },
+        {
+          "item": "75437619",
+          "descripcion": "Belhaven Black 440ml",
+          "precio": 26.7
+        },
+        {
+          "item": "75437620",
+          "descripcion": "Belhaven MacCallums 440ml",
+          "precio": 26.7
+        },
+        {
+          "item": "75437615",
+          "descripcion": "HB Helles Lager Lata",
+          "precio": 23.3
+        },
+        {
+          "item": "75437617",
+          "descripcion": "HB Session Lata",
+          "precio": 23.3
+        },
+        {
+          "item": "75244433",
+          "descripcion": "Hobgoblin Gold 500ml",
+          "precio": 20.0
+        },
+        {
+          "item": "75244431",
+          "descripcion": "St Peter's Stout 500ml",
+          "precio": 20.0
+        }
+      ],
+      "anomalias": [
+        "Hobgoblin Gold a Q20.00 vs Hobgoblin Stout a Q50.00 (misma marca, mismo formato 500ml): revisar si es precio de liquidacion o error de etiqueta.",
+        "Trooper FOTD Q47.90 vs Trooper Original Q26.70: diferencia de 79% entre presentaciones de la misma marca."
+      ]
+    },
+    "llegadas_programadas": [
+      {
+        "fecha": "2026-09-12",
+        "item": "75437610",
+        "descripcion": "Sapporo Premium Black 650ml",
+        "tienda": "Walmart Roosevelt",
+        "unidades": 20,
+        "nota": "unica llegada futura declarada en toda la ventana analizada"
+      }
+    ],
+    "ranking_inventario_por_tienda": [
+      {
+        "tienda": "Walmart Roosevelt",
+        "unidades": 615,
+        "fecha": "2026-08-20"
+      },
+      {
+        "tienda": "Paiz Vista Hermosa",
+        "unidades": 256,
+        "fecha": "2026-08-14"
+      },
+      {
+        "tienda": "Paiz San Cristobal",
+        "unidades": 189,
+        "fecha": "2026-08-20",
+        "nota": "fisico verificado; 29 u adicionales en sistema sin verificar"
+      },
+      {
+        "tienda": "Paiz Pradera",
+        "unidades": 155,
+        "fecha": "2026-08-14"
+      },
+      {
+        "tienda": "Paiz Mega 6",
+        "unidades": 151,
+        "fecha": "2026-08-21"
+      },
+      {
+        "tienda": "Paiz San Lucas",
+        "unidades": 135,
+        "fecha": "2026-08-17"
+      },
+      {
+        "tienda": "Paiz Liberacion",
+        "unidades": 113,
+        "fecha": "2026-08-14"
+      },
+      {
+        "tienda": "Paiz Pacific Center",
+        "unidades": 111,
+        "fecha": "2026-08-21"
+      },
+      {
+        "tienda": "Walmart Naranjo",
+        "unidades": 107,
+        "fecha": "2026-08-18",
+        "nota": "fisico confirmado; 4 SKU sin conteo legible"
+      },
+      {
+        "tienda": "Walmart Villa Nueva",
+        "unidades": 85,
+        "fecha": "2026-08-21"
+      },
+      {
+        "tienda": "Paiz Utatlan",
+        "unidades": 80,
+        "fecha": "2026-08-18",
+        "nota": "reporte parcial de 8 de 20 SKU"
+      }
+    ]
+  },
+  "calidad_de_datos": {
+    "formatos_distintos_en_uso": 7,
+    "detalle_formatos": [
+      {
+        "mercaderista": "Marisela De Leon",
+        "formato": "item + cantidad unica (liberacion), a veces con fecha y estado comercial"
+      },
+      {
+        "mercaderista": "+502 5846 2159 / Daya",
+        "formato": "item + fisico + sistema"
+      },
+      {
+        "mercaderista": "Elizabeth",
+        "formato": "item + inventario + precio + modulacion + gondola (el mas completo)"
+      },
+      {
+        "mercaderista": "Zetino",
+        "formato": "texto libre sin desglose por SKU"
+      },
+      {
+        "mercaderista": "Ross Barrios",
+        "formato": "sistema + fisico + fecha + llegada + modulacion + resurtible (el mas completo de la red)"
+      },
+      {
+        "mercaderista": "+502 5151 0119 (Mega 6)",
+        "formato": "existencia + opcion de catalogo; unico que reporta estatus del maestro de articulos"
+      },
+      {
+        "mercaderista": "Eduardo Yat / Cinthya",
+        "formato": "cualitativo, sin desglose por SKU"
+      }
+    ],
+    "inconsistencias_detectadas": [
+      {
+        "tipo": "codigo mal digitado",
+        "detalle": "75124932 usado por Marisela para Sapporo Gold; el correcto es 75214932",
+        "ocurrencias": 3
+      },
+      {
+        "tipo": "codigo mal digitado",
+        "detalle": "75234433 usado por Daya para Hobgoblin Gold; el correcto es 75244433",
+        "ocurrencias": 1
+      },
+      {
+        "tipo": "codigo mal digitado",
+        "detalle": "73437616 usado por Daya para HB Dunkel; el correcto es 75437616",
+        "ocurrencias": 1
+      },
+      {
+        "tipo": "codigo mal digitado",
+        "detalle": "'7543 7621' con espacio (Elizabeth) y '75437621.' con punto (Marisela)",
+        "ocurrencias": 2
+      },
+      {
+        "tipo": "gramaje inconsistente",
+        "detalle": "North Coast reportado como 473ml (Walmart Naranjo) y 568ml (Paiz San Lucas)"
+      },
+      {
+        "tipo": "gramaje inconsistente",
+        "detalle": "Sapporo Black reportado como 650ml y 659ml"
+      },
+      {
+        "tipo": "gramaje inconsistente",
+        "detalle": "Trooper Original reportado como 500ml (San Lucas) y 650ml (Walmart Naranjo)"
+      },
+      {
+        "tipo": "campo ilegible",
+        "detalle": "Walmart Naranjo reporta el campo fisico con '//////' en 4 SKU con sistema mayor a cero"
+      },
+      {
+        "tipo": "dato atipico",
+        "detalle": "Paiz Vista Hermosa reporta 94 unidades de Trooper Original, 5x el promedio de la red"
+      },
+      {
+        "tipo": "cobertura parcial",
+        "detalle": "Paiz Utatlan reporta solo 8 de 20 SKU; Paiz Naranjo no reporta inventario numerico"
+      },
+      {
+        "tipo": "ambiguedad",
+        "detalle": "Los reportes 'liberacion' de Marisela no distinguen si la cifra es fisico o sistema"
+      },
+      {
+        "tipo": "duplicado",
+        "detalle": "Paiz San Cristobal reporta el item 75214932 dos veces en el mismo mensaje ('Sapporo Gold 650ML' y 'Sapporo reserve 650ML'); se contabiliza una vez"
+      },
+      {
+        "tipo": "campo vacio",
+        "detalle": "Walmart Roosevelt escribe 'Fecha de vencimiento' sin valor en 14 de 18 SKU"
+      },
+      {
+        "tipo": "nombre de tienda",
+        "detalle": "'Wamart Rossvelth' en el mensaje original; se normaliza a Walmart Roosevelt"
+      },
+      {
+        "tipo": "typo",
+        "detalle": "'BORADO' por 'BORRADO' y 'EXUSTENCIA' por 'EXISTENCIA' en el reporte de Paiz Mega 6"
+      },
+      {
+        "tipo": "cobertura parcial",
+        "detalle": "Walmart Roosevelt omite Hobgoblin Gold y Hobgoblin Stout; Paiz Mega 6 omite HB Helles Lager y Sapporo Silver"
+      },
+      {
+        "tipo": "dato incompleto",
+        "detalle": "Paiz Pinula reporta producto vencido sin indicar SKU, cantidad ni fecha de vencimiento"
+      },
+      {
+        "tipo": "ambiguedad",
+        "detalle": "'NO TRT' en Paiz Mega 6 no esta definido en ningun mensaje; se interpreta como 'no tratado / sin reorden automatico' y requiere confirmacion"
+      }
+    ],
+    "recomendacion": "Estandarizar un unico formato con campos obligatorios: item, descripcion, fisico, sistema, fecha de vencimiento, precio, en planograma, ubicacion en sala."
+  },
+  "acciones_pendientes": [
+    {
+      "id": "A1",
+      "accion": "Escalar con el comprador de Paiz la exclusion de Clan Cervecero del nuevo planograma de cervezas",
+      "tienda": "Paiz Americas",
+      "responsable_sugerido": "SERGIO / Pablo R / Marleny Soto",
+      "estado": "escalado el 17/08; sin respuesta al 24/08 (7 dias)",
+      "prioridad": "critica"
+    },
+    {
+      "id": "A2",
+      "accion": "Reconteo en bodega tras la toma de inventario y confirmacion de 247 unidades faltantes en piso",
+      "tienda": "Walmart Villa Nueva",
+      "estado": "parcialmente atendido: reconteo del 21/08 recupero 43 de 247 u; 204 siguen faltando",
+      "prioridad": "alta"
+    },
+    {
+      "id": "A3",
+      "accion": "Completar el conteo fisico de los 4 SKU con campo ilegible (HB Dunkel, HB Original, Sapporo Black, Trooper FOTD)",
+      "tienda": "Walmart Naranjo",
+      "estado": "abierto: sin reconteo de Walmart Naranjo desde el 18/08",
+      "prioridad": "alta"
+    },
+    {
+      "id": "A4",
+      "accion": "Tramitar nota prioritaria para HB Helles Lager lata y las 3 presentaciones Belhaven",
+      "tienda": "Paiz San Lucas",
+      "estado": "solicitada por la mercaderista",
+      "prioridad": "alta"
+    },
+    {
+      "id": "A5",
+      "accion": "Ajuste de inventario pendiente: HB Helles Lager Lata, 20 unidades",
+      "tienda": "Paiz Vista Hermosa",
+      "estado": "abierto",
+      "prioridad": "media"
+    },
+    {
+      "id": "A6",
+      "accion": "Definir plan de rotacion para Trooper FOTD con vencimiento 2027-02-20",
+      "tienda": "Paiz Pradera",
+      "estado": "abierto",
+      "prioridad": "media"
+    },
+    {
+      "id": "A7",
+      "accion": "Recuperar producto de Clan Cervecero del area de merma (St Peter's Suffolk, 28 u)",
+      "tienda": "Walmart Naranjo",
+      "estado": "abierto",
+      "prioridad": "media"
+    },
+    {
+      "id": "A8",
+      "accion": "Solicitar reporte de inventario a Paiz Coban y Paiz Chiquimula (sector Nor Oriente, senior Gladys Diaz)",
+      "estado": "parcialmente cerrado: Paiz Coban reporto el 21/08 y 22/08; Paiz Chiquimula sigue sin reportar",
+      "prioridad": "baja"
+    },
+    {
+      "id": "A9",
+      "accion": "Confirmar si el quiebre total de Belhaven y Hobgoblin es por descontinuacion, liquidacion o falta de despacho",
+      "alcance": "toda la red",
+      "estado": "abierto y agravado: el estatus BORRADO en Paiz Mega 6 apunta a baja de surtido, no a falta de despacho",
+      "prioridad": "critica"
+    },
+    {
+      "id": "A10",
+      "accion": "Completar reporte de inventario de Paiz Naranjo y de los 12 SKU faltantes de Paiz Utatlan",
+      "estado": "abierto",
+      "prioridad": "baja"
+    },
+    {
+      "id": "A11",
+      "accion": "Difundir la nota prioritaria WM-SP-GT-AB-COLOCACION DE PRODUCTO RENOVACION DEPARTAMENTO 96 en todos los puntos de venta",
+      "estado": "compartida el 2026-08-17; acuse de Victor Hugo, Ross Barrios y +502 5846 2159",
+      "prioridad": "alta"
+    },
+    {
+      "id": "A12",
+      "accion": "Verificar con el comprador de Paiz si el estatus BORRADO de 12 SKU en Mega 6 es una decision de cadena o local, y en cuantas tiendas mas aplica",
+      "tienda": "Paiz Mega 6 / cadena Paiz",
+      "estado": "nuevo",
+      "prioridad": "critica"
+    },
+    {
+      "id": "A13",
+      "accion": "Identificar SKU, lote y cantidad del producto vencido hallado en Paiz Pinula; retirar de sala y definir responsabilidad de la merma",
+      "tienda": "Paiz Pinula",
+      "responsable_sugerido": "Jelver Miranda (GSP) / Zetino",
+      "estado": "nuevo",
+      "prioridad": "critica"
+    },
+    {
+      "id": "A14",
+      "accion": "Plan de salida para Trooper FOTD con vencimiento 31/12/2026 (10 u ya liquidadas) antes de que se convierta en merma",
+      "tienda": "Paiz Pacific Center",
+      "estado": "nuevo",
+      "prioridad": "alta"
+    },
+    {
+      "id": "A15",
+      "accion": "Liberar las 135 u inmovilizadas en reempaques tras la modulacion del ~05/08: HB Dunkel 68, Sapporo Silver 36, Trooper FOTD 19, St Peter's Stout 12",
+      "tienda": "Walmart Roosevelt",
+      "estado": "nuevo",
+      "prioridad": "alta"
+    },
+    {
+      "id": "A16",
+      "accion": "Resolver los 3 SKU con existencia en sistema y sin conteo fisico marcados 'se esta buscando' (Belhaven MacCallums 20 u, HB Munchner 1 u, Sapporo Black 8 u)",
+      "tienda": "Paiz San Cristobal",
+      "estado": "nuevo",
+      "prioridad": "media"
+    },
+    {
+      "id": "A17",
+      "accion": "Investigar los 7 SKU de Walmart Villa Nueva que no recuperaron una sola unidad en 7 dias, en especial Sapporo Silver (61 u, 30% del faltante total)",
+      "tienda": "Walmart Villa Nueva",
+      "estado": "nuevo",
+      "prioridad": "alta"
+    },
+    {
+      "id": "A18",
+      "accion": "Reprogramar levantamiento de Paiz Huehuetenango: la tienda estaba en inventario general el 21/08",
+      "tienda": "Paiz Huehuetenango",
+      "estado": "nuevo",
+      "prioridad": "baja"
+    },
+    {
+      "id": "A19",
+      "accion": "Solicitar inventario numerico de Paiz Coban: los dos reportes fueron solo de visibilidad",
+      "tienda": "Paiz Coban",
+      "estado": "nuevo",
+      "prioridad": "media"
+    },
+    {
+      "id": "A20",
+      "accion": "Exportar el chat desde el telefono para cubrir la brecha 18/08 14:01 - 20/08 19:02, no recuperable desde el navegador",
+      "estado": "nuevo",
+      "prioridad": "media"
+    }
+  ],
+  "bitacora_mensajes": [
+    {
+      "fecha": "2026-08-14",
+      "hora": "11:02",
+      "autor": "Pablo R",
+      "tipo": "coordinacion",
+      "resumen": "Solicita al equipo indicar que tiendas tienen a cargo y presentarse con Diego Arriaza"
+    },
+    {
+      "fecha": "2026-08-14",
+      "hora": "11:05",
+      "autor": "Victor Hugo",
+      "tipo": "coordinacion",
+      "resumen": "Confirma disposicion"
+    },
+    {
+      "fecha": "2026-08-14",
+      "hora": "13:56",
+      "autor": "Marisela De Leon",
+      "tipo": "reporte",
+      "resumen": "Inventario Paiz Liberacion y Paiz Vista Hermosa + visibilidad + ajuste pendiente"
+    },
+    {
+      "fecha": "2026-08-14",
+      "hora": "14:33",
+      "autor": "Diego Arriaza",
+      "tipo": "coordinacion",
+      "resumen": "Agradece"
+    },
+    {
+      "fecha": "2026-08-14",
+      "hora": "14:52",
+      "autor": "veronicabai26",
+      "tipo": "coordinacion",
+      "resumen": "Presenta a Gladys Diaz, senior sector Nor Oriente: Paiz Coban (Jr Eduardo Yat) y Paiz Chiquimula (Jr Sucely Guerra)"
+    },
+    {
+      "fecha": "2026-08-14",
+      "hora": "18:43",
+      "autor": "+502 5846 2159",
+      "tipo": "reporte",
+      "resumen": "Conteo fisico vs sistema Walmart Villa Nueva"
+    },
+    {
+      "fecha": "2026-08-14",
+      "hora": "19:11",
+      "autor": "Marisela De Leon",
+      "tipo": "reporte",
+      "resumen": "Inventario y vencimientos Paiz Pradera"
+    },
+    {
+      "fecha": "2026-08-17",
+      "hora": "09:19",
+      "autor": "Marisela De Leon",
+      "tipo": "incidencia",
+      "resumen": "Paiz Americas rehace planograma sin la marca; escala a SERGIO, Marleny y Pablo R"
+    },
+    {
+      "fecha": "2026-08-17",
+      "hora": "11:28",
+      "autor": "Diego Arriaza",
+      "tipo": "documento",
+      "resumen": "Comparte nota prioritaria emitida por comercial (PDF) para mostrar en puntos de venta"
+    },
+    {
+      "fecha": "2026-08-17",
+      "hora": "11:30",
+      "autor": "Victor Hugo",
+      "tipo": "coordinacion",
+      "resumen": "Replica la nota al equipo; acuses de Ross Barrios y +502 5846 2159"
+    },
+    {
+      "fecha": "2026-08-17",
+      "hora": "16:36",
+      "autor": "Zetino",
+      "tipo": "reporte",
+      "resumen": "Walmart Puerta Parada: solo 4 presentaciones, resto en cero, liquidacion a Q0.25"
+    },
+    {
+      "fecha": "2026-08-17",
+      "hora": "16:59",
+      "autor": "Elizabeth",
+      "tipo": "reporte",
+      "resumen": "Paiz San Lucas: inventario, precios, modulacion y solicitud de notas prioritarias"
+    },
+    {
+      "fecha": "2026-08-18",
+      "hora": "13:43",
+      "autor": "Daya",
+      "tipo": "reporte",
+      "resumen": "Visibilidad Paiz Naranjo"
+    },
+    {
+      "fecha": "2026-08-18",
+      "hora": "13:54",
+      "autor": "Daya",
+      "tipo": "reporte",
+      "resumen": "Walmart Naranjo sistema vs fisico"
+    },
+    {
+      "fecha": "2026-08-18",
+      "hora": "14:01",
+      "autor": "Daya",
+      "tipo": "reporte",
+      "resumen": "Paiz Utatlan: fisico, sistema, vencimientos y estatus de planograma"
+    },
+    {
+      "fecha": "2026-08-20",
+      "hora": "19:02",
+      "autor": "Ross Barrios",
+      "tipo": "reporte",
+      "resumen": "Paiz San Cristobal: inventario completo sistema/fisico con fechas, llegadas y estatus de modulacion"
+    },
+    {
+      "fecha": "2026-08-20",
+      "hora": "n/d",
+      "autor": "veronicabai26",
+      "tipo": "coordinacion",
+      "resumen": "Agrega a Eduardo Yat al grupo"
+    },
+    {
+      "fecha": "2026-08-20",
+      "hora": "19:39",
+      "autor": "Victor Hugo",
+      "tipo": "reporte",
+      "resumen": "Walmart Roosevelt: 615 u, sistema y fisico cuadrados, 135 u inmovilizadas por reempaques"
+    },
+    {
+      "fecha": "2026-08-21",
+      "hora": "06:24",
+      "autor": "Eduardo Yat",
+      "tipo": "reporte",
+      "resumen": "Paiz Coban: producto colocado, rotulado y limpieza"
+    },
+    {
+      "fecha": "2026-08-21",
+      "hora": "06:29",
+      "autor": "Cinthya",
+      "tipo": "aviso",
+      "resumen": "Paiz Huehuetenango en inventario general"
+    },
+    {
+      "fecha": "2026-08-21",
+      "hora": "12:21",
+      "autor": "+502 5846 2159",
+      "tipo": "reporte",
+      "resumen": "Paiz Pacific Center: 111 u; Trooper FOTD liquidado con vencimiento 31/12/26"
+    },
+    {
+      "fecha": "2026-08-21",
+      "hora": "18:00",
+      "autor": "+502 5151 0119",
+      "tipo": "reporte",
+      "resumen": "Paiz Mega 6: 12 de 18 SKU con opcion BORRADO en maestro de articulos"
+    },
+    {
+      "fecha": "2026-08-21",
+      "hora": "18:21",
+      "autor": "+502 5846 2159",
+      "tipo": "reporte",
+      "resumen": "Walmart Villa Nueva reconteo: brecha de 247 baja a 204 u"
+    },
+    {
+      "fecha": "2026-08-21",
+      "hora": "19:40",
+      "autor": "Marisela De Leon",
+      "tipo": "visibilidad",
+      "resumen": "Paiz Vista Hermosa: revisita fotografica sin inventario"
+    },
+    {
+      "fecha": "2026-08-22",
+      "hora": "13:20",
+      "autor": "Eduardo Yat",
+      "tipo": "reporte",
+      "resumen": "Paiz Coban: Sapporo Gold, HB Munchner y HB Dunkel en area de liquidacion"
+    },
+    {
+      "fecha": "2026-08-24",
+      "hora": "09:39",
+      "autor": "Zetino",
+      "tipo": "incidencia",
+      "resumen": "Paiz Pinula: producto vencido encontrado en sala; escala a Jelver Miranda GSP"
+    },
+    {
+      "fecha": "2026-08-24",
+      "hora": "12:11",
+      "autor": "Diego Arriaza",
+      "tipo": "coordinacion",
+      "resumen": "Acusa recibo"
+    }
+  ],
+  "verificacion_automatica": {
+    "descripcion": "Totales recalculados desde el detalle de items para control cruzado",
+    "generado_el": "2026-08-24",
+    "por_tienda": {
+      "PAIZ-LIBERACION": {
+        "tienda": "Paiz Liberacion",
+        "fecha": "2026-08-14",
+        "skus": 20,
+        "inventario": 113,
+        "sistema": 0,
+        "fisico": 0
+      },
+      "PAIZ-VISTA-HERMOSA": {
+        "tienda": "Paiz Vista Hermosa",
+        "fecha": "2026-08-14",
+        "skus": 20,
+        "inventario": 256,
+        "sistema": 0,
+        "fisico": 0
+      },
+      "WM-VILLA-NUEVA": {
+        "tienda": "Walmart Villa Nueva",
+        "fecha": "2026-08-14",
+        "skus": 20,
+        "inventario": 0,
+        "sistema": 257,
+        "fisico": 10
+      },
+      "PAIZ-PRADERA": {
+        "tienda": "Paiz Pradera",
+        "fecha": "2026-08-14",
+        "skus": 20,
+        "inventario": 155,
+        "sistema": 0,
+        "fisico": 0
+      },
+      "PAIZ-SAN-LUCAS": {
+        "tienda": "Paiz San Lucas",
+        "fecha": "2026-08-17",
+        "skus": 19,
+        "inventario": 135,
+        "sistema": 0,
+        "fisico": 0
+      },
+      "WM-NARANJO": {
+        "tienda": "Walmart Naranjo",
+        "fecha": "2026-08-18",
+        "skus": 20,
+        "inventario": 0,
+        "sistema": 364,
+        "fisico": 107
+      },
+      "PAIZ-UTATLAN": {
+        "tienda": "Paiz Utatlan",
+        "fecha": "2026-08-18",
+        "skus": 8,
+        "inventario": 0,
+        "sistema": 116,
+        "fisico": 80
+      },
+      "PAIZ-SAN-CRISTOBAL": {
+        "tienda": "Paiz San Cristobal",
+        "fecha": "2026-08-20",
+        "skus": 20,
+        "inventario": 0,
+        "sistema": 222,
+        "fisico": 189
+      },
+      "WM-ROOSEVELT": {
+        "tienda": "Walmart Roosevelt",
+        "fecha": "2026-08-20",
+        "skus": 18,
+        "inventario": 0,
+        "sistema": 615,
+        "fisico": 615
+      },
+      "PAIZ-PACIFIC-CENTER": {
+        "tienda": "Paiz Pacific Center",
+        "fecha": "2026-08-21",
+        "skus": 20,
+        "inventario": 111,
+        "sistema": 0,
+        "fisico": 0
+      },
+      "PAIZ-MEGA-6": {
+        "tienda": "Paiz Mega 6",
+        "fecha": "2026-08-21",
+        "skus": 18,
+        "inventario": 151,
+        "sistema": 0,
+        "fisico": 0
+      },
+      "WM-VILLA-NUEVA-R2": {
+        "tienda": "Walmart Villa Nueva",
+        "fecha": "2026-08-21",
+        "skus": 20,
+        "inventario": 0,
+        "sistema": 289,
+        "fisico": 85
+      }
+    }
+  },
+  "cambios_desde_v1": {
+    "tiendas_agregadas": 7,
+    "tiendas_revisitadas": 2,
+    "mensajes_nuevos": 22,
+    "nuevos_reportantes": [
+      "Victor Hugo (como PDV)",
+      "Eduardo Yat",
+      "Cinthya",
+      "+502 5151 0119",
+      "Ross Barrios (primer reporte)"
+    ],
+    "riesgos_nuevos": [
+      "Baja de surtido en Paiz Mega 6 (12 SKU BORRADO)",
+      "Producto vencido en Paiz Pinula",
+      "Trooper FOTD vence 31/12/26 en Pacific Center",
+      "135 u inmovilizadas en Walmart Roosevelt"
+    ],
+    "riesgos_que_mejoraron": [
+      "Walmart Villa Nueva: gap de 247 a 204 u",
+      "Paiz Coban pasa de sin reporte a cubierto"
+    ],
+    "riesgos_sin_cambio": [
+      "Paiz Americas sin respuesta al escalamiento de planograma (7 dias)",
+      "Walmart Naranjo sin reconteo desde el 18/08",
+      "Quiebre total de Belhaven y Hobgoblin"
+    ],
+    "brecha_de_datos": "18/08 14:01 - 20/08 19:02 no recuperable desde el navegador"
+  }
+}
