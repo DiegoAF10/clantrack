@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedido de Refuerzo · Manifiesto de Carga</title>
+<style>
+  :root{
+    --papel:#f4f1ea;
+    --papel2:#ece7db;
+    --kraft:#e3dcc9;
+    --tinta:#16324f;
+    --tinta-suave:#3d5a78;
+    --naranja:#e8590c;
+    --verde:#2b8a3e;
+    --rojo:#c92a2a;
+    --linea:#b9b09a;
+    --mono:Consolas,"Courier New",monospace;
+    --cond:"Arial Narrow","Segoe UI",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--papel)}
+  body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    color:var(--tinta);
+    background:
+      repeating-linear-gradient(0deg,transparent 0 27px,rgba(22,50,79,.028) 27px 28px),
+      var(--papel);
+    padding-bottom:84px;
+    min-width:1200px;
+  }
+  .hoja{max-width:1360px;margin:0 auto;padding:28px 36px 0}
+
+  /* ============ CABECERA MANIFIESTO ============ */
+  .manifiesto{
+    border:3px solid var(--tinta);
+    background:var(--papel2);
+    position:relative;
+    padding:22px 28px;
+    display:flex;justify-content:space-between;align-items:stretch;gap:24px;
+    box-shadow:6px 6px 0 rgba(22,50,79,.12);
+  }
+  .manifiesto::before{
+    content:"";position:absolute;top:6px;left:6px;right:6px;bottom:6px;
+    border:1px dashed var(--tinta);pointer-events:none;
+  }
+  .man-titulo{
+    font-family:var(--cond);font-weight:900;text-transform:uppercase;
+    font-size:38px;letter-spacing:3px;line-height:1;
+  }
+  .man-sub{
+    margin-top:8px;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;
+    color:var(--tinta-suave);
+  }
+  .man-meta{margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--tinta-suave);line-height:1.7}
+  .man-meta b{color:var(--tinta)}
+  .sello-deadline{
+    align-self:center;text-align:center;
+    border:4px double var(--naranja);color:var(--naranja);
+    padding:14px 26px;transform:rotate(-3deg);
+    font-family:var(--cond);text-transform:uppercase;
+    background:rgba(232,89,12,.06);
+    min-width:210px;
+  }
+  .sello-deadline .num{font-family:var(--mono);font-size:56px;font-weight:900;line-height:1}
+  .sello-deadline .lbl{font-size:14px;letter-spacing:3px;font-weight:700}
+  .sello-deadline .fec{font-family:var(--mono);font-size:12px;margin-top:6px;letter-spacing:1px}
+
+  /* ============ KPIs ============ */
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:22px 0 0}
+  .kpi{
+    background:#fff;border:2px solid var(--tinta);border-top-width:7px;
+    padding:12px 14px;position:relative;
+  }
+  .kpi.tono-ok{border-top-color:var(--verde)}
+  .kpi.tono-alerta{border-top-color:var(--naranja)}
+  .kpi.tono-neutro{border-top-color:var(--tinta)}
+  .kpi .valor{font-family:var(--mono);font-size:26px;font-weight:700;line-height:1.1}
+  .kpi .label{font-family:var(--cond);text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:700;margin-top:4px}
+  .kpi .sub{font-size:11px;color:var(--tinta-suave);margin-top:4px}
+
+  /* ============ CAPÍTULOS ============ */
+  .perforacion{
+    margin:34px -36px 0;border-top:2px dashed var(--linea);position:relative;height:0;
+  }
+  .perforacion::after{
+    content:"✂";position:absolute;left:14px;top:-13px;font-size:16px;color:var(--linea);
+    background:var(--papel);padding:0 6px;
+  }
+  .capitulo{margin-top:26px}
+  .cap-head{display:flex;align-items:baseline;gap:14px;border-bottom:3px solid var(--tinta);padding-bottom:8px;margin-bottom:16px}
+  .cap-form{
+    font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:2px;
+    background:var(--tinta);color:var(--papel);padding:4px 10px;white-space:nowrap;
+  }
+  .cap-titulo{
+    font-family:var(--cond);font-weight:900;text-transform:uppercase;
+    font-size:26px;letter-spacing:2.5px;
+  }
+  .cap-nota{
+    margin-top:14px;border-left:5px solid var(--naranja);background:rgba(232,89,12,.07);
+    padding:10px 14px;font-size:13px;line-height:1.55;
+  }
+
+  /* ============ TABLAS ============ */
+  table{border-collapse:collapse;width:100%;background:#fff;border:2px solid var(--tinta)}
+  th,td{border:1px solid var(--linea);padding:8px 10px;font-size:13px;text-align:left}
+  thead th{
+    background:var(--tinta);color:var(--papel);font-family:var(--cond);
+    text-transform:uppercase;letter-spacing:1.5px;font-size:12px;border-color:var(--tinta);
+  }
+  tbody tr:nth-child(even){background:rgba(22,50,79,.04)}
+  .num{font-family:var(--mono);text-align:right;white-space:nowrap}
+  .semaforo{display:inline-block;width:14px;height:14px;border-radius:50%;border:2px solid var(--tinta)}
+  .sem-ok{background:var(--verde)}
+  .sem-mal{background:var(--rojo)}
+  tr.fila-alerta{background:rgba(201,42,42,.10)!important}
+  tr.fila-alerta td{border-color:rgba(201,42,42,.4)}
+  .brecha{font-family:var(--mono);color:var(--rojo);font-weight:700}
+
+  /* ============ SELLOS ============ */
+  .sello{
+    display:inline-block;border:3px double currentColor;padding:3px 10px;
+    font-family:var(--cond);font-weight:900;text-transform:uppercase;letter-spacing:2px;
+    font-size:12px;transform:rotate(-4deg);white-space:nowrap;
+  }
+  .sello-rojo{color:var(--rojo);background:rgba(201,42,42,.06)}
+  .sello-naranja{color:var(--naranja);background:rgba(232,89,12,.06)}
+  .sello-verde{color:var(--verde);background:rgba(43,138,62,.06)}
+
+  /* ============ TARJETAS DE ÍTEMS ============ */
+  .items-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:18px}
+  .item-card{
+    background:#fff;border:2px solid var(--tinta);position:relative;padding:16px 18px 14px;
+    box-shadow:4px 4px 0 rgba(22,50,79,.10);
+  }
+  .item-card.urgente{border-color:var(--rojo)}
+  .item-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .item-nombre{font-family:var(--cond);font-weight:900;text-transform:uppercase;font-size:18px;letter-spacing:1px;line-height:1.15}
+  .item-id{font-family:var(--mono);font-size:11px;color:var(--tinta-suave);margin-top:3px}
+  .item-sello{margin-top:2px}
+  .item-tabla{margin-top:12px}
+  .item-tabla table{border-width:1px}
+  .item-tabla th,.item-tabla td{padding:5px 8px;font-size:12px}
+  .barras{margin-top:12px}
+  .barra-fila{display:flex;align-items:center;gap:10px;margin-top:6px}
+  .barra-lbl{font-family:var(--cond);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;width:96px;color:var(--tinta-suave)}
+  .barra-track{flex:1;height:14px;background:var(--papel2);border:1px solid var(--linea);position:relative}
+  .barra-fill{height:100%}
+  .fill-venta{background:var(--tinta)}
+  .fill-stock{background:var(--verde)}
+  .barra-val{font-family:var(--mono);font-size:12px;width:70px;text-align:right}
+  .item-nota{margin-top:12px;font-size:12px;line-height:1.5;border-top:1px dashed var(--linea);padding-top:8px;color:var(--tinta-suave)}
+  .sug-chip{
+    display:inline-block;font-family:var(--mono);font-weight:700;font-size:13px;
+    background:var(--tinta);color:var(--papel);padding:3px 10px;margin-top:8px;
+  }
+
+  /* ============ MATRIZ ============ */
+  .matriz-wrap{overflow-x:auto;border:3px solid var(--tinta);background:#fff;box-shadow:6px 6px 0 rgba(22,50,79,.12)}
+  .matriz{border:none;min-width:100%}
+  .matriz thead th{position:sticky;top:0;z-index:2}
+  .matriz th.col-tienda,.matriz td.col-tienda{position:sticky;left:0;background:#fff;z-index:1;min-width:230px}
+  .matriz thead th.col-tienda{background:var(--tinta);z-index:3}
+  .matriz tbody tr:nth-child(even) td.col-tienda{background:#f3f0e7}
+  .matriz td.celda{padding:3px 4px;text-align:center;position:relative;cursor:help;min-width:92px}
+  .matriz td.celda:hover{outline:2px solid var(--naranja);outline-offset:-2px}
+  .matriz input{
+    width:62px;font-family:var(--mono);font-size:14px;text-align:right;
+    border:1px solid var(--linea);background:var(--papel);padding:4px 6px;color:var(--tinta);
+  }
+  .matriz input:focus{outline:2px solid var(--tinta);background:#fff}
+  .punto-motivo{
+    position:absolute;top:3px;right:4px;width:8px;height:8px;border-radius:50%;
+    background:var(--naranja);border:1px solid #fff;
+  }
+  .tag-tienda{
+    display:inline-block;background:var(--kraft);border:1px solid var(--tinta);
+    padding:3px 10px 3px 22px;position:relative;font-family:var(--cond);font-weight:700;
+    text-transform:uppercase;letter-spacing:1px;font-size:13px;
+    clip-path:polygon(10px 0,100% 0,100% 100%,10px 100%,0 50%);
+  }
+  .tag-tienda::before{
+    content:"";position:absolute;left:9px;top:50%;transform:translateY(-50%);
+    width:6px;height:6px;border-radius:50%;background:var(--papel);border:1px solid var(--tinta);
+  }
+  .tag-num{font-family:var(--mono);font-size:11px;color:var(--tinta-suave);margin-left:8px}
+  .badge-top{
+    display:inline-block;background:var(--naranja);color:#fff;font-family:var(--cond);
+    font-weight:900;font-size:10px;letter-spacing:1.5px;padding:2px 7px;margin-left:8px;
+    text-transform:uppercase;transform:rotate(-2deg);
+  }
+  .tinfo{font-family:var(--mono);font-size:11px;color:var(--tinta-suave);margin-top:3px}
+  .matriz tfoot td{background:var(--papel2);font-weight:700;border-top:2px solid var(--tinta)}
+  .matriz tfoot tr.fila-q td{background:var(--kraft)}
+  .total-alerta{background:rgba(201,42,42,.15)!important;color:var(--rojo)}
+  .leyenda-alerta{
+    display:none;margin-top:10px;font-family:var(--mono);font-size:12px;color:var(--rojo);
+    font-weight:700;letter-spacing:.5px;
+  }
+  .leyenda-alerta.visible{display:block}
+  .rowbar-cell{min-width:150px}
+  .rowbar-track{height:10px;background:var(--papel2);border:1px solid var(--linea);margin-top:4px}
+  .rowbar-fill{height:100%;background:var(--tinta)}
+  .col-total-row{font-family:var(--mono);text-align:right;font-weight:700}
+
+  /* ============ PANEL MOTIVO ============ */
+  .motivo-panel{
+    position:fixed;top:0;right:-380px;width:360px;height:100vh;background:#fff;
+    border-left:3px solid var(--tinta);box-shadow:-6px 0 18px rgba(22,50,79,.2);
+    transition:right .22s ease;z-index:50;padding:22px;display:flex;flex-direction:column;
+  }
+  .motivo-panel.abierto{right:0}
+  .motivo-panel h3{font-family:var(--cond);text-transform:uppercase;letter-spacing:2px;font-size:18px;border-bottom:3px solid var(--tinta);padding-bottom:8px}
+  .motivo-cuerpo{margin-top:14px;font-size:13px;line-height:1.6;flex:1;overflow-y:auto}
+  .motivo-cuerpo .m-tienda,.motivo-cuerpo .m-item{font-family:var(--mono);font-size:12px;color:var(--tinta-suave);margin-bottom:4px}
+  .motivo-cuerpo .m-cajas{font-family:var(--mono);font-size:22px;font-weight:700;margin:10px 0}
+  .motivo-cuerpo .m-texto{border-left:4px solid var(--naranja);padding:8px 12px;background:rgba(232,89,12,.06)}
+  .motivo-cerrar{
+    margin-top:14px;background:var(--tinta);color:var(--papel);border:none;padding:9px;
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:2px;font-weight:700;cursor:pointer;
+  }
+
+  /* ============ VILLA NUEVA / INCIDENTE ============ */
+  .incidente{
+    border:3px solid var(--rojo);background:#fff;position:relative;padding:20px 22px;
+  }
+  .incidente .sello-excluida{position:absolute;top:-16px;right:26px}
+  .incidente h4{font-family:var(--cond);text-transform:uppercase;letter-spacing:2px;font-size:18px;color:var(--rojo);margin-bottom:12px}
+  .fantasma{
+    display:flex;align-items:center;gap:18px;margin:14px 0;border:2px dashed var(--rojo);
+    padding:12px 16px;background:rgba(201,42,42,.05);
+  }
+  .fantasma .fnum{font-family:var(--mono);font-size:40px;font-weight:900;color:var(--rojo)}
+  .fantasma .flbl{font-family:var(--cond);text-transform:uppercase;letter-spacing:2px;font-size:13px;font-weight:700}
+  .dif-neg{color:var(--rojo);font-weight:700}
+
+  /* ============ AJUSTES ============ */
+  .ajustes-lista{list-style:none}
+  .ajustes-lista li{
+    background:#fff;border:2px solid var(--tinta);border-left:8px solid var(--naranja);
+    padding:12px 16px;margin-bottom:10px;font-size:13px;line-height:1.55;
+  }
+  .ajustes-lista .a-tienda{font-family:var(--cond);font-weight:900;text-transform:uppercase;letter-spacing:1.5px;display:block;margin-bottom:3px}
+
+  /* ============ NARRATIVA ============ */
+  details{
+    background:#fff;border:2px solid var(--tinta);margin-bottom:12px;
+  }
+  summary{
+    cursor:pointer;padding:13px 18px;font-family:var(--cond);font-weight:900;
+    text-transform:uppercase;letter-spacing:2px;font-size:16px;list-style:none;
+    display:flex;align-items:center;gap:12px;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"▸";font-family:var(--mono);transition:transform .15s}
+  details[open] summary::before{transform:rotate(90deg)}
+  details .nar-cuerpo{padding:4px 22px 18px;border-top:1px dashed var(--linea)}
+  details .nar-cuerpo p{font-size:13.5px;line-height:1.7;margin-top:12px}
+
+  /* ============ PANEL DE DECISIÓN ============ */
+  .panel-decision{
+    position:fixed;left:0;right:0;bottom:0;z-index:40;
+    background:var(--tinta);color:var(--papel);
+    border-top:4px solid var(--naranja);
+    display:flex;align-items:center;gap:10px;padding:9px 24px;
+  }
+  .panel-decision .pd-titulo{
+    font-family:var(--cond);font-weight:900;text-transform:uppercase;letter-spacing:2px;
+    font-size:13px;margin-right:8px;white-space:nowrap;
+  }
+  .btn{
+    font-family:var(--cond);font-weight:700;text-transform:uppercase;letter-spacing:1.5px;
+    font-size:12px;padding:8px 16px;cursor:pointer;border:2px solid var(--papel);
+    background:transparent;color:var(--papel);white-space:nowrap;
+  }
+  .btn:hover{background:rgba(244,241,234,.15)}
+  .btn.activo{background:var(--naranja);border-color:var(--naranja);color:#fff}
+  .btn-sec{border-color:var(--linea);color:var(--kraft)}
+  .indicador{
+    margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:1px;
+    color:var(--kraft);white-space:nowrap;
+  }
+  .indicador.editado{color:#ffd8a8}
+  .totales-mini{font-family:var(--mono);font-size:12px;color:var(--papel);white-space:nowrap;border-left:1px solid rgba(244,241,234,.3);padding-left:14px}
+</style>
+</head>
+<body>
+<div class="hoja" id="app"></div>
+
+<div class="motivo-panel" id="motivoPanel">
+  <h3>Motivo de la celda</h3>
+  <div class="motivo-cuerpo" id="motivoCuerpo"></div>
+  <button class="motivo-cerrar" id="motivoCerrar">Cerrar</button>
+</div>
+
+<div class="panel-decision">
+  <span class="pd-titulo">Panel de decisión</span>
+  <button class="btn" id="btnRecomendado">Plan recomendado</button>
+  <button class="btn" id="btnModelo">Plan modelo completo</button>
+  <button class="btn btn-sec" id="btnCopiar">Copiar orden</button>
+  <button class="btn btn-sec" id="btnCSV">Descargar CSV</button>
+  <button class="btn btn-sec" id="btnReset">Restablecer</button>
+  <span class="totales-mini" id="totalesMini"></span>
+  <span class="indicador" id="indicador">SIN CAMBIOS</span>
+</div>
+
+<script>
+"use strict";
+
+window.DATA = /*__DATOS__*/{"meta": {"titulo": "PEDIDO DE REFUERZO · RED WALMART / PAIZ", "subtitulo": "Clan Cervecero · manifiesto de decisión · tienda por tienda, en cajas", "generado": "31 de agosto de 2026", "semana_datos": "Semana Walmart 202630 (cerró 28/08 · Retail Link bajado 30/08)", "deadline": "02/09/2026", "deadline_dias": 2}, "kpis": [{"label": "Pedido recomendado", "valor": "67 cajas", "sub": "1,340 unidades a 29 tiendas", "tono": "ok"}, {"label": "Valor del pedido (costo)", "valor": "Q 29,314", "sub": "lo que factura Clan si Walmart lo corta entero", "tono": "neutro"}, {"label": "Vigencia de 6 ítems", "valor": "VENCE 02/09", "sub": "gestión ID 90884 con Max · sin extensión no se pide", "tono": "alerta"}, {"label": "Fill rate OC de hoy", "valor": "57%", "sub": "si se despacha tal cual: faltan 191 HB Original + 56 Trooper", "tono": "alerta"}, {"label": "Villa Nueva", "valor": "417 u fantasma", "sub": "excluida del pedido · reconteo verificado 2 veces", "tono": "alerta"}], "oc": {"numero": "2401060275", "fecha": "31/08/2026", "cancelacion": "04/09/2026", "destino": "Bodega 5406 · Km 17 ruta al Pacífico, Bárcenas Villa Nueva (entrega centralizada; el CD regular del maestro es el 7406)", "total_u": 576, "total_q": 16726.84, "lineas": [{"desc": "Sapporo Silver", "pedido": 96, "bodega": 1450, "ok": true}, {"desc": "Sapporo Black", "pedido": 40, "bodega": 951, "ok": true}, {"desc": "HB Original", "pedido": 200, "bodega": 9, "ok": false}, {"desc": "HB Dunkel", "pedido": 20, "bodega": 2912, "ok": true}, {"desc": "Trooper Original", "pedido": 120, "bodega": 64, "ok": false}, {"desc": "Trooper FOTD", "pedido": 100, "bodega": 5901, "ok": true}], "nota": "El sistema de reposición de Walmart solo conoce a los 6 modulados: esta OC es todo lo que la red va a pedir sola. Los 7 no modulados dependen del pedido manual de este manifiesto. Alerta: 2 líneas exceden la bodega de Clan — decidir hoy si se despacha parcial avisando a Cristian, o se pide ajuste de la OC (cancela 04/09)."}, "items": [{"id": "75437615", "nombre": "HB Helles Lager lata", "corto": "HELLES", "vigencia": "10/11/2026", "urgente": false, "ucaja": 20, "costo": 16.0, "pvp": 20.76, "bodega": 4222, "modelo_sug": 1708, "venta629_u": 35, "venta630_u": 18, "exist_red": 247, "nota": "El mejor sell-through de la red (10.7% sem 629). La apuesta estelar."}, {"id": "75437613", "nombre": "NC Old Rasputin lata", "corto": "RASPUTIN", "vigencia": "02/09/2026", "urgente": true, "ucaja": 20, "costo": 43.8, "pvp": 56.7, "bodega": 918, "modelo_sug": 579, "venta629_u": 7, "venta630_u": 9, "exist_red": 304, "nota": "Vende Q512/sem con 25 tiendas. Todo condicionado a extensión de vigencia."}, {"id": "75437612", "nombre": "NC Scrimshaw lata", "corto": "SCRIMSHAW", "vigencia": "02/09/2026", "urgente": true, "ucaja": 20, "costo": 43.8, "pvp": 56.7, "bodega": 1032, "modelo_sug": 0, "venta629_u": 5, "venta630_u": 0, "exist_red": 461, "nota": "SOBRE-STOCK: 508 u en tiendas, 0 venta 202630. No pedir; pedir extensión para poder vender lo que ya está."}, {"id": "75437617", "nombre": "HB Session Lager lata", "corto": "SESSION", "vigencia": "02/09/2026", "urgente": true, "ucaja": 20, "costo": 16.0, "pvp": 20.76, "bodega": 1492, "modelo_sug": 40, "venta629_u": 1, "venta630_u": 0, "exist_red": 115, "nota": "0 venta 202630, 137 u en tiendas. Recomendación: no pedir."}, {"id": "75437618", "nombre": "Belhaven Best lata", "corto": "BEST", "vigencia": "02/09/2026", "urgente": true, "ucaja": 20, "costo": 18.25, "pvp": 23.66, "bodega": 1075, "modelo_sug": 0, "venta629_u": 3, "venta630_u": 0, "exist_red": 75, "nota": "Sin tasa: no vendió. Piloto = empujar las 95 u que ya están, sin pedir más."}, {"id": "75437619", "nombre": "Belhaven Black lata", "corto": "BLACK_BEL", "vigencia": "02/09/2026", "urgente": true, "ucaja": 20, "costo": 18.25, "pvp": 23.66, "bodega": 827, "modelo_sug": 111, "venta629_u": 2, "venta630_u": 1, "exist_red": 48, "nota": "Vende poco pero vende (2u/629, 1u/630). Refuerzo quirúrgico donde probó moverse."}, {"id": "75437620", "nombre": "Belhaven McCallums lata", "corto": "MCCALLUMS", "vigencia": "02/09/2026", "urgente": true, "ucaja": 20, "costo": 18.25, "pvp": 23.66, "bodega": 2126, "modelo_sug": 0, "venta629_u": 1, "venta630_u": 1, "exist_red": 91, "nota": "Sin tasa: no vendió. 91 u en tiendas. No pedir."}], "tiendas": [{"num": "1054", "nombre": "WALMART SAN CRISTóBAL", "prom3": 174.59, "q628": 44.64, "q629": 331.98, "q630": 147.15, "top20": true}, {"num": "108", "nombre": "PAIZ PRADERA", "prom3": 614.68, "q628": 670.72, "q629": 717.22, "q630": 456.09, "top20": true}, {"num": "121", "nombre": "WM ROOSEVELT", "prom3": 348.29, "q628": 174.86, "q629": 335.72, "q630": 534.29, "top20": true}, {"num": "164", "nombre": "WM PUERTA PARADA", "prom3": 247.74, "q628": 331.98, "q629": 44.64, "q630": 366.61, "top20": false}, {"num": "20", "nombre": "PAIZ MONTUFAR", "prom3": 267.36, "q628": 222.95, "q629": 66.61, "q630": 512.52, "top20": false}, {"num": "21", "nombre": "PAIZ VISTA HERMOSA", "prom3": 203.94, "q628": 119.92, "q629": 66.61, "q630": 425.28, "top20": false}, {"num": "22", "nombre": "PAIZ LAS AMERICAS", "prom3": 813.12, "q628": 502.44, "q629": 1308.44, "q630": 628.49, "top20": true}, {"num": "34", "nombre": "PAIZ UTATLAN", "prom3": 249.11, "q628": 276.77, "q629": 235.46, "q630": 235.11, "top20": true}, {"num": "35", "nombre": "PAIZ PETAPA", "prom3": 138.1, "q628": 238.4, "q629": 85.62, "q630": 90.27, "top20": false}, {"num": "4087", "nombre": "PAIZ EL NARANJO", "prom3": 326.79, "q628": 381.25, "q629": 229.82, "q630": 369.29, "top20": true}, {"num": "4116", "nombre": "WM MIXCO", "prom3": 174.53, "q628": 139.64, "q629": 8.93, "q630": 375.01, "top20": false}, {"num": "4126", "nombre": "PAIZ CHIQUIMULA PRADERA", "prom3": 193.22, "q628": 427.86, "q629": 90.18, "q630": 61.61, "top20": false}, {"num": "414", "nombre": "WM VILLA NUEVA", "prom3": 121.13, "q628": 106.25, "q629": 128.57, "q630": 128.57, "top20": false}, {"num": "419", "nombre": "PAIZ MAZATENANGO", "prom3": 191.71, "q628": 52.45, "q629": 218.92, "q630": 303.76, "top20": true}, {"num": "4370", "nombre": "WM PROCERES", "prom3": 94.94, "q628": 66.96, "q629": 132.4, "q630": 85.45, "top20": false}, {"num": "4412", "nombre": "WM ALAMOS", "prom3": 332.48, "q628": 366.24, "q629": 202.09, "q630": 429.11, "top20": false}, {"num": "4433", "nombre": "PAIZ SANTA CATARINA PINUL", "prom3": 162.48, "q628": 83.69, "q629": 339.18, "q630": 64.56, "top20": true}, {"num": "457", "nombre": "PAIZ ASUNCION", "prom3": 577.03, "q628": 466.7, "q629": 865.46, "q630": 398.94, "top20": true}, {"num": "459", "nombre": "WM BOSQ SAN NICOLAS", "prom3": 226.65, "q628": 178.56, "q629": 288.88, "q630": 212.5, "top20": true}, {"num": "491", "nombre": "PAIZ COBAN", "prom3": 612.27, "q628": 801.82, "q629": 630.86, "q630": 404.14, "top20": true}, {"num": "727", "nombre": "PAIZ COLONIA VISTA HERMOS", "prom3": 472.62, "q628": 385.65, "q629": 427.05, "q630": 605.15, "top20": true}, {"num": "948", "nombre": "WM NARANJO", "prom3": 56.1, "q628": 45.08, "q629": 61.61, "q630": 61.61, "top20": false}, {"num": "169", "nombre": "PAIZ SAN CRISTOBAL", "prom3": 349.15, "q628": 645.58, "q629": 230.44, "q630": 171.43, "top20": true}, {"num": "23", "nombre": "PAIZ NOVICENTRO ZONA 11", "prom3": 620.87, "q628": 871.34, "q629": 337.86, "q630": 653.4, "top20": true}, {"num": "4176", "nombre": "PAIZ ALTOS DE SAN CRISTOB", "prom3": 95.71, "q628": 77.76, "q629": 209.38, "q630": 0.0, "top20": false}, {"num": "4414", "nombre": "WM ATANASIO TZUL", "prom3": 296.4, "q628": 385.19, "q629": 325.45, "q630": 178.56, "top20": true}, {"num": "24", "nombre": "PAIZ ROOSEVELT", "prom3": 188.43, "q628": 274.29, "q629": 131.54, "q630": 159.47, "top20": false}, {"num": "4037", "nombre": "WM DEL NORTE", "prom3": 424.82, "q628": 521.35, "q629": 444.99, "q630": 308.12, "top20": true}, {"num": "4173", "nombre": "PAIZ SANTA AMELIA", "prom3": 286.52, "q628": 196.7, "q629": 199.2, "q630": 463.67, "top20": false}, {"num": "46", "nombre": "PAIZ MEGA 6", "prom3": 215.43, "q628": 53.56, "q629": 376.85, "q630": 215.89, "top20": true}, {"num": "47", "nombre": "PAIZ MONTBLANC", "prom3": 257.38, "q628": 108.75, "q629": 479.11, "q630": 184.28, "top20": true}, {"num": "33", "nombre": "PAIZ AGUILAR BATRES", "prom3": 197.73, "q628": 106.42, "q629": 319.37, "q630": 167.4, "top20": true}, {"num": "4490", "nombre": "PAIZ FRAIJANES", "prom3": 277.55, "q628": 349.44, "q629": 206.42, "q630": 276.78, "top20": false}, {"num": "180", "nombre": "PAIZ HUEHUETENANGO", "prom3": 163.71, "q628": 218.3, "q629": 252.04, "q630": 20.8, "top20": true}, {"num": "4317", "nombre": "PAIZ SAN LUCAS", "prom3": 234.49, "q628": 174.65, "q629": 163.3, "q630": 365.53, "top20": false}, {"num": "4491", "nombre": "PAIZ LIBERACION", "prom3": 79.29, "q628": 128.84, "q629": 0.0, "q630": 109.03, "top20": false}, {"num": "460", "nombre": "WM XELA", "prom3": 58.9, "q628": 0.0, "q629": 109.73, "q630": 66.96, "top20": false}, {"num": "344", "nombre": "PAIZ CARRETERA A EL SALVA", "prom3": 104.5, "q628": 0.0, "q629": 218.13, "q630": 95.36, "top20": false}, {"num": "458", "nombre": "PAIZ SALIDA AL PACIFICO", "prom3": 141.8, "q628": 128.05, "q629": 85.98, "q630": 211.37, "top20": false}, {"num": "1087", "nombre": "WM QUETZALTENANGO PERIFER", "prom3": 0.0, "q628": 0.0, "q629": 0.0, "q630": 0.0, "top20": false}], "planes": {"recomendado": [{"tienda": "23", "item": "75437615", "cajas": 3, "motivo": "cero demostrado (físico)"}, {"tienda": "727", "item": "75437615", "cajas": 3, "motivo": "stock bajo: 10 u"}, {"tienda": "4037", "item": "75437615", "cajas": 2, "motivo": "stock bajo: 20 u"}, {"tienda": "169", "item": "75437615", "cajas": 3, "motivo": "cero demostrado (físico)"}, {"tienda": "4412", "item": "75437615", "cajas": 2, "motivo": "stock bajo: 20 u"}, {"tienda": "4087", "item": "75437615", "cajas": 3, "motivo": "stock bajo: 12 u"}, {"tienda": "4414", "item": "75437615", "cajas": 3, "motivo": "stock bajo: 8 u"}, {"tienda": "4173", "item": "75437615", "cajas": 3, "motivo": "cero demostrado (físico)"}, {"tienda": "4490", "item": "75437615", "cajas": 2, "motivo": "cero demostrado (físico)"}, {"tienda": "20", "item": "75437615", "cajas": 2, "motivo": "stock bajo: 4 u"}, {"tienda": "47", "item": "75437615", "cajas": 2, "motivo": "stock bajo: 2 u"}, {"tienda": "34", "item": "75437615", "cajas": 2, "motivo": "stock bajo: 8 u"}, {"tienda": "4317", "item": "75437615", "cajas": 2, "motivo": "cero demostrado (físico)"}, {"tienda": "46", "item": "75437615", "cajas": 2, "motivo": "stock bajo: 2 u"}, {"tienda": "21", "item": "75437615", "cajas": 1, "motivo": "stock bajo: 20 u"}, {"tienda": "33", "item": "75437615", "cajas": 1, "motivo": "stock bajo: 20 u"}, {"tienda": "4126", "item": "75437615", "cajas": 1, "motivo": "stock bajo: 20 u"}, {"tienda": "419", "item": "75437615", "cajas": 2, "motivo": "stock bajo: 6 u"}, {"tienda": "1054", "item": "75437615", "cajas": 1, "motivo": "stock bajo: 20 u"}, {"tienda": "4116", "item": "75437615", "cajas": 1, "motivo": "stock bajo: 20 u"}, {"tienda": "180", "item": "75437615", "cajas": 2, "motivo": "stock bajo: 16 u"}, {"tienda": "4433", "item": "75437615", "cajas": 2, "motivo": "stock bajo: 4 u"}, {"tienda": "35", "item": "75437615", "cajas": 2, "motivo": "cero demostrado (físico)"}, {"tienda": "4370", "item": "75437615", "cajas": 2, "motivo": "cero demostrado (físico)"}, {"tienda": "460", "item": "75437615", "cajas": 2, "motivo": "stock bajo: 1 u"}, {"tienda": "23", "item": "75437613", "cajas": 2, "motivo": "fantasma verificado — entra tras ajuste"}, {"tienda": "108", "item": "75437613", "cajas": 2, "motivo": "stock bajo: 7 u"}, {"tienda": "727", "item": "75437613", "cajas": 2, "motivo": "stock bajo: 2 u"}, {"tienda": "4087", "item": "75437613", "cajas": 1, "motivo": "stock bajo: 5 u"}, {"tienda": "4414", "item": "75437613", "cajas": 1, "motivo": "stock bajo: 8 u"}, {"tienda": "47", "item": "75437613", "cajas": 1, "motivo": "stock bajo: 10 u"}, {"tienda": "4317", "item": "75437613", "cajas": 1, "motivo": "stock bajo: 8 u"}, {"tienda": "4126", "item": "75437613", "cajas": 1, "motivo": "stock bajo: 8 u"}, {"tienda": "419", "item": "75437613", "cajas": 1, "motivo": "stock bajo: 9 u"}, {"tienda": "344", "item": "75437613", "cajas": 1, "motivo": "stock bajo: 11 u"}, {"tienda": "4176", "item": "75437613", "cajas": 1, "motivo": "fantasma verificado — entra tras ajuste"}, {"tienda": "4173", "item": "75437619", "cajas": 1, "motivo": "cero demostrado (físico)"}, {"tienda": "24", "item": "75437619", "cajas": 1, "motivo": "cero demostrado (físico)"}], "modelo": [{"tienda": "460", "item": "75437615", "cajas": 1, "motivo": "proporcional al peso de venta (Q59/sem) · stock real 1 u"}, {"tienda": "4173", "item": "75437615", "cajas": 5, "motivo": "proporcional al peso de venta (Q287/sem) · stock real 0 u"}, {"tienda": "4412", "item": "75437615", "cajas": 3, "motivo": "proporcional al peso de venta (Q332/sem) · stock real 20 u"}, {"tienda": "20", "item": "75437615", "cajas": 4, "motivo": "proporcional al peso de venta (Q267/sem) · stock real 4 u"}, {"tienda": "4490", "item": "75437615", "cajas": 5, "motivo": "proporcional al peso de venta (Q278/sem) · stock real 0 u"}, {"tienda": "21", "item": "75437615", "cajas": 2, "motivo": "proporcional al peso de venta (Q204/sem) · stock real 20 u"}, {"tienda": "23", "item": "75437615", "cajas": 11, "motivo": "proporcional al peso de venta (Q621/sem) · stock real 0 u"}, {"tienda": "33", "item": "75437615", "cajas": 2, "motivo": "proporcional al peso de venta (Q198/sem) · stock real 20 u"}, {"tienda": "4037", "item": "75437615", "cajas": 4, "motivo": "proporcional al peso de venta (Q425/sem) · stock real 20 u"}, {"tienda": "4126", "item": "75437615", "cajas": 2, "motivo": "proporcional al peso de venta (Q193/sem) · stock real 20 u"}, {"tienda": "4414", "item": "75437615", "cajas": 4, "motivo": "proporcional al peso de venta (Q296/sem) · stock real 8 u"}, {"tienda": "4370", "item": "75437615", "cajas": 2, "motivo": "proporcional al peso de venta (Q95/sem) · stock real 0 u"}, {"tienda": "180", "item": "75437615", "cajas": 2, "motivo": "proporcional al peso de venta (Q164/sem) · stock real 16 u"}, {"tienda": "419", "item": "75437615", "cajas": 3, "motivo": "proporcional al peso de venta (Q192/sem) · stock real 6 u"}, {"tienda": "4087", "item": "75437615", "cajas": 3, "motivo": "proporcional al peso de venta (Q327/sem) · stock real 12 u"}, {"tienda": "1054", "item": "75437615", "cajas": 1, "motivo": "proporcional al peso de venta (Q175/sem) · stock real 20 u"}, {"tienda": "4116", "item": "75437615", "cajas": 1, "motivo": "proporcional al peso de venta (Q175/sem) · stock real 20 u"}, {"tienda": "727", "item": "75437615", "cajas": 5, "motivo": "proporcional al peso de venta (Q473/sem) · stock real 10 u"}, {"tienda": "35", "item": "75437615", "cajas": 2, "motivo": "proporcional al peso de venta (Q138/sem) · stock real 0 u"}, {"tienda": "46", "item": "75437615", "cajas": 3, "motivo": "proporcional al peso de venta (Q215/sem) · stock real 2 u"}, {"tienda": "4433", "item": "75437615", "cajas": 2, "motivo": "proporcional al peso de venta (Q162/sem) · stock real 4 u"}, {"tienda": "24", "item": "75437615", "cajas": 1, "motivo": "proporcional al peso de venta (Q188/sem) · stock real 34 u"}, {"tienda": "34", "item": "75437615", "cajas": 3, "motivo": "proporcional al peso de venta (Q249/sem) · stock real 8 u"}, {"tienda": "4317", "item": "75437615", "cajas": 4, "motivo": "proporcional al peso de venta (Q234/sem) · stock real 0 u"}, {"tienda": "47", "item": "75437615", "cajas": 4, "motivo": "proporcional al peso de venta (Q257/sem) · stock real 2 u"}, {"tienda": "169", "item": "75437615", "cajas": 6, "motivo": "proporcional al peso de venta (Q349/sem) · stock real 0 u"}, {"tienda": "4173", "item": "75437613", "cajas": 1, "motivo": "proporcional al peso de venta (Q287/sem) · stock real 18 u"}, {"tienda": "4490", "item": "75437613", "cajas": 1, "motivo": "proporcional al peso de venta (Q278/sem) · stock real 20 u"}, {"tienda": "23", "item": "75437613", "cajas": 4, "motivo": "proporcional al peso de venta (Q621/sem) · stock real 0 u"}, {"tienda": "4126", "item": "75437613", "cajas": 1, "motivo": "proporcional al peso de venta (Q193/sem) · stock real 8 u"}, {"tienda": "108", "item": "75437613", "cajas": 3, "motivo": "proporcional al peso de venta (Q615/sem) · stock real 7 u"}, {"tienda": "419", "item": "75437613", "cajas": 1, "motivo": "proporcional al peso de venta (Q192/sem) · stock real 9 u"}, {"tienda": "727", "item": "75437613", "cajas": 3, "motivo": "proporcional al peso de venta (Q473/sem) · stock real 2 u"}, {"tienda": "21", "item": "75437613", "cajas": 1, "motivo": "proporcional al peso de venta (Q204/sem) · stock real 18 u"}, {"tienda": "33", "item": "75437613", "cajas": 1, "motivo": "proporcional al peso de venta (Q198/sem) · stock real 17 u"}, {"tienda": "4087", "item": "75437613", "cajas": 2, "motivo": "proporcional al peso de venta (Q327/sem) · stock real 5 u"}, {"tienda": "24", "item": "75437613", "cajas": 1, "motivo": "proporcional al peso de venta (Q188/sem) · stock real 19 u"}, {"tienda": "4176", "item": "75437613", "cajas": 1, "motivo": "proporcional al peso de venta (Q96/sem) · stock real 1 u"}, {"tienda": "4037", "item": "75437613", "cajas": 1, "motivo": "proporcional al peso de venta (Q425/sem) · stock real 20 u"}, {"tienda": "4414", "item": "75437613", "cajas": 1, "motivo": "proporcional al peso de venta (Q296/sem) · stock real 8 u"}, {"tienda": "169", "item": "75437613", "cajas": 1, "motivo": "proporcional al peso de venta (Q349/sem) · stock real 16 u"}, {"tienda": "491", "item": "75437613", "cajas": 2, "motivo": "proporcional al peso de venta (Q612/sem) · stock real 16 u"}, {"tienda": "47", "item": "75437613", "cajas": 1, "motivo": "proporcional al peso de venta (Q257/sem) · stock real 10 u"}, {"tienda": "4317", "item": "75437613", "cajas": 1, "motivo": "proporcional al peso de venta (Q234/sem) · stock real 8 u"}, {"tienda": "4412", "item": "75437613", "cajas": 1, "motivo": "proporcional al peso de venta (Q332/sem) · stock real 20 u"}, {"tienda": "20", "item": "75437613", "cajas": 1, "motivo": "proporcional al peso de venta (Q267/sem) · stock real 13 u"}, {"tienda": "4412", "item": "75437619", "cajas": 1, "motivo": "proporcional al peso de venta (Q332/sem) · stock real 20 u"}, {"tienda": "4490", "item": "75437619", "cajas": 1, "motivo": "proporcional al peso de venta (Q278/sem) · stock real 20 u"}, {"tienda": "4173", "item": "75437619", "cajas": 2, "motivo": "proporcional al peso de venta (Q287/sem) · stock real 0 u"}, {"tienda": "169", "item": "75437619", "cajas": 1, "motivo": "proporcional al peso de venta (Q349/sem) · stock real 8 u"}, {"tienda": "24", "item": "75437619", "cajas": 1, "motivo": "proporcional al peso de venta (Q188/sem) · stock real 0 u"}, {"tienda": "4037", "item": "75437617", "cajas": 1, "motivo": "proporcional al peso de venta (Q425/sem) · stock real 20 u"}, {"tienda": "169", "item": "75437617", "cajas": 1, "motivo": "proporcional al peso de venta (Q349/sem) · stock real 13 u"}]}, "villa_nueva": {"titulo": "WM VILLA NUEVA (tienda 414) — anexo de incidente", "nota": "Reconteo físico del 26/08 19:01 reconfirmado idéntico el 28/08 17:46 (mercaderista GSP; bodega saturada; escalado al coordinador de abarrotes). El sistema cree tener 417 unidades que no existen en piso ni se ubican en bodega. Con instock \"sano\", el motor de Walmart jamás va a resurtir esta tienda. La tienda NO entra al pedido hasta que Walmart aplique el ajuste de inventario; aplicado el ajuste, entra con el estándar del plan (su peso de venta la pone en media tabla).", "fantasma_total": 417, "filas": [{"desc": "Sapporo Silver", "fisico": 0, "sistema": 61}, {"desc": "Trooper Original", "fisico": 23, "sistema": 184}, {"desc": "Sapporo Black", "fisico": 0, "sistema": 20}, {"desc": "Sapporo Gold", "fisico": 0, "sistema": 12}, {"desc": "HB Original", "fisico": 7, "sistema": 26}, {"desc": "HB Dunkel", "fisico": 16, "sistema": 27}, {"desc": "Trooper FOTD", "fisico": 0, "sistema": 20}, {"desc": "HB Helles", "fisico": 0, "sistema": 20}, {"desc": "HB Session", "fisico": 0, "sistema": 20}, {"desc": "NC Old Rasputin", "fisico": 0, "sistema": 13}, {"desc": "NC Scrimshaw", "fisico": 0, "sistema": 20}, {"desc": "Belhaven Best", "fisico": 0, "sistema": 20}, {"desc": "Belhaven Black", "fisico": 0, "sistema": 20}, {"desc": "StPet Suffolk", "fisico": 8, "sistema": 8}]}, "ajustes": [{"tienda": "WM Villa Nueva (414)", "detalle": "Ajuste de inventario: 417 u fantasma en 13 de 14 ítems (Silver 61→0 · Trooper 184→23 · detalle en el anexo). Sin ajuste no hay resurtido posible."}, {"tienda": "Paiz Altos (4176)", "detalle": "Fantasmas en no modulados: Old Rasputin sistema 17 vs físico 1 · Scrimshaw 17 vs 8 · Session 3 vs 0 (conteo 27/08)."}, {"tienda": "Paiz Roosevelt (24)", "detalle": "Fantasmas en modulados: Sapporo Black sistema 20 vs físico 0 · Trooper FOTD sistema 27 vs físico 3 (conteo 27/08)."}, {"tienda": "WM Bosques (459)", "detalle": "Producto vencido detectado en conteo 27/08: todo el FOTD (vencía 5/2026), 12 u Sapporo Black, 12 u Sapporo Gold, 12 u StPet Suffolk. Coordinar retiro/merma para liberar espacio."}, {"tienda": "WM Roosevelt (121)", "detalle": "Producto empacado sin ubicar en piso tras el modular de hace 15 días: 68 Dunkel + 108 HB Original + 36 Silver \"reempacados\". El plano nuevo no los contempla — pedir reubicación."}, {"tienda": "Paiz Aguilar Batres (33)", "detalle": "Sapporo Silver: llegada de 12 u el 16/08 desaparecida (sistema 0, físico 0). Rastrear recepción."}], "narrativa": {"capitulos": [{"id": "c1", "titulo": "I · La semana que cerró", "parrafos": ["La semana 202630 vendió Q10,544 (297 unidades) en 40 tiendas. Es la meseta conocida: la red vende la mitad de lo que vendía en 2024, y ya demostramos que el problema es ejecución, no demanda — donde los mercaderistas tocaron el piso, la venta respondió (Silver +133% en la 629).", "Sapporo Silver sigue siendo la locomotora (Q2,341), pero el dato estratégico está más abajo: HB Helles, sin espacio propio y con la mitad de sus tiendas en cero, mantiene el mejor sell-through de todo el catálogo. La demanda existe; lo que falta es producto en el piso."]}, {"id": "c2", "titulo": "II · El robot pide solo lo que conoce", "parrafos": ["Hoy 31/08 el sistema de Walmart cortó su orden automática: 576 unidades, Q16,727 — exclusivamente de los 6 ítems modulados. Los otros 7 ítems del catálogo son invisibles para ese motor: en tienda aparecen como \"no resurtible\" o \"bloqueado para pedido\" (lo confirmaron los conteos del 27-29/08 en Naranjo, Bosques y WM Roosevelt).", "Ese es el porqué de este manifiesto: lo que no pidamos nosotros por la vía manual, no lo pide nadie. Y hay un incendio dentro de la OC automática: pide 200 HB Original y 120 Trooper cuando la bodega tiene 9 y 64. Despachar sin avisar es reventar el fill rate la misma semana en que estrenamos el tablero de los lunes."]}, {"id": "c3", "titulo": "III · La apuesta — Helles y el refuerzo quirúrgico", "parrafos": ["El pedido recomendado pone 2 cajas de Helles en cada tienda elegible (3 en las 8 más fuertes): 51 cajas, 1,020 unidades. Es la versión prudente del sugerido del modelo (1,708 u): la semana fresca vendió 18 u porque solo ~9 tiendas tenían producto; con 25 tiendas abastecidas y la vigencia corriendo hasta el 10/11, hay espacio para una segunda ola cuando el corte del 05/09 mida el uplift.", "Old Rasputin lleva 14 cajas condicionadas: es el premium que más factura por unidad (PVP Q56.70), pero su vigencia muere el 02/09. Si la gestión con Max no cierra antes del martes, esas 14 cajas no salen — y ahí está el 42% del valor del pedido. Belhaven Black lleva 2 cajas quirúrgicas donde probó moverse. Session, Scrimshaw, Best y McCallums: cero — ya tienen más inventario en tiendas del que rotan, y pedir ahí es financiar inventario muerto."]}, {"id": "c4", "titulo": "IV · El fantasma de Villa Nueva", "parrafos": ["Villa Nueva es la novela de terror del expediente: el sistema jura tener 417 unidades que nadie encuentra — 184 Trooper donde hay 23, 61 Silver donde hay 0. Se contó dos veces (26 y 28/08) con el mismo resultado, y quedó escalado al coordinador de abarrotes.", "Mientras ese inventario fantasma exista, para Walmart la tienda está \"sana\" y no pide nada. Por eso queda fuera de este pedido: primero el ajuste de inventario (está en la lista para Cristian), después el refuerzo. Meterle producto hoy sería esconder el problema debajo de más cajas."]}, {"id": "c5", "titulo": "V · El reloj", "parrafos": ["Tres relojes corren: la vigencia de 6 ítems muere el martes 02/09 (gestión ID 90884 con Max — sin eso, ni pedido ni venta de lo que ya está en tiendas); la OC automática cancela el 04/09 (decidir hoy el despacho parcial y avisar); y el corte de uplift es el 05/09, que define la segunda ola de Helles.", "La jugada de la semana: enviar este pedido con el correo del lunes, pedir la extensión de vigencia como condición explícita, y usar el mismo mensaje para avisar el parcial de la OC. Un solo correo, tres problemas resueltos."]}]}}/*__FIN_DATOS__*/;
+
+/* ============================================================
+   ESTADO GLOBAL ÚNICO
+============================================================ */
+var LS_KEY = "refuerzo-walmart-2026";
+var state = {
+  plan: "recomendado",          // "recomendado" | "modelo"
+  edits: {},                    // "tienda|item" -> cajas (override del plan)
+  dirty: false,
+  savedAt: null
+};
+
+function cargarEstado(){
+  try{
+    var raw = localStorage.getItem(LS_KEY);
+    if(raw){
+      var s = JSON.parse(raw);
+      if(s && (s.plan === "recomendado" || s.plan === "modelo")){
+        state.plan = s.plan;
+        state.edits = (s.edits && typeof s.edits === "object") ? s.edits : {};
+        state.dirty = Object.keys(state.edits).length > 0;
+        state.savedAt = s.savedAt || null;
+      }
+    }
+  }catch(e){ /* almacenamiento no disponible: se trabaja en memoria */ }
+}
+
+function guardarEstado(){
+  state.savedAt = new Date().toISOString();
+  try{
+    localStorage.setItem(LS_KEY, JSON.stringify({
+      plan: state.plan, edits: state.edits, savedAt: state.savedAt
+    }));
+  }catch(e){ /* sin persistencia */ }
+  pintarIndicador();
+}
+
+/* ============================================================
+   UTILIDADES PURAS
+============================================================ */
+function esc(s){
+  return String(s == null ? "" : s)
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+}
+function fmtInt(n){
+  n = Math.round(Number(n) || 0);
+  return n.toLocaleString("es-GT");
+}
+function fmtQ(n){
+  n = Number(n) || 0;
+  return "Q" + n.toLocaleString("es-GT",{minimumFractionDigits:2, maximumFractionDigits:2});
+}
+function clave(t, i){ return t + "|" + i; }
+
+function itemsDelPlan(){
+  var vistos = {}, orden = [];
+  ["recomendado","modelo"].forEach(function(p){
+    (DATA.planes[p] || []).forEach(function(l){
+      if(!vistos[l.item]){ vistos[l.item] = true; orden.push(l.item); }
+    });
+  });
+  var porId = {};
+  DATA.items.forEach(function(it){ porId[it.id] = it; });
+  return orden.map(function(id){ return porId[id]; }).filter(Boolean);
+}
+
+function tiendasOrdenadas(){
+  return DATA.tiendas.slice().sort(function(a,b){ return b.prom3 - a.prom3; });
+}
+
+function mapaPlan(plan){
+  var m = {};
+  (DATA.planes[plan] || []).forEach(function(l){
+    m[clave(l.tienda, l.item)] = { cajas: Number(l.cajas) || 0, motivo: l.motivo || "" };
+  });
+  return m;
+}
+
+function cajasCelda(tnum, itemId){
+  var k = clave(tnum, itemId);
+  if(Object.prototype.hasOwnProperty.call(state.edits, k)) return state.edits[k];
+  var pm = mapaPlan(state.plan)[k];
+  return pm ? pm.cajas : 0;
+}
+
+function motivoCelda(tnum, itemId){
+  var pm = mapaPlan(state.plan)[clave(tnum, itemId)];
+  return pm ? pm.motivo : "";
+}
+
+/* Lee la matriz actual (inputs) y devuelve totales calculados */
+function calcularTotales(){
+  var items = itemsDelPlan();
+  var tiendas = tiendasOrdenadas();
+  var porItem = {}, filas = {}, gCajas = 0, gUnid = 0, gQ = 0;
+  items.forEach(function(it){ porItem[it.id] = {cajas:0, unid:0, q:0, excede:false}; });
+  tiendas.forEach(function(t){
+    var c = 0;
+    items.forEach(function(it){
+      var cj = cajasCelda(t.num, it.id);
+      if(cj > 0){
+        var u = cj * it.ucaja;
+        var q = u * it.costo;
+        porItem[it.id].cajas += cj;
+        porItem[it.id].unid  += u;
+        porItem[it.id].q     += q;
+        c += cj; gCajas += cj; gUnid += u; gQ += q;
+      }
+    });
+    filas[t.num] = c;
+  });
+  items.forEach(function(it){
+    porItem[it.id].excede = porItem[it.id].unid > it.bodega;
+  });
+  var maxFila = 0;
+  tiendas.forEach(function(t){ if(filas[t.num] > maxFila) maxFila = filas[t.num]; });
+  return { porItem: porItem, filas: filas, gCajas: gCajas, gUnid: gUnid, gQ: gQ, maxFila: maxFila };
+}
+
+/* ============================================================
+   RENDER — CABECERA + KPIs
+============================================================ */
+function renderCabecera(){
+  var m = DATA.meta;
+  return '' +
+  '<header class="manifiesto">' +
+    '<div>' +
+      '<div class="man-titulo">' + esc(m.titulo) + '</div>' +
+      '<div class="man-sub">' + esc(m.subtitulo) + '</div>' +
+      '<div class="man-meta">' +
+        'DATOS: <b>' + esc(m.semana_datos) + '</b><br>' +
+        'GENERADO: <b>' + esc(m.generado) + '</b>' +
+      '</div>' +
+    '</div>' +
+    '<div class="sello-deadline">' +
+      '<div class="num">' + esc(m.deadline_dias) + '</div>' +
+      '<div class="lbl">días p/ deadline</div>' +
+      '<div class="fec">' + esc(m.deadline) + '</div>' +
+    '</div>' +
+  '</header>';
+}
+
+function renderKpis(){
+  var html = '<section class="kpis">';
+  DATA.kpis.forEach(function(k){
+    var tono = (k.tono === "ok" || k.tono === "alerta") ? k.tono : "neutro";
+    html += '<div class="kpi tono-' + tono + '">' +
+      '<div class="valor">' + esc(k.valor) + '</div>' +
+      '<div class="label">' + esc(k.label) + '</div>' +
+      '<div class="sub">' + esc(k.sub) + '</div>' +
+    '</div>';
+  });
+  return html + '</section>';
+}
+
+/* ============================================================
+   RENDER — CAPÍTULO ORDEN AUTOMÁTICA
+============================================================ */
+function renderOC(){
+  var oc = DATA.oc;
+  var hayBrecha = oc.lineas.some(function(l){ return !l.ok; });
+  var html = '<div class="perforacion"></div>' +
+  '<section class="capitulo">' +
+    '<div class="cap-head">' +
+      '<span class="cap-form">FORM 01</span>' +
+      '<span class="cap-titulo">La orden automática</span>' +
+      (hayBrecha ? '<span class="sello sello-naranja">CONDICIONADO</span>' : '<span class="sello sello-verde">CUBIERTA</span>') +
+    '</div>' +
+    '<table><thead><tr>' +
+      '<th>Estado</th><th>Línea</th><th>Pedido (u)</th><th>Bodega (u)</th><th>Brecha</th>' +
+    '</tr></thead><tbody>';
+  oc.lineas.forEach(function(l){
+    var brecha = l.bodega - l.pedido;
+    html += '<tr class="' + (l.ok ? '' : 'fila-alerta') + '">' +
+      '<td><span class="semaforo ' + (l.ok ? 'sem-ok' : 'sem-mal') + '"></span></td>' +
+      '<td>' + esc(l.desc) + '</td>' +
+      '<td class="num">' + fmtInt(l.pedido) + '</td>' +
+      '<td class="num">' + fmtInt(l.bodega) + '</td>' +
+      '<td class="num">' + (l.ok ? '—' : '<span class="brecha">' + fmtInt(brecha) + '</span>') + '</td>' +
+    '</tr>';
+  });
+  html += '</tbody></table>' +
+    '<div class="man-meta" style="margin-top:10px">' +
+      'OC <b>' + esc(oc.numero) + '</b> · FECHA <b>' + esc(oc.fecha) + '</b> · CANCELACIÓN <b>' + esc(oc.cancelacion) + '</b> · DESTINO <b>' + esc(oc.destino) + '</b> · TOTAL <b>' + fmtInt(oc.total_u) + ' u</b> / <b>' + fmtQ(oc.total_q) + '</b>' +
+    '</div>' +
+    (oc.nota ? '<div class="cap-nota">' + esc(oc.nota) + '</div>' : '') +
+  '</section>';
+  return html;
+}
+
+/* ============================================================
+   RENDER — CAPÍTULO ESTELAR: LOS NO MODULADOS
+============================================================ */
+function renderItems(){
+  var html = '<div class="perforacion"></div>' +
+  '<section class="capitulo">' +
+    '<div class="cap-head">' +
+      '<span class="cap-form">FORM 02</span>' +
+      '<span class="cap-titulo">Los no modulados</span>' +
+    '</div>' +
+    '<div class="items-grid">';
+  DATA.items.forEach(function(it){
+    var venta = (Number(it.venta629_u)||0) + (Number(it.venta630_u)||0);
+    var stock = (Number(it.exist_red)||0) + (Number(it.bodega)||0);
+    var maxB = Math.max(venta, stock, 1);
+    html += '<article class="item-card' + (it.urgente ? ' urgente' : '') + '">' +
+      '<div class="item-head">' +
+        '<div>' +
+          '<div class="item-nombre">' + esc(it.nombre) + '</div>' +
+          '<div class="item-id">ID ' + esc(it.id) + ' · ' + esc(it.ucaja) + ' u/caja · costo ' + fmtQ(it.costo) + ' · PVP ' + fmtQ(it.pvp) + '</div>' +
+        '</div>' +
+        '<div class="item-sello">' +
+          (it.urgente
+            ? '<span class="sello sello-rojo">VENCE ' + esc(it.vigencia) + '</span>'
+            : '<span class="sello sello-verde">VIG ' + esc(it.vigencia) + '</span>') +
+        '</div>' +
+      '</div>' +
+      '<div class="item-tabla"><table><thead><tr>' +
+        '<th>Venta 629 (u)</th><th>Venta 630 (u)</th><th>Exist. red (u)</th><th>Bodega (u)</th>' +
+      '</tr></thead><tbody><tr>' +
+        '<td class="num">' + fmtInt(it.venta629_u) + '</td>' +
+        '<td class="num">' + fmtInt(it.venta630_u) + '</td>' +
+        '<td class="num">' + fmtInt(it.exist_red) + '</td>' +
+        '<td class="num">' + fmtInt(it.bodega) + '</td>' +
+      '</tr></tbody></table></div>' +
+      '<div class="barras">' +
+        '<div class="barra-fila"><span class="barra-lbl">Venta sem</span>' +
+          '<div class="barra-track"><div class="barra-fill fill-venta" style="width:' + Math.round(venta/maxB*100) + '%"></div></div>' +
+          '<span class="barra-val">' + fmtInt(venta) + '</span></div>' +
+        '<div class="barra-fila"><span class="barra-lbl">Stock total</span>' +
+          '<div class="barra-track"><div class="barra-fill fill-stock" style="width:' + Math.round(stock/maxB*100) + '%"></div></div>' +
+          '<span class="barra-val">' + fmtInt(stock) + '</span></div>' +
+      '</div>' +
+      '<span class="sug-chip">MODELO SUGIERE: ' + fmtInt(it.modelo_sug) + ' cajas</span>' +
+      (it.nota ? '<div class="item-nota">' + esc(it.nota) + '</div>' : '') +
+    '</article>';
+  });
+  return html + '</div></section>';
+}
+
+/* ============================================================
+   RENDER — LA MATRIZ
+============================================================ */
+function renderMatriz(){
+  var items = itemsDelPlan();
+  var tiendas = tiendasOrdenadas();
+  var tot = calcularTotales();
+
+  var html = '<div class="perforacion"></div>' +
+  '<section class="capitulo">' +
+    '<div class="cap-head">' +
+      '<span class="cap-form">FORM 03</span>' +
+      '<span class="cap-titulo">La matriz de reparto</span>' +
+      '<span class="sello sello-naranja" id="selloPlan">PLAN: ' + (state.plan === "recomendado" ? "RECOMENDADO" : "MODELO COMPLETO") + '</span>' +
+    '</div>' +
+    '<div class="matriz-wrap"><table class="matriz" id="tablaMatriz"><thead><tr>' +
+      '<th class="col-tienda">Tienda</th>';
+  items.forEach(function(it){
+    html += '<th>' + esc(it.corto) + '<br><span style="font-family:var(--mono);font-size:10px;letter-spacing:0">' +
+      esc(it.ucaja) + ' u/cj · bod ' + fmtInt(it.bodega) + '</span></th>';
+  });
+  html += '<th>Total fila</th></tr></thead><tbody>';
+
+  tiendas.forEach(function(t){
+    html += '<tr>' +
+      '<td class="col-tienda">' +
+        '<span class="tag-tienda">' + esc(t.nombre) + '</span>' +
+        (t.top20 ? '<span class="badge-top">TOP-20</span>' : '') +
+        '<span class="tag-num">' + esc(t.num) + '</span>' +
+        '<div class="tinfo">prom3 ' + fmtInt(t.prom3) + ' · 628: ' + fmtInt(t.q628) + ' · 629: ' + fmtInt(t.q629) + ' · 630: ' + fmtInt(t.q630) + '</div>' +
+      '</td>';
+    items.forEach(function(it){
+      var cj = cajasCelda(t.num, it.id);
+      var mot = motivoCelda(t.num, it.id);
+      html += '<td class="celda" data-tienda="' + esc(t.num) + '" data-item="' + esc(it.id) + '">' +
+        '<input type="number" min="0" step="1" value="' + cj + '" data-tienda="' + esc(t.num) + '" data-item="' + esc(it.id) + '" aria-label="cajas ' + esc(t.nombre) + ' ' + esc(it.corto) + '">' +
+        (mot ? '<span class="punto-motivo" title="Tiene motivo"></span>' : '') +
+      '</td>';
+    });
+    var fc = tot.filas[t.num];
+    var pct = tot.maxFila > 0 ? Math.round(fc / tot.maxFila * 100) : 0;
+    html += '<td class="rowbar-cell">' +
+      '<div class="col-total-row" data-totfila="' + esc(t.num) + '">' + fmtInt(fc) + ' cj</div>' +
+      '<div class="rowbar-track"><div class="rowbar-fill" data-barrafila="' + esc(t.num) + '" style="width:' + pct + '%"></div></div>' +
+    '</td></tr>';
+  });
+
+  html += '</tbody><tfoot>' +
+    '<tr><td class="col-tienda">TOTAL CAJAS</td>';
+  items.forEach(function(it){
+    html += '<td class="num" data-totcajas="' + esc(it.id) + '">' + fmtInt(tot.porItem[it.id].cajas) + '</td>';
+  });
+  html += '<td class="num" id="totGCajas">' + fmtInt(tot.gCajas) + '</td></tr>' +
+    '<tr><td class="col-tienda">TOTAL UNIDADES</td>';
+  items.forEach(function(it){
+    var p = tot.porItem[it.id];
+    html += '<td class="num' + (p.excede ? ' total-alerta' : '') + '" data-totunid="' + esc(it.id) + '">' + fmtInt(p.unid) + '</td>';
+  });
+  html += '<td class="num" id="totGUnid">' + fmtInt(tot.gUnid) + '</td></tr>' +
+    '<tr class="fila-q"><td class="col-tienda">TOTAL Q COSTO</td>';
+  items.forEach(function(it){
+    html += '<td class="num" data-totq="' + esc(it.id) + '">' + fmtQ(tot.porItem[it.id].q) + '</td>';
+  });
+  html += '<td class="num" id="totGQ">' + fmtQ(tot.gQ) + '</td></tr>' +
+  '</tfoot></table></div>' +
+  '<div class="leyenda-alerta" id="leyendaAlerta">▲ COLUMNA EN ALERTA: las unidades del ítem superan lo disponible en bodega.</div>' +
+  '</section>';
+  return html;
+}
+
+/* Recalcula totales en vivo sin re-renderizar la tabla */
+function recalcMatriz(){
+  var tot = calcularTotales();
+  var items = itemsDelPlan();
+  items.forEach(function(it){
+    var p = tot.porItem[it.id];
+    var cC = document.querySelector('[data-totcajas="' + it.id + '"]');
+    var cU = document.querySelector('[data-totunid="' + it.id + '"]');
+    var cQ = document.querySelector('[data-totq="' + it.id + '"]');
+    if(cC) cC.textContent = fmtInt(p.cajas);
+    if(cU){ cU.textContent = fmtInt(p.unid); cU.classList.toggle('total-alerta', p.excede); }
+    if(cQ) cQ.textContent = fmtQ(p.q);
+  });
+  tiendasOrdenadas().forEach(function(t){
+    var el = document.querySelector('[data-totfila="' + t.num + '"]');
+    var bar = document.querySelector('[data-barrafila="' + t.num + '"]');
+    if(el) el.textContent = fmtInt(tot.filas[t.num]) + ' cj';
+    if(bar) bar.style.width = (tot.maxFila > 0 ? Math.round(tot.filas[t.num] / tot.maxFila * 100) : 0) + '%';
+  });
+  var g1 = document.getElementById('totGCajas'); if(g1) g1.textContent = fmtInt(tot.gCajas);
+  var g2 = document.getElementById('totGUnid');  if(g2) g2.textContent = fmtInt(tot.gUnid);
+  var g3 = document.getElementById('totGQ');     if(g3) g3.textContent = fmtQ(tot.gQ);
+  var hayAlerta = items.some(function(it){ return tot.porItem[it.id].excede; });
+  var ley = document.getElementById('leyendaAlerta');
+  if(ley) ley.classList.toggle('visible', hayAlerta);
+  var mini = document.getElementById('totalesMini');
+  if(mini) mini.textContent = fmtInt(tot.gCajas) + ' cj · ' + fmtInt(tot.gUnid) + ' u · ' + fmtQ(tot.gQ);
+}
+
+/* ============================================================
+   RENDER — VILLA NUEVA / AJUSTES / NARRATIVA
+============================================================ */
+function renderVillaNueva(){
+  var vn = DATA.villa_nueva;
+  var html = '<div class="perforacion"></div>' +
+  '<section class="capitulo">' +
+    '<div class="cap-head">' +
+      '<span class="cap-form">FORM 04</span>' +
+      '<span class="cap-titulo">' + esc(vn.titulo) + '</span>' +
+    '</div>' +
+    '<div class="incidente">' +
+      '<span class="sello sello-rojo sello-excluida">EXCLUIDA DEL PEDIDO</span>' +
+      '<h4>Reporte de incidencia · físico vs sistema</h4>' +
+      '<table><thead><tr><th>Línea</th><th>Físico</th><th>Sistema</th><th>Diferencia</th></tr></thead><tbody>';
+  vn.filas.forEach(function(f){
+    var dif = (Number(f.fisico)||0) - (Number(f.sistema)||0);
+    html += '<tr' + (dif < 0 ? ' class="fila-alerta"' : '') + '>' +
+      '<td>' + esc(f.desc) + '</td>' +
+      '<td class="num">' + fmtInt(f.fisico) + '</td>' +
+      '<td class="num">' + fmtInt(f.sistema) + '</td>' +
+      '<td class="num' + (dif < 0 ? ' dif-neg' : '') + '">' + (dif > 0 ? '+' : '') + fmtInt(dif) + '</td>' +
+    '</tr>';
+  });
+  html += '</tbody></table>' +
+      '<div class="fantasma">' +
+        '<span class="fnum">' + fmtInt(vn.fantasma_total) + '</span>' +
+        '<span class="flbl">unidades fantasma<br>en sistema</span>' +
+      '</div>' +
+      (vn.nota ? '<div class="cap-nota">' + esc(vn.nota) + '</div>' : '') +
+    '</div>' +
+  '</section>';
+  return html;
+}
+
+function renderAjustes(){
+  var html = '<div class="perforacion"></div>' +
+  '<section class="capitulo">' +
+    '<div class="cap-head">' +
+      '<span class="cap-form">FORM 05</span>' +
+      '<span class="cap-titulo">Ajustes a pedir</span>' +
+    '</div><ul class="ajustes-lista">';
+  DATA.ajustes.forEach(function(a){
+    html += '<li><span class="a-tienda">' + esc(a.tienda) + '</span>' + esc(a.detalle) + '</li>';
+  });
+  return html + '</ul></section>';
+}
+
+function renderNarrativa(){
+  var html = '<div class="perforacion"></div>' +
+  '<section class="capitulo">' +
+    '<div class="cap-head">' +
+      '<span class="cap-form">FORM 06</span>' +
+      '<span class="cap-titulo">Narrativa del pedido</span>' +
+    '</div>';
+  DATA.narrativa.capitulos.forEach(function(c){
+    html += '<details id="' + esc(c.id) + '"><summary>' + esc(c.titulo) + '</summary><div class="nar-cuerpo">';
+    c.parrafos.forEach(function(p){ html += '<p>' + esc(p) + '</p>'; });
+    html += '</div></details>';
+  });
+  return html + '</section>';
+}
+
+/* ============================================================
+   ENSAMBLADO DE LA PÁGINA
+============================================================ */
+function renderApp(){
+  document.getElementById('app').innerHTML =
+    renderCabecera() +
+    renderKpis() +
+    renderOC() +
+    renderItems() +
+    renderMatriz() +
+    renderVillaNueva() +
+    renderAjustes() +
+    renderNarrativa();
+  recalcMatriz();
+  pintarBotonesPlan();
+}
+
+/* ============================================================
+   INDICADOR Y BOTONES DE PLAN
+============================================================ */
+function pintarIndicador(){
+  var el = document.getElementById('indicador');
+  if(!el) return;
+  if(state.dirty){
+    var hora = "";
+    if(state.savedAt){
+      var d = new Date(state.savedAt);
+      hora = " " + ("0"+d.getHours()).slice(-2) + ":" + ("0"+d.getMinutes()).slice(-2);
+    }
+    el.textContent = "● EDITADO · GUARDADO" + hora;
+    el.classList.add('editado');
+  }else{
+    el.textContent = "SIN CAMBIOS";
+    el.classList.remove('editado');
+  }
+}
+
+function pintarBotonesPlan(){
+  document.getElementById('btnRecomendado').classList.toggle('activo', state.plan === 'recomendado');
+  document.getElementById('btnModelo').classList.toggle('activo', state.plan === 'modelo');
+  var sello = document.getElementById('selloPlan');
+  if(sello) sello.textContent = 'PLAN: ' + (state.plan === 'recomendado' ? 'RECOMENDADO' : 'MODELO COMPLETO');
+}
+
+function cambiarPlan(nuevo){
+  if(nuevo === state.plan) return;
+  if(state.dirty && !window.confirm('Hay ediciones sin aplicar a un plan. Al cambiar de plan se descartan las ediciones. ¿Continuar?')) return;
+  state.plan = nuevo;
+  state.edits = {};
+  state.dirty = false;
+  guardarEstado();
+  renderApp();
+  pintarIndicador();
+}
+
+/* ============================================================
+   EXPORTACIONES
+============================================================ */
+function detalleLineas(){
+  var items = itemsDelPlan();
+  var tiendas = tiendasOrdenadas();
+  var lineas = [];
+  tiendas.forEach(function(t){
+    items.forEach(function(it){
+      var cj = cajasCelda(t.num, it.id);
+      if(cj > 0){
+        lineas.push({ tienda: t, item: it, cajas: cj, unid: cj * it.ucaja, q: cj * it.ucaja * it.costo });
+      }
+    });
+  });
+  return lineas;
+}
+
+function copiarOrden(){
+  var items = itemsDelPlan();
+  var tiendas = tiendasOrdenadas();
+  var tot = calcularTotales();
+  var porNom = {};
+  tiendas.forEach(function(t){ porNom[t.num] = t.nombre; });
+  var L = [];
+  L.push('ORDEN DE REFUERZO — ' + DATA.meta.titulo);
+  L.push('Plan: ' + (state.plan === 'recomendado' ? 'RECOMENDADO' : 'MODELO COMPLETO') + ' · Generado: ' + DATA.meta.generado);
+  L.push('Totales: ' + fmtInt(tot.gCajas) + ' cajas · ' + fmtInt(tot.gUnid) + ' unidades · ' + fmtQ(tot.gQ));
+  L.push('');
+  items.forEach(function(it){
+    var p = tot.porItem[it.id];
+    if(p.cajas <= 0) return;
+    L.push('■ ' + it.nombre + ' (' + it.id + ')');
+    L.push('  Total: ' + fmtInt(p.cajas) + ' cajas · ' + fmtInt(p.unid) + ' u · ' + fmtQ(p.q));
+    tiendas.forEach(function(t){
+      var cj = cajasCelda(t.num, it.id);
+      if(cj > 0) L.push('  - ' + t.nombre + ' (' + t.num + '): ' + fmtInt(cj) + ' cajas');
+    });
+    L.push('');
+  });
+  var texto = L.join('\n');
+
+  function ok(){ avisoIndicador('ORDEN COPIADA AL PORTAPAPELES'); }
+  function fallback(){
+    var ta = document.createElement('textarea');
+    ta.value = texto;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand('copy'); ok(); }
+    catch(e){ avisoIndicador('NO SE PUDO COPIAR'); }
+    document.body.removeChild(ta);
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(texto).then(ok, fallback);
+  }else fallback();
+}
+
+function avisoIndicador(msg){
+  var el = document.getElementById('indicador');
+  if(!el) return;
+  var prev = el.textContent;
+  el.textContent = msg;
+  setTimeout(pintarIndicador, 2200);
+}
+
+function descargarCSV(){
+  var lineas = detalleLineas();
+  var filas = ['tienda_num,tienda,item,cajas,unidades,q_costo'];
+  lineas.forEach(function(l){
+    filas.push([
+      l.tienda.num,
+      '"' + String(l.tienda.nombre).replace(/"/g,'""') + '"',
+      '"' + String(l.item.nombre).replace(/"/g,'""') + '"',
+      l.cajas,
+      l.unid,
+      l.q.toFixed(2)
+    ].join(','));
+  });
+  var uri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(filas.join('\r\n'));
+  var a = document.createElement('a');
+  a.href = uri;
+  a.download = 'pedido_refuerzo_' + state.plan + '.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  avisoIndicador('CSV DESCARGADO');
+}
+
+/* ============================================================
+   EVENTOS (DELEGACIÓN)
+============================================================ */
+function abrirMotivo(td){
+  var tnum = td.getAttribute('data-tienda');
+  var iid = td.getAttribute('data-item');
+  var t = null, it = null;
+  DATA.tiendas.forEach(function(x){ if(x.num === tnum) t = x; });
+  DATA.items.forEach(function(x){ if(x.id === iid) it = x; });
+  if(!t || !it) return;
+  var mot = motivoCelda(tnum, iid);
+  var cj = cajasCelda(tnum, iid);
+  document.getElementById('motivoCuerpo').innerHTML =
+    '<div class="m-tienda">TIENDA: ' + esc(t.nombre) + ' (' + esc(t.num) + ')</div>' +
+    '<div class="m-item">ÍTEM: ' + esc(it.nombre) + '</div>' +
+    '<div class="m-cajas">' + fmtInt(cj) + ' cajas</div>' +
+    '<div class="m-texto">' + (mot ? esc(mot) : 'Sin motivo registrado para esta celda en el plan activo.') + '</div>';
+  document.getElementById('motivoPanel').classList.add('abierto');
+}
+
+function bindEventos(){
+  document.addEventListener('input', function(ev){
+    var inp = ev.target;
+    if(!inp.matches || !inp.matches('#tablaMatriz input[type="number"]')) return;
+    var v = parseInt(inp.value, 10);
+    if(isNaN(v) || v < 0) v = 0;
+    state.edits[clave(inp.getAttribute('data-tienda'), inp.getAttribute('data-item'))] = v;
+    state.dirty = true;
+    recalcMatriz();
+    guardarEstado();
+  });
+
+  document.addEventListener('click', function(ev){
+    var td = ev.target.closest ? ev.target.closest('#tablaMatriz td.celda') : null;
+    if(td){ abrirMotivo(td); return; }
+  });
+
+  document.getElementById('motivoCerrar').addEventListener('click', function(){
+    document.getElementById('motivoPanel').classList.remove('abierto');
+  });
+  document.addEventListener('keydown', function(ev){
+    if(ev.key === 'Escape') document.getElementById('motivoPanel').classList.remove('abierto');
+  });
+
+  document.getElementById('btnRecomendado').addEventListener('click', function(){ cambiarPlan('recomendado'); });
+  document.getElementById('btnModelo').addEventListener('click', function(){ cambiarPlan('modelo'); });
+  document.getElementById('btnCopiar').addEventListener('click', copiarOrden);
+  document.getElementById('btnCSV').addEventListener('click', descargarCSV);
+  document.getElementById('btnReset').addEventListener('click', function(){
+    if(!window.confirm('¿Restablecer el tablero? Se borran las ediciones y vuelve el plan recomendado.')) return;
+    state.plan = 'recomendado';
+    state.edits = {};
+    state.dirty = false;
+    state.savedAt = null;
+    try{ localStorage.removeItem(LS_KEY); }catch(e){}
+    renderApp();
+    pintarIndicador();
+  });
+}
+
+/* ============================================================
+   ARRANQUE
+============================================================ */
+cargarEstado();
+renderApp();
+bindEventos();
+pintarIndicador();
+</script>
+</body>
+</html>

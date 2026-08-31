@@ -17,7 +17,40 @@ Especial Q25 · Carlsberg Q25. Descartadas: Landshark, Lagunitas, Paulaner, Fran
 
 ## Pendientes en orden de fuego
 
-### 1 · Creación masiva de ítems en «el robot» — URGENTE (Diego lo prometió el 27)
+### 1 · Creación masiva de ítems en «el robot» — 🟡 EN MARCHA (avance 27-ago, sesión post-reunión)
+**Hecho:** proceso oficial documentado en `alta-robot/PROCESO-CREACION-ITEMS-WALMART.md` (fuente:
+walmartcentroamerica.com/proveedores/actualizacion + historial de correos de Diego con el robot).
+PlantillaF oficial y Prevalidador descargados en `alta-robot/walmart-oficial/`. Borrador de las 19
+filas con semáforo en `alta-robot/Alta_Robot_NewItemForm_borrador.xlsx`. **Flujo repartido en 3 canales (27-ago tarde):**
+(a) `alta-robot/Captura_Alta_Robot.html` = bandeja de bodega: Diego pega las fotos de WhatsApp
+(código de barras unidad/caja) + medidas en texto libre, 16 productos; las fotos caen nombradas
+`NN_REF_fN.jpg` (carpeta destino: `alta-robot/fotos-bodega/`). Claude lee los EAN de las fotos.
+(b) Registros sanitarios: fotos raw del cel a `alta-robot/registros-sanitarios/_entrada/` → Claude
+identifica producto/número/vencimiento y los escanea a PDF ordenado (`escanear.py`).
+(c) Costos y PVP faltantes (italianas, Twisted, pack alemán, Blue Moon lata): se firman en el chat.
+Luego: PlantillaF final → prevalidador → correo a CAMSOLCAT23@walmart.com (asunto `VENDOR...`, texto
+plano, sin firma). Además: 7–11 fotos JPG + 5 fotos e-commerce `{UPC}-01.jpg` por ítem.
+**Fotos e-commerce (dato de Diego 27-ago):** la misma foto subida varias veces sirve para el formato;
+mientras tanto se pueden usar las fotos de producto del e-commerce de Birra Bier (mismas cervezas).
+**RS ✅ HECHO (27-ago noche):** carpeta `OneDrive…\REGISTROS SANITARIOS` reorganizada (01-CERTIFICADOS /
+02-FORMULARIOS / 03-ETIQUETAS-Y-ARTES / 04-OTROS / RAW intacta + LOG-REORGANIZACION.md). 110 certificados
+escaneados a PDF con nombre `RS {registro} - {producto} (vence …)` e índice consultable `00-INDICE.html`
+(semáforo: 79 vigentes · 13 renovar pronto · 7 críticos · 10 vencidos — ninguno del alta).
+**Bodega ✅ + códigos:** EAN de unidad y caja confirmados con checksum para casi todo el alta —
+consolidado completo en `alta-robot/datos-consolidados-alta.json` (fuente única para la PlantillaF).
+**Bloqueos restantes del alta:** ① Cotta 37 SIN registro sanitario (existe el de Cotta 50; decidir:
+registrar la 37 ya, o cambiar la variedad del piloto). ② MBU 750 con titular BIRRA BIER (evaluar si
+Walmart lo acepta o pedir traslado). ③ Sam Adams: foto del código sin la etiqueta encima + la caja no
+trae código (imprimir etiqueta DUN-14). ④ Twisted Tea es VARIETY PACK de 4 sabores (decidir cómo se
+crea el ítem) + falta código de Half & Half. ⑤ PVP por firmar: italianas, Twisted, pack alemán, Blue
+Moon lata. ⑥ Pilsner Urquell sin stock en bodega (datos en formato La Torre). ⑦ EAN de los 4-packs
+(arte final) y GTIN GS1 del pack alemán (en trámite).
+**Fecha efectiva FIRMADA por Diego (27-ago, chat): 15/09/2026.** Bodega levanta EAN/medidas/u-caja
+(mensaje enviado por Diego al equipo GSP/bodega el 27-ago).
+**Pack alemán FIRMADO (27-ago):** Dunkel + Münchner Weisse (2×500 ml) + vaso original · caja master
+de 6 packs. GTIN en trámite: `Downloads/PRODUCTOS.xlsx` con las 2 filas (pack GPC 10000159 Beer +
+master) listo para la carga masiva en el portal GS1 GT. Al recibir los GTIN asignados, pasan al
+tablero de captura y al formulario del robot.
 Generar con Claude el alta masiva según el formato de la plantilla de Walmart. Alcance: las 10
 cervezas nuevas + Blue Moon lata (registro adicional, fecha selectiva ene-2027) + 3 packs
 (Trooper, Hobgoblin, alemán con vaso — el alemán aún sin código: Diego dijo que saca el código
@@ -69,13 +102,19 @@ actualizado (`Downloads\VISUAL- CLAN CERVECERO.xlsx`, hoja DATOS columna AX = es
 tienda), y Retail Link por tienda. Es material de decisión → **entregable HTML** (regla de la
 casa).
 
-### 9 · Restock recalculado con datos frescos → orden de compra («la otra semana»)
-⚠️ PRERREQUISITO: **reconciliar Walmart Villa Nueva** — el reconteo del chat (26/08 19:01) y el
-Excel maestro difieren en 8 de 20 ítems (Trooper Original: sistema 184 vs 21). Sin resolver
-eso no se emite pedido de esa tienda. Insumos: sugerido 3 capas ya construido
-(`documentos/sugerido-restock-27ago.html` en el repo infografias), tubería 380 u (HB Original
-140 · Trooper Orig 100 · Silver 60 · FOTD 60 · Dunkel 20), y la semana 202630 que cierra el
-viernes 28 (bajar Retail Link el 30–31/08 para números limpios).
+### 9 · Restock recalculado con datos frescos → orden de compra — 🟢 CALCULADO 31-ago (sesión pedido-refuerzo)
+**Hecho:** pedido de refuerzo tienda×tienda en cajas con la semana 202630 cerrada + OC automática
+2401060275 + Odoo vivo + chat al 29/08. Entregable interactivo en
+`pedido-refuerzo/PEDIDO-REFUERZO.html` (2 planes: recomendado 67 cajas Q29,314 · modelo 122 cajas
+Q55,434) + `pedido-refuerzo/AUDITORIA.md` (método, fuentes, validaciones).
+**Prerrequisito VN resuelto por evidencia:** reconteo 26/08 **reconfirmado idéntico 28/08** y
+contrastado con RL del 30/08 → 417 u fantasma en 13/14 ítems. VN **excluida del pedido**; el ajuste
+de inventario va en la lista para Cristian dentro del entregable. La tubería de 380 u ya aterrizó
+(tránsito 0 en RL 30/08; WM Roosevelt recibió 108 HB Original).
+**⚠️ Hallazgo colateral:** la OC automática pide 200 HB Original (bodega: 9 u) y 120 Trooper
+(bodega: 64) — fill rate 57% si se despacha tal cual; cancela 04/09. Decisión de Diego pendiente.
+**⏳ Falta:** firma de Diego del plan (o ajuste en el panel del HTML) + extensión de vigencia ID
+90884 antes del 02/09 (condición de Rasputin y de los 5 restantes) + enviar a Cristian.
 
 ### 10 · Visita al centro de distribución (validar empaquetados) — antes del 20/09
 Coordinar con Walmart. Llevar los 3 packs y las cajas master.
