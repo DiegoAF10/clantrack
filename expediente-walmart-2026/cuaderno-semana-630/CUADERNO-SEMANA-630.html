@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cuaderno Semanal de Retail</title>
+<style>
+  :root{
+    --papel:#faf6ee;
+    --papel2:#f3eddd;
+    --tinta:#1a1a17;
+    --tinta-suave:#4a463c;
+    --rojo:#c0392b;
+    --verde:#1e6b3c;
+    --ambar:#b7791f;
+    --petroleo:#1f5f6b;
+    --linea:#d8d0bd;
+    --linea-fuerte:#b8ae95;
+    --serif:Georgia,'Times New Roman',serif;
+    --mono:Consolas,'Courier New',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background-color:var(--papel);
+    background-image:
+      repeating-linear-gradient(0deg, rgba(26,26,23,.028) 0 1px, transparent 1px 26px);
+    color:var(--tinta);
+    font-family:var(--serif);
+    font-size:15px;
+    line-height:1.45;
+    padding-bottom:64px;
+  }
+  .num,td.n,th.n{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  a{color:inherit}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:200;
+    background:var(--papel);
+    border-bottom:3px double var(--tinta);
+    padding:6px 18px;
+    display:flex;flex-wrap:wrap;gap:2px 14px;align-items:baseline;
+  }
+  nav .marca{font-weight:bold;text-transform:uppercase;letter-spacing:.14em;font-size:12px;margin-right:10px}
+  nav a{
+    font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;
+    text-decoration:none;color:var(--tinta-suave);padding:2px 4px;
+  }
+  nav a:hover{color:var(--rojo);text-decoration:underline}
+  nav a .cod{font-family:var(--mono);color:var(--rojo);margin-right:2px}
+
+  main{max-width:1360px;margin:0 auto;padding:0 22px}
+
+  /* ---------- CABECERA ---------- */
+  header.cuaderno{padding:34px 0 18px;border-bottom:3px double var(--tinta)}
+  header.cuaderno .kicker{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--rojo);margin-bottom:8px}
+  header.cuaderno h1{font-size:40px;line-height:1.05;text-transform:uppercase;letter-spacing:.04em;font-weight:900}
+  header.cuaderno .sub{font-size:16px;font-style:italic;color:var(--tinta-suave);margin-top:8px}
+  header.cuaderno .gen{font-family:var(--mono);font-size:12px;margin-top:10px;color:var(--tinta-suave)}
+  header.cuaderno .fuentes{font-size:11px;color:var(--tinta-suave);margin-top:6px;border-top:1px solid var(--linea);padding-top:6px;font-style:italic}
+
+  /* ---------- SECCIONES ---------- */
+  section.folio{margin-top:38px;padding-top:14px;border-top:3px double var(--tinta)}
+  .folio-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--linea-fuerte);padding-bottom:8px;margin-bottom:16px}
+  .folio-head .fnum{font-family:var(--mono);font-size:13px;color:var(--rojo);letter-spacing:.1em}
+  .folio-head h2{font-size:24px;text-transform:uppercase;letter-spacing:.06em;font-weight:900}
+  .folio-head .nota{margin-left:auto;font-size:12px;font-style:italic;color:var(--tinta-suave)}
+
+  /* ---------- KPIs ---------- */
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:22px}
+  .kpi{
+    background:var(--papel2);border:1px solid var(--linea-fuerte);
+    border-top:4px solid var(--tinta);padding:12px 14px 10px;position:relative;
+  }
+  .kpi.ok{border-top-color:var(--verde)}
+  .kpi.alerta{border-top-color:var(--rojo)}
+  .kpi.neutro{border-top-color:var(--tinta)}
+  .kpi .lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.14em;color:var(--tinta-suave)}
+  .kpi .val{font-family:var(--mono);font-size:26px;font-weight:bold;margin:4px 0 2px}
+  .kpi .sub{font-size:11.5px;color:var(--tinta-suave);font-style:italic}
+  .kpi .delta{font-family:var(--mono);font-size:12px;margin-top:4px;display:inline-block;padding:1px 6px;border:1px solid currentColor}
+  .kpi .delta.up{color:var(--verde)}
+  .kpi .delta.dn{color:var(--rojo)}
+
+  .dos-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:900px){.dos-col{grid-template-columns:1fr}}
+  .graf{background:var(--papel2);border:1px solid var(--linea-fuerte);padding:14px 14px 8px}
+  .graf h3{font-size:12px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:8px;border-bottom:1px solid var(--linea);padding-bottom:5px}
+  .graf h3 span{font-family:var(--mono);color:var(--rojo);letter-spacing:0}
+  .graf svg{width:100%;height:auto;display:block}
+  .graf .pie{font-size:11px;font-style:italic;color:var(--tinta-suave);padding:6px 0 4px}
+
+  /* ---------- TABLAS ---------- */
+  table.box{width:100%;border-collapse:collapse;font-size:13.5px}
+  table.box th{
+    text-transform:uppercase;font-size:10.5px;letter-spacing:.1em;text-align:left;
+    border-top:2px solid var(--tinta);border-bottom:1px solid var(--tinta);
+    padding:7px 8px;background:var(--papel2);white-space:nowrap;user-select:none;
+  }
+  table.box th.ordenable{cursor:pointer}
+  table.box th.ordenable:hover{color:var(--rojo)}
+  table.box th .flecha{font-family:var(--mono);color:var(--rojo);margin-left:3px}
+  table.box td{border-bottom:1px solid var(--linea);padding:6px 8px;vertical-align:middle}
+  table.box tbody tr:nth-child(even){background:rgba(26,26,23,.025)}
+  table.box tbody tr:hover{background:rgba(192,57,43,.05)}
+  table.box tr.no-mod{background:rgba(183,121,31,.09)}
+  table.box tr.no-mod:hover{background:rgba(183,121,31,.16)}
+  td.n,th.n{text-align:right}
+  td.c,th.c{text-align:center}
+
+  .chip{display:inline-block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+    border:1px solid var(--tinta);padding:1px 7px;border-radius:10px;font-family:var(--mono)}
+  .chip.mod{border-color:var(--verde);color:var(--verde)}
+  .chip.nomod{border-color:var(--ambar);color:var(--ambar)}
+  .chip.inact{border-color:var(--tinta-suave);color:var(--tinta-suave)}
+
+  .minibar-wrap{display:flex;align-items:center;gap:8px;justify-content:flex-end}
+  .minibar{height:9px;background:var(--tinta);min-width:1px}
+  .minibar.q{background:var(--petroleo)}
+  .gauge{width:64px;height:9px;border:1px solid var(--tinta-suave);position:relative;display:inline-block;vertical-align:middle;background:#fff}
+  .gauge i{position:absolute;left:0;top:0;bottom:0;display:block}
+  .gauge.g-ok i{background:var(--verde)}
+  .gauge.g-med i{background:var(--ambar)}
+  .gauge.g-baj i{background:var(--rojo)}
+  .gauge-lbl{font-family:var(--mono);font-size:11.5px;margin-left:6px}
+
+  .badge-top{font-family:var(--mono);font-size:9.5px;background:var(--tinta);color:var(--papel);
+    padding:1px 6px;letter-spacing:.08em;margin-left:6px;vertical-align:middle}
+  .sello{
+    display:inline-block;font-family:var(--mono);font-size:9.5px;font-weight:bold;
+    color:var(--rojo);border:1.5px solid var(--rojo);border-radius:50%;
+    padding:3px 9px;transform:rotate(-6deg);margin-left:8px;letter-spacing:.06em;
+    text-transform:uppercase;white-space:nowrap;cursor:default;
+  }
+  .ico-conteo{cursor:pointer;font-family:var(--mono);border:1px solid var(--tinta);border-radius:50%;
+    width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;background:var(--papel2)}
+  .ico-conteo:hover{background:var(--rojo);color:var(--papel);border-color:var(--rojo)}
+
+  /* ---------- HEATMAP ---------- */
+  .leyenda{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px;font-size:11.5px;align-items:center}
+  .leyenda .muestra{width:20px;height:14px;display:inline-block;border:1px solid var(--tinta-suave);vertical-align:middle;margin-right:5px}
+  .m-fantasma{background:repeating-linear-gradient(45deg,var(--rojo) 0 3px,#8e2418 3px 6px)}
+  .m-cero{background:#3a382f}
+  .m-bajo{background:var(--ambar)}
+  .m-ok{background:var(--verde)}
+  .m-alto{background:var(--petroleo)}
+  .m-ausente{background:#fff linear-gradient(to top right,transparent 46%,var(--linea-fuerte) 46%,var(--linea-fuerte) 54%,transparent 54%)}
+
+  .filtros{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+  .btn-f{
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;
+    background:var(--papel2);border:1px solid var(--tinta);padding:4px 12px;cursor:pointer;color:var(--tinta);
+  }
+  .btn-f:hover{background:var(--tinta);color:var(--papel)}
+  .btn-f.activo{background:var(--rojo);border-color:var(--rojo);color:#fff}
+
+  .mapa-scroll{overflow-x:auto;border:1px solid var(--linea-fuerte);background:#fff}
+  table.mapa{border-collapse:collapse;font-size:11px}
+  table.mapa th,table.mapa td{border:1px solid var(--linea);padding:0}
+  table.mapa thead th{
+    background:var(--papel2);height:88px;vertical-align:bottom;padding:4px 2px;
+    font-family:var(--mono);font-size:10px;font-weight:normal;
+  }
+  table.mapa thead .rot{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;letter-spacing:.03em}
+  table.mapa thead th.esquina{vertical-align:middle;padding:6px 8px;text-align:left;font-family:var(--serif);text-transform:uppercase;font-size:10px;letter-spacing:.1em}
+  table.mapa td.th-tienda{
+    background:var(--papel2);text-align:left;padding:4px 8px;white-space:nowrap;
+    font-size:11.5px;border-right:2px solid var(--tinta);
+  }
+  table.mapa td.th-tienda .num-t{font-family:var(--mono);color:var(--tinta-suave);font-size:10px;margin-right:5px}
+  table.mapa td.celda{width:44px;height:30px;text-align:center;font-family:var(--mono);font-size:10px;cursor:crosshair;color:#fff}
+  td.celda.e-fantasma{background:repeating-linear-gradient(45deg,var(--rojo) 0 3px,#8e2418 3px 6px)}
+  td.celda.e-cero{background:#3a382f}
+  td.celda.e-bajo{background:var(--ambar)}
+  td.celda.e-ok{background:var(--verde)}
+  td.celda.e-alto{background:var(--petroleo)}
+  td.celda.e-ausente{background:#fff linear-gradient(to top right,transparent 47%,var(--linea-fuerte) 47%,var(--linea-fuerte) 53%,transparent 53%);cursor:default}
+  td.celda:hover{outline:2px solid var(--tinta);outline-offset:-2px}
+
+  /* ---------- F05 ---------- */
+  .delta-neg{color:var(--rojo);font-weight:bold}
+  .delta-pos{color:var(--verde);font-weight:bold}
+
+  /* ---------- F07 LIBRETA ---------- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{
+    background:var(--papel2);border:1px solid var(--linea-fuerte);padding:12px 14px;position:relative;
+  }
+  .card.alerta{border:2px solid var(--rojo)}
+  .card.alerta::after{
+    content:"REVISAR";position:absolute;top:8px;right:10px;font-family:var(--mono);font-size:9px;
+    color:var(--rojo);border:1.5px solid var(--rojo);border-radius:50%;padding:3px 8px;transform:rotate(8deg);letter-spacing:.08em;
+  }
+  .card .tienda{font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:.04em}
+  .card .meta{font-family:var(--mono);font-size:11px;color:var(--tinta-suave);margin:4px 0;border-bottom:1px solid var(--linea);padding-bottom:5px}
+  .card .nota{font-size:13px;font-style:italic}
+  .card .origen{position:absolute;bottom:8px;right:10px;font-family:var(--mono);font-size:9px;color:var(--tinta-suave);text-transform:uppercase;letter-spacing:.1em}
+  .equipo{margin-top:18px;border-top:1px solid var(--linea);padding-top:10px;font-size:12.5px}
+  .equipo h4{font-size:11px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:6px}
+  .equipo ul{list-style:none;display:flex;flex-wrap:wrap;gap:4px 22px}
+  .equipo li .rol{font-family:var(--mono);font-size:10.5px;color:var(--tinta-suave)}
+
+  /* ---------- F08 HALLAZGOS ---------- */
+  .hallazgo{display:flex;gap:16px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--linea)}
+  .hallazgo .sello-g{
+    flex:0 0 auto;font-family:var(--mono);font-size:10px;font-weight:bold;text-transform:uppercase;
+    letter-spacing:.08em;border-radius:50%;padding:6px 12px;transform:rotate(-4deg);border:2px solid;
+  }
+  .sello-g.alta{color:var(--rojo);border-color:var(--rojo)}
+  .sello-g.media{color:var(--ambar);border-color:var(--ambar)}
+  .sello-g.info{color:var(--tinta);border-color:var(--tinta)}
+  .hallazgo h4{font-size:15px;text-transform:uppercase;letter-spacing:.04em}
+  .hallazgo p{font-size:13.5px;color:var(--tinta-suave);margin-top:3px}
+
+  /* ---------- CRÓNICA ---------- */
+  details.cap{border-bottom:1px solid var(--linea);padding:6px 0}
+  details.cap summary{
+    cursor:pointer;list-style:none;font-size:19px;font-weight:bold;text-transform:uppercase;
+    letter-spacing:.05em;padding:8px 0;
+  }
+  details.cap summary::-webkit-details-marker{display:none}
+  details.cap summary::before{content:"§ ";color:var(--rojo);font-family:var(--mono)}
+  details.cap summary:hover{color:var(--rojo)}
+  details.cap .cuerpo{padding:4px 0 14px 22px;max-width:820px}
+  details.cap .cuerpo p{margin-bottom:10px;font-size:14.5px;text-align:justify}
+  details.cap .cuerpo p:first-child::first-letter{
+    font-size:34px;font-weight:bold;float:left;line-height:.85;padding-right:6px;color:var(--rojo);
+  }
+
+  /* ---------- PANEL LATERAL ---------- */
+  #panel-lateral{
+    position:fixed;top:0;right:-420px;width:400px;max-width:92vw;height:100vh;z-index:400;
+    background:var(--papel);border-left:3px double var(--tinta);padding:26px 24px;
+    transition:right .25s ease;overflow-y:auto;
+  }
+  #panel-lateral.abierto{right:0}
+  #panel-lateral h3{font-size:20px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+  #panel-lateral .pl-sub{font-family:var(--mono);font-size:12px;color:var(--tinta-suave);margin-bottom:14px}
+  #panel-lateral .pl-nota{font-size:14.5px;font-style:italic;border-left:3px solid var(--rojo);padding-left:12px}
+  #panel-lateral .cerrar{
+    position:absolute;top:14px;right:14px;font-family:var(--mono);border:1px solid var(--tinta);
+    background:none;width:28px;height:28px;cursor:pointer;font-size:14px;
+  }
+  #panel-lateral .cerrar:hover{background:var(--rojo);color:#fff;border-color:var(--rojo)}
+
+  /* ---------- TOOLTIP ---------- */
+  #tt{
+    position:fixed;z-index:500;pointer-events:none;display:none;
+    background:var(--tinta);color:var(--papel);font-family:var(--mono);font-size:11.5px;
+    padding:8px 11px;max-width:280px;border:1px solid var(--papel);
+  }
+  #tt .tt-t{color:#f0d9b5;font-weight:bold;display:block;margin-bottom:3px;font-family:var(--serif);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase}
+  #tt .fila{display:flex;justify-content:space-between;gap:14px}
+  #tt .nota{display:block;margin-top:4px;color:#e8c9a0;font-style:italic;font-family:var(--serif)}
+
+  /* ---------- BARRA INFERIOR ---------- */
+  #barra{
+    position:fixed;left:0;right:0;bottom:0;z-index:300;
+    background:var(--tinta);color:var(--papel);
+    display:flex;align-items:center;gap:14px;padding:8px 18px;font-size:12px;
+  }
+  #barra button{
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;
+    background:transparent;color:var(--papel);border:1px solid var(--papel);padding:5px 14px;cursor:pointer;
+  }
+  #barra button:hover{background:var(--rojo);border-color:var(--rojo)}
+  #barra .estado-filtros{font-family:var(--mono);font-size:11px;color:#c9c2ae;margin-left:auto}
+  #barra .aviso{font-family:var(--mono);font-size:11px;color:#8fd6a4}
+
+  footer.fin{max-width:1360px;margin:40px auto 0;padding:14px 22px;border-top:3px double var(--tinta);
+    font-size:11px;font-style:italic;color:var(--tinta-suave);text-align:center}
+
+  /* ---------- IMPRESIÓN ---------- */
+  @media print{
+    body{background:#fff;padding-bottom:0}
+    nav,#barra,#panel-lateral,#tt,.filtros,.ico-conteo{display:none !important}
+    section.folio{page-break-inside:avoid;border-top:2px solid #000}
+    .mapa-scroll{overflow:visible}
+    details.cap{display:block}
+    details.cap .cuerpo{display:block}
+    a{text-decoration:none}
+    .kpi,.graf,.card{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav"></nav>
+
+<main>
+  <header class="cuaderno" id="cabecera"></header>
+
+  <section class="folio" id="f01">
+    <div class="folio-head"><span class="fnum">F01</span><h2>El marcador</h2><span class="nota">Resultado de la semana, de un vistazo</span></div>
+    <div class="kpis" id="kpis"></div>
+    <div class="dos-col">
+      <div class="graf"><h3>Unidades por día <span>· semana en curso</span></h3><div id="g-diaria"></div><div class="pie">Las tres jornadas más altas van marcadas en rojo editorial.</div></div>
+      <div class="graf"><h3>Quetzales por semana <span>· contra el promedio 2024</span></h3><div id="g-semanal"></div><div class="pie">La línea punteada es el promedio semanal 2024: la distancia es la deuda.</div></div>
+    </div>
+  </section>
+
+  <section class="folio" id="f02">
+    <div class="folio-head"><span class="fnum">F02</span><h2>Los ítems</h2><span class="nota">Click en el encabezado para ordenar</span></div>
+    <div style="overflow-x:auto"><table class="box" id="t-items"></table></div>
+  </section>
+
+  <section class="folio" id="f03">
+    <div class="folio-head"><span class="fnum">F03</span><h2>Las tiendas</h2><span class="nota">El sello indica conteo físico recibido</span></div>
+    <div style="overflow-x:auto"><table class="box" id="t-tiendas"></table></div>
+  </section>
+
+  <section class="folio" id="f04">
+    <div class="folio-head"><span class="fnum">F04</span><h2>El mapa de la red</h2><span class="nota">Cada celda es un combo tienda × ítem</span></div>
+    <div class="leyenda" id="leyenda"></div>
+    <div class="filtros" id="filtros-mapa">
+      <button class="btn-f" data-mapa="todos">Todos</button>
+      <button class="btn-f" data-mapa="modulados">Solo modulados</button>
+      <button class="btn-f" data-mapa="nomodulados">Solo no modulados</button>
+    </div>
+    <div class="mapa-scroll"><table class="mapa" id="t-mapa"></table></div>
+  </section>
+
+  <section class="folio" id="f05">
+    <div class="folio-head"><span class="fnum">F05</span><h2>Piso contra sistema</h2><span class="nota" id="f05-nota"></span></div>
+    <div class="dos-col">
+      <div class="graf"><h3 id="g-vn-titulo">Verificación física · evolución</h3><div id="g-vn"></div><div class="pie">La franja roja es lo que el sistema jura y el piso desmiente.</div></div>
+      <div style="overflow-x:auto"><table class="box" id="t-disc"></table></div>
+    </div>
+  </section>
+
+  <section class="folio" id="f06" style="display:none">
+    <div class="folio-head"><span class="fnum">F06</span><h2>Reclamos</h2><span class="nota">Mercadería reclamada en el período</span></div>
+    <div style="overflow-x:auto"><table class="box" id="t-reclamos"></table></div>
+  </section>
+
+  <section class="folio" id="f07">
+    <div class="folio-head"><span class="fnum">F07</span><h2>La libreta de los mercaderistas</h2><span class="nota">Reportes de campo, tal como llegaron</span></div>
+    <div class="filtros" id="filtros-libreta"></div>
+    <div class="cards" id="cards"></div>
+    <div class="equipo" id="equipo"></div>
+  </section>
+
+  <section class="folio" id="f08">
+    <div class="folio-head"><span class="fnum">F08</span><h2>Hallazgos de la semana</h2><span class="nota">Lo que hay que atender antes del lunes</span></div>
+    <div id="hallazgos"></div>
+  </section>
+
+  <section class="folio" id="cronica">
+    <div class="folio-head"><span class="fnum">§</span><h2>La crónica</h2><span class="nota">La semana contada en capítulos</span></div>
+    <div id="capitulos"></div>
+  </section>
+</main>
+
+<footer class="fin" id="pie"></footer>
+
+<aside id="panel-lateral">
+  <button class="cerrar" id="pl-cerrar" aria-label="Cerrar">×</button>
+  <h3 id="pl-titulo"></h3>
+  <div class="pl-sub" id="pl-sub"></div>
+  <div class="pl-nota" id="pl-nota"></div>
+</aside>
+
+<div id="tt"></div>
+
+<div id="barra">
+  <button id="btn-copiar">Copiar resumen</button>
+  <button id="btn-imprimir">Imprimir</button>
+  <span class="aviso" id="aviso"></span>
+  <span class="estado-filtros" id="estado-filtros"></span>
+</div>
+
+<script>
+/*__DATOS__*/
+window.DATA = {"meta": {"titulo": "CUADERNO DE LA SEMANA · WALMART / PAIZ", "subtitulo": "Clan Cervecero · semana Walmart 202630 (22–28 de agosto) · scouting completo de la red", "generado": "31 de agosto de 2026", "fuentes": ["Retail Link 202630 (bajado 30/08)", "Conteos físicos GSP 26–29/08", "Reporte mercaderistas v2 (14–24/08)", "HUB v4"]}, "kpis": [{"label": "Venta de la semana", "valor": "Q 10,544", "sub": "297 unidades en 40 tiendas", "delta": "-3.3% vs semana 629", "tono": "neutro"}, {"label": "Instock del sistema", "valor": "91%", "sub": "lo que Walmart CREE tener en piso", "delta": null, "tono": "neutro"}, {"label": "Unidades fantasma", "valor": "536", "sub": "verificadas con conteo físico en 22 combos", "delta": null, "tono": "alerta"}, {"label": "Reclamos de la semana", "valor": "79 u", "sub": "≈ Q 3,630 al costo · 79% es Sapporo", "delta": null, "tono": "alerta"}, {"label": "Cobertura mercaderistas", "valor": "14 tiendas", "sub": "reportes frescos 26-29/08 · 23 acumuladas desde el 14/08", "delta": null, "tono": "ok"}], "curva_diaria": [{"dia": "Lun", "u": 16}, {"dia": "Mar", "u": 25}, {"dia": "Mié", "u": 33}, {"dia": "Jue", "u": 26}, {"dia": "Vie", "u": 63}, {"dia": "Sáb", "u": 85}, {"dia": "Dom", "u": 49}], "serie_semanal": [{"sem": "628", "q": 10325.05}, {"sem": "629", "q": 10906.04}, {"sem": "630", "q": 10543.56}], "referencia_2024": 20486, "items": [{"id": "75214930", "nombre": "Sapporo Silver", "clase": "MODULADO", "u628": 18, "q628": 1108.98, "u629": 42, "q629": 2587.62, "u630": 38, "q630": 2341.18, "exist": 693, "tiendas": 40, "con_stock": 36, "instock_sis": 90}, {"id": "75437621", "nombre": "Trooper Original", "clase": "MODULADO", "u628": 91, "q628": 2134.58, "u629": 76, "q629": 1767.76, "u630": 75, "q630": 1751.52, "exist": 2423, "tiendas": 40, "con_stock": 36, "instock_sis": 90}, {"id": "75437623", "nombre": "Trooper FOTD", "clase": "MODULADO", "u628": 47, "q628": 1795.39, "u629": 23, "q629": 933.17, "u630": 41, "q630": 1394.95, "exist": 613, "tiendas": 40, "con_stock": 36, "instock_sis": 90}, {"id": "75437610", "nombre": "Sapporo Black", "clase": "MODULADO", "u628": 13, "q628": 862.42, "u629": 26, "q629": 1594.04, "u630": 19, "q630": 1203.41, "exist": 647, "tiendas": 40, "con_stock": 37, "instock_sis": 92}, {"id": "75214932", "nombre": "Sapporo Gold", "clase": "INACTIVO", "u628": 11, "q628": 527.7, "u629": 8, "q629": 364.3, "u630": 20, "q630": 1017.9, "exist": 227, "tiendas": 26, "con_stock": 20, "instock_sis": 77}, {"id": "75437614", "nombre": "HB Original", "clase": "MODULADO", "u628": 26, "q628": 745.16, "u629": 32, "q629": 873.92, "u630": 33, "q630": 945.78, "exist": 777, "tiendas": 40, "con_stock": 36, "instock_sis": 90}, {"id": "75437616", "nombre": "HB Dunkel", "clase": "MODULADO", "u628": 21, "q628": 538.46, "u629": 45, "q629": 1073.22, "u630": 27, "q630": 650.08, "exist": 1135, "tiendas": 40, "con_stock": 39, "instock_sis": 98}, {"id": "75437613", "nombre": "NC Old Rasputin", "clase": "NO MODULADO", "u628": 12, "q628": 683.52, "u629": 7, "q629": 398.72, "u630": 9, "q630": 512.64, "exist": 346, "tiendas": 25, "con_stock": 25, "instock_sis": 100}, {"id": "75437615", "nombre": "HB Helles", "clase": "NO MODULADO", "u628": 44, "q628": 707.72, "u629": 35, "q629": 602.03, "u630": 18, "q630": 352.17, "exist": 264, "tiendas": 27, "con_stock": 21, "instock_sis": 78}, {"id": "75253328", "nombre": "StPet Suffolk", "clase": "INACTIVO", "u628": 16, "q628": 375.88, "u629": 4, "q629": 89.28, "u630": 10, "q630": 223.2, "exist": 461, "tiendas": 23, "con_stock": 23, "instock_sis": 100}, {"id": "75253329", "nombre": "HB Munchner", "clase": "INACTIVO", "u628": 4, "q628": 120.52, "u629": 9, "q629": 161.55, "u630": 4, "q630": 71.8, "exist": 267, "tiendas": 16, "con_stock": 14, "instock_sis": 88}, {"id": "75244435", "nombre": "Hobgoblin Ruby", "clase": "INACTIVO", "u628": 5, "q628": 147.67, "u629": 2, "q629": 9.15, "u630": 1, "q630": 31.25, "exist": 36, "tiendas": 4, "con_stock": 4, "instock_sis": 100}, {"id": "75437619", "nombre": "Belhaven Black", "clase": "NO MODULADO", "u628": 2, "q628": 47.68, "u629": 2, "q629": 47.68, "u630": 1, "q630": 23.84, "exist": 68, "tiendas": 6, "con_stock": 4, "instock_sis": 67}, {"id": "75437620", "nombre": "Belhaven McCallums", "clase": "NO MODULADO", "u628": 0, "q628": 0.0, "u629": 1, "q629": 23.84, "u630": 1, "q630": 23.84, "exist": 91, "tiendas": 8, "con_stock": 6, "instock_sis": 75}, {"id": "75244431", "nombre": "StPet Stout", "clase": "INACTIVO", "u628": 4, "q628": 36.16, "u629": 12, "q629": 2.64, "u630": 0, "q630": 0.0, "exist": 42, "tiendas": 3, "con_stock": 3, "instock_sis": 100}, {"id": "75244433", "nombre": "Hobgoblin Gold", "clase": "INACTIVO", "u628": 0, "q628": 0.0, "u629": 0, "q629": 0.0, "u630": 0, "q630": 0.0, "exist": 10, "tiendas": 2, "con_stock": 2, "instock_sis": 100}, {"id": "75244436", "nombre": "Hobgoblin Stout", "clase": "INACTIVO", "u628": 0, "q628": 0.0, "u629": 0, "q629": 0.0, "u630": 0, "q630": 0.0, "exist": 2, "tiendas": 1, "con_stock": 1, "instock_sis": 100}, {"id": "75437612", "nombre": "NC Scrimshaw", "clase": "NO MODULADO", "u628": 3, "q628": 140.71, "u629": 5, "q629": 284.8, "u630": 0, "q630": 0.0, "exist": 508, "tiendas": 30, "con_stock": 29, "instock_sis": 97}, {"id": "75437617", "nombre": "HB Session", "clase": "NO MODULADO", "u628": 1, "q628": 20.8, "u629": 1, "q629": 20.8, "u630": 0, "q630": 0.0, "exist": 137, "tiendas": 10, "con_stock": 9, "instock_sis": 90}, {"id": "75437618", "nombre": "Belhaven Best", "clase": "NO MODULADO", "u628": 0, "q628": 0.0, "u629": 3, "q629": 71.52, "u630": 0, "q630": 0.0, "exist": 95, "tiendas": 7, "con_stock": 6, "instock_sis": 86}], "tiendas": [{"num": "23", "nombre": "PAIZ NOVICENTRO ZONA 11", "q628": 871.34, "q629": 337.86, "q630": 653.4, "prom3": 620.87, "top20": true, "combos": 11, "con_stock": 8, "instock_sis": 73, "contada": true, "fecha_conteo": "26 y 29/08", "nota_conteo": "No modulados en CERO físico; FOTD y Suffolk marcados Liquidado"}, {"num": "22", "nombre": "PAIZ LAS AMERICAS", "q628": 502.44, "q629": 1308.44, "q630": 628.49, "prom3": 813.12, "top20": true, "combos": 10, "con_stock": 10, "instock_sis": 100, "contada": true, "fecha_conteo": "27/08", "nota_conteo": "Visibilidad con fotos"}, {"num": "727", "nombre": "PAIZ COLONIA VISTA HERMOS", "q628": 385.65, "q629": 427.05, "q630": 605.15, "prom3": 472.62, "top20": true, "combos": 11, "con_stock": 11, "instock_sis": 100, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "121", "nombre": "WM ROOSEVELT", "q628": 174.86, "q629": 335.72, "q630": 534.29, "prom3": 348.29, "top20": true, "combos": 9, "con_stock": 8, "instock_sis": 89, "contada": true, "fecha_conteo": "28/08", "nota_conteo": "Cuadra 100% PERO 68 Dunkel + 108 HB Original + 36 Silver empacados sin plano tras el modular de hace 15 días"}, {"num": "20", "nombre": "PAIZ MONTUFAR", "q628": 222.95, "q629": 66.61, "q630": 512.52, "prom3": 267.36, "top20": false, "combos": 10, "con_stock": 10, "instock_sis": 100, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "4173", "nombre": "PAIZ SANTA AMELIA", "q628": 196.7, "q629": 199.2, "q630": 463.67, "prom3": 286.52, "top20": false, "combos": 11, "con_stock": 7, "instock_sis": 64, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "108", "nombre": "PAIZ PRADERA", "q628": 670.72, "q629": 717.22, "q630": 456.09, "prom3": 614.68, "top20": true, "combos": 9, "con_stock": 8, "instock_sis": 89, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "4412", "nombre": "WM ALAMOS", "q628": 366.24, "q629": 202.09, "q630": 429.11, "prom3": 332.48, "top20": false, "combos": 16, "con_stock": 16, "instock_sis": 100, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "21", "nombre": "PAIZ VISTA HERMOSA", "q628": 119.92, "q629": 66.61, "q630": 425.28, "prom3": 203.94, "top20": false, "combos": 12, "con_stock": 12, "instock_sis": 100, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "491", "nombre": "PAIZ COBAN", "q628": 801.82, "q629": 630.86, "q630": 404.14, "prom3": 612.27, "top20": true, "combos": 9, "con_stock": 9, "instock_sis": 100, "contada": true, "fecha_conteo": "26-28/08", "nota_conteo": "Producto colocado y rotulado; no modulados pasaron a liquidación con planograma nuevo"}, {"num": "457", "nombre": "PAIZ ASUNCION", "q628": 466.7, "q629": 865.46, "q630": 398.94, "prom3": 577.03, "top20": true, "combos": 8, "con_stock": 8, "instock_sis": 100, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "4116", "nombre": "WM MIXCO", "q628": 139.64, "q629": 8.93, "q630": 375.01, "prom3": 174.53, "top20": false, "combos": 13, "con_stock": 13, "instock_sis": 100, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "4087", "nombre": "PAIZ EL NARANJO", "q628": 381.25, "q629": 229.82, "q630": 369.29, "prom3": 326.79, "top20": true, "combos": 13, "con_stock": 13, "instock_sis": 100, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "164", "nombre": "WM PUERTA PARADA", "q628": 331.98, "q629": 44.64, "q630": 366.61, "prom3": 247.74, "top20": false, "combos": 8, "con_stock": 7, "instock_sis": 88, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "4317", "nombre": "PAIZ SAN LUCAS", "q628": 174.65, "q629": 163.3, "q630": 365.53, "prom3": 234.49, "top20": false, "combos": 10, "con_stock": 9, "instock_sis": 90, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "4037", "nombre": "WM DEL NORTE", "q628": 521.35, "q629": 444.99, "q630": 308.12, "prom3": 424.82, "top20": true, "combos": 14, "con_stock": 13, "instock_sis": 93, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "419", "nombre": "PAIZ MAZATENANGO", "q628": 52.45, "q629": 218.92, "q630": 303.76, "prom3": 191.71, "top20": true, "combos": 13, "con_stock": 12, "instock_sis": 92, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "4490", "nombre": "PAIZ FRAIJANES", "q628": 349.44, "q629": 206.42, "q630": 276.78, "prom3": 277.55, "top20": false, "combos": 11, "con_stock": 10, "instock_sis": 91, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "34", "nombre": "PAIZ UTATLAN", "q628": 276.77, "q629": 235.46, "q630": 235.11, "prom3": 249.11, "top20": true, "combos": 8, "con_stock": 8, "instock_sis": 100, "contada": true, "fecha_conteo": "27/08", "nota_conteo": "Tienda limpia: 8 ítems, físico = sistema en todos"}, {"num": "46", "nombre": "PAIZ MEGA 6", "q628": 53.56, "q629": 376.85, "q630": 215.89, "prom3": 215.43, "top20": true, "combos": 10, "con_stock": 10, "instock_sis": 100, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "459", "nombre": "WM BOSQ SAN NICOLAS", "q628": 178.56, "q629": 288.88, "q630": 212.5, "prom3": 226.65, "top20": true, "combos": 8, "con_stock": 7, "instock_sis": 88, "contada": true, "fecha_conteo": "27/08", "nota_conteo": "VENCIDOS en tienda: FOTD completo (5/2026) + 12 Sapporo Black + 12 Gold + 12 Suffolk; Gold entra a plano de cámara fría"}, {"num": "458", "nombre": "PAIZ SALIDA AL PACIFICO", "q628": 128.05, "q629": 85.98, "q630": 211.37, "prom3": 141.8, "top20": false, "combos": 9, "con_stock": 7, "instock_sis": 78, "contada": true, "fecha_conteo": "29/08", "nota_conteo": "No modulados en cero; FOTD y Suffolk en liquidación (mapeo de tienda por confirmar)"}, {"num": "47", "nombre": "PAIZ MONTBLANC", "q628": 108.75, "q629": 479.11, "q630": 184.28, "prom3": 257.38, "top20": true, "combos": 10, "con_stock": 9, "instock_sis": 90, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "4414", "nombre": "WM ATANASIO TZUL", "q628": 385.19, "q629": 325.45, "q630": 178.56, "prom3": 296.4, "top20": true, "combos": 14, "con_stock": 14, "instock_sis": 100, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "169", "nombre": "PAIZ SAN CRISTOBAL", "q628": 645.58, "q629": 230.44, "q630": 171.43, "prom3": 349.15, "top20": true, "combos": 15, "con_stock": 14, "instock_sis": 93, "contada": true, "fecha_conteo": "27/08", "nota_conteo": "Casi cuadra; FOTD 22→16; Munchner y Helles \"se buscan\""}, {"num": "33", "nombre": "PAIZ AGUILAR BATRES", "q628": 106.42, "q629": 319.37, "q630": 167.4, "prom3": 197.73, "top20": true, "combos": 10, "con_stock": 10, "instock_sis": 100, "contada": true, "fecha_conteo": "27/08", "nota_conteo": "Silver: llegada de 12 u del 16/08 desaparecida (sistema 0); Helles/Rasputin/Scrimshaw cuadran"}, {"num": "24", "nombre": "PAIZ ROOSEVELT", "q628": 274.29, "q629": 131.54, "q630": 159.47, "prom3": 188.43, "top20": false, "combos": 12, "con_stock": 11, "instock_sis": 92, "contada": true, "fecha_conteo": "27/08", "nota_conteo": "Fantasmas modulados: Sapporo Black 20→0 · FOTD 27→3; Helles sano con 34 u"}, {"num": "1054", "nombre": "WALMART SAN CRISTóBAL", "q628": 44.64, "q629": 331.98, "q630": 147.15, "prom3": 174.59, "top20": true, "combos": 11, "con_stock": 10, "instock_sis": 91, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "414", "nombre": "WM VILLA NUEVA", "q628": 106.25, "q629": 128.57, "q630": 128.57, "prom3": 121.13, "top20": false, "combos": 15, "con_stock": 15, "instock_sis": 100, "contada": true, "fecha_conteo": "26 y 28/08", "nota_conteo": "FANTASMA MASIVO: 417 u de diferencia · bodega saturada · escalado a coordinador de abarrotes"}, {"num": "4491", "nombre": "PAIZ LIBERACION", "q628": 128.84, "q629": 0.0, "q630": 109.03, "prom3": 79.29, "top20": false, "combos": 10, "con_stock": 10, "instock_sis": 100, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "344", "nombre": "PAIZ CARRETERA A EL SALVA", "q628": 0.0, "q629": 218.13, "q630": 95.36, "prom3": 104.5, "top20": false, "combos": 11, "con_stock": 9, "instock_sis": 82, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "35", "nombre": "PAIZ PETAPA", "q628": 238.4, "q629": 85.62, "q630": 90.27, "prom3": 138.1, "top20": false, "combos": 10, "con_stock": 9, "instock_sis": 90, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "4370", "nombre": "WM PROCERES", "q628": 66.96, "q629": 132.4, "q630": 85.45, "prom3": 94.94, "top20": false, "combos": 10, "con_stock": 8, "instock_sis": 80, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "460", "nombre": "WM XELA", "q628": 0.0, "q629": 109.73, "q630": 66.96, "prom3": 58.9, "top20": false, "combos": 8, "con_stock": 7, "instock_sis": 88, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "4433", "nombre": "PAIZ SANTA CATARINA PINUL", "q628": 83.69, "q629": 339.18, "q630": 64.56, "prom3": 162.48, "top20": true, "combos": 10, "con_stock": 7, "instock_sis": 70, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "4126", "nombre": "PAIZ CHIQUIMULA PRADERA", "q628": 427.86, "q629": 90.18, "q630": 61.61, "prom3": 193.22, "top20": false, "combos": 10, "con_stock": 10, "instock_sis": 100, "contada": true, "fecha_conteo": "28/08", "nota_conteo": "Visibilidad con fotos"}, {"num": "948", "nombre": "WM NARANJO", "q628": 45.08, "q629": 61.61, "q630": 61.61, "prom3": 56.1, "top20": false, "combos": 8, "con_stock": 7, "instock_sis": 88, "contada": true, "fecha_conteo": "27/08", "nota_conteo": "No modulados \"no resurtible\"; varios BORRADO DE SISTEMA; Suffolk 28 u en merma; llegada HB Original 20 u el 29/08"}, {"num": "180", "nombre": "PAIZ HUEHUETENANGO", "q628": 218.3, "q629": 252.04, "q630": 20.8, "prom3": 163.71, "top20": true, "combos": 11, "con_stock": 9, "instock_sis": 82, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "1087", "nombre": "WM QUETZALTENANGO PERIFER", "q628": 0.0, "q629": 0.0, "q630": 0.0, "prom3": 0.0, "top20": false, "combos": 6, "con_stock": 0, "instock_sis": 0, "contada": false, "fecha_conteo": null, "nota_conteo": null}, {"num": "4176", "nombre": "PAIZ ALTOS DE SAN CRISTOB", "q628": 77.76, "q629": 209.38, "q630": 0.0, "prom3": 95.71, "top20": false, "combos": 14, "con_stock": 12, "instock_sis": 86, "contada": true, "fecha_conteo": "27/08", "nota_conteo": "Fantasmas: Rasputin 17→1 · Scrimshaw 17→8 · Session 3→0"}], "heatmap": [{"t": "1054", "i": "75214930", "e": "ok", "s": 15, "f": null, "v": 1}, {"t": "1054", "i": "75214932", "e": "ok", "s": 19, "f": null, "v": 0}, {"t": "1054", "i": "75253328", "e": "ok", "s": 13, "f": null, "v": 0}, {"t": "1054", "i": "75253329", "e": "bajo", "s": 8, "f": null, "v": 0}, {"t": "1054", "i": "75437610", "e": "bajo", "s": 8, "f": null, "v": 0}, {"t": "1054", "i": "75437614", "e": "ok", "s": 40, "f": null, "v": 0}, {"t": "1054", "i": "75437615", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "1054", "i": "75437616", "e": "ok", "s": 29, "f": null, "v": 0}, {"t": "1054", "i": "75437617", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "1054", "i": "75437621", "e": "alto", "s": 80, "f": null, "v": 0}, {"t": "1054", "i": "75437623", "e": "ok", "s": 14, "f": null, "v": 2}, {"t": "108", "i": "75214930", "e": "bajo", "s": 8, "f": null, "v": 4}, {"t": "108", "i": "75253328", "e": "ok", "s": 15, "f": null, "v": 0}, {"t": "108", "i": "75437610", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "108", "i": "75437612", "e": "ok", "s": 13, "f": null, "v": 0}, {"t": "108", "i": "75437613", "e": "bajo", "s": 7, "f": null, "v": 0}, {"t": "108", "i": "75437614", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "108", "i": "75437616", "e": "ok", "s": 18, "f": null, "v": 0}, {"t": "108", "i": "75437621", "e": "ok", "s": 28, "f": null, "v": 7}, {"t": "108", "i": "75437623", "e": "bajo", "s": 3, "f": null, "v": 1}, {"t": "1087", "i": "75214930", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "1087", "i": "75437610", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "1087", "i": "75437614", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "1087", "i": "75437616", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "1087", "i": "75437621", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "1087", "i": "75437623", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "121", "i": "75214930", "e": "ok", "s": 27, "f": null, "v": 5}, {"t": "121", "i": "75244431", "e": "ok", "s": 12, "f": null, "v": 0}, {"t": "121", "i": "75253328", "e": "alto", "s": 160, "f": null, "v": 5}, {"t": "121", "i": "75253329", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "121", "i": "75437610", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "121", "i": "75437614", "e": "alto", "s": 107, "f": null, "v": 4}, {"t": "121", "i": "75437616", "e": "alto", "s": 68, "f": null, "v": 0}, {"t": "121", "i": "75437621", "e": "alto", "s": 184, "f": null, "v": 0}, {"t": "121", "i": "75437623", "e": "ok", "s": 19, "f": null, "v": 0}, {"t": "164", "i": "75214930", "e": "cero", "s": 0, "f": null, "v": 1}, {"t": "164", "i": "75253328", "e": "ok", "s": 12, "f": null, "v": 1}, {"t": "164", "i": "75437610", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "164", "i": "75437612", "e": "ok", "s": 17, "f": null, "v": 0}, {"t": "164", "i": "75437614", "e": "ok", "s": 40, "f": null, "v": 0}, {"t": "164", "i": "75437616", "e": "ok", "s": 40, "f": null, "v": 5}, {"t": "164", "i": "75437621", "e": "alto", "s": 85, "f": null, "v": 0}, {"t": "164", "i": "75437623", "e": "ok", "s": 24, "f": null, "v": 4}, {"t": "169", "i": "75214930", "e": "ok", "s": 12, "f": null, "v": 0}, {"t": "169", "i": "75214932", "e": "cero", "s": 0, "f": null, "v": 1}, {"t": "169", "i": "75253328", "e": "bajo", "s": 1, "f": null, "v": 0}, {"t": "169", "i": "75253329", "e": "bajo", "s": 1, "f": null, "v": 0}, {"t": "169", "i": "75437610", "e": "bajo", "s": 8, "f": null, "v": 0}, {"t": "169", "i": "75437612", "e": "ok", "s": 19, "f": 19, "v": 0}, {"t": "169", "i": "75437613", "e": "ok", "s": 16, "f": 16, "v": 0}, {"t": "169", "i": "75437614", "e": "ok", "s": 11, "f": null, "v": 3}, {"t": "169", "i": "75437615", "e": "cero", "s": 1, "f": 0, "v": 0}, {"t": "169", "i": "75437616", "e": "ok", "s": 26, "f": null, "v": 0}, {"t": "169", "i": "75437617", "e": "ok", "s": 12, "f": 13, "v": 0}, {"t": "169", "i": "75437619", "e": "bajo", "s": 8, "f": 8, "v": 0}, {"t": "169", "i": "75437620", "e": "ok", "s": 20, "f": 20, "v": 0}, {"t": "169", "i": "75437621", "e": "alto", "s": 58, "f": null, "v": 1}, {"t": "169", "i": "75437623", "e": "fantasma", "s": 22, "f": 16, "v": 0}, {"t": "180", "i": "75214930", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "180", "i": "75253328", "e": "bajo", "s": 4, "f": null, "v": 0}, {"t": "180", "i": "75253329", "e": "bajo", "s": 7, "f": null, "v": 0}, {"t": "180", "i": "75437610", "e": "ok", "s": 16, "f": null, "v": 0}, {"t": "180", "i": "75437612", "e": "ok", "s": 40, "f": null, "v": 0}, {"t": "180", "i": "75437613", "e": "ok", "s": 18, "f": null, "v": 0}, {"t": "180", "i": "75437614", "e": "bajo", "s": 8, "f": null, "v": 0}, {"t": "180", "i": "75437615", "e": "ok", "s": 16, "f": null, "v": 1}, {"t": "180", "i": "75437616", "e": "ok", "s": 17, "f": null, "v": 0}, {"t": "180", "i": "75437621", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "180", "i": "75437623", "e": "ok", "s": 22, "f": null, "v": 0}, {"t": "20", "i": "75214930", "e": "ok", "s": 16, "f": null, "v": 4}, {"t": "20", "i": "75214932", "e": "bajo", "s": 4, "f": null, "v": 1}, {"t": "20", "i": "75437610", "e": "ok", "s": 17, "f": null, "v": 1}, {"t": "20", "i": "75437612", "e": "ok", "s": 12, "f": null, "v": 0}, {"t": "20", "i": "75437613", "e": "ok", "s": 13, "f": null, "v": 0}, {"t": "20", "i": "75437614", "e": "ok", "s": 18, "f": null, "v": 0}, {"t": "20", "i": "75437615", "e": "bajo", "s": 4, "f": null, "v": 0}, {"t": "20", "i": "75437616", "e": "ok", "s": 16, "f": null, "v": 0}, {"t": "20", "i": "75437621", "e": "alto", "s": 104, "f": null, "v": 4}, {"t": "20", "i": "75437623", "e": "ok", "s": 21, "f": null, "v": 1}, {"t": "21", "i": "75214930", "e": "ok", "s": 29, "f": null, "v": 2}, {"t": "21", "i": "75214932", "e": "bajo", "s": 1, "f": null, "v": 2}, {"t": "21", "i": "75253328", "e": "bajo", "s": 4, "f": null, "v": 1}, {"t": "21", "i": "75437610", "e": "ok", "s": 17, "f": null, "v": 2}, {"t": "21", "i": "75437612", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "21", "i": "75437613", "e": "ok", "s": 18, "f": null, "v": 0}, {"t": "21", "i": "75437614", "e": "ok", "s": 13, "f": null, "v": 0}, {"t": "21", "i": "75437615", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "21", "i": "75437616", "e": "ok", "s": 18, "f": null, "v": 0}, {"t": "21", "i": "75437617", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "21", "i": "75437621", "e": "alto", "s": 92, "f": null, "v": 1}, {"t": "21", "i": "75437623", "e": "ok", "s": 16, "f": null, "v": 0}, {"t": "22", "i": "75214930", "e": "ok", "s": 28, "f": null, "v": 1}, {"t": "22", "i": "75253328", "e": "ok", "s": 11, "f": null, "v": 0}, {"t": "22", "i": "75253329", "e": "bajo", "s": 1, "f": null, "v": 0}, {"t": "22", "i": "75437610", "e": "ok", "s": 13, "f": null, "v": 2}, {"t": "22", "i": "75437612", "e": "bajo", "s": 7, "f": null, "v": 0}, {"t": "22", "i": "75437614", "e": "ok", "s": 23, "f": null, "v": 3}, {"t": "22", "i": "75437616", "e": "ok", "s": 26, "f": null, "v": 3}, {"t": "22", "i": "75437618", "e": "bajo", "s": 2, "f": null, "v": 0}, {"t": "22", "i": "75437621", "e": "ok", "s": 28, "f": null, "v": 11}, {"t": "22", "i": "75437623", "e": "ok", "s": 25, "f": null, "v": 0}, {"t": "23", "i": "75214930", "e": "ok", "s": 24, "f": null, "v": 0}, {"t": "23", "i": "75214932", "e": "cero", "s": 0, "f": null, "v": 9}, {"t": "23", "i": "75253328", "e": "bajo", "s": 2, "f": null, "v": 0}, {"t": "23", "i": "75437610", "e": "bajo", "s": 6, "f": null, "v": 0}, {"t": "23", "i": "75437612", "e": "fantasma", "s": 18, "f": 0, "v": 0}, {"t": "23", "i": "75437613", "e": "fantasma", "s": 14, "f": 0, "v": 0}, {"t": "23", "i": "75437614", "e": "bajo", "s": 3, "f": null, "v": 7}, {"t": "23", "i": "75437615", "e": "cero", "s": 0, "f": 0, "v": 0}, {"t": "23", "i": "75437616", "e": "ok", "s": 27, "f": null, "v": 1}, {"t": "23", "i": "75437621", "e": "bajo", "s": 4, "f": null, "v": 0}, {"t": "23", "i": "75437623", "e": "cero", "s": 0, "f": null, "v": 2}, {"t": "24", "i": "75214930", "e": "ok", "s": 12, "f": null, "v": 0}, {"t": "24", "i": "75214932", "e": "ok", "s": 10, "f": null, "v": 0}, {"t": "24", "i": "75253329", "e": "ok", "s": 33, "f": null, "v": 2}, {"t": "24", "i": "75437610", "e": "fantasma", "s": 20, "f": 0, "v": 0}, {"t": "24", "i": "75437612", "e": "ok", "s": 20, "f": 20, "v": 0}, {"t": "24", "i": "75437613", "e": "ok", "s": 18, "f": 19, "v": 1}, {"t": "24", "i": "75437614", "e": "alto", "s": 50, "f": null, "v": 0}, {"t": "24", "i": "75437615", "e": "ok", "s": 34, "f": 34, "v": 0}, {"t": "24", "i": "75437616", "e": "ok", "s": 30, "f": null, "v": 0}, {"t": "24", "i": "75437619", "e": "cero", "s": 0, "f": null, "v": 1}, {"t": "24", "i": "75437621", "e": "ok", "s": 10, "f": null, "v": 0}, {"t": "24", "i": "75437623", "e": "fantasma", "s": 26, "f": 3, "v": 1}, {"t": "33", "i": "75214930", "e": "ok", "s": 24, "f": null, "v": 0}, {"t": "33", "i": "75253328", "e": "bajo", "s": 2, "f": null, "v": 0}, {"t": "33", "i": "75437610", "e": "ok", "s": 14, "f": null, "v": 0}, {"t": "33", "i": "75437612", "e": "ok", "s": 19, "f": 19, "v": 0}, {"t": "33", "i": "75437613", "e": "ok", "s": 16, "f": 17, "v": 0}, {"t": "33", "i": "75437614", "e": "ok", "s": 14, "f": null, "v": 2}, {"t": "33", "i": "75437615", "e": "ok", "s": 16, "f": 20, "v": 3}, {"t": "33", "i": "75437616", "e": "ok", "s": 12, "f": null, "v": 0}, {"t": "33", "i": "75437621", "e": "ok", "s": 23, "f": null, "v": 2}, {"t": "33", "i": "75437623", "e": "ok", "s": 12, "f": null, "v": 0}, {"t": "34", "i": "75214930", "e": "bajo", "s": 8, "f": null, "v": 1}, {"t": "34", "i": "75253328", "e": "bajo", "s": 7, "f": null, "v": 0}, {"t": "34", "i": "75437610", "e": "ok", "s": 19, "f": null, "v": 1}, {"t": "34", "i": "75437614", "e": "ok", "s": 11, "f": null, "v": 0}, {"t": "34", "i": "75437615", "e": "bajo", "s": 8, "f": 8, "v": 0}, {"t": "34", "i": "75437616", "e": "ok", "s": 26, "f": null, "v": 0}, {"t": "34", "i": "75437621", "e": "bajo", "s": 2, "f": null, "v": 0}, {"t": "34", "i": "75437623", "e": "ok", "s": 11, "f": null, "v": 4}, {"t": "344", "i": "75214930", "e": "bajo", "s": 9, "f": null, "v": 0}, {"t": "344", "i": "75214932", "e": "bajo", "s": 9, "f": null, "v": 0}, {"t": "344", "i": "75437610", "e": "ok", "s": 29, "f": null, "v": 0}, {"t": "344", "i": "75437612", "e": "ok", "s": 13, "f": null, "v": 0}, {"t": "344", "i": "75437613", "e": "ok", "s": 11, "f": null, "v": 0}, {"t": "344", "i": "75437614", "e": "bajo", "s": 9, "f": null, "v": 0}, {"t": "344", "i": "75437616", "e": "ok", "s": 28, "f": null, "v": 0}, {"t": "344", "i": "75437618", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "344", "i": "75437620", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "344", "i": "75437621", "e": "alto", "s": 53, "f": null, "v": 4}, {"t": "344", "i": "75437623", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "35", "i": "75214930", "e": "ok", "s": 36, "f": null, "v": 1}, {"t": "35", "i": "75214932", "e": "bajo", "s": 8, "f": null, "v": 0}, {"t": "35", "i": "75437610", "e": "ok", "s": 22, "f": null, "v": 0}, {"t": "35", "i": "75437612", "e": "ok", "s": 19, "f": null, "v": 0}, {"t": "35", "i": "75437613", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "35", "i": "75437614", "e": "ok", "s": 29, "f": null, "v": 1}, {"t": "35", "i": "75437615", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "35", "i": "75437616", "e": "ok", "s": 26, "f": null, "v": 0}, {"t": "35", "i": "75437621", "e": "ok", "s": 26, "f": null, "v": 0}, {"t": "35", "i": "75437623", "e": "ok", "s": 35, "f": null, "v": 0}, {"t": "4037", "i": "75214930", "e": "ok", "s": 13, "f": null, "v": 0}, {"t": "4037", "i": "75214932", "e": "ok", "s": 41, "f": null, "v": 0}, {"t": "4037", "i": "75253329", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4037", "i": "75437610", "e": "ok", "s": 19, "f": null, "v": 1}, {"t": "4037", "i": "75437612", "e": "ok", "s": 19, "f": null, "v": 0}, {"t": "4037", "i": "75437613", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4037", "i": "75437614", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "4037", "i": "75437615", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4037", "i": "75437616", "e": "alto", "s": 62, "f": null, "v": 0}, {"t": "4037", "i": "75437617", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4037", "i": "75437618", "e": "ok", "s": 30, "f": null, "v": 0}, {"t": "4037", "i": "75437620", "e": "ok", "s": 13, "f": null, "v": 0}, {"t": "4037", "i": "75437621", "e": "alto", "s": 151, "f": null, "v": 7}, {"t": "4037", "i": "75437623", "e": "ok", "s": 20, "f": null, "v": 2}, {"t": "4087", "i": "75214930", "e": "ok", "s": 21, "f": null, "v": 2}, {"t": "4087", "i": "75244435", "e": "bajo", "s": 4, "f": null, "v": 1}, {"t": "4087", "i": "75253328", "e": "ok", "s": 14, "f": null, "v": 0}, {"t": "4087", "i": "75253329", "e": "ok", "s": 14, "f": null, "v": 0}, {"t": "4087", "i": "75437610", "e": "ok", "s": 21, "f": null, "v": 0}, {"t": "4087", "i": "75437612", "e": "ok", "s": 11, "f": null, "v": 0}, {"t": "4087", "i": "75437613", "e": "bajo", "s": 5, "f": null, "v": 0}, {"t": "4087", "i": "75437614", "e": "ok", "s": 18, "f": null, "v": 3}, {"t": "4087", "i": "75437615", "e": "ok", "s": 12, "f": null, "v": 0}, {"t": "4087", "i": "75437616", "e": "ok", "s": 18, "f": null, "v": 2}, {"t": "4087", "i": "75437620", "e": "ok", "s": 13, "f": null, "v": 0}, {"t": "4087", "i": "75437621", "e": "alto", "s": 102, "f": null, "v": 3}, {"t": "4087", "i": "75437623", "e": "ok", "s": 16, "f": null, "v": 0}, {"t": "4116", "i": "75214930", "e": "ok", "s": 18, "f": null, "v": 5}, {"t": "4116", "i": "75214932", "e": "ok", "s": 12, "f": null, "v": 0}, {"t": "4116", "i": "75253328", "e": "bajo", "s": 5, "f": null, "v": 0}, {"t": "4116", "i": "75253329", "e": "bajo", "s": 9, "f": null, "v": 0}, {"t": "4116", "i": "75437610", "e": "ok", "s": 21, "f": null, "v": 0}, {"t": "4116", "i": "75437612", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4116", "i": "75437613", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4116", "i": "75437614", "e": "ok", "s": 32, "f": null, "v": 0}, {"t": "4116", "i": "75437615", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4116", "i": "75437616", "e": "alto", "s": 60, "f": null, "v": 0}, {"t": "4116", "i": "75437617", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4116", "i": "75437621", "e": "alto", "s": 154, "f": null, "v": 3}, {"t": "4116", "i": "75437623", "e": "ok", "s": 40, "f": null, "v": 0}, {"t": "4126", "i": "75214930", "e": "ok", "s": 19, "f": null, "v": 1}, {"t": "4126", "i": "75437610", "e": "ok", "s": 17, "f": null, "v": 0}, {"t": "4126", "i": "75437612", "e": "ok", "s": 17, "f": null, "v": 0}, {"t": "4126", "i": "75437613", "e": "bajo", "s": 8, "f": null, "v": 0}, {"t": "4126", "i": "75437614", "e": "bajo", "s": 3, "f": null, "v": 0}, {"t": "4126", "i": "75437615", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4126", "i": "75437616", "e": "ok", "s": 15, "f": null, "v": 0}, {"t": "4126", "i": "75437618", "e": "bajo", "s": 8, "f": null, "v": 0}, {"t": "4126", "i": "75437621", "e": "ok", "s": 10, "f": null, "v": 0}, {"t": "4126", "i": "75437623", "e": "bajo", "s": 1, "f": null, "v": 0}, {"t": "414", "i": "75214930", "e": "fantasma", "s": 68, "f": 0, "v": 1}, {"t": "414", "i": "75214932", "e": "fantasma", "s": 12, "f": 0, "v": 0}, {"t": "414", "i": "75244433", "e": "bajo", "s": 6, "f": null, "v": 0}, {"t": "414", "i": "75253328", "e": "bajo", "s": 8, "f": 8, "v": 1}, {"t": "414", "i": "75437610", "e": "fantasma", "s": 20, "f": 0, "v": 0}, {"t": "414", "i": "75437612", "e": "fantasma", "s": 20, "f": 0, "v": 0}, {"t": "414", "i": "75437613", "e": "fantasma", "s": 20, "f": 0, "v": 0}, {"t": "414", "i": "75437614", "e": "fantasma", "s": 26, "f": 7, "v": 0}, {"t": "414", "i": "75437615", "e": "fantasma", "s": 20, "f": 0, "v": 0}, {"t": "414", "i": "75437616", "e": "fantasma", "s": 29, "f": 16, "v": 0}, {"t": "414", "i": "75437617", "e": "fantasma", "s": 20, "f": 0, "v": 0}, {"t": "414", "i": "75437618", "e": "fantasma", "s": 20, "f": 0, "v": 0}, {"t": "414", "i": "75437619", "e": "fantasma", "s": 20, "f": 0, "v": 0}, {"t": "414", "i": "75437621", "e": "fantasma", "s": 183, "f": 23, "v": 2}, {"t": "414", "i": "75437623", "e": "fantasma", "s": 20, "f": 0, "v": 0}, {"t": "4173", "i": "75214930", "e": "ok", "s": 10, "f": null, "v": 0}, {"t": "4173", "i": "75214932", "e": "bajo", "s": 2, "f": null, "v": 0}, {"t": "4173", "i": "75437610", "e": "ok", "s": 17, "f": null, "v": 2}, {"t": "4173", "i": "75437612", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "4173", "i": "75437613", "e": "ok", "s": 18, "f": null, "v": 2}, {"t": "4173", "i": "75437614", "e": "bajo", "s": 7, "f": null, "v": 2}, {"t": "4173", "i": "75437615", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "4173", "i": "75437616", "e": "bajo", "s": 5, "f": null, "v": 2}, {"t": "4173", "i": "75437619", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "4173", "i": "75437621", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "4173", "i": "75437623", "e": "ok", "s": 10, "f": null, "v": 4}, {"t": "4176", "i": "75214930", "e": "ok", "s": 18, "f": null, "v": 0}, {"t": "4176", "i": "75214932", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "4176", "i": "75253328", "e": "bajo", "s": 3, "f": null, "v": 0}, {"t": "4176", "i": "75253329", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4176", "i": "75437610", "e": "ok", "s": 18, "f": null, "v": 0}, {"t": "4176", "i": "75437612", "e": "fantasma", "s": 17, "f": 8, "v": 0}, {"t": "4176", "i": "75437613", "e": "fantasma", "s": 11, "f": 1, "v": 0}, {"t": "4176", "i": "75437614", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4176", "i": "75437616", "e": "ok", "s": 34, "f": null, "v": 0}, {"t": "4176", "i": "75437617", "e": "cero", "s": 3, "f": 0, "v": 0}, {"t": "4176", "i": "75437618", "e": "ok", "s": 15, "f": null, "v": 0}, {"t": "4176", "i": "75437620", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "4176", "i": "75437621", "e": "ok", "s": 11, "f": null, "v": 0}, {"t": "4176", "i": "75437623", "e": "bajo", "s": 9, "f": null, "v": 0}, {"t": "419", "i": "75214930", "e": "ok", "s": 12, "f": null, "v": 0}, {"t": "419", "i": "75214932", "e": "cero", "s": 0, "f": null, "v": 4}, {"t": "419", "i": "75253328", "e": "ok", "s": 11, "f": null, "v": 0}, {"t": "419", "i": "75253329", "e": "bajo", "s": 8, "f": null, "v": 0}, {"t": "419", "i": "75437610", "e": "ok", "s": 18, "f": null, "v": 0}, {"t": "419", "i": "75437612", "e": "ok", "s": 18, "f": null, "v": 0}, {"t": "419", "i": "75437613", "e": "bajo", "s": 9, "f": null, "v": 0}, {"t": "419", "i": "75437614", "e": "ok", "s": 20, "f": null, "v": 2}, {"t": "419", "i": "75437615", "e": "bajo", "s": 6, "f": null, "v": 0}, {"t": "419", "i": "75437616", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "419", "i": "75437617", "e": "bajo", "s": 8, "f": null, "v": 0}, {"t": "419", "i": "75437621", "e": "ok", "s": 16, "f": null, "v": 0}, {"t": "419", "i": "75437623", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4317", "i": "75214930", "e": "ok", "s": 13, "f": null, "v": 0}, {"t": "4317", "i": "75437610", "e": "ok", "s": 15, "f": null, "v": 0}, {"t": "4317", "i": "75437612", "e": "ok", "s": 10, "f": null, "v": 0}, {"t": "4317", "i": "75437613", "e": "bajo", "s": 8, "f": null, "v": 0}, {"t": "4317", "i": "75437614", "e": "ok", "s": 19, "f": null, "v": 0}, {"t": "4317", "i": "75437615", "e": "cero", "s": 0, "f": null, "v": 5}, {"t": "4317", "i": "75437616", "e": "ok", "s": 16, "f": null, "v": 0}, {"t": "4317", "i": "75437620", "e": "bajo", "s": 6, "f": null, "v": 0}, {"t": "4317", "i": "75437621", "e": "ok", "s": 26, "f": null, "v": 2}, {"t": "4317", "i": "75437623", "e": "bajo", "s": 4, "f": null, "v": 5}, {"t": "4370", "i": "75214930", "e": "ok", "s": 36, "f": null, "v": 1}, {"t": "4370", "i": "75253329", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4370", "i": "75437610", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "4370", "i": "75437612", "e": "ok", "s": 10, "f": null, "v": 0}, {"t": "4370", "i": "75437614", "e": "ok", "s": 18, "f": null, "v": 0}, {"t": "4370", "i": "75437615", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "4370", "i": "75437616", "e": "alto", "s": 55, "f": null, "v": 0}, {"t": "4370", "i": "75437620", "e": "ok", "s": 19, "f": null, "v": 1}, {"t": "4370", "i": "75437621", "e": "alto", "s": 93, "f": null, "v": 0}, {"t": "4370", "i": "75437623", "e": "ok", "s": 21, "f": null, "v": 0}, {"t": "4412", "i": "75214930", "e": "ok", "s": 40, "f": null, "v": 2}, {"t": "4412", "i": "75214932", "e": "ok", "s": 12, "f": null, "v": 1}, {"t": "4412", "i": "75244431", "e": "ok", "s": 29, "f": null, "v": 0}, {"t": "4412", "i": "75244435", "e": "ok", "s": 18, "f": null, "v": 0}, {"t": "4412", "i": "75437610", "e": "ok", "s": 11, "f": null, "v": 2}, {"t": "4412", "i": "75437612", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4412", "i": "75437613", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4412", "i": "75437614", "e": "alto", "s": 63, "f": null, "v": 0}, {"t": "4412", "i": "75437615", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4412", "i": "75437616", "e": "ok", "s": 46, "f": null, "v": 4}, {"t": "4412", "i": "75437617", "e": "ok", "s": 19, "f": null, "v": 0}, {"t": "4412", "i": "75437618", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4412", "i": "75437619", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4412", "i": "75437620", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4412", "i": "75437621", "e": "alto", "s": 198, "f": null, "v": 1}, {"t": "4412", "i": "75437623", "e": "ok", "s": 24, "f": null, "v": 0}, {"t": "4414", "i": "75214930", "e": "ok", "s": 28, "f": null, "v": 0}, {"t": "4414", "i": "75214932", "e": "ok", "s": 15, "f": null, "v": 0}, {"t": "4414", "i": "75244435", "e": "ok", "s": 12, "f": null, "v": 0}, {"t": "4414", "i": "75253328", "e": "alto", "s": 107, "f": null, "v": 2}, {"t": "4414", "i": "75253329", "e": "alto", "s": 99, "f": null, "v": 0}, {"t": "4414", "i": "75437610", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4414", "i": "75437612", "e": "ok", "s": 13, "f": null, "v": 0}, {"t": "4414", "i": "75437613", "e": "bajo", "s": 8, "f": null, "v": 0}, {"t": "4414", "i": "75437614", "e": "bajo", "s": 5, "f": null, "v": 0}, {"t": "4414", "i": "75437615", "e": "bajo", "s": 8, "f": null, "v": 0}, {"t": "4414", "i": "75437616", "e": "ok", "s": 47, "f": null, "v": 1}, {"t": "4414", "i": "75437617", "e": "ok", "s": 15, "f": null, "v": 0}, {"t": "4414", "i": "75437621", "e": "alto", "s": 113, "f": null, "v": 5}, {"t": "4414", "i": "75437623", "e": "bajo", "s": 6, "f": null, "v": 0}, {"t": "4433", "i": "75214930", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "4433", "i": "75214932", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "4433", "i": "75253329", "e": "ok", "s": 14, "f": null, "v": 2}, {"t": "4433", "i": "75437610", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "4433", "i": "75437612", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4433", "i": "75437614", "e": "bajo", "s": 9, "f": null, "v": 1}, {"t": "4433", "i": "75437615", "e": "bajo", "s": 4, "f": null, "v": 0}, {"t": "4433", "i": "75437616", "e": "ok", "s": 17, "f": null, "v": 0}, {"t": "4433", "i": "75437621", "e": "bajo", "s": 8, "f": null, "v": 0}, {"t": "4433", "i": "75437623", "e": "ok", "s": 18, "f": null, "v": 0}, {"t": "4490", "i": "75214930", "e": "bajo", "s": 9, "f": null, "v": 0}, {"t": "4490", "i": "75253328", "e": "ok", "s": 12, "f": null, "v": 0}, {"t": "4490", "i": "75437610", "e": "ok", "s": 26, "f": null, "v": 0}, {"t": "4490", "i": "75437612", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4490", "i": "75437613", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4490", "i": "75437614", "e": "ok", "s": 34, "f": null, "v": 1}, {"t": "4490", "i": "75437615", "e": "cero", "s": 0, "f": null, "v": 3}, {"t": "4490", "i": "75437616", "e": "ok", "s": 17, "f": null, "v": 1}, {"t": "4490", "i": "75437619", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "4490", "i": "75437621", "e": "ok", "s": 24, "f": null, "v": 3}, {"t": "4490", "i": "75437623", "e": "ok", "s": 18, "f": null, "v": 2}, {"t": "4491", "i": "75214930", "e": "ok", "s": 24, "f": null, "v": 0}, {"t": "4491", "i": "75214932", "e": "ok", "s": 14, "f": null, "v": 0}, {"t": "4491", "i": "75244436", "e": "bajo", "s": 2, "f": null, "v": 0}, {"t": "4491", "i": "75253328", "e": "bajo", "s": 8, "f": null, "v": 0}, {"t": "4491", "i": "75253329", "e": "ok", "s": 14, "f": null, "v": 0}, {"t": "4491", "i": "75437610", "e": "ok", "s": 13, "f": null, "v": 0}, {"t": "4491", "i": "75437614", "e": "ok", "s": 11, "f": null, "v": 0}, {"t": "4491", "i": "75437616", "e": "ok", "s": 17, "f": null, "v": 1}, {"t": "4491", "i": "75437621", "e": "ok", "s": 14, "f": null, "v": 0}, {"t": "4491", "i": "75437623", "e": "ok", "s": 14, "f": null, "v": 3}, {"t": "457", "i": "75214930", "e": "bajo", "s": 4, "f": null, "v": 2}, {"t": "457", "i": "75214932", "e": "bajo", "s": 1, "f": null, "v": 0}, {"t": "457", "i": "75437610", "e": "bajo", "s": 5, "f": null, "v": 2}, {"t": "457", "i": "75437612", "e": "ok", "s": 18, "f": null, "v": 0}, {"t": "457", "i": "75437614", "e": "bajo", "s": 2, "f": null, "v": 0}, {"t": "457", "i": "75437616", "e": "ok", "s": 22, "f": null, "v": 0}, {"t": "457", "i": "75437621", "e": "ok", "s": 12, "f": null, "v": 6}, {"t": "457", "i": "75437623", "e": "ok", "s": 15, "f": null, "v": 0}, {"t": "458", "i": "75214930", "e": "bajo", "s": 6, "f": null, "v": 0}, {"t": "458", "i": "75214932", "e": "bajo", "s": 7, "f": null, "v": 0}, {"t": "458", "i": "75253328", "e": "bajo", "s": 5, "f": null, "v": 0}, {"t": "458", "i": "75253329", "e": "bajo", "s": -1, "f": null, "v": 0}, {"t": "458", "i": "75437610", "e": "ok", "s": 27, "f": null, "v": 0}, {"t": "458", "i": "75437614", "e": "ok", "s": 24, "f": null, "v": 0}, {"t": "458", "i": "75437616", "e": "ok", "s": 30, "f": null, "v": 0}, {"t": "458", "i": "75437621", "e": "cero", "s": 0, "f": null, "v": 1}, {"t": "458", "i": "75437623", "e": "bajo", "s": 3, "f": null, "v": 7}, {"t": "459", "i": "75214930", "e": "ok", "s": 22, "f": null, "v": 1}, {"t": "459", "i": "75214932", "e": "ok", "s": 23, "f": null, "v": 1}, {"t": "459", "i": "75253328", "e": "ok", "s": 22, "f": null, "v": 0}, {"t": "459", "i": "75437610", "e": "alto", "s": 50, "f": null, "v": 0}, {"t": "459", "i": "75437614", "e": "ok", "s": 17, "f": null, "v": 0}, {"t": "459", "i": "75437616", "e": "ok", "s": 38, "f": null, "v": 0}, {"t": "459", "i": "75437621", "e": "alto", "s": 172, "f": null, "v": 4}, {"t": "459", "i": "75437623", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "46", "i": "75214930", "e": "ok", "s": 24, "f": null, "v": 0}, {"t": "46", "i": "75244431", "e": "bajo", "s": 1, "f": null, "v": 0}, {"t": "46", "i": "75244435", "e": "bajo", "s": 2, "f": null, "v": 0}, {"t": "46", "i": "75253328", "e": "bajo", "s": 7, "f": null, "v": 0}, {"t": "46", "i": "75437610", "e": "bajo", "s": 8, "f": null, "v": 2}, {"t": "46", "i": "75437614", "e": "ok", "s": 11, "f": null, "v": 0}, {"t": "46", "i": "75437615", "e": "bajo", "s": 2, "f": null, "v": 3}, {"t": "46", "i": "75437616", "e": "alto", "s": 50, "f": null, "v": 0}, {"t": "46", "i": "75437621", "e": "alto", "s": 92, "f": null, "v": 4}, {"t": "46", "i": "75437623", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "460", "i": "75214930", "e": "ok", "s": 12, "f": null, "v": 0}, {"t": "460", "i": "75214932", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "460", "i": "75437610", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "460", "i": "75437614", "e": "bajo", "s": 9, "f": null, "v": 0}, {"t": "460", "i": "75437615", "e": "bajo", "s": 1, "f": null, "v": 0}, {"t": "460", "i": "75437616", "e": "ok", "s": 17, "f": null, "v": 1}, {"t": "460", "i": "75437621", "e": "alto", "s": 98, "f": null, "v": 2}, {"t": "460", "i": "75437623", "e": "ok", "s": 19, "f": null, "v": 0}, {"t": "47", "i": "75214930", "e": "bajo", "s": 4, "f": null, "v": 0}, {"t": "47", "i": "75214932", "e": "ok", "s": 11, "f": null, "v": 0}, {"t": "47", "i": "75437610", "e": "ok", "s": 13, "f": null, "v": 1}, {"t": "47", "i": "75437612", "e": "ok", "s": 19, "f": null, "v": 0}, {"t": "47", "i": "75437613", "e": "ok", "s": 10, "f": null, "v": 0}, {"t": "47", "i": "75437614", "e": "ok", "s": 32, "f": null, "v": 0}, {"t": "47", "i": "75437615", "e": "bajo", "s": 2, "f": null, "v": 2}, {"t": "47", "i": "75437616", "e": "ok", "s": 13, "f": null, "v": 1}, {"t": "47", "i": "75437621", "e": "bajo", "s": 4, "f": null, "v": 2}, {"t": "47", "i": "75437623", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "491", "i": "75214930", "e": "bajo", "s": 3, "f": null, "v": 1}, {"t": "491", "i": "75214932", "e": "ok", "s": 15, "f": null, "v": 1}, {"t": "491", "i": "75437610", "e": "ok", "s": 19, "f": null, "v": 2}, {"t": "491", "i": "75437612", "e": "ok", "s": 19, "f": null, "v": 0}, {"t": "491", "i": "75437613", "e": "ok", "s": 16, "f": null, "v": 0}, {"t": "491", "i": "75437614", "e": "bajo", "s": 6, "f": null, "v": 0}, {"t": "491", "i": "75437616", "e": "ok", "s": 14, "f": null, "v": 5}, {"t": "491", "i": "75437621", "e": "alto", "s": 104, "f": null, "v": 0}, {"t": "491", "i": "75437623", "e": "bajo", "s": 9, "f": null, "v": 3}, {"t": "727", "i": "75214930", "e": "ok", "s": 23, "f": null, "v": 1}, {"t": "727", "i": "75214932", "e": "bajo", "s": 5, "f": null, "v": 0}, {"t": "727", "i": "75244433", "e": "bajo", "s": 4, "f": null, "v": 0}, {"t": "727", "i": "75437610", "e": "ok", "s": 11, "f": null, "v": 1}, {"t": "727", "i": "75437612", "e": "ok", "s": 20, "f": null, "v": 0}, {"t": "727", "i": "75437613", "e": "bajo", "s": 2, "f": null, "v": 6}, {"t": "727", "i": "75437614", "e": "ok", "s": 15, "f": null, "v": 4}, {"t": "727", "i": "75437615", "e": "ok", "s": 10, "f": null, "v": 1}, {"t": "727", "i": "75437616", "e": "ok", "s": 26, "f": null, "v": 0}, {"t": "727", "i": "75437621", "e": "bajo", "s": 6, "f": null, "v": 0}, {"t": "727", "i": "75437623", "e": "ok", "s": 24, "f": null, "v": 0}, {"t": "948", "i": "75214930", "e": "ok", "s": 18, "f": null, "v": 1}, {"t": "948", "i": "75214932", "e": "bajo", "s": 6, "f": null, "v": 0}, {"t": "948", "i": "75253328", "e": "ok", "s": 28, "f": null, "v": 0}, {"t": "948", "i": "75437610", "e": "bajo", "s": 9, "f": null, "v": 0}, {"t": "948", "i": "75437614", "e": "cero", "s": 0, "f": null, "v": 0}, {"t": "948", "i": "75437616", "e": "alto", "s": 60, "f": null, "v": 0}, {"t": "948", "i": "75437621", "e": "alto", "s": 55, "f": null, "v": 0}, {"t": "948", "i": "75437623", "e": "ok", "s": 12, "f": null, "v": 0}], "item_ids": ["75214930", "75437621", "75437623", "75437610", "75437614", "75437616", "75437613", "75437615", "75437619", "75437620", "75437612", "75437617", "75437618"], "discrepancias": [{"tienda": "WM VILLA NUEVA", "num": "414", "item": "Trooper Original", "sistema": 183, "fisico": 23, "delta": -160}, {"tienda": "WM VILLA NUEVA", "num": "414", "item": "Sapporo Silver", "sistema": 68, "fisico": 0, "delta": -68}, {"tienda": "PAIZ ROOSEVELT", "num": "24", "item": "Trooper FOTD", "sistema": 26, "fisico": 3, "delta": -23}, {"tienda": "WM VILLA NUEVA", "num": "414", "item": "NC Scrimshaw", "sistema": 20, "fisico": 0, "delta": -20}, {"tienda": "WM VILLA NUEVA", "num": "414", "item": "NC Old Rasputin", "sistema": 20, "fisico": 0, "delta": -20}, {"tienda": "WM VILLA NUEVA", "num": "414", "item": "HB Helles", "sistema": 20, "fisico": 0, "delta": -20}, {"tienda": "WM VILLA NUEVA", "num": "414", "item": "HB Session", "sistema": 20, "fisico": 0, "delta": -20}, {"tienda": "WM VILLA NUEVA", "num": "414", "item": "Belhaven Best", "sistema": 20, "fisico": 0, "delta": -20}, {"tienda": "WM VILLA NUEVA", "num": "414", "item": "Belhaven Black", "sistema": 20, "fisico": 0, "delta": -20}, {"tienda": "WM VILLA NUEVA", "num": "414", "item": "Sapporo Black", "sistema": 20, "fisico": 0, "delta": -20}, {"tienda": "WM VILLA NUEVA", "num": "414", "item": "Trooper FOTD", "sistema": 20, "fisico": 0, "delta": -20}, {"tienda": "PAIZ ROOSEVELT", "num": "24", "item": "Sapporo Black", "sistema": 20, "fisico": 0, "delta": -20}, {"tienda": "WM VILLA NUEVA", "num": "414", "item": "HB Original", "sistema": 26, "fisico": 7, "delta": -19}, {"tienda": "PAIZ NOVICENTRO ZONA 11", "num": "23", "item": "NC Scrimshaw", "sistema": 18, "fisico": 0, "delta": -18}, {"tienda": "PAIZ NOVICENTRO ZONA 11", "num": "23", "item": "NC Old Rasputin", "sistema": 14, "fisico": 0, "delta": -14}, {"tienda": "WM VILLA NUEVA", "num": "414", "item": "HB Dunkel", "sistema": 29, "fisico": 16, "delta": -13}, {"tienda": "WM VILLA NUEVA", "num": "414", "item": "Sapporo Gold", "sistema": 12, "fisico": 0, "delta": -12}, {"tienda": "PAIZ ALTOS DE SAN CRISTOB", "num": "4176", "item": "NC Old Rasputin", "sistema": 11, "fisico": 1, "delta": -10}, {"tienda": "PAIZ ALTOS DE SAN CRISTOB", "num": "4176", "item": "NC Scrimshaw", "sistema": 17, "fisico": 8, "delta": -9}, {"tienda": "PAIZ SAN CRISTOBAL", "num": "169", "item": "Trooper FOTD", "sistema": 22, "fisico": 16, "delta": -6}, {"tienda": "PAIZ ALTOS DE SAN CRISTOB", "num": "4176", "item": "HB Session", "sistema": 3, "fisico": 0, "delta": -3}, {"tienda": "PAIZ SAN CRISTOBAL", "num": "169", "item": "HB Helles", "sistema": 1, "fisico": 0, "delta": -1}, {"tienda": "PAIZ SAN CRISTOBAL", "num": "169", "item": "HB Session", "sistema": 12, "fisico": 13, "delta": 1}, {"tienda": "PAIZ ROOSEVELT", "num": "24", "item": "NC Old Rasputin", "sistema": 18, "fisico": 19, "delta": 1}, {"tienda": "PAIZ AGUILAR BATRES", "num": "33", "item": "NC Old Rasputin", "sistema": 16, "fisico": 17, "delta": 1}, {"tienda": "PAIZ AGUILAR BATRES", "num": "33", "item": "HB Helles", "sistema": 16, "fisico": 20, "delta": 4}], "vn_evolucion": [{"fecha": "14/08", "sistema": 257, "fisico": 10, "nota": "primer conteo · \"toma de inventario / bodega en reordenamiento\""}, {"fecha": "21/08", "sistema": 289, "fisico": 85, "nota": "+43 u recuperadas en 7 días"}, {"fecha": "26/08", "sistema": 471, "fisico": 54, "nota": "reconteo completo · 14 ítems"}, {"fecha": "28/08", "sistema": 471, "fisico": 54, "nota": "RECONFIRMADO idéntico · escalado a coordinador de abarrotes"}], "reclamos": [{"tienda": "PAIZ ALTOS DE SAN CRISTOB", "item": "Sapporo Gold", "u": 3, "q_costo": 136.62}, {"tienda": "PAIZ EL NARANJO", "item": "Trooper Original", "u": 2, "q_costo": 36.5}, {"tienda": "PAIZ MAZATENANGO", "item": "Sapporo Gold", "u": 12, "q_costo": 546.48}, {"tienda": "PAIZ MAZATENANGO", "item": "Sapporo Silver", "u": 12, "q_costo": 546.48}, {"tienda": "PAIZ SANTA CATARINA PINUL", "item": "Sapporo Black", "u": 16, "q_costo": 816.0}, {"tienda": "PAIZ SANTA CATARINA PINUL", "item": "Sapporo Gold", "u": 22, "q_costo": 1001.88}, {"tienda": "PAIZ SANTA CATARINA PINUL", "item": "Sapporo Silver", "u": 12, "q_costo": 546.48}], "mercaderistas": {"equipo": [{"nombre": "Pablo R", "rol": "Coordinacion / solicita presentacion de cartera con Diego Arriaza"}, {"nombre": "Victor Hugo", "rol": "Supervision - replica notas prioritarias al equipo"}, {"nombre": "SERGIO", "rol": "Escalamiento de planograma"}, {"nombre": "Marleny Soto", "rol": "Creadora del grupo"}, {"nombre": "Dayana Soza", "rol": "Administracion del grupo (fijo mensaje, agrego miembros)"}, {"nombre": "Diego Arriaza", "rol": "Marca / emisor de nota prioritaria comercial"}, {"nombre": "Jelver Miranda", "rol": "GSP - receptor del escalamiento de producto vencido en Paiz Pinula"}], "reportes": [{"tienda": "Paiz Liberacion", "cadena": "Paiz", "fecha": "2026-08-14", "por": "Marisela De Leon", "tipo": "liberacion de inventario", "origen": "v2 (al 24/08)"}, {"tienda": "Paiz Vista Hermosa", "cadena": "Paiz", "fecha": "2026-08-14", "por": "Marisela De Leon", "tipo": "liberacion de inventario + visibilidad", "origen": "v2 (al 24/08)"}, {"tienda": "Walmart Villa Nueva", "cadena": "Walmart", "fecha": "2026-08-14", "por": "n/d", "tipo": "conteo fisico vs sistema", "origen": "v2 (al 24/08)"}, {"tienda": "Paiz Pradera", "cadena": "Paiz", "fecha": "2026-08-14", "por": "Marisela De Leon", "tipo": "inventario + fechas de vencimiento", "origen": "v2 (al 24/08)"}, {"tienda": "Paiz Americas", "cadena": "Paiz", "fecha": "2026-08-17", "por": "Marisela De Leon", "tipo": "incidencia de planograma", "origen": "v2 (al 24/08)"}, {"tienda": "Walmart Puerta Parada", "cadena": "Walmart", "fecha": "2026-08-17", "por": "Zetino", "tipo": "observacion cualitativa de anaquel", "origen": "v2 (al 24/08)"}, {"tienda": "Paiz San Lucas", "cadena": "Paiz", "fecha": "2026-08-17", "por": "Elizabeth", "tipo": "inventario + precio + modulacion (el mas completo de la ventana)", "origen": "v2 (al 24/08)"}, {"tienda": "Paiz Naranjo", "cadena": "Paiz", "fecha": "2026-08-18", "por": "Daya", "tipo": "visibilidad (solo evidencia fotografica)", "origen": "v2 (al 24/08)"}, {"tienda": "Walmart Naranjo", "cadena": "Walmart", "fecha": "2026-08-18", "por": "Daya", "tipo": "conteo sistema vs fisico", "origen": "v2 (al 24/08)"}, {"tienda": "Paiz Utatlan", "cadena": "Paiz", "fecha": "2026-08-18", "por": "Daya", "tipo": "fisico vs sistema + planograma + ubicacion", "origen": "v2 (al 24/08)"}, {"tienda": "Paiz San Cristobal", "cadena": "Paiz", "fecha": "2026-08-20", "por": "Ross Barrios", "tipo": "inventario sistema vs fisico + vencimiento + llegadas + modulacion", "origen": "v2 (al 24/08)"}, {"tienda": "Walmart Roosevelt", "cadena": "Walmart", "fecha": "2026-08-20", "por": "Victor Hugo", "tipo": "inventario fisico vs sistema + estado logistico", "origen": "v2 (al 24/08)"}, {"tienda": "Paiz Coban", "cadena": "Paiz", "fecha": "2026-08-21", "por": "Eduardo Yat", "tipo": "visibilidad y ejecucion en sala (sin inventario numerico)", "origen": "v2 (al 24/08)"}, {"tienda": "Paiz Huehuetenango", "cadena": "Paiz", "fecha": "2026-08-21", "por": "Cinthya", "tipo": "aviso de bloqueo operativo", "origen": "v2 (al 24/08)"}, {"tienda": "Paiz Pacific Center", "cadena": "Paiz", "fecha": "2026-08-21", "por": "n/d", "tipo": "inventario + vencimientos + estado comercial", "origen": "v2 (al 24/08)"}, {"tienda": "Paiz Mega 6", "cadena": "Paiz", "fecha": "2026-08-21", "por": "n/d", "tipo": "existencia + estatus de maestro de articulos (el unico reporte con estado de catalogo)", "origen": "v2 (al 24/08)"}, {"tienda": "Walmart Villa Nueva", "cadena": "Walmart", "fecha": "2026-08-21", "por": "n/d", "tipo": "reconteo fisico vs sistema (seguimiento del reporte del 14/08)", "origen": "v2 (al 24/08)"}, {"tienda": "Paiz Vista Hermosa", "cadena": "Paiz", "fecha": "2026-08-21", "por": "Marisela De Leon", "tipo": "visibilidad (solo evidencia fotografica)", "origen": "v2 (al 24/08)"}, {"tienda": "Paiz Pinula", "cadena": "Paiz", "fecha": "2026-08-24", "por": "Zetino", "tipo": "incidencia de calidad", "origen": "v2 (al 24/08)"}, {"tienda": "PAIZ COBAN", "cadena": "Paiz", "fecha": "26-28/08", "por": "Eduardo Yat", "tipo": "visibilidad", "nota": "Producto colocado y rotulado; no modulados pasaron a liquidación con planograma nuevo", "origen": "chat fresco (26-29/08)"}, {"tienda": "PAIZ NOVICENTRO ZONA 11", "cadena": "Paiz", "fecha": "26 y 29/08", "por": "mercaderista GSP", "tipo": "conteo ×2", "nota": "No modulados en CERO físico; FOTD y Suffolk marcados Liquidado", "origen": "chat fresco (26-29/08)"}, {"tienda": "WM VILLA NUEVA", "cadena": "WM", "fecha": "26 y 28/08", "por": "mercaderista GSP", "tipo": "reconteo ×2", "nota": "FANTASMA MASIVO: 417 u de diferencia · bodega saturada · escalado a coordinador de abarrotes", "origen": "chat fresco (26-29/08)"}, {"tienda": "PAIZ UTATLAN", "cadena": "Paiz", "fecha": "27/08", "por": "Daya", "tipo": "conteo", "nota": "Tienda limpia: 8 ítems, físico = sistema en todos", "origen": "chat fresco (26-29/08)"}, {"tienda": "WM NARANJO", "cadena": "WM", "fecha": "27/08", "por": "Daya", "tipo": "conteo", "nota": "No modulados \"no resurtible\"; varios BORRADO DE SISTEMA; Suffolk 28 u en merma; llegada HB Original 20 u el 29/08", "origen": "chat fresco (26-29/08)"}, {"tienda": "PAIZ ALTOS DE SAN CRISTOB", "cadena": "Paiz", "fecha": "27/08", "por": "Ross Barrios", "tipo": "conteo", "nota": "Fantasmas: Rasputin 17→1 · Scrimshaw 17→8 · Session 3→0", "origen": "chat fresco (26-29/08)"}, {"tienda": "PAIZ SAN CRISTOBAL", "cadena": "Paiz", "fecha": "27/08", "por": "Ross Barrios", "tipo": "conteo", "nota": "Casi cuadra; FOTD 22→16; Munchner y Helles \"se buscan\"", "origen": "chat fresco (26-29/08)"}, {"tienda": "WM BOSQ SAN NICOLAS", "cadena": "WM", "fecha": "27/08", "por": "mercaderista GSP", "tipo": "conteo", "nota": "VENCIDOS en tienda: FOTD completo (5/2026) + 12 Sapporo Black + 12 Gold + 12 Suffolk; Gold entra a plano de cámara fría", "origen": "chat fresco (26-29/08)"}, {"tienda": "PAIZ ROOSEVELT", "cadena": "Paiz", "fecha": "27/08", "por": "Daya", "tipo": "conteo", "nota": "Fantasmas modulados: Sapporo Black 20→0 · FOTD 27→3; Helles sano con 34 u", "origen": "chat fresco (26-29/08)"}, {"tienda": "PAIZ AGUILAR BATRES", "cadena": "Paiz", "fecha": "27/08", "por": "Ross Barrios", "tipo": "conteo", "nota": "Silver: llegada de 12 u del 16/08 desaparecida (sistema 0); Helles/Rasputin/Scrimshaw cuadran", "origen": "chat fresco (26-29/08)"}, {"tienda": "WM ROOSEVELT", "cadena": "WM", "fecha": "28/08", "por": "Victor Hugo", "tipo": "conteo", "nota": "Cuadra 100% PERO 68 Dunkel + 108 HB Original + 36 Silver empacados sin plano tras el modular de hace 15 días", "origen": "chat fresco (26-29/08)"}, {"tienda": "PAIZ SALIDA AL PACIFICO", "cadena": "Paiz", "fecha": "29/08", "por": "mercaderista GSP", "tipo": "conteo", "nota": "No modulados en cero; FOTD y Suffolk en liquidación (mapeo de tienda por confirmar)", "origen": "chat fresco (26-29/08)"}, {"tienda": "PAIZ CHIQUIMULA PRADERA", "cadena": "Paiz", "fecha": "28/08", "por": "Susy Guerra", "tipo": "visibilidad", "nota": "Visibilidad con fotos", "origen": "chat fresco (26-29/08)"}, {"tienda": "PAIZ LAS AMERICAS", "cadena": "Paiz", "fecha": "27/08", "por": "Marisela De León", "tipo": "visibilidad", "nota": "Visibilidad con fotos", "origen": "chat fresco (26-29/08)"}]}, "hallazgos": [{"titulo": "Vencidos en WM Bosques", "gravedad": "alta", "detalle": "Todo el Trooper FOTD de la tienda venció en 5/2026 y sigue ahí; más 12 Sapporo Black, 12 Gold (vencidas desde 31/5/25) y 12 Suffolk. Coordinar retiro/merma — es espacio muerto en góndola."}, {"titulo": "Producto empacado tras el modular · WM Roosevelt", "gravedad": "alta", "detalle": "68 Dunkel + 108 HB Original + 36 Silver reempacados hace 15 días y el plano nuevo no los contempla. El sistema cuadra al 100% pero 135+ unidades no están a la venta."}, {"titulo": "La llegada perdida de Aguilar Batres", "gravedad": "media", "detalle": "12 Silver llegaron el 16/08 y no aparecen ni en sistema ni en físico. Rastrear la recepción."}, {"titulo": "Reclamos concentrados en Sapporo", "gravedad": "media", "detalle": "79 u reclamadas esta semana (≈Q3,630); 50 u en Pinula y 24 en Mazatenango. Averiguar la causa del reclamo antes de que se repita."}, {"titulo": "Mega 6: 12 de 18 SKU BORRADOS del maestro", "gravedad": "alta", "detalle": "Ya no es quiebre: es baja de surtido. Cerrar con Cristian el estatus (pendiente del backlog desde la reunión)."}, {"titulo": "Sapporo Gold vende sin estar activo", "gravedad": "info", "detalle": "Q1,018 esta semana (20 u) estando INACTIVO y en liquidación. Bosques ya lo mete a plano de cámara fría. Candidato a reactivación formal."}], "narrativa": {"capitulos": [{"id": "c1", "titulo": "I · El marcador de la semana", "parrafos": ["La semana 202630 cerró en Q10,544 (297 unidades) — tercera semana consecutiva en la meseta de los Q10 mil, un 3% abajo de la anterior. La referencia sigue siendo la del 2024: Q20,486 por semana. Vendemos la mitad de lo que este mismo catálogo vendía hace dos años, y ya sabemos que no es la demanda: es cuánto producto está de verdad en el piso.", "El partido se juega el fin de semana: viernes, sábado y domingo concentran el 66% de la venta (el sábado solo, el 29%). Todo lo que no esté en góndola un jueves por la noche es venta que no existe."]}, {"id": "c2", "titulo": "II · La mentira del 91%", "parrafos": ["El sistema de Walmart reporta un instock del 91%: casi perfecto. Los conteos físicos cuentan otra historia: 536 unidades fantasma verificadas — producto que el sistema jura tener y que nadie encuentra en piso ni en bodega. Con el estante \"lleno\" en papel, el motor de reposición no pide, la venta no ocurre, y el instock hermoso se vuelve el mejor disfraz del quiebre.", "Villa Nueva es el caso de estudio: cuatro conteos entre el 14 y el 28 de agosto, siempre con el mismo final — el sistema dice 471, el piso dice 54. Ya está escalado al coordinador de abarrotes y el ajuste de inventario va en la lista para Cristian. Sin ese ajuste, esa tienda está fuera de cualquier pedido."]}, {"id": "c3", "titulo": "III · Lo que vieron los mercaderistas", "parrafos": ["La red GSP tocó 14 tiendas solo esta semana (23 acumuladas desde el 12 de agosto, cuando arrancó la campaña). Utatlán salió limpia — físico igual a sistema en los 8 ítems. Bosques apareció con producto vencido en góndola desde mayo. WM Roosevelt cuadra al 100% en papel, pero tiene 200+ unidades empacadas en bodega porque el modular nuevo las dejó fuera del plano.", "El patrón que más pega: los 7 no modulados están en cero físico en la mayoría de tiendas y en el sistema figuran \"no resurtible\" o \"bloqueado\". Eso conecta directo con el pedido de refuerzo que está esperando firma — la góndola de octubre se gana con esas cajas."]}, {"id": "c4", "titulo": "IV · Los reclamos silenciosos", "parrafos": ["Aparecieron 79 unidades reclamadas esta semana — Q3,630 al costo que se descuentan solos de la factura. El 79% es Sapporo y la mitad salió de una sola tienda (Santa Catarina Pinula). Un reclamo aislado es ruido; 50 unidades en una tienda es una causa que hay que ir a buscar: recepción, manipulación o vencimiento."]}, {"id": "c5", "titulo": "V · La jugada que sigue", "parrafos": ["Tres cosas salen de este cuaderno: el ajuste de inventario de Villa Nueva (y los fantasmas menores de Altos y Paiz Roosevelt) para Cristian; la causa de los reclamos de Pinula; y el pedido de refuerzo de los no modulados que ya está calculado y espera la firma — con la vigencia venciendo el martes 2.", "El tablero de los lunes arranca esta semana. Este cuaderno es la versión larga; el de los lunes será el resumen de 5 números que Walmart va a ver."]}]}};
+/*__FIN_DATOS__*/
+
+(function(){
+"use strict";
+
+/* ================= UTILIDADES ================= */
+var LS_KEY = "cuaderno-walmart-2026";
+function $(s, r){ return (r||document).querySelector(s); }
+function $$(s, r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
+function esc(x){
+  return String(x == null ? "" : x).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+  });
+}
+function fmtN(n){
+  if(n == null || isNaN(n)) return "—";
+  return Number(n).toLocaleString("es-GT");
+}
+function fmtQ(n){
+  if(n == null || isNaN(n)) return "—";
+  return "Q " + Number(n).toLocaleString("es-GT");
+}
+function pct(n){
+  if(n == null || isNaN(n)) return "—";
+  return Math.round(n) + "%";
+}
+function nombreCorto(nombre){
+  var limpio = String(nombre||"").trim();
+  if(limpio.length <= 22) return limpio;
+  var partes = limpio.split(/\s+/);
+  var out = "";
+  for(var k=0;k<partes.length;k++){
+    if((out + " " + partes[k]).trim().length > 22) break;
+    out = (out + " " + partes[k]).trim();
+  }
+  return out || limpio.slice(0,22);
+}
+
+/* ================= ESTADO ================= */
+var estado = {
+  itemsSort: {key:"q630", dir:-1},
+  tiendasSort: {key:"q630", dir:-1},
+  mapaFiltro: "todos",
+  libretaFiltro: "todos"
+};
+try{
+  var guardado = localStorage.getItem(LS_KEY);
+  if(guardado){
+    var g = JSON.parse(guardado);
+    if(g && typeof g === "object"){
+      if(g.mapaFiltro) estado.mapaFiltro = g.mapaFiltro;
+      if(g.libretaFiltro) estado.libretaFiltro = g.libretaFiltro;
+      if(g.itemsSort && g.itemsSort.key) estado.itemsSort = g.itemsSort;
+      if(g.tiendasSort && g.tiendasSort.key) estado.tiendasSort = g.tiendasSort;
+    }
+  }
+}catch(e){}
+function persistir(){
+  try{ localStorage.setItem(LS_KEY, JSON.stringify(estado)); }catch(e){}
+}
+
+/* índices auxiliares */
+var itemsPorId = {};
+(DATA.items||[]).forEach(function(it){ itemsPorId[it.id] = it; });
+var tiendasPorNum = {};
+(DATA.tiendas||[]).forEach(function(t){ tiendasPorNum[t.num] = t; });
+
+/* ================= NAV ================= */
+function renderNav(){
+  var secciones = [
+    ["f01","F01","Marcador"],["f02","F02","Ítems"],["f03","F03","Tiendas"],
+    ["f04","F04","Mapa de la red"],["f05","F05","Piso vs sistema"],
+    ["f07","F07","Libreta"],["f08","F08","Hallazgos"],["cronica","§","Crónica"]
+  ];
+  if((DATA.reclamos||[]).length){
+    secciones.splice(5,0,["f06","F06","Reclamos"]);
+  }
+  var html = '<span class="marca">Cuaderno semanal</span>';
+  secciones.forEach(function(s){
+    html += '<a href="#'+s[0]+'"><span class="cod">'+esc(s[1])+'</span>'+esc(s[2])+'</a>';
+  });
+  $("#nav").innerHTML = html;
+}
+
+/* ================= CABECERA ================= */
+function renderCabecera(){
+  var m = DATA.meta || {};
+  $("#cabecera").innerHTML =
+    '<div class="kicker">Distribuidora · revisión de socios</div>'+
+    '<h1>'+esc(m.titulo)+'</h1>'+
+    '<div class="sub">'+esc(m.subtitulo)+'</div>'+
+    '<div class="gen">Generado: '+esc(m.generado)+'</div>'+
+    '<div class="fuentes">Fuentes: '+esc((m.fuentes||[]).join(" · "))+'</div>';
+  document.title = m.titulo || "Cuaderno Semanal";
+  $("#pie").textContent = (m.titulo||"") + " — " + (m.generado||"") + " · documento interno de los socios";
+}
+
+/* ================= F01 · KPIs ================= */
+function renderKpis(){
+  var html = "";
+  (DATA.kpis||[]).forEach(function(k){
+    var tono = (k.tono==="ok"||k.tono==="alerta") ? k.tono : "neutro";
+    var d = "";
+    if(k.delta){
+      var cls = /^\s*[-−]/.test(k.delta) ? "dn" : "up";
+      d = '<span class="delta '+cls+'">'+esc(k.delta)+'</span>';
+    }
+    html += '<div class="kpi '+tono+'">'+
+      '<div class="lbl">'+esc(k.label)+'</div>'+
+      '<div class="val">'+esc(k.valor)+'</div>'+
+      '<div class="sub">'+esc(k.sub)+'</div>'+ d +'</div>';
+  });
+  $("#kpis").innerHTML = html;
+}
+
+/* ---- SVG: barras diarias ---- */
+function renderDiaria(){
+  var datos = DATA.curva_diaria || [];
+  if(!datos.length){ $("#g-diaria").innerHTML = ""; return; }
+  var W=560, H=230, padL=44, padB=30, padT=14, padR=8;
+  var max = Math.max.apply(null, datos.map(function(d){return d.u;})) || 1;
+  var orden = datos.map(function(d,i){return [d.u,i];}).sort(function(a,b){return b[0]-a[0];});
+  var top3 = {};
+  orden.slice(0,3).forEach(function(p){ top3[p[1]] = true; });
+  var bw = (W-padL-padR)/datos.length;
+  var s = '<svg viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" role="img">';
+  for(var g=0; g<=4; g++){
+    var gy = padT + (H-padT-padB)*g/4;
+    var gv = Math.round(max*(1-g/4));
+    s += '<line x1="'+padL+'" y1="'+gy+'" x2="'+(W-padR)+'" y2="'+gy+'" stroke="#d8d0bd" stroke-width="1"/>'+
+         '<text x="'+(padL-6)+'" y="'+(gy+4)+'" text-anchor="end" font-family="Consolas,monospace" font-size="10" fill="#4a463c">'+fmtN(gv)+'</text>';
+  }
+  datos.forEach(function(d,i){
+    var bh = (H-padT-padB)*(d.u/max);
+    var x = padL + i*bw + bw*0.18;
+    var y = H-padB-bh;
+    var color = top3[i] ? "#c0392b" : "#1a1a17";
+    s += '<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+(bw*0.64).toFixed(1)+'" height="'+bh.toFixed(1)+'" fill="'+color+'">'+
+         '<title></title></rect>'+
+         '<text x="'+(x+bw*0.32).toFixed(1)+'" y="'+(y-5).toFixed(1)+'" text-anchor="middle" font-family="Consolas,monospace" font-size="11" font-weight="bold" fill="'+(top3[i]?"#c0392b":"#1a1a17")+'">'+fmtN(d.u)+'</text>'+
+         '<text x="'+(x+bw*0.32).toFixed(1)+'" y="'+(H-padB+16)+'" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a1a17">'+esc(d.dia)+'</text>';
+  });
+  s += '<line x1="'+padL+'" y1="'+(H-padB)+'" x2="'+(W-padR)+'" y2="'+(H-padB)+'" stroke="#1a1a17" stroke-width="1.5"/></svg>';
+  $("#g-diaria").innerHTML = s;
+}
+
+/* ---- SVG: serie semanal vs referencia ---- */
+function renderSemanal(){
+  var datos = DATA.serie_semanal || [];
+  if(!datos.length){ $("#g-semanal").innerHTML = ""; return; }
+  var ref = Number(DATA.referencia_2024)||0;
+  var W=560, H=230, padL=52, padB=30, padT=16, padR=8;
+  var max = Math.max(ref, Math.max.apply(null, datos.map(function(d){return d.q;}))) * 1.08 || 1;
+  var bw = (W-padL-padR)/datos.length;
+  var yRef = padT + (H-padT-padB)*(1 - ref/max);
+  var s = '<svg viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" role="img">';
+  for(var g=0; g<=4; g++){
+    var gy = padT + (H-padT-padB)*g/4;
+    var gv = Math.round(max*(1-g/4));
+    s += '<line x1="'+padL+'" y1="'+gy+'" x2="'+(W-padR)+'" y2="'+gy+'" stroke="#d8d0bd"/>'+
+         '<text x="'+(padL-6)+'" y="'+(gy+4)+'" text-anchor="end" font-family="Consolas,monospace" font-size="10" fill="#4a463c">'+fmtN(gv)+'</text>';
+  }
+  datos.forEach(function(d,i){
+    var bh = (H-padT-padB)*(d.q/max);
+    var x = padL + i*bw + bw*0.2;
+    var y = H-padB-bh;
+    var bajoRef = d.q < ref;
+    s += '<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+(bw*0.6).toFixed(1)+'" height="'+bh.toFixed(1)+'" fill="'+(bajoRef?"#1f5f6b":"#1e6b3c")+'"/>'+
+         '<text x="'+(x+bw*0.3).toFixed(1)+'" y="'+(y-5).toFixed(1)+'" text-anchor="middle" font-family="Consolas,monospace" font-size="11" font-weight="bold" fill="#1a1a17">'+fmtQ(d.q)+'</text>'+
+         '<text x="'+(x+bw*0.3).toFixed(1)+'" y="'+(H-padB+16)+'" text-anchor="middle" font-family="Georgia,serif" font-size="11">'+esc(d.sem)+'</text>';
+  });
+  s += '<line x1="'+padL+'" y1="'+yRef.toFixed(1)+'" x2="'+(W-padR)+'" y2="'+yRef.toFixed(1)+'" stroke="#c0392b" stroke-width="2" stroke-dasharray="7 5"/>'+
+       '<text x="'+(W-padR-2)+'" y="'+(yRef-6).toFixed(1)+'" text-anchor="end" font-family="Georgia,serif" font-size="11.5" font-style="italic" font-weight="bold" fill="#c0392b">promedio 2024 · '+fmtQ(ref)+'</text>'+
+       '<line x1="'+padL+'" y1="'+(H-padB)+'" x2="'+(W-padR)+'" y2="'+(H-padB)+'" stroke="#1a1a17" stroke-width="1.5"/></svg>';
+  $("#g-semanal").innerHTML = s;
+}
+
+/* ================= TABLAS ORDENABLES ================= */
+function comparador(key, dir){
+  return function(a,b){
+    var va=a[key], vb=b[key];
+    if(typeof va==="string"){ va=va.toLowerCase(); vb=String(vb).toLowerCase(); }
+    if(va<vb) return -1*dir;
+    if(va>vb) return 1*dir;
+    return 0;
+  };
+}
+function flecha(sort, key){
+  if(sort.key!==key) return '<span class="flecha">↕</span>';
+  return '<span class="flecha">'+(sort.dir===1?"↑":"↓")+'</span>';
+}
+
+/* ---- F02 · ÍTEMS ---- */
+var COLS_ITEMS = [
+  {k:"nombre", t:"Ítem", c:""},
+  {k:"clase", t:"Clase", c:"c"},
+  {k:"u628", t:"S628 u", c:"n", q:"q628"},
+  {k:"u629", t:"S629 u", c:"n", q:"q629"},
+  {k:"u630", t:"S630 u", c:"n", q:"q630"},
+  {k:"exist", t:"Exist.", c:"n"},
+  {k:"con_stock", t:"Cobertura", c:"c"},
+  {k:"instock_sis", t:"Instock sis", c:"n"}
+];
+function renderItems(){
+  var items = (DATA.items||[]).slice().sort(comparador(estado.itemsSort.key, estado.itemsSort.dir));
+  var maxQ = {};
+  ["q628","q629","q630"].forEach(function(k){
+    maxQ[k] = Math.max.apply(null, (DATA.items||[]).map(function(i){return i[k]||0;})) || 1;
+  });
+  var thead = "<thead><tr>";
+  COLS_ITEMS.forEach(function(col){
+    thead += '<th class="ordenable '+col.c+'" data-tabla="items" data-key="'+col.k+'">'+col.t+flecha(estado.itemsSort,col.k)+'</th>';
+  });
+  thead += "</tr></thead>";
+  var body = "<tbody>";
+  items.forEach(function(it){
+    var cls = it.clase==="NO MODULADO" ? ' class="no-mod"' : "";
+    var chipCls = it.clase==="MODULADO" ? "mod" : (it.clase==="NO MODULADO" ? "nomod" : "inact");
+    body += "<tr"+cls+">"+
+      "<td><strong>"+esc(it.nombre)+"</strong></td>"+
+      '<td class="c"><span class="chip '+chipCls+'">'+esc(it.clase)+'</span></td>';
+    [["u628","q628"],["u629","q629"],["u630","q630"]].forEach(function(par){
+      var u=it[par[0]]||0, q=it[par[1]]||0;
+      var w = Math.max(2, Math.round(70*(q/maxQ[par[1]])));
+      body += '<td class="n"><div class="minibar-wrap"><span>'+fmtN(u)+' u · '+fmtQ(q)+'</span>'+
+              '<span class="minibar" style="width:'+w+'px"></span></div></td>';
+    });
+    var g = it.instock_sis>=80?"g-ok":(it.instock_sis>=50?"g-med":"g-baj");
+    body += '<td class="n">'+fmtN(it.exist)+'</td>'+
+      '<td class="c num">'+fmtN(it.con_stock)+' / '+fmtN(it.tiendas)+'</td>'+
+      '<td class="n"><span class="gauge '+g+'"><i style="width:'+Math.min(100,Math.max(0,it.instock_sis||0))+'%"></i></span><span class="gauge-lbl">'+pct(it.instock_sis)+'</span></td>'+
+      "</tr>";
+  });
+  body += "</tbody>";
+  $("#t-items").innerHTML = thead+body;
+}
+
+/* ---- F03 · TIENDAS ---- */
+var COLS_TIENDAS = [
+  {k:"nombre", t:"Tienda", c:""},
+  {k:"q628", t:"S628", c:"n"},
+  {k:"q629", t:"S629", c:"n"},
+  {k:"q630", t:"S630", c:"n"},
+  {k:"prom3", t:"Prom 3 sem", c:"n"},
+  {k:"combos", t:"Combos", c:"c"},
+  {k:"instock_sis", t:"Instock sis", c:"n"},
+  {k:"contada", t:"Conteo", c:"c"}
+];
+function renderTiendas(){
+  var tiendas = (DATA.tiendas||[]).slice().sort(comparador(estado.tiendasSort.key, estado.tiendasSort.dir));
+  var maxQ = {};
+  ["q628","q629","q630","prom3"].forEach(function(k){
+    maxQ[k] = Math.max.apply(null, (DATA.tiendas||[]).map(function(t){return t[k]||0;})) || 1;
+  });
+  var thead = "<thead><tr>";
+  COLS_TIENDAS.forEach(function(col){
+    thead += '<th class="ordenable '+col.c+'" data-tabla="tiendas" data-key="'+col.k+'">'+col.t+flecha(estado.tiendasSort,col.k)+'</th>';
+  });
+  thead += "</tr></thead>";
+  var body = "<tbody>";
+  tiendas.forEach(function(t){
+    var nombre = "<strong>"+esc(t.nombre)+"</strong>"+
+      (t.top20 ? '<span class="badge-top">TOP-20</span>' : "")+
+      (t.contada && t.fecha_conteo ? '<span class="sello">Contada '+esc(t.fecha_conteo)+'</span>' : "");
+    body += "<tr><td>"+nombre+' <span class="num" style="color:var(--tinta-suave);font-size:11px">#'+esc(t.num)+'</span></td>';
+    ["q628","q629","q630","prom3"].forEach(function(k){
+      var w = Math.max(2, Math.round(70*((t[k]||0)/maxQ[k])));
+      body += '<td class="n"><div class="minibar-wrap"><span>'+fmtQ(t[k])+'</span><span class="minibar q" style="width:'+w+'px"></span></div></td>';
+    });
+    var g = t.instock_sis>=80?"g-ok":(t.instock_sis>=50?"g-med":"g-baj");
+    var conteo = t.contada
+      ? '<span class="ico-conteo" data-conteo="'+esc(t.num)+'" data-accion="ver-conteo">i</span>'
+      : '<span style="color:var(--tinta-suave)">—</span>';
+    body += '<td class="c num">'+fmtN(t.con_stock)+' / '+fmtN(t.combos)+'</td>'+
+      '<td class="n"><span class="gauge '+g+'"><i style="width:'+Math.min(100,Math.max(0,t.instock_sis||0))+'%"></i></span><span class="gauge-lbl">'+pct(t.instock_sis)+'</span></td>'+
+      '<td class="c">'+conteo+'</td></tr>';
+  });
+  body += "</tbody>";
+  $("#t-tiendas").innerHTML = thead+body;
+}
+
+/* ================= F04 · MAPA ================= */
+function renderLeyenda(){
+  $("#leyenda").innerHTML =
+    '<span><span class="muestra m-fantasma"></span>Fantasma (sistema &gt; 0, piso 0)</span>'+
+    '<span><span class="muestra m-cero"></span>Cero</span>'+
+    '<span><span class="muestra m-bajo"></span>Bajo</span>'+
+    '<span><span class="muestra m-ok"></span>OK</span>'+
+    '<span><span class="muestra m-alto"></span>Alto / exceso</span>'+
+    '<span><span class="muestra m-ausente"></span>Combo no existe</span>'+
+    '<span class="num" style="margin-left:auto">El número dentro de la celda es la venta de la semana.</span>';
+}
+function renderMapa(){
+  $$("#filtros-mapa .btn-f").forEach(function(b){
+    b.classList.toggle("activo", b.getAttribute("data-mapa")===estado.mapaFiltro);
+  });
+  var columnas = (DATA.item_ids||[]).filter(function(id){
+    var it = itemsPorId[id];
+    if(estado.mapaFiltro==="modulados") return it && it.clase==="MODULADO";
+    if(estado.mapaFiltro==="nomodulados") return it && it.clase==="NO MODULADO";
+    return true;
+  });
+  var tiendas = (DATA.tiendas||[]).slice().sort(function(a,b){return (b.q630||0)-(a.q630||0);});
+  var celdas = {};
+  (DATA.heatmap||[]).forEach(function(h){ celdas[h.t+"|"+h.i] = h; });
+
+  var html = '<thead><tr><th class="esquina">Tienda \\ Ítem</th>';
+  columnas.forEach(function(id){
+    var it = itemsPorId[id];
+    var nom = it ? nombreCorto(it.nombre) : id;
+    html += '<th><div class="rot">'+esc(nom)+'</div></th>';
+  });
+  html += "</tr></thead><tbody>";
+  tiendas.forEach(function(t){
+    html += '<tr><td class="th-tienda"><span class="num-t">'+esc(t.num)+'</span>'+esc(t.nombre)+'</td>';
+    columnas.forEach(function(id){
+      var h = celdas[t.num+"|"+id];
+      if(!h){
+        html += '<td class="celda e-ausente"></td>';
+      }else{
+        var venta = (h.v>0) ? fmtN(h.v) : "";
+        html += '<td class="celda e-'+esc(h.e)+'" data-accion="celda" data-t="'+esc(t.num)+'" data-i="'+esc(id)+'">'+venta+'</td>';
+      }
+    });
+    html += "</tr>";
+  });
+  html += "</tbody>";
+  $("#t-mapa").innerHTML = html;
+}
+
+/* ================= F05 · PISO VS SISTEMA ================= */
+function renderVN(){
+  var datos = DATA.vn_evolucion || [];
+  if(!datos.length){ $("#g-vn").innerHTML=""; return; }
+  var caps = (DATA.narrativa && DATA.narrativa.capitulos) || [];
+  var capPiso = null;
+  for(var i=0;i<caps.length;i++){
+    if(/piso|físic|fisic|verdad|sistema/i.test(caps[i].titulo||"")){ capPiso = caps[i]; break; }
+  }
+  if(capPiso) $("#g-vn-titulo").textContent = capPiso.titulo;
+  $("#f05-nota").textContent = "Lo que el sistema jura contra lo que el piso muestra";
+
+  var W=560, H=230, padL=46, padB=34, padT=14, padR=10;
+  var vals = [];
+  datos.forEach(function(d){ vals.push(d.sistema, d.fisico); });
+  var max = Math.max.apply(null, vals)*1.06 || 1;
+  var min = Math.min.apply(null, vals)*0.94;
+  if(min<0) min=0;
+  function X(i){ return padL + (W-padL-padR)*(datos.length===1?0.5:i/(datos.length-1)); }
+  function Y(v){ return padT + (H-padT-padB)*(1-(v-min)/(max-min)); }
+  var s = '<svg viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" role="img">';
+  for(var g=0; g<=4; g++){
+    var gv = min + (max-min)*(1-g/4);
+    var gy = padT + (H-padT-padB)*g/4;
+    s += '<line x1="'+padL+'" y1="'+gy+'" x2="'+(W-padR)+'" y2="'+gy+'" stroke="#d8d0bd"/>'+
+         '<text x="'+(padL-6)+'" y="'+(gy+4)+'" text-anchor="end" font-family="Consolas,monospace" font-size="10" fill="#4a463c">'+fmtN(Math.round(gv))+'</text>';
+  }
+  /* área entre líneas */
+  var ptsSis = datos.map(function(d,i){ return X(i).toFixed(1)+","+Y(d.sistema).toFixed(1); });
+  var ptsFis = datos.map(function(d,i){ return X(i).toFixed(1)+","+Y(d.fisico).toFixed(1); }).reverse();
+  s += '<polygon points="'+ptsSis.join(" ")+" "+ptsFis.join(" ")+'" fill="rgba(192,57,43,.18)"/>';
+  function poly(pts,color,dash){
+    return '<polyline points="'+pts.join(" ")+'" fill="none" stroke="'+color+'" stroke-width="2.5"'+(dash?' stroke-dasharray="6 4"':"")+'/>';
+  }
+  s += poly(datos.map(function(d,i){return X(i).toFixed(1)+","+Y(d.sistema).toFixed(1);}), "#1a1a17", false);
+  s += poly(datos.map(function(d,i){return X(i).toFixed(1)+","+Y(d.fisico).toFixed(1);}), "#c0392b", true);
+  datos.forEach(function(d,i){
+    s += '<circle class="pto-vn" data-accion="vn" data-idx="'+i+'" cx="'+X(i).toFixed(1)+'" cy="'+Y(d.sistema).toFixed(1)+'" r="5" fill="#1a1a17" style="cursor:crosshair"/>'+
+         '<circle class="pto-vn" data-accion="vn" data-idx="'+i+'" cx="'+X(i).toFixed(1)+'" cy="'+Y(d.fisico).toFixed(1)+'" r="5" fill="#c0392b" style="cursor:crosshair"/>'+
+         '<text x="'+X(i).toFixed(1)+'" y="'+(H-padB+16)+'" text-anchor="middle" font-family="Consolas,monospace" font-size="9.5" fill="#4a463c">'+esc(String(d.fecha).slice(5))+'</text>';
+  });
+  s += '<text x="'+padL+'" y="'+(padT+2)+'" font-family="Georgia,serif" font-size="11" fill="#1a1a17">— sistema</text>'+
+       '<text x="'+(padL+70)+'" y="'+(padT+2)+'" font-family="Georgia,serif" font-size="11" fill="#c0392b">- - físico</text>';
+  s += '<line x1="'+padL+'" y1="'+(H-padB)+'" x2="'+(W-padR)+'" y2="'+(H-padB)+'" stroke="#1a1a17" stroke-width="1.5"/></svg>';
+  $("#g-vn").innerHTML = s;
+}
+function renderDiscrepancias(){
+  var filas = (DATA.discrepancias||[]).slice().sort(function(a,b){return (a.delta||0)-(b.delta||0);});
+  var html = '<thead><tr><th>Tienda</th><th>Ítem</th><th class="n">Sistema</th><th class="n">Físico</th><th class="n">Δ</th></tr></thead><tbody>';
+  if(!filas.length){
+    html += '<tr><td colspan="5" style="font-style:italic;color:var(--tinta-suave)">Sin discrepancias registradas en el período.</td></tr>';
+  }
+  filas.forEach(function(d){
+    var dcls = d.delta<0 ? "delta-neg" : (d.delta>0 ? "delta-pos" : "");
+    var dtxt = d.delta>0 ? "+"+fmtN(d.delta) : fmtN(d.delta);
+    html += "<tr><td><strong>"+esc(d.tienda)+"</strong> <span class='num' style='font-size:10.5px;color:var(--tinta-suave)'>#"+esc(d.num)+"</span></td>"+
+      "<td>"+esc(d.item)+"</td>"+
+      '<td class="n">'+fmtN(d.sistema)+'</td>'+
+      '<td class="n">'+fmtN(d.fisico)+'</td>'+
+      '<td class="n '+dcls+'">'+dtxt+'</td></tr>';
+  });
+  html += "</tbody>";
+  $("#t-disc").innerHTML = html;
+}
+
+/* ================= F06 · RECLAMOS ================= */
+function renderReclamos(){
+  var r = DATA.reclamos||[];
+  var sec = $("#f06");
+  if(!r.length){ sec.style.display="none"; return; }
+  sec.style.display="";
+  var html = '<thead><tr><th>Tienda</th><th>Ítem</th><th class="n">Unidades</th><th class="n">Q costo</th></tr></thead><tbody>';
+  var tu=0, tq=0;
+  r.forEach(function(x){
+    tu += x.u||0; tq += x.q_costo||0;
+    html += "<tr><td><strong>"+esc(x.tienda)+"</strong></td><td>"+esc(x.item)+'</td><td class="n">'+fmtN(x.u)+'</td><td class="n">'+fmtQ(x.q_costo)+"</td></tr>";
+  });
+  html += '<tr style="border-top:2px solid var(--tinta)"><td><strong>TOTAL</strong></td><td></td><td class="n"><strong>'+fmtN(tu)+'</strong></td><td class="n"><strong>'+fmtQ(tq)+"</strong></td></tr>";
+  html += "</tbody>";
+  $("#t-reclamos").innerHTML = html;
+}
+
+/* ================= F07 · LIBRETA ================= */
+function origenesLibreta(){
+  var set = {};
+  ((DATA.mercaderistas||{}).reportes||[]).forEach(function(r){ set[r.origen||"sin origen"]=true; });
+  return Object.keys(set);
+}
+function renderFiltrosLibreta(){
+  var origenes = origenesLibreta();
+  var html = '<button class="btn-f" data-libreta="todos">Todos</button>';
+  origenes.forEach(function(o){
+    html += '<button class="btn-f" data-libreta="'+esc(o)+'">'+esc(o)+'</button>';
+  });
+  $("#filtros-libreta").innerHTML = html;
+  if(estado.libretaFiltro!=="todos" && origenes.indexOf(estado.libretaFiltro)===-1){
+    estado.libretaFiltro="todos";
+  }
+  $$("#filtros-libreta .btn-f").forEach(function(b){
+    b.classList.toggle("activo", b.getAttribute("data-libreta")===estado.libretaFiltro);
+  });
+}
+function renderLibreta(){
+  var reps = ((DATA.mercaderistas||{}).reportes||[]).slice().sort(function(a,b){
+    return String(b.fecha).localeCompare(String(a.fecha));
+  });
+  if(estado.libretaFiltro!=="todos"){
+    reps = reps.filter(function(r){ return (r.origen||"sin origen")===estado.libretaFiltro; });
+  }
+  var html = "";
+  if(!reps.length){
+    html = '<p style="font-style:italic;color:var(--tinta-suave)">No hay reportes para este filtro.</p>';
+  }
+  reps.forEach(function(r){
+    var alerta = r.nota && /FANTASMA|VENCIDOS/i.test(r.nota);
+    html += '<div class="card'+(alerta?" alerta":"")+'">'+
+      '<div class="tienda">'+esc(r.tienda)+'</div>'+
+      '<div class="meta">'+esc(r.cadena)+' · '+esc(r.fecha)+' · '+esc(r.por)+' · '+esc(r.tipo)+'</div>'+
+      (r.nota ? '<div class="nota">“'+esc(r.nota)+'”</div>' : "")+
+      '<span class="origen">'+esc(r.origen)+'</span></div>';
+  });
+  $("#cards").innerHTML = html;
+
+  var eq = (DATA.mercaderistas||{}).equipo||[];
+  var eh = "<h4>Equipo de coordinación</h4><ul>";
+  eq.forEach(function(p){
+    eh += "<li><strong>"+esc(p.nombre)+"</strong> <span class='rol'>"+esc(p.rol)+"</span></li>";
+  });
+  eh += "</ul>";
+  $("#equipo").innerHTML = eh;
+}
+
+/* ================= F08 · HALLAZGOS ================= */
+function renderHallazgos(){
+  var html = "";
+  (DATA.hallazgos||[]).forEach(function(h){
+    var g = (h.gravedad==="alta"||h.gravedad==="media") ? h.gravedad : "info";
+    html += '<div class="hallazgo"><span class="sello-g '+g+'">'+esc(h.gravedad||"info")+'</span>'+
+      "<div><h4>"+esc(h.titulo)+"</h4><p>"+esc(h.detalle)+"</p></div></div>";
+  });
+  $("#hallazgos").innerHTML = html || '<p style="font-style:italic">Sin hallazgos esta semana.</p>';
+}
+
+/* ================= CRÓNICA ================= */
+function renderCronica(){
+  var caps = (DATA.narrativa||{}).capitulos||[];
+  var html = "";
+  caps.forEach(function(c,i){
+    var abierto = i<2 ? " open" : "";
+    html += "<details class='cap'"+abierto+"><summary>"+esc(c.titulo)+"</summary><div class='cuerpo'>";
+    (c.parrafos||[]).forEach(function(p){ html += "<p>"+esc(p)+"</p>"; });
+    html += "</div></details>";
+  });
+  $("#capitulos").innerHTML = html;
+}
+
+/* ================= TOOLTIP ================= */
+var tt = $("#tt");
+function mostrarTT(html, x, y){
+  tt.innerHTML = html;
+  tt.style.display = "block";
+  var r = tt.getBoundingClientRect();
+  var nx = x+16, ny = y+16;
+  if(nx + r.width > window.innerWidth-10) nx = x - r.width - 12;
+  if(ny + r.height > window.innerHeight-10) ny = y - r.height - 12;
+  tt.style.left = nx+"px";
+  tt.style.top = ny+"px";
+}
+function ocultarTT(){ tt.style.display="none"; }
+function htmlCelda(numT, idI){
+  var t = tiendasPorNum[numT];
+  var it = itemsPorId[idI];
+  var h = null;
+  (DATA.heatmap||[]).forEach(function(x){ if(x.t===numT && x.i===idI) h=x; });
+  if(!h) return "";
+  var estados = {fantasma:"FANTASMA", cero:"CERO", bajo:"BAJO", ok:"OK", alto:"ALTO"};
+  return '<span class="tt-t">'+esc(t?t.nombre:numT)+' · '+esc(it?nombreCorto(it.nombre):idI)+'</span>'+
+    '<span class="fila"><span>Estado</span><strong>'+esc(estados[h.e]||h.e)+'</strong></span>'+
+    '<span class="fila"><span>Sistema</span><strong>'+fmtN(h.s)+'</strong></span>'+
+    (h.f!=null ? '<span class="fila"><span>Físico</span><strong>'+fmtN(h.f)+'</strong></span>' : '<span class="fila"><span>Físico</span><strong>sin conteo</strong></span>')+
+    '<span class="fila"><span>Venta sem</span><strong>'+fmtN(h.v)+'</strong></span>';
+}
+function htmlVN(idx){
+  var d = (DATA.vn_evolucion||[])[idx];
+  if(!d) return "";
+  return '<span class="tt-t">'+esc(d.fecha)+'</span>'+
+    '<span class="fila"><span>Sistema</span><strong>'+fmtN(d.sistema)+'</strong></span>'+
+    '<span class="fila"><span>Físico</span><strong>'+fmtN(d.fisico)+'</strong></span>'+
+    '<span class="fila"><span>Diferencia</span><strong>'+fmtN((d.fisico||0)-(d.sistema||0))+'</strong></span>'+
+    (d.nota ? '<span class="nota">'+esc(d.nota)+'</span>' : "");
+}
+
+/* ================= PANEL LATERAL ================= */
+function abrirPanel(numT){
+  var t = tiendasPorNum[numT];
+  if(!t) return;
+  $("#pl-titulo").textContent = t.nombre;
+  $("#pl-sub").textContent = "Tienda #"+t.num+" · conteo "+(t.fecha_conteo||"—");
+  $("#pl-nota").textContent = t.nota_conteo || "Sin nota de conteo registrada.";
+  $("#panel-lateral").classList.add("abierto");
+}
+function cerrarPanel(){ $("#panel-lateral").classList.remove("abierto"); }
+
+/* ================= BARRA INFERIOR ================= */
+function renderEstadoFiltros(){
+  var partes = [];
+  if(estado.mapaFiltro!=="todos") partes.push("Mapa: "+(estado.mapaFiltro==="modulados"?"solo modulados":"solo no modulados"));
+  if(estado.libretaFiltro!=="todos") partes.push("Libreta: "+estado.libretaFiltro);
+  $("#estado-filtros").textContent = partes.length ? "Filtros activos → "+partes.join(" · ") : "Sin filtros activos";
+}
+function aviso(msg){
+  var el = $("#aviso");
+  el.textContent = msg;
+  setTimeout(function(){ el.textContent=""; }, 2600);
+}
+function resumenTexto(){
+  var m = DATA.meta||{};
+  var L = [];
+  L.push((m.titulo||"CUADERNO SEMANAL").toUpperCase());
+  L.push(m.subtitulo||"");
+  L.push("Generado: "+(m.generado||""));
+  L.push("");
+  L.push("== MARCADOR ==");
+  (DATA.kpis||[]).forEach(function(k){
+    L.push("• "+k.label+": "+k.valor+(k.delta?(" ("+k.delta+")"):"")+" — "+k.sub);
+  });
+  L.push("");
+  L.push("== TOP 5 ÍTEMS (Q S630) ==");
+  (DATA.items||[]).slice().sort(function(a,b){return (b.q630||0)-(a.q630||0);}).slice(0,5).forEach(function(it,i){
+    L.push((i+1)+". "+it.nombre+" ["+it.clase+"] — Q "+fmtN(it.q630)+" · instock "+pct(it.instock_sis));
+  });
+  L.push("");
+  L.push("== TOP 5 TIENDAS (Q S630) ==");
+  (DATA.tiendas||[]).slice().sort(function(a,b){return (b.q630||0)-(a.q630||0);}).slice(0,5).forEach(function(t,i){
+    L.push((i+1)+". "+t.nombre+" (#"+t.num+") — Q "+fmtN(t.q630)+" · instock "+pct(t.instock_sis)+(t.contada?" · contada "+t.fecha_conteo:" · SIN CONTAR"));
+  });
+  L.push("");
+  var disc = DATA.discrepancias||[];
+  var sumNeg = disc.reduce(function(a,d){return a+Math.min(0,d.delta||0);},0);
+  L.push("== PISO VS SISTEMA ==");
+  L.push("Discrepancias: "+disc.length+" combos · faltante neto: "+fmtN(sumNeg)+" unidades");
+  var rec = DATA.reclamos||[];
+  var tq = rec.reduce(function(a,r){return a+(r.q_costo||0);},0);
+  var tu = rec.reduce(function(a,r){return a+(r.u||0);},0);
+  L.push("Reclamos: "+rec.length+" casos · "+fmtN(tu)+" u · Q "+fmtN(tq)+" en costo");
+  L.push("");
+  L.push("== HALLAZGOS ==");
+  (DATA.hallazgos||[]).forEach(function(h){
+    L.push("["+(h.gravedad||"info").toUpperCase()+"] "+h.titulo+" — "+h.detalle);
+  });
+  return L.join("\n");
+}
+function copiarResumen(){
+  var texto = resumenTexto();
+  function ok(){ aviso("Resumen copiado al portapapeles"); }
+  function fallback(){
+    try{
+      var ta = document.createElement("textarea");
+      ta.value = texto;
+      ta.style.position="fixed"; ta.style.opacity="0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      ok();
+    }catch(e){ aviso("No se pudo copiar"); }
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(texto).then(ok, fallback);
+  }else{
+    fallback();
+  }
+}
+
+/* ================= EVENTOS (delegación) ================= */
+document.addEventListener("click", function(ev){
+  var el = ev.target;
+  var th = el.closest ? el.closest("th.ordenable") : null;
+  if(th){
+    var tabla = th.getAttribute("data-tabla");
+    var key = th.getAttribute("data-key");
+    var sort = tabla==="items" ? estado.itemsSort : estado.tiendasSort;
+    if(sort.key===key){ sort.dir = -sort.dir; } else { sort.key=key; sort.dir = (key==="nombre"||key==="clase") ? 1 : -1; }
+    persistir();
+    if(tabla==="items") renderItems(); else renderTiendas();
+    return;
+  }
+  var bMapa = el.closest ? el.closest("[data-mapa]") : null;
+  if(bMapa){
+    estado.mapaFiltro = bMapa.getAttribute("data-mapa");
+    persistir(); renderMapa(); renderEstadoFiltros();
+    return;
+  }
+  var bLib = el.closest ? el.closest("[data-libreta]") : null;
+  if(bLib){
+    estado.libretaFiltro = bLib.getAttribute("data-libreta");
+    persistir(); renderFiltrosLibreta(); renderLibreta(); renderEstadoFiltros();
+    return;
+  }
+  var acc = el.closest ? el.closest("[data-accion]") : null;
+  if(acc){
+    var a = acc.getAttribute("data-accion");
+    if(a==="ver-conteo"){ abrirPanel(acc.getAttribute("data-conteo")); return; }
+  }
+  if(el.id==="pl-cerrar" || (el.closest && el.closest("#pl-cerrar"))){ cerrarPanel(); return; }
+  if(el.id==="btn-copiar"){ copiarResumen(); return; }
+  if(el.id==="btn-imprimir"){ window.print(); return; }
+});
+document.addEventListener("keydown", function(ev){
+  if(ev.key==="Escape") cerrarPanel();
+});
+document.addEventListener("mouseover", function(ev){
+  var acc = ev.target.closest ? ev.target.closest("[data-accion]") : null;
+  if(!acc) return;
+  var a = acc.getAttribute("data-accion");
+  if(a==="celda"){
+    var h = htmlCelda(acc.getAttribute("data-t"), acc.getAttribute("data-i"));
+    if(h) mostrarTT(h, ev.clientX, ev.clientY);
+  }else if(a==="vn"){
+    mostrarTT(htmlVN(Number(acc.getAttribute("data-idx"))), ev.clientX, ev.clientY);
+  }
+});
+document.addEventListener("mousemove", function(ev){
+  if(tt.style.display==="block"){
+    var r = tt.getBoundingClientRect();
+    var nx = ev.clientX+16, ny = ev.clientY+16;
+    if(nx + r.width > window.innerWidth-10) nx = ev.clientX - r.width - 12;
+    if(ny + r.height > window.innerHeight-10) ny = ev.clientY - r.height - 12;
+    tt.style.left = nx+"px"; tt.style.top = ny+"px";
+  }
+});
+document.addEventListener("mouseout", function(ev){
+  var acc = ev.target.closest ? ev.target.closest("[data-accion]") : null;
+  if(acc) ocultarTT();
+});
+
+/* ================= ARRANQUE ================= */
+renderNav();
+renderCabecera();
+renderKpis();
+renderDiaria();
+renderSemanal();
+renderItems();
+renderTiendas();
+renderLeyenda();
+renderMapa();
+renderVN();
+renderDiscrepancias();
+renderReclamos();
+renderFiltrosLibreta();
+renderLibreta();
+renderHallazgos();
+renderCronica();
+renderEstadoFiltros();
+})();
+</script>
+</body>
+</html>

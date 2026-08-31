@@ -1,0 +1,5107 @@
+{
+ "meta": {
+  "titulo": "CUADERNO DE LA SEMANA · WALMART / PAIZ",
+  "subtitulo": "Clan Cervecero · semana Walmart 202630 (22–28 de agosto) · scouting completo de la red",
+  "generado": "31 de agosto de 2026",
+  "fuentes": [
+   "Retail Link 202630 (bajado 30/08)",
+   "Conteos físicos GSP 26–29/08",
+   "Reporte mercaderistas v2 (14–24/08)",
+   "HUB v4"
+  ]
+ },
+ "kpis": [
+  {
+   "label": "Venta de la semana",
+   "valor": "Q 10,544",
+   "sub": "297 unidades en 40 tiendas",
+   "delta": "-3.3% vs semana 629",
+   "tono": "neutro"
+  },
+  {
+   "label": "Instock del sistema",
+   "valor": "91%",
+   "sub": "lo que Walmart CREE tener en piso",
+   "delta": null,
+   "tono": "neutro"
+  },
+  {
+   "label": "Unidades fantasma",
+   "valor": "536",
+   "sub": "verificadas con conteo físico en 22 combos",
+   "delta": null,
+   "tono": "alerta"
+  },
+  {
+   "label": "Reclamos de la semana",
+   "valor": "79 u",
+   "sub": "≈ Q 3,630 al costo · 79% es Sapporo",
+   "delta": null,
+   "tono": "alerta"
+  },
+  {
+   "label": "Cobertura mercaderistas",
+   "valor": "14 tiendas",
+   "sub": "reportes frescos 26-29/08 · 23 acumuladas desde el 14/08",
+   "delta": null,
+   "tono": "ok"
+  }
+ ],
+ "curva_diaria": [
+  {
+   "dia": "Lun",
+   "u": 16
+  },
+  {
+   "dia": "Mar",
+   "u": 25
+  },
+  {
+   "dia": "Mié",
+   "u": 33
+  },
+  {
+   "dia": "Jue",
+   "u": 26
+  },
+  {
+   "dia": "Vie",
+   "u": 63
+  },
+  {
+   "dia": "Sáb",
+   "u": 85
+  },
+  {
+   "dia": "Dom",
+   "u": 49
+  }
+ ],
+ "serie_semanal": [
+  {
+   "sem": "628",
+   "q": 10325.05
+  },
+  {
+   "sem": "629",
+   "q": 10906.04
+  },
+  {
+   "sem": "630",
+   "q": 10543.56
+  }
+ ],
+ "referencia_2024": 20486,
+ "items": [
+  {
+   "id": "75214930",
+   "nombre": "Sapporo Silver",
+   "clase": "MODULADO",
+   "u628": 18,
+   "q628": 1108.98,
+   "u629": 42,
+   "q629": 2587.62,
+   "u630": 38,
+   "q630": 2341.18,
+   "exist": 693,
+   "tiendas": 40,
+   "con_stock": 36,
+   "instock_sis": 90
+  },
+  {
+   "id": "75437621",
+   "nombre": "Trooper Original",
+   "clase": "MODULADO",
+   "u628": 91,
+   "q628": 2134.58,
+   "u629": 76,
+   "q629": 1767.76,
+   "u630": 75,
+   "q630": 1751.52,
+   "exist": 2423,
+   "tiendas": 40,
+   "con_stock": 36,
+   "instock_sis": 90
+  },
+  {
+   "id": "75437623",
+   "nombre": "Trooper FOTD",
+   "clase": "MODULADO",
+   "u628": 47,
+   "q628": 1795.39,
+   "u629": 23,
+   "q629": 933.17,
+   "u630": 41,
+   "q630": 1394.95,
+   "exist": 613,
+   "tiendas": 40,
+   "con_stock": 36,
+   "instock_sis": 90
+  },
+  {
+   "id": "75437610",
+   "nombre": "Sapporo Black",
+   "clase": "MODULADO",
+   "u628": 13,
+   "q628": 862.42,
+   "u629": 26,
+   "q629": 1594.04,
+   "u630": 19,
+   "q630": 1203.41,
+   "exist": 647,
+   "tiendas": 40,
+   "con_stock": 37,
+   "instock_sis": 92
+  },
+  {
+   "id": "75214932",
+   "nombre": "Sapporo Gold",
+   "clase": "INACTIVO",
+   "u628": 11,
+   "q628": 527.7,
+   "u629": 8,
+   "q629": 364.3,
+   "u630": 20,
+   "q630": 1017.9,
+   "exist": 227,
+   "tiendas": 26,
+   "con_stock": 20,
+   "instock_sis": 77
+  },
+  {
+   "id": "75437614",
+   "nombre": "HB Original",
+   "clase": "MODULADO",
+   "u628": 26,
+   "q628": 745.16,
+   "u629": 32,
+   "q629": 873.92,
+   "u630": 33,
+   "q630": 945.78,
+   "exist": 777,
+   "tiendas": 40,
+   "con_stock": 36,
+   "instock_sis": 90
+  },
+  {
+   "id": "75437616",
+   "nombre": "HB Dunkel",
+   "clase": "MODULADO",
+   "u628": 21,
+   "q628": 538.46,
+   "u629": 45,
+   "q629": 1073.22,
+   "u630": 27,
+   "q630": 650.08,
+   "exist": 1135,
+   "tiendas": 40,
+   "con_stock": 39,
+   "instock_sis": 98
+  },
+  {
+   "id": "75437613",
+   "nombre": "NC Old Rasputin",
+   "clase": "NO MODULADO",
+   "u628": 12,
+   "q628": 683.52,
+   "u629": 7,
+   "q629": 398.72,
+   "u630": 9,
+   "q630": 512.64,
+   "exist": 346,
+   "tiendas": 25,
+   "con_stock": 25,
+   "instock_sis": 100
+  },
+  {
+   "id": "75437615",
+   "nombre": "HB Helles",
+   "clase": "NO MODULADO",
+   "u628": 44,
+   "q628": 707.72,
+   "u629": 35,
+   "q629": 602.03,
+   "u630": 18,
+   "q630": 352.17,
+   "exist": 264,
+   "tiendas": 27,
+   "con_stock": 21,
+   "instock_sis": 78
+  },
+  {
+   "id": "75253328",
+   "nombre": "StPet Suffolk",
+   "clase": "INACTIVO",
+   "u628": 16,
+   "q628": 375.88,
+   "u629": 4,
+   "q629": 89.28,
+   "u630": 10,
+   "q630": 223.2,
+   "exist": 461,
+   "tiendas": 23,
+   "con_stock": 23,
+   "instock_sis": 100
+  },
+  {
+   "id": "75253329",
+   "nombre": "HB Munchner",
+   "clase": "INACTIVO",
+   "u628": 4,
+   "q628": 120.52,
+   "u629": 9,
+   "q629": 161.55,
+   "u630": 4,
+   "q630": 71.8,
+   "exist": 267,
+   "tiendas": 16,
+   "con_stock": 14,
+   "instock_sis": 88
+  },
+  {
+   "id": "75244435",
+   "nombre": "Hobgoblin Ruby",
+   "clase": "INACTIVO",
+   "u628": 5,
+   "q628": 147.67,
+   "u629": 2,
+   "q629": 9.15,
+   "u630": 1,
+   "q630": 31.25,
+   "exist": 36,
+   "tiendas": 4,
+   "con_stock": 4,
+   "instock_sis": 100
+  },
+  {
+   "id": "75437619",
+   "nombre": "Belhaven Black",
+   "clase": "NO MODULADO",
+   "u628": 2,
+   "q628": 47.68,
+   "u629": 2,
+   "q629": 47.68,
+   "u630": 1,
+   "q630": 23.84,
+   "exist": 68,
+   "tiendas": 6,
+   "con_stock": 4,
+   "instock_sis": 67
+  },
+  {
+   "id": "75437620",
+   "nombre": "Belhaven McCallums",
+   "clase": "NO MODULADO",
+   "u628": 0,
+   "q628": 0.0,
+   "u629": 1,
+   "q629": 23.84,
+   "u630": 1,
+   "q630": 23.84,
+   "exist": 91,
+   "tiendas": 8,
+   "con_stock": 6,
+   "instock_sis": 75
+  },
+  {
+   "id": "75244431",
+   "nombre": "StPet Stout",
+   "clase": "INACTIVO",
+   "u628": 4,
+   "q628": 36.16,
+   "u629": 12,
+   "q629": 2.64,
+   "u630": 0,
+   "q630": 0.0,
+   "exist": 42,
+   "tiendas": 3,
+   "con_stock": 3,
+   "instock_sis": 100
+  },
+  {
+   "id": "75244433",
+   "nombre": "Hobgoblin Gold",
+   "clase": "INACTIVO",
+   "u628": 0,
+   "q628": 0.0,
+   "u629": 0,
+   "q629": 0.0,
+   "u630": 0,
+   "q630": 0.0,
+   "exist": 10,
+   "tiendas": 2,
+   "con_stock": 2,
+   "instock_sis": 100
+  },
+  {
+   "id": "75244436",
+   "nombre": "Hobgoblin Stout",
+   "clase": "INACTIVO",
+   "u628": 0,
+   "q628": 0.0,
+   "u629": 0,
+   "q629": 0.0,
+   "u630": 0,
+   "q630": 0.0,
+   "exist": 2,
+   "tiendas": 1,
+   "con_stock": 1,
+   "instock_sis": 100
+  },
+  {
+   "id": "75437612",
+   "nombre": "NC Scrimshaw",
+   "clase": "NO MODULADO",
+   "u628": 3,
+   "q628": 140.71,
+   "u629": 5,
+   "q629": 284.8,
+   "u630": 0,
+   "q630": 0.0,
+   "exist": 508,
+   "tiendas": 30,
+   "con_stock": 29,
+   "instock_sis": 97
+  },
+  {
+   "id": "75437617",
+   "nombre": "HB Session",
+   "clase": "NO MODULADO",
+   "u628": 1,
+   "q628": 20.8,
+   "u629": 1,
+   "q629": 20.8,
+   "u630": 0,
+   "q630": 0.0,
+   "exist": 137,
+   "tiendas": 10,
+   "con_stock": 9,
+   "instock_sis": 90
+  },
+  {
+   "id": "75437618",
+   "nombre": "Belhaven Best",
+   "clase": "NO MODULADO",
+   "u628": 0,
+   "q628": 0.0,
+   "u629": 3,
+   "q629": 71.52,
+   "u630": 0,
+   "q630": 0.0,
+   "exist": 95,
+   "tiendas": 7,
+   "con_stock": 6,
+   "instock_sis": 86
+  }
+ ],
+ "tiendas": [
+  {
+   "num": "23",
+   "nombre": "PAIZ NOVICENTRO ZONA 11",
+   "q628": 871.34,
+   "q629": 337.86,
+   "q630": 653.4,
+   "prom3": 620.87,
+   "top20": true,
+   "combos": 11,
+   "con_stock": 8,
+   "instock_sis": 73,
+   "contada": true,
+   "fecha_conteo": "26 y 29/08",
+   "nota_conteo": "No modulados en CERO físico; FOTD y Suffolk marcados Liquidado"
+  },
+  {
+   "num": "22",
+   "nombre": "PAIZ LAS AMERICAS",
+   "q628": 502.44,
+   "q629": 1308.44,
+   "q630": 628.49,
+   "prom3": 813.12,
+   "top20": true,
+   "combos": 10,
+   "con_stock": 10,
+   "instock_sis": 100,
+   "contada": true,
+   "fecha_conteo": "27/08",
+   "nota_conteo": "Visibilidad con fotos"
+  },
+  {
+   "num": "727",
+   "nombre": "PAIZ COLONIA VISTA HERMOS",
+   "q628": 385.65,
+   "q629": 427.05,
+   "q630": 605.15,
+   "prom3": 472.62,
+   "top20": true,
+   "combos": 11,
+   "con_stock": 11,
+   "instock_sis": 100,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "121",
+   "nombre": "WM ROOSEVELT",
+   "q628": 174.86,
+   "q629": 335.72,
+   "q630": 534.29,
+   "prom3": 348.29,
+   "top20": true,
+   "combos": 9,
+   "con_stock": 8,
+   "instock_sis": 89,
+   "contada": true,
+   "fecha_conteo": "28/08",
+   "nota_conteo": "Cuadra 100% PERO 68 Dunkel + 108 HB Original + 36 Silver empacados sin plano tras el modular de hace 15 días"
+  },
+  {
+   "num": "20",
+   "nombre": "PAIZ MONTUFAR",
+   "q628": 222.95,
+   "q629": 66.61,
+   "q630": 512.52,
+   "prom3": 267.36,
+   "top20": false,
+   "combos": 10,
+   "con_stock": 10,
+   "instock_sis": 100,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "4173",
+   "nombre": "PAIZ SANTA AMELIA",
+   "q628": 196.7,
+   "q629": 199.2,
+   "q630": 463.67,
+   "prom3": 286.52,
+   "top20": false,
+   "combos": 11,
+   "con_stock": 7,
+   "instock_sis": 64,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "108",
+   "nombre": "PAIZ PRADERA",
+   "q628": 670.72,
+   "q629": 717.22,
+   "q630": 456.09,
+   "prom3": 614.68,
+   "top20": true,
+   "combos": 9,
+   "con_stock": 8,
+   "instock_sis": 89,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "4412",
+   "nombre": "WM ALAMOS",
+   "q628": 366.24,
+   "q629": 202.09,
+   "q630": 429.11,
+   "prom3": 332.48,
+   "top20": false,
+   "combos": 16,
+   "con_stock": 16,
+   "instock_sis": 100,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "21",
+   "nombre": "PAIZ VISTA HERMOSA",
+   "q628": 119.92,
+   "q629": 66.61,
+   "q630": 425.28,
+   "prom3": 203.94,
+   "top20": false,
+   "combos": 12,
+   "con_stock": 12,
+   "instock_sis": 100,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "491",
+   "nombre": "PAIZ COBAN",
+   "q628": 801.82,
+   "q629": 630.86,
+   "q630": 404.14,
+   "prom3": 612.27,
+   "top20": true,
+   "combos": 9,
+   "con_stock": 9,
+   "instock_sis": 100,
+   "contada": true,
+   "fecha_conteo": "26-28/08",
+   "nota_conteo": "Producto colocado y rotulado; no modulados pasaron a liquidación con planograma nuevo"
+  },
+  {
+   "num": "457",
+   "nombre": "PAIZ ASUNCION",
+   "q628": 466.7,
+   "q629": 865.46,
+   "q630": 398.94,
+   "prom3": 577.03,
+   "top20": true,
+   "combos": 8,
+   "con_stock": 8,
+   "instock_sis": 100,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "4116",
+   "nombre": "WM MIXCO",
+   "q628": 139.64,
+   "q629": 8.93,
+   "q630": 375.01,
+   "prom3": 174.53,
+   "top20": false,
+   "combos": 13,
+   "con_stock": 13,
+   "instock_sis": 100,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "4087",
+   "nombre": "PAIZ EL NARANJO",
+   "q628": 381.25,
+   "q629": 229.82,
+   "q630": 369.29,
+   "prom3": 326.79,
+   "top20": true,
+   "combos": 13,
+   "con_stock": 13,
+   "instock_sis": 100,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "164",
+   "nombre": "WM PUERTA PARADA",
+   "q628": 331.98,
+   "q629": 44.64,
+   "q630": 366.61,
+   "prom3": 247.74,
+   "top20": false,
+   "combos": 8,
+   "con_stock": 7,
+   "instock_sis": 88,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "4317",
+   "nombre": "PAIZ SAN LUCAS",
+   "q628": 174.65,
+   "q629": 163.3,
+   "q630": 365.53,
+   "prom3": 234.49,
+   "top20": false,
+   "combos": 10,
+   "con_stock": 9,
+   "instock_sis": 90,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "4037",
+   "nombre": "WM DEL NORTE",
+   "q628": 521.35,
+   "q629": 444.99,
+   "q630": 308.12,
+   "prom3": 424.82,
+   "top20": true,
+   "combos": 14,
+   "con_stock": 13,
+   "instock_sis": 93,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "419",
+   "nombre": "PAIZ MAZATENANGO",
+   "q628": 52.45,
+   "q629": 218.92,
+   "q630": 303.76,
+   "prom3": 191.71,
+   "top20": true,
+   "combos": 13,
+   "con_stock": 12,
+   "instock_sis": 92,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "4490",
+   "nombre": "PAIZ FRAIJANES",
+   "q628": 349.44,
+   "q629": 206.42,
+   "q630": 276.78,
+   "prom3": 277.55,
+   "top20": false,
+   "combos": 11,
+   "con_stock": 10,
+   "instock_sis": 91,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "34",
+   "nombre": "PAIZ UTATLAN",
+   "q628": 276.77,
+   "q629": 235.46,
+   "q630": 235.11,
+   "prom3": 249.11,
+   "top20": true,
+   "combos": 8,
+   "con_stock": 8,
+   "instock_sis": 100,
+   "contada": true,
+   "fecha_conteo": "27/08",
+   "nota_conteo": "Tienda limpia: 8 ítems, físico = sistema en todos"
+  },
+  {
+   "num": "46",
+   "nombre": "PAIZ MEGA 6",
+   "q628": 53.56,
+   "q629": 376.85,
+   "q630": 215.89,
+   "prom3": 215.43,
+   "top20": true,
+   "combos": 10,
+   "con_stock": 10,
+   "instock_sis": 100,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "459",
+   "nombre": "WM BOSQ SAN NICOLAS",
+   "q628": 178.56,
+   "q629": 288.88,
+   "q630": 212.5,
+   "prom3": 226.65,
+   "top20": true,
+   "combos": 8,
+   "con_stock": 7,
+   "instock_sis": 88,
+   "contada": true,
+   "fecha_conteo": "27/08",
+   "nota_conteo": "VENCIDOS en tienda: FOTD completo (5/2026) + 12 Sapporo Black + 12 Gold + 12 Suffolk; Gold entra a plano de cámara fría"
+  },
+  {
+   "num": "458",
+   "nombre": "PAIZ SALIDA AL PACIFICO",
+   "q628": 128.05,
+   "q629": 85.98,
+   "q630": 211.37,
+   "prom3": 141.8,
+   "top20": false,
+   "combos": 9,
+   "con_stock": 7,
+   "instock_sis": 78,
+   "contada": true,
+   "fecha_conteo": "29/08",
+   "nota_conteo": "No modulados en cero; FOTD y Suffolk en liquidación (mapeo de tienda por confirmar)"
+  },
+  {
+   "num": "47",
+   "nombre": "PAIZ MONTBLANC",
+   "q628": 108.75,
+   "q629": 479.11,
+   "q630": 184.28,
+   "prom3": 257.38,
+   "top20": true,
+   "combos": 10,
+   "con_stock": 9,
+   "instock_sis": 90,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "4414",
+   "nombre": "WM ATANASIO TZUL",
+   "q628": 385.19,
+   "q629": 325.45,
+   "q630": 178.56,
+   "prom3": 296.4,
+   "top20": true,
+   "combos": 14,
+   "con_stock": 14,
+   "instock_sis": 100,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "169",
+   "nombre": "PAIZ SAN CRISTOBAL",
+   "q628": 645.58,
+   "q629": 230.44,
+   "q630": 171.43,
+   "prom3": 349.15,
+   "top20": true,
+   "combos": 15,
+   "con_stock": 14,
+   "instock_sis": 93,
+   "contada": true,
+   "fecha_conteo": "27/08",
+   "nota_conteo": "Casi cuadra; FOTD 22→16; Munchner y Helles \"se buscan\""
+  },
+  {
+   "num": "33",
+   "nombre": "PAIZ AGUILAR BATRES",
+   "q628": 106.42,
+   "q629": 319.37,
+   "q630": 167.4,
+   "prom3": 197.73,
+   "top20": true,
+   "combos": 10,
+   "con_stock": 10,
+   "instock_sis": 100,
+   "contada": true,
+   "fecha_conteo": "27/08",
+   "nota_conteo": "Silver: llegada de 12 u del 16/08 desaparecida (sistema 0); Helles/Rasputin/Scrimshaw cuadran"
+  },
+  {
+   "num": "24",
+   "nombre": "PAIZ ROOSEVELT",
+   "q628": 274.29,
+   "q629": 131.54,
+   "q630": 159.47,
+   "prom3": 188.43,
+   "top20": false,
+   "combos": 12,
+   "con_stock": 11,
+   "instock_sis": 92,
+   "contada": true,
+   "fecha_conteo": "27/08",
+   "nota_conteo": "Fantasmas modulados: Sapporo Black 20→0 · FOTD 27→3; Helles sano con 34 u"
+  },
+  {
+   "num": "1054",
+   "nombre": "WALMART SAN CRISTóBAL",
+   "q628": 44.64,
+   "q629": 331.98,
+   "q630": 147.15,
+   "prom3": 174.59,
+   "top20": true,
+   "combos": 11,
+   "con_stock": 10,
+   "instock_sis": 91,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "414",
+   "nombre": "WM VILLA NUEVA",
+   "q628": 106.25,
+   "q629": 128.57,
+   "q630": 128.57,
+   "prom3": 121.13,
+   "top20": false,
+   "combos": 15,
+   "con_stock": 15,
+   "instock_sis": 100,
+   "contada": true,
+   "fecha_conteo": "26 y 28/08",
+   "nota_conteo": "FANTASMA MASIVO: 417 u de diferencia · bodega saturada · escalado a coordinador de abarrotes"
+  },
+  {
+   "num": "4491",
+   "nombre": "PAIZ LIBERACION",
+   "q628": 128.84,
+   "q629": 0.0,
+   "q630": 109.03,
+   "prom3": 79.29,
+   "top20": false,
+   "combos": 10,
+   "con_stock": 10,
+   "instock_sis": 100,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "344",
+   "nombre": "PAIZ CARRETERA A EL SALVA",
+   "q628": 0.0,
+   "q629": 218.13,
+   "q630": 95.36,
+   "prom3": 104.5,
+   "top20": false,
+   "combos": 11,
+   "con_stock": 9,
+   "instock_sis": 82,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "35",
+   "nombre": "PAIZ PETAPA",
+   "q628": 238.4,
+   "q629": 85.62,
+   "q630": 90.27,
+   "prom3": 138.1,
+   "top20": false,
+   "combos": 10,
+   "con_stock": 9,
+   "instock_sis": 90,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "4370",
+   "nombre": "WM PROCERES",
+   "q628": 66.96,
+   "q629": 132.4,
+   "q630": 85.45,
+   "prom3": 94.94,
+   "top20": false,
+   "combos": 10,
+   "con_stock": 8,
+   "instock_sis": 80,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "460",
+   "nombre": "WM XELA",
+   "q628": 0.0,
+   "q629": 109.73,
+   "q630": 66.96,
+   "prom3": 58.9,
+   "top20": false,
+   "combos": 8,
+   "con_stock": 7,
+   "instock_sis": 88,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "4433",
+   "nombre": "PAIZ SANTA CATARINA PINUL",
+   "q628": 83.69,
+   "q629": 339.18,
+   "q630": 64.56,
+   "prom3": 162.48,
+   "top20": true,
+   "combos": 10,
+   "con_stock": 7,
+   "instock_sis": 70,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "4126",
+   "nombre": "PAIZ CHIQUIMULA PRADERA",
+   "q628": 427.86,
+   "q629": 90.18,
+   "q630": 61.61,
+   "prom3": 193.22,
+   "top20": false,
+   "combos": 10,
+   "con_stock": 10,
+   "instock_sis": 100,
+   "contada": true,
+   "fecha_conteo": "28/08",
+   "nota_conteo": "Visibilidad con fotos"
+  },
+  {
+   "num": "948",
+   "nombre": "WM NARANJO",
+   "q628": 45.08,
+   "q629": 61.61,
+   "q630": 61.61,
+   "prom3": 56.1,
+   "top20": false,
+   "combos": 8,
+   "con_stock": 7,
+   "instock_sis": 88,
+   "contada": true,
+   "fecha_conteo": "27/08",
+   "nota_conteo": "No modulados \"no resurtible\"; varios BORRADO DE SISTEMA; Suffolk 28 u en merma; llegada HB Original 20 u el 29/08"
+  },
+  {
+   "num": "180",
+   "nombre": "PAIZ HUEHUETENANGO",
+   "q628": 218.3,
+   "q629": 252.04,
+   "q630": 20.8,
+   "prom3": 163.71,
+   "top20": true,
+   "combos": 11,
+   "con_stock": 9,
+   "instock_sis": 82,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "1087",
+   "nombre": "WM QUETZALTENANGO PERIFER",
+   "q628": 0.0,
+   "q629": 0.0,
+   "q630": 0.0,
+   "prom3": 0.0,
+   "top20": false,
+   "combos": 6,
+   "con_stock": 0,
+   "instock_sis": 0,
+   "contada": false,
+   "fecha_conteo": null,
+   "nota_conteo": null
+  },
+  {
+   "num": "4176",
+   "nombre": "PAIZ ALTOS DE SAN CRISTOB",
+   "q628": 77.76,
+   "q629": 209.38,
+   "q630": 0.0,
+   "prom3": 95.71,
+   "top20": false,
+   "combos": 14,
+   "con_stock": 12,
+   "instock_sis": 86,
+   "contada": true,
+   "fecha_conteo": "27/08",
+   "nota_conteo": "Fantasmas: Rasputin 17→1 · Scrimshaw 17→8 · Session 3→0"
+  }
+ ],
+ "heatmap": [
+  {
+   "t": "1054",
+   "i": "75214930",
+   "e": "ok",
+   "s": 15,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "1054",
+   "i": "75214932",
+   "e": "ok",
+   "s": 19,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "1054",
+   "i": "75253328",
+   "e": "ok",
+   "s": 13,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "1054",
+   "i": "75253329",
+   "e": "bajo",
+   "s": 8,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "1054",
+   "i": "75437610",
+   "e": "bajo",
+   "s": 8,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "1054",
+   "i": "75437614",
+   "e": "ok",
+   "s": 40,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "1054",
+   "i": "75437615",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "1054",
+   "i": "75437616",
+   "e": "ok",
+   "s": 29,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "1054",
+   "i": "75437617",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "1054",
+   "i": "75437621",
+   "e": "alto",
+   "s": 80,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "1054",
+   "i": "75437623",
+   "e": "ok",
+   "s": 14,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "108",
+   "i": "75214930",
+   "e": "bajo",
+   "s": 8,
+   "f": null,
+   "v": 4
+  },
+  {
+   "t": "108",
+   "i": "75253328",
+   "e": "ok",
+   "s": 15,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "108",
+   "i": "75437610",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "108",
+   "i": "75437612",
+   "e": "ok",
+   "s": 13,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "108",
+   "i": "75437613",
+   "e": "bajo",
+   "s": 7,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "108",
+   "i": "75437614",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "108",
+   "i": "75437616",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "108",
+   "i": "75437621",
+   "e": "ok",
+   "s": 28,
+   "f": null,
+   "v": 7
+  },
+  {
+   "t": "108",
+   "i": "75437623",
+   "e": "bajo",
+   "s": 3,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "1087",
+   "i": "75214930",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "1087",
+   "i": "75437610",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "1087",
+   "i": "75437614",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "1087",
+   "i": "75437616",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "1087",
+   "i": "75437621",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "1087",
+   "i": "75437623",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "121",
+   "i": "75214930",
+   "e": "ok",
+   "s": 27,
+   "f": null,
+   "v": 5
+  },
+  {
+   "t": "121",
+   "i": "75244431",
+   "e": "ok",
+   "s": 12,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "121",
+   "i": "75253328",
+   "e": "alto",
+   "s": 160,
+   "f": null,
+   "v": 5
+  },
+  {
+   "t": "121",
+   "i": "75253329",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "121",
+   "i": "75437610",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "121",
+   "i": "75437614",
+   "e": "alto",
+   "s": 107,
+   "f": null,
+   "v": 4
+  },
+  {
+   "t": "121",
+   "i": "75437616",
+   "e": "alto",
+   "s": 68,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "121",
+   "i": "75437621",
+   "e": "alto",
+   "s": 184,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "121",
+   "i": "75437623",
+   "e": "ok",
+   "s": 19,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "164",
+   "i": "75214930",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "164",
+   "i": "75253328",
+   "e": "ok",
+   "s": 12,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "164",
+   "i": "75437610",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "164",
+   "i": "75437612",
+   "e": "ok",
+   "s": 17,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "164",
+   "i": "75437614",
+   "e": "ok",
+   "s": 40,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "164",
+   "i": "75437616",
+   "e": "ok",
+   "s": 40,
+   "f": null,
+   "v": 5
+  },
+  {
+   "t": "164",
+   "i": "75437621",
+   "e": "alto",
+   "s": 85,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "164",
+   "i": "75437623",
+   "e": "ok",
+   "s": 24,
+   "f": null,
+   "v": 4
+  },
+  {
+   "t": "169",
+   "i": "75214930",
+   "e": "ok",
+   "s": 12,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "169",
+   "i": "75214932",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "169",
+   "i": "75253328",
+   "e": "bajo",
+   "s": 1,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "169",
+   "i": "75253329",
+   "e": "bajo",
+   "s": 1,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "169",
+   "i": "75437610",
+   "e": "bajo",
+   "s": 8,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "169",
+   "i": "75437612",
+   "e": "ok",
+   "s": 19,
+   "f": 19,
+   "v": 0
+  },
+  {
+   "t": "169",
+   "i": "75437613",
+   "e": "ok",
+   "s": 16,
+   "f": 16,
+   "v": 0
+  },
+  {
+   "t": "169",
+   "i": "75437614",
+   "e": "ok",
+   "s": 11,
+   "f": null,
+   "v": 3
+  },
+  {
+   "t": "169",
+   "i": "75437615",
+   "e": "cero",
+   "s": 1,
+   "f": 0,
+   "v": 0
+  },
+  {
+   "t": "169",
+   "i": "75437616",
+   "e": "ok",
+   "s": 26,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "169",
+   "i": "75437617",
+   "e": "ok",
+   "s": 12,
+   "f": 13,
+   "v": 0
+  },
+  {
+   "t": "169",
+   "i": "75437619",
+   "e": "bajo",
+   "s": 8,
+   "f": 8,
+   "v": 0
+  },
+  {
+   "t": "169",
+   "i": "75437620",
+   "e": "ok",
+   "s": 20,
+   "f": 20,
+   "v": 0
+  },
+  {
+   "t": "169",
+   "i": "75437621",
+   "e": "alto",
+   "s": 58,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "169",
+   "i": "75437623",
+   "e": "fantasma",
+   "s": 22,
+   "f": 16,
+   "v": 0
+  },
+  {
+   "t": "180",
+   "i": "75214930",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "180",
+   "i": "75253328",
+   "e": "bajo",
+   "s": 4,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "180",
+   "i": "75253329",
+   "e": "bajo",
+   "s": 7,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "180",
+   "i": "75437610",
+   "e": "ok",
+   "s": 16,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "180",
+   "i": "75437612",
+   "e": "ok",
+   "s": 40,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "180",
+   "i": "75437613",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "180",
+   "i": "75437614",
+   "e": "bajo",
+   "s": 8,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "180",
+   "i": "75437615",
+   "e": "ok",
+   "s": 16,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "180",
+   "i": "75437616",
+   "e": "ok",
+   "s": 17,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "180",
+   "i": "75437621",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "180",
+   "i": "75437623",
+   "e": "ok",
+   "s": 22,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "20",
+   "i": "75214930",
+   "e": "ok",
+   "s": 16,
+   "f": null,
+   "v": 4
+  },
+  {
+   "t": "20",
+   "i": "75214932",
+   "e": "bajo",
+   "s": 4,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "20",
+   "i": "75437610",
+   "e": "ok",
+   "s": 17,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "20",
+   "i": "75437612",
+   "e": "ok",
+   "s": 12,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "20",
+   "i": "75437613",
+   "e": "ok",
+   "s": 13,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "20",
+   "i": "75437614",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "20",
+   "i": "75437615",
+   "e": "bajo",
+   "s": 4,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "20",
+   "i": "75437616",
+   "e": "ok",
+   "s": 16,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "20",
+   "i": "75437621",
+   "e": "alto",
+   "s": 104,
+   "f": null,
+   "v": 4
+  },
+  {
+   "t": "20",
+   "i": "75437623",
+   "e": "ok",
+   "s": 21,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "21",
+   "i": "75214930",
+   "e": "ok",
+   "s": 29,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "21",
+   "i": "75214932",
+   "e": "bajo",
+   "s": 1,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "21",
+   "i": "75253328",
+   "e": "bajo",
+   "s": 4,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "21",
+   "i": "75437610",
+   "e": "ok",
+   "s": 17,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "21",
+   "i": "75437612",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "21",
+   "i": "75437613",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "21",
+   "i": "75437614",
+   "e": "ok",
+   "s": 13,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "21",
+   "i": "75437615",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "21",
+   "i": "75437616",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "21",
+   "i": "75437617",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "21",
+   "i": "75437621",
+   "e": "alto",
+   "s": 92,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "21",
+   "i": "75437623",
+   "e": "ok",
+   "s": 16,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "22",
+   "i": "75214930",
+   "e": "ok",
+   "s": 28,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "22",
+   "i": "75253328",
+   "e": "ok",
+   "s": 11,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "22",
+   "i": "75253329",
+   "e": "bajo",
+   "s": 1,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "22",
+   "i": "75437610",
+   "e": "ok",
+   "s": 13,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "22",
+   "i": "75437612",
+   "e": "bajo",
+   "s": 7,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "22",
+   "i": "75437614",
+   "e": "ok",
+   "s": 23,
+   "f": null,
+   "v": 3
+  },
+  {
+   "t": "22",
+   "i": "75437616",
+   "e": "ok",
+   "s": 26,
+   "f": null,
+   "v": 3
+  },
+  {
+   "t": "22",
+   "i": "75437618",
+   "e": "bajo",
+   "s": 2,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "22",
+   "i": "75437621",
+   "e": "ok",
+   "s": 28,
+   "f": null,
+   "v": 11
+  },
+  {
+   "t": "22",
+   "i": "75437623",
+   "e": "ok",
+   "s": 25,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "23",
+   "i": "75214930",
+   "e": "ok",
+   "s": 24,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "23",
+   "i": "75214932",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 9
+  },
+  {
+   "t": "23",
+   "i": "75253328",
+   "e": "bajo",
+   "s": 2,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "23",
+   "i": "75437610",
+   "e": "bajo",
+   "s": 6,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "23",
+   "i": "75437612",
+   "e": "fantasma",
+   "s": 18,
+   "f": 0,
+   "v": 0
+  },
+  {
+   "t": "23",
+   "i": "75437613",
+   "e": "fantasma",
+   "s": 14,
+   "f": 0,
+   "v": 0
+  },
+  {
+   "t": "23",
+   "i": "75437614",
+   "e": "bajo",
+   "s": 3,
+   "f": null,
+   "v": 7
+  },
+  {
+   "t": "23",
+   "i": "75437615",
+   "e": "cero",
+   "s": 0,
+   "f": 0,
+   "v": 0
+  },
+  {
+   "t": "23",
+   "i": "75437616",
+   "e": "ok",
+   "s": 27,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "23",
+   "i": "75437621",
+   "e": "bajo",
+   "s": 4,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "23",
+   "i": "75437623",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "24",
+   "i": "75214930",
+   "e": "ok",
+   "s": 12,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "24",
+   "i": "75214932",
+   "e": "ok",
+   "s": 10,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "24",
+   "i": "75253329",
+   "e": "ok",
+   "s": 33,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "24",
+   "i": "75437610",
+   "e": "fantasma",
+   "s": 20,
+   "f": 0,
+   "v": 0
+  },
+  {
+   "t": "24",
+   "i": "75437612",
+   "e": "ok",
+   "s": 20,
+   "f": 20,
+   "v": 0
+  },
+  {
+   "t": "24",
+   "i": "75437613",
+   "e": "ok",
+   "s": 18,
+   "f": 19,
+   "v": 1
+  },
+  {
+   "t": "24",
+   "i": "75437614",
+   "e": "alto",
+   "s": 50,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "24",
+   "i": "75437615",
+   "e": "ok",
+   "s": 34,
+   "f": 34,
+   "v": 0
+  },
+  {
+   "t": "24",
+   "i": "75437616",
+   "e": "ok",
+   "s": 30,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "24",
+   "i": "75437619",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "24",
+   "i": "75437621",
+   "e": "ok",
+   "s": 10,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "24",
+   "i": "75437623",
+   "e": "fantasma",
+   "s": 26,
+   "f": 3,
+   "v": 1
+  },
+  {
+   "t": "33",
+   "i": "75214930",
+   "e": "ok",
+   "s": 24,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "33",
+   "i": "75253328",
+   "e": "bajo",
+   "s": 2,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "33",
+   "i": "75437610",
+   "e": "ok",
+   "s": 14,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "33",
+   "i": "75437612",
+   "e": "ok",
+   "s": 19,
+   "f": 19,
+   "v": 0
+  },
+  {
+   "t": "33",
+   "i": "75437613",
+   "e": "ok",
+   "s": 16,
+   "f": 17,
+   "v": 0
+  },
+  {
+   "t": "33",
+   "i": "75437614",
+   "e": "ok",
+   "s": 14,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "33",
+   "i": "75437615",
+   "e": "ok",
+   "s": 16,
+   "f": 20,
+   "v": 3
+  },
+  {
+   "t": "33",
+   "i": "75437616",
+   "e": "ok",
+   "s": 12,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "33",
+   "i": "75437621",
+   "e": "ok",
+   "s": 23,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "33",
+   "i": "75437623",
+   "e": "ok",
+   "s": 12,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "34",
+   "i": "75214930",
+   "e": "bajo",
+   "s": 8,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "34",
+   "i": "75253328",
+   "e": "bajo",
+   "s": 7,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "34",
+   "i": "75437610",
+   "e": "ok",
+   "s": 19,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "34",
+   "i": "75437614",
+   "e": "ok",
+   "s": 11,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "34",
+   "i": "75437615",
+   "e": "bajo",
+   "s": 8,
+   "f": 8,
+   "v": 0
+  },
+  {
+   "t": "34",
+   "i": "75437616",
+   "e": "ok",
+   "s": 26,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "34",
+   "i": "75437621",
+   "e": "bajo",
+   "s": 2,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "34",
+   "i": "75437623",
+   "e": "ok",
+   "s": 11,
+   "f": null,
+   "v": 4
+  },
+  {
+   "t": "344",
+   "i": "75214930",
+   "e": "bajo",
+   "s": 9,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "344",
+   "i": "75214932",
+   "e": "bajo",
+   "s": 9,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "344",
+   "i": "75437610",
+   "e": "ok",
+   "s": 29,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "344",
+   "i": "75437612",
+   "e": "ok",
+   "s": 13,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "344",
+   "i": "75437613",
+   "e": "ok",
+   "s": 11,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "344",
+   "i": "75437614",
+   "e": "bajo",
+   "s": 9,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "344",
+   "i": "75437616",
+   "e": "ok",
+   "s": 28,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "344",
+   "i": "75437618",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "344",
+   "i": "75437620",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "344",
+   "i": "75437621",
+   "e": "alto",
+   "s": 53,
+   "f": null,
+   "v": 4
+  },
+  {
+   "t": "344",
+   "i": "75437623",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "35",
+   "i": "75214930",
+   "e": "ok",
+   "s": 36,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "35",
+   "i": "75214932",
+   "e": "bajo",
+   "s": 8,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "35",
+   "i": "75437610",
+   "e": "ok",
+   "s": 22,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "35",
+   "i": "75437612",
+   "e": "ok",
+   "s": 19,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "35",
+   "i": "75437613",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "35",
+   "i": "75437614",
+   "e": "ok",
+   "s": 29,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "35",
+   "i": "75437615",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "35",
+   "i": "75437616",
+   "e": "ok",
+   "s": 26,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "35",
+   "i": "75437621",
+   "e": "ok",
+   "s": 26,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "35",
+   "i": "75437623",
+   "e": "ok",
+   "s": 35,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4037",
+   "i": "75214930",
+   "e": "ok",
+   "s": 13,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4037",
+   "i": "75214932",
+   "e": "ok",
+   "s": 41,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4037",
+   "i": "75253329",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4037",
+   "i": "75437610",
+   "e": "ok",
+   "s": 19,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "4037",
+   "i": "75437612",
+   "e": "ok",
+   "s": 19,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4037",
+   "i": "75437613",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4037",
+   "i": "75437614",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4037",
+   "i": "75437615",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4037",
+   "i": "75437616",
+   "e": "alto",
+   "s": 62,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4037",
+   "i": "75437617",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4037",
+   "i": "75437618",
+   "e": "ok",
+   "s": 30,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4037",
+   "i": "75437620",
+   "e": "ok",
+   "s": 13,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4037",
+   "i": "75437621",
+   "e": "alto",
+   "s": 151,
+   "f": null,
+   "v": 7
+  },
+  {
+   "t": "4037",
+   "i": "75437623",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "4087",
+   "i": "75214930",
+   "e": "ok",
+   "s": 21,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "4087",
+   "i": "75244435",
+   "e": "bajo",
+   "s": 4,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "4087",
+   "i": "75253328",
+   "e": "ok",
+   "s": 14,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4087",
+   "i": "75253329",
+   "e": "ok",
+   "s": 14,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4087",
+   "i": "75437610",
+   "e": "ok",
+   "s": 21,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4087",
+   "i": "75437612",
+   "e": "ok",
+   "s": 11,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4087",
+   "i": "75437613",
+   "e": "bajo",
+   "s": 5,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4087",
+   "i": "75437614",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 3
+  },
+  {
+   "t": "4087",
+   "i": "75437615",
+   "e": "ok",
+   "s": 12,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4087",
+   "i": "75437616",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "4087",
+   "i": "75437620",
+   "e": "ok",
+   "s": 13,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4087",
+   "i": "75437621",
+   "e": "alto",
+   "s": 102,
+   "f": null,
+   "v": 3
+  },
+  {
+   "t": "4087",
+   "i": "75437623",
+   "e": "ok",
+   "s": 16,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4116",
+   "i": "75214930",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 5
+  },
+  {
+   "t": "4116",
+   "i": "75214932",
+   "e": "ok",
+   "s": 12,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4116",
+   "i": "75253328",
+   "e": "bajo",
+   "s": 5,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4116",
+   "i": "75253329",
+   "e": "bajo",
+   "s": 9,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4116",
+   "i": "75437610",
+   "e": "ok",
+   "s": 21,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4116",
+   "i": "75437612",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4116",
+   "i": "75437613",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4116",
+   "i": "75437614",
+   "e": "ok",
+   "s": 32,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4116",
+   "i": "75437615",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4116",
+   "i": "75437616",
+   "e": "alto",
+   "s": 60,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4116",
+   "i": "75437617",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4116",
+   "i": "75437621",
+   "e": "alto",
+   "s": 154,
+   "f": null,
+   "v": 3
+  },
+  {
+   "t": "4116",
+   "i": "75437623",
+   "e": "ok",
+   "s": 40,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4126",
+   "i": "75214930",
+   "e": "ok",
+   "s": 19,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "4126",
+   "i": "75437610",
+   "e": "ok",
+   "s": 17,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4126",
+   "i": "75437612",
+   "e": "ok",
+   "s": 17,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4126",
+   "i": "75437613",
+   "e": "bajo",
+   "s": 8,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4126",
+   "i": "75437614",
+   "e": "bajo",
+   "s": 3,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4126",
+   "i": "75437615",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4126",
+   "i": "75437616",
+   "e": "ok",
+   "s": 15,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4126",
+   "i": "75437618",
+   "e": "bajo",
+   "s": 8,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4126",
+   "i": "75437621",
+   "e": "ok",
+   "s": 10,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4126",
+   "i": "75437623",
+   "e": "bajo",
+   "s": 1,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "414",
+   "i": "75214930",
+   "e": "fantasma",
+   "s": 68,
+   "f": 0,
+   "v": 1
+  },
+  {
+   "t": "414",
+   "i": "75214932",
+   "e": "fantasma",
+   "s": 12,
+   "f": 0,
+   "v": 0
+  },
+  {
+   "t": "414",
+   "i": "75244433",
+   "e": "bajo",
+   "s": 6,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "414",
+   "i": "75253328",
+   "e": "bajo",
+   "s": 8,
+   "f": 8,
+   "v": 1
+  },
+  {
+   "t": "414",
+   "i": "75437610",
+   "e": "fantasma",
+   "s": 20,
+   "f": 0,
+   "v": 0
+  },
+  {
+   "t": "414",
+   "i": "75437612",
+   "e": "fantasma",
+   "s": 20,
+   "f": 0,
+   "v": 0
+  },
+  {
+   "t": "414",
+   "i": "75437613",
+   "e": "fantasma",
+   "s": 20,
+   "f": 0,
+   "v": 0
+  },
+  {
+   "t": "414",
+   "i": "75437614",
+   "e": "fantasma",
+   "s": 26,
+   "f": 7,
+   "v": 0
+  },
+  {
+   "t": "414",
+   "i": "75437615",
+   "e": "fantasma",
+   "s": 20,
+   "f": 0,
+   "v": 0
+  },
+  {
+   "t": "414",
+   "i": "75437616",
+   "e": "fantasma",
+   "s": 29,
+   "f": 16,
+   "v": 0
+  },
+  {
+   "t": "414",
+   "i": "75437617",
+   "e": "fantasma",
+   "s": 20,
+   "f": 0,
+   "v": 0
+  },
+  {
+   "t": "414",
+   "i": "75437618",
+   "e": "fantasma",
+   "s": 20,
+   "f": 0,
+   "v": 0
+  },
+  {
+   "t": "414",
+   "i": "75437619",
+   "e": "fantasma",
+   "s": 20,
+   "f": 0,
+   "v": 0
+  },
+  {
+   "t": "414",
+   "i": "75437621",
+   "e": "fantasma",
+   "s": 183,
+   "f": 23,
+   "v": 2
+  },
+  {
+   "t": "414",
+   "i": "75437623",
+   "e": "fantasma",
+   "s": 20,
+   "f": 0,
+   "v": 0
+  },
+  {
+   "t": "4173",
+   "i": "75214930",
+   "e": "ok",
+   "s": 10,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4173",
+   "i": "75214932",
+   "e": "bajo",
+   "s": 2,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4173",
+   "i": "75437610",
+   "e": "ok",
+   "s": 17,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "4173",
+   "i": "75437612",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4173",
+   "i": "75437613",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "4173",
+   "i": "75437614",
+   "e": "bajo",
+   "s": 7,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "4173",
+   "i": "75437615",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4173",
+   "i": "75437616",
+   "e": "bajo",
+   "s": 5,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "4173",
+   "i": "75437619",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4173",
+   "i": "75437621",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4173",
+   "i": "75437623",
+   "e": "ok",
+   "s": 10,
+   "f": null,
+   "v": 4
+  },
+  {
+   "t": "4176",
+   "i": "75214930",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4176",
+   "i": "75214932",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4176",
+   "i": "75253328",
+   "e": "bajo",
+   "s": 3,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4176",
+   "i": "75253329",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4176",
+   "i": "75437610",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4176",
+   "i": "75437612",
+   "e": "fantasma",
+   "s": 17,
+   "f": 8,
+   "v": 0
+  },
+  {
+   "t": "4176",
+   "i": "75437613",
+   "e": "fantasma",
+   "s": 11,
+   "f": 1,
+   "v": 0
+  },
+  {
+   "t": "4176",
+   "i": "75437614",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4176",
+   "i": "75437616",
+   "e": "ok",
+   "s": 34,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4176",
+   "i": "75437617",
+   "e": "cero",
+   "s": 3,
+   "f": 0,
+   "v": 0
+  },
+  {
+   "t": "4176",
+   "i": "75437618",
+   "e": "ok",
+   "s": 15,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4176",
+   "i": "75437620",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4176",
+   "i": "75437621",
+   "e": "ok",
+   "s": 11,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4176",
+   "i": "75437623",
+   "e": "bajo",
+   "s": 9,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "419",
+   "i": "75214930",
+   "e": "ok",
+   "s": 12,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "419",
+   "i": "75214932",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 4
+  },
+  {
+   "t": "419",
+   "i": "75253328",
+   "e": "ok",
+   "s": 11,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "419",
+   "i": "75253329",
+   "e": "bajo",
+   "s": 8,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "419",
+   "i": "75437610",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "419",
+   "i": "75437612",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "419",
+   "i": "75437613",
+   "e": "bajo",
+   "s": 9,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "419",
+   "i": "75437614",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "419",
+   "i": "75437615",
+   "e": "bajo",
+   "s": 6,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "419",
+   "i": "75437616",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "419",
+   "i": "75437617",
+   "e": "bajo",
+   "s": 8,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "419",
+   "i": "75437621",
+   "e": "ok",
+   "s": 16,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "419",
+   "i": "75437623",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4317",
+   "i": "75214930",
+   "e": "ok",
+   "s": 13,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4317",
+   "i": "75437610",
+   "e": "ok",
+   "s": 15,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4317",
+   "i": "75437612",
+   "e": "ok",
+   "s": 10,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4317",
+   "i": "75437613",
+   "e": "bajo",
+   "s": 8,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4317",
+   "i": "75437614",
+   "e": "ok",
+   "s": 19,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4317",
+   "i": "75437615",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 5
+  },
+  {
+   "t": "4317",
+   "i": "75437616",
+   "e": "ok",
+   "s": 16,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4317",
+   "i": "75437620",
+   "e": "bajo",
+   "s": 6,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4317",
+   "i": "75437621",
+   "e": "ok",
+   "s": 26,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "4317",
+   "i": "75437623",
+   "e": "bajo",
+   "s": 4,
+   "f": null,
+   "v": 5
+  },
+  {
+   "t": "4370",
+   "i": "75214930",
+   "e": "ok",
+   "s": 36,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "4370",
+   "i": "75253329",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4370",
+   "i": "75437610",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4370",
+   "i": "75437612",
+   "e": "ok",
+   "s": 10,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4370",
+   "i": "75437614",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4370",
+   "i": "75437615",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4370",
+   "i": "75437616",
+   "e": "alto",
+   "s": 55,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4370",
+   "i": "75437620",
+   "e": "ok",
+   "s": 19,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "4370",
+   "i": "75437621",
+   "e": "alto",
+   "s": 93,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4370",
+   "i": "75437623",
+   "e": "ok",
+   "s": 21,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4412",
+   "i": "75214930",
+   "e": "ok",
+   "s": 40,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "4412",
+   "i": "75214932",
+   "e": "ok",
+   "s": 12,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "4412",
+   "i": "75244431",
+   "e": "ok",
+   "s": 29,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4412",
+   "i": "75244435",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4412",
+   "i": "75437610",
+   "e": "ok",
+   "s": 11,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "4412",
+   "i": "75437612",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4412",
+   "i": "75437613",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4412",
+   "i": "75437614",
+   "e": "alto",
+   "s": 63,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4412",
+   "i": "75437615",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4412",
+   "i": "75437616",
+   "e": "ok",
+   "s": 46,
+   "f": null,
+   "v": 4
+  },
+  {
+   "t": "4412",
+   "i": "75437617",
+   "e": "ok",
+   "s": 19,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4412",
+   "i": "75437618",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4412",
+   "i": "75437619",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4412",
+   "i": "75437620",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4412",
+   "i": "75437621",
+   "e": "alto",
+   "s": 198,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "4412",
+   "i": "75437623",
+   "e": "ok",
+   "s": 24,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4414",
+   "i": "75214930",
+   "e": "ok",
+   "s": 28,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4414",
+   "i": "75214932",
+   "e": "ok",
+   "s": 15,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4414",
+   "i": "75244435",
+   "e": "ok",
+   "s": 12,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4414",
+   "i": "75253328",
+   "e": "alto",
+   "s": 107,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "4414",
+   "i": "75253329",
+   "e": "alto",
+   "s": 99,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4414",
+   "i": "75437610",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4414",
+   "i": "75437612",
+   "e": "ok",
+   "s": 13,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4414",
+   "i": "75437613",
+   "e": "bajo",
+   "s": 8,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4414",
+   "i": "75437614",
+   "e": "bajo",
+   "s": 5,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4414",
+   "i": "75437615",
+   "e": "bajo",
+   "s": 8,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4414",
+   "i": "75437616",
+   "e": "ok",
+   "s": 47,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "4414",
+   "i": "75437617",
+   "e": "ok",
+   "s": 15,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4414",
+   "i": "75437621",
+   "e": "alto",
+   "s": 113,
+   "f": null,
+   "v": 5
+  },
+  {
+   "t": "4414",
+   "i": "75437623",
+   "e": "bajo",
+   "s": 6,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4433",
+   "i": "75214930",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4433",
+   "i": "75214932",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4433",
+   "i": "75253329",
+   "e": "ok",
+   "s": 14,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "4433",
+   "i": "75437610",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4433",
+   "i": "75437612",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4433",
+   "i": "75437614",
+   "e": "bajo",
+   "s": 9,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "4433",
+   "i": "75437615",
+   "e": "bajo",
+   "s": 4,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4433",
+   "i": "75437616",
+   "e": "ok",
+   "s": 17,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4433",
+   "i": "75437621",
+   "e": "bajo",
+   "s": 8,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4433",
+   "i": "75437623",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4490",
+   "i": "75214930",
+   "e": "bajo",
+   "s": 9,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4490",
+   "i": "75253328",
+   "e": "ok",
+   "s": 12,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4490",
+   "i": "75437610",
+   "e": "ok",
+   "s": 26,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4490",
+   "i": "75437612",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4490",
+   "i": "75437613",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4490",
+   "i": "75437614",
+   "e": "ok",
+   "s": 34,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "4490",
+   "i": "75437615",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 3
+  },
+  {
+   "t": "4490",
+   "i": "75437616",
+   "e": "ok",
+   "s": 17,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "4490",
+   "i": "75437619",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4490",
+   "i": "75437621",
+   "e": "ok",
+   "s": 24,
+   "f": null,
+   "v": 3
+  },
+  {
+   "t": "4490",
+   "i": "75437623",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "4491",
+   "i": "75214930",
+   "e": "ok",
+   "s": 24,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4491",
+   "i": "75214932",
+   "e": "ok",
+   "s": 14,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4491",
+   "i": "75244436",
+   "e": "bajo",
+   "s": 2,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4491",
+   "i": "75253328",
+   "e": "bajo",
+   "s": 8,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4491",
+   "i": "75253329",
+   "e": "ok",
+   "s": 14,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4491",
+   "i": "75437610",
+   "e": "ok",
+   "s": 13,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4491",
+   "i": "75437614",
+   "e": "ok",
+   "s": 11,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4491",
+   "i": "75437616",
+   "e": "ok",
+   "s": 17,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "4491",
+   "i": "75437621",
+   "e": "ok",
+   "s": 14,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "4491",
+   "i": "75437623",
+   "e": "ok",
+   "s": 14,
+   "f": null,
+   "v": 3
+  },
+  {
+   "t": "457",
+   "i": "75214930",
+   "e": "bajo",
+   "s": 4,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "457",
+   "i": "75214932",
+   "e": "bajo",
+   "s": 1,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "457",
+   "i": "75437610",
+   "e": "bajo",
+   "s": 5,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "457",
+   "i": "75437612",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "457",
+   "i": "75437614",
+   "e": "bajo",
+   "s": 2,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "457",
+   "i": "75437616",
+   "e": "ok",
+   "s": 22,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "457",
+   "i": "75437621",
+   "e": "ok",
+   "s": 12,
+   "f": null,
+   "v": 6
+  },
+  {
+   "t": "457",
+   "i": "75437623",
+   "e": "ok",
+   "s": 15,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "458",
+   "i": "75214930",
+   "e": "bajo",
+   "s": 6,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "458",
+   "i": "75214932",
+   "e": "bajo",
+   "s": 7,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "458",
+   "i": "75253328",
+   "e": "bajo",
+   "s": 5,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "458",
+   "i": "75253329",
+   "e": "bajo",
+   "s": -1,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "458",
+   "i": "75437610",
+   "e": "ok",
+   "s": 27,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "458",
+   "i": "75437614",
+   "e": "ok",
+   "s": 24,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "458",
+   "i": "75437616",
+   "e": "ok",
+   "s": 30,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "458",
+   "i": "75437621",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "458",
+   "i": "75437623",
+   "e": "bajo",
+   "s": 3,
+   "f": null,
+   "v": 7
+  },
+  {
+   "t": "459",
+   "i": "75214930",
+   "e": "ok",
+   "s": 22,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "459",
+   "i": "75214932",
+   "e": "ok",
+   "s": 23,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "459",
+   "i": "75253328",
+   "e": "ok",
+   "s": 22,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "459",
+   "i": "75437610",
+   "e": "alto",
+   "s": 50,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "459",
+   "i": "75437614",
+   "e": "ok",
+   "s": 17,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "459",
+   "i": "75437616",
+   "e": "ok",
+   "s": 38,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "459",
+   "i": "75437621",
+   "e": "alto",
+   "s": 172,
+   "f": null,
+   "v": 4
+  },
+  {
+   "t": "459",
+   "i": "75437623",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "46",
+   "i": "75214930",
+   "e": "ok",
+   "s": 24,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "46",
+   "i": "75244431",
+   "e": "bajo",
+   "s": 1,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "46",
+   "i": "75244435",
+   "e": "bajo",
+   "s": 2,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "46",
+   "i": "75253328",
+   "e": "bajo",
+   "s": 7,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "46",
+   "i": "75437610",
+   "e": "bajo",
+   "s": 8,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "46",
+   "i": "75437614",
+   "e": "ok",
+   "s": 11,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "46",
+   "i": "75437615",
+   "e": "bajo",
+   "s": 2,
+   "f": null,
+   "v": 3
+  },
+  {
+   "t": "46",
+   "i": "75437616",
+   "e": "alto",
+   "s": 50,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "46",
+   "i": "75437621",
+   "e": "alto",
+   "s": 92,
+   "f": null,
+   "v": 4
+  },
+  {
+   "t": "46",
+   "i": "75437623",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "460",
+   "i": "75214930",
+   "e": "ok",
+   "s": 12,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "460",
+   "i": "75214932",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "460",
+   "i": "75437610",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "460",
+   "i": "75437614",
+   "e": "bajo",
+   "s": 9,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "460",
+   "i": "75437615",
+   "e": "bajo",
+   "s": 1,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "460",
+   "i": "75437616",
+   "e": "ok",
+   "s": 17,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "460",
+   "i": "75437621",
+   "e": "alto",
+   "s": 98,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "460",
+   "i": "75437623",
+   "e": "ok",
+   "s": 19,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "47",
+   "i": "75214930",
+   "e": "bajo",
+   "s": 4,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "47",
+   "i": "75214932",
+   "e": "ok",
+   "s": 11,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "47",
+   "i": "75437610",
+   "e": "ok",
+   "s": 13,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "47",
+   "i": "75437612",
+   "e": "ok",
+   "s": 19,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "47",
+   "i": "75437613",
+   "e": "ok",
+   "s": 10,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "47",
+   "i": "75437614",
+   "e": "ok",
+   "s": 32,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "47",
+   "i": "75437615",
+   "e": "bajo",
+   "s": 2,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "47",
+   "i": "75437616",
+   "e": "ok",
+   "s": 13,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "47",
+   "i": "75437621",
+   "e": "bajo",
+   "s": 4,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "47",
+   "i": "75437623",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "491",
+   "i": "75214930",
+   "e": "bajo",
+   "s": 3,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "491",
+   "i": "75214932",
+   "e": "ok",
+   "s": 15,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "491",
+   "i": "75437610",
+   "e": "ok",
+   "s": 19,
+   "f": null,
+   "v": 2
+  },
+  {
+   "t": "491",
+   "i": "75437612",
+   "e": "ok",
+   "s": 19,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "491",
+   "i": "75437613",
+   "e": "ok",
+   "s": 16,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "491",
+   "i": "75437614",
+   "e": "bajo",
+   "s": 6,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "491",
+   "i": "75437616",
+   "e": "ok",
+   "s": 14,
+   "f": null,
+   "v": 5
+  },
+  {
+   "t": "491",
+   "i": "75437621",
+   "e": "alto",
+   "s": 104,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "491",
+   "i": "75437623",
+   "e": "bajo",
+   "s": 9,
+   "f": null,
+   "v": 3
+  },
+  {
+   "t": "727",
+   "i": "75214930",
+   "e": "ok",
+   "s": 23,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "727",
+   "i": "75214932",
+   "e": "bajo",
+   "s": 5,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "727",
+   "i": "75244433",
+   "e": "bajo",
+   "s": 4,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "727",
+   "i": "75437610",
+   "e": "ok",
+   "s": 11,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "727",
+   "i": "75437612",
+   "e": "ok",
+   "s": 20,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "727",
+   "i": "75437613",
+   "e": "bajo",
+   "s": 2,
+   "f": null,
+   "v": 6
+  },
+  {
+   "t": "727",
+   "i": "75437614",
+   "e": "ok",
+   "s": 15,
+   "f": null,
+   "v": 4
+  },
+  {
+   "t": "727",
+   "i": "75437615",
+   "e": "ok",
+   "s": 10,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "727",
+   "i": "75437616",
+   "e": "ok",
+   "s": 26,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "727",
+   "i": "75437621",
+   "e": "bajo",
+   "s": 6,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "727",
+   "i": "75437623",
+   "e": "ok",
+   "s": 24,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "948",
+   "i": "75214930",
+   "e": "ok",
+   "s": 18,
+   "f": null,
+   "v": 1
+  },
+  {
+   "t": "948",
+   "i": "75214932",
+   "e": "bajo",
+   "s": 6,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "948",
+   "i": "75253328",
+   "e": "ok",
+   "s": 28,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "948",
+   "i": "75437610",
+   "e": "bajo",
+   "s": 9,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "948",
+   "i": "75437614",
+   "e": "cero",
+   "s": 0,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "948",
+   "i": "75437616",
+   "e": "alto",
+   "s": 60,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "948",
+   "i": "75437621",
+   "e": "alto",
+   "s": 55,
+   "f": null,
+   "v": 0
+  },
+  {
+   "t": "948",
+   "i": "75437623",
+   "e": "ok",
+   "s": 12,
+   "f": null,
+   "v": 0
+  }
+ ],
+ "item_ids": [
+  "75214930",
+  "75437621",
+  "75437623",
+  "75437610",
+  "75437614",
+  "75437616",
+  "75437613",
+  "75437615",
+  "75437619",
+  "75437620",
+  "75437612",
+  "75437617",
+  "75437618"
+ ],
+ "discrepancias": [
+  {
+   "tienda": "WM VILLA NUEVA",
+   "num": "414",
+   "item": "Trooper Original",
+   "sistema": 183,
+   "fisico": 23,
+   "delta": -160
+  },
+  {
+   "tienda": "WM VILLA NUEVA",
+   "num": "414",
+   "item": "Sapporo Silver",
+   "sistema": 68,
+   "fisico": 0,
+   "delta": -68
+  },
+  {
+   "tienda": "PAIZ ROOSEVELT",
+   "num": "24",
+   "item": "Trooper FOTD",
+   "sistema": 26,
+   "fisico": 3,
+   "delta": -23
+  },
+  {
+   "tienda": "WM VILLA NUEVA",
+   "num": "414",
+   "item": "NC Scrimshaw",
+   "sistema": 20,
+   "fisico": 0,
+   "delta": -20
+  },
+  {
+   "tienda": "WM VILLA NUEVA",
+   "num": "414",
+   "item": "NC Old Rasputin",
+   "sistema": 20,
+   "fisico": 0,
+   "delta": -20
+  },
+  {
+   "tienda": "WM VILLA NUEVA",
+   "num": "414",
+   "item": "HB Helles",
+   "sistema": 20,
+   "fisico": 0,
+   "delta": -20
+  },
+  {
+   "tienda": "WM VILLA NUEVA",
+   "num": "414",
+   "item": "HB Session",
+   "sistema": 20,
+   "fisico": 0,
+   "delta": -20
+  },
+  {
+   "tienda": "WM VILLA NUEVA",
+   "num": "414",
+   "item": "Belhaven Best",
+   "sistema": 20,
+   "fisico": 0,
+   "delta": -20
+  },
+  {
+   "tienda": "WM VILLA NUEVA",
+   "num": "414",
+   "item": "Belhaven Black",
+   "sistema": 20,
+   "fisico": 0,
+   "delta": -20
+  },
+  {
+   "tienda": "WM VILLA NUEVA",
+   "num": "414",
+   "item": "Sapporo Black",
+   "sistema": 20,
+   "fisico": 0,
+   "delta": -20
+  },
+  {
+   "tienda": "WM VILLA NUEVA",
+   "num": "414",
+   "item": "Trooper FOTD",
+   "sistema": 20,
+   "fisico": 0,
+   "delta": -20
+  },
+  {
+   "tienda": "PAIZ ROOSEVELT",
+   "num": "24",
+   "item": "Sapporo Black",
+   "sistema": 20,
+   "fisico": 0,
+   "delta": -20
+  },
+  {
+   "tienda": "WM VILLA NUEVA",
+   "num": "414",
+   "item": "HB Original",
+   "sistema": 26,
+   "fisico": 7,
+   "delta": -19
+  },
+  {
+   "tienda": "PAIZ NOVICENTRO ZONA 11",
+   "num": "23",
+   "item": "NC Scrimshaw",
+   "sistema": 18,
+   "fisico": 0,
+   "delta": -18
+  },
+  {
+   "tienda": "PAIZ NOVICENTRO ZONA 11",
+   "num": "23",
+   "item": "NC Old Rasputin",
+   "sistema": 14,
+   "fisico": 0,
+   "delta": -14
+  },
+  {
+   "tienda": "WM VILLA NUEVA",
+   "num": "414",
+   "item": "HB Dunkel",
+   "sistema": 29,
+   "fisico": 16,
+   "delta": -13
+  },
+  {
+   "tienda": "WM VILLA NUEVA",
+   "num": "414",
+   "item": "Sapporo Gold",
+   "sistema": 12,
+   "fisico": 0,
+   "delta": -12
+  },
+  {
+   "tienda": "PAIZ ALTOS DE SAN CRISTOB",
+   "num": "4176",
+   "item": "NC Old Rasputin",
+   "sistema": 11,
+   "fisico": 1,
+   "delta": -10
+  },
+  {
+   "tienda": "PAIZ ALTOS DE SAN CRISTOB",
+   "num": "4176",
+   "item": "NC Scrimshaw",
+   "sistema": 17,
+   "fisico": 8,
+   "delta": -9
+  },
+  {
+   "tienda": "PAIZ SAN CRISTOBAL",
+   "num": "169",
+   "item": "Trooper FOTD",
+   "sistema": 22,
+   "fisico": 16,
+   "delta": -6
+  },
+  {
+   "tienda": "PAIZ ALTOS DE SAN CRISTOB",
+   "num": "4176",
+   "item": "HB Session",
+   "sistema": 3,
+   "fisico": 0,
+   "delta": -3
+  },
+  {
+   "tienda": "PAIZ SAN CRISTOBAL",
+   "num": "169",
+   "item": "HB Helles",
+   "sistema": 1,
+   "fisico": 0,
+   "delta": -1
+  },
+  {
+   "tienda": "PAIZ SAN CRISTOBAL",
+   "num": "169",
+   "item": "HB Session",
+   "sistema": 12,
+   "fisico": 13,
+   "delta": 1
+  },
+  {
+   "tienda": "PAIZ ROOSEVELT",
+   "num": "24",
+   "item": "NC Old Rasputin",
+   "sistema": 18,
+   "fisico": 19,
+   "delta": 1
+  },
+  {
+   "tienda": "PAIZ AGUILAR BATRES",
+   "num": "33",
+   "item": "NC Old Rasputin",
+   "sistema": 16,
+   "fisico": 17,
+   "delta": 1
+  },
+  {
+   "tienda": "PAIZ AGUILAR BATRES",
+   "num": "33",
+   "item": "HB Helles",
+   "sistema": 16,
+   "fisico": 20,
+   "delta": 4
+  }
+ ],
+ "vn_evolucion": [
+  {
+   "fecha": "14/08",
+   "sistema": 257,
+   "fisico": 10,
+   "nota": "primer conteo · \"toma de inventario / bodega en reordenamiento\""
+  },
+  {
+   "fecha": "21/08",
+   "sistema": 289,
+   "fisico": 85,
+   "nota": "+43 u recuperadas en 7 días"
+  },
+  {
+   "fecha": "26/08",
+   "sistema": 471,
+   "fisico": 54,
+   "nota": "reconteo completo · 14 ítems"
+  },
+  {
+   "fecha": "28/08",
+   "sistema": 471,
+   "fisico": 54,
+   "nota": "RECONFIRMADO idéntico · escalado a coordinador de abarrotes"
+  }
+ ],
+ "reclamos": [
+  {
+   "tienda": "PAIZ ALTOS DE SAN CRISTOB",
+   "item": "Sapporo Gold",
+   "u": 3,
+   "q_costo": 136.62
+  },
+  {
+   "tienda": "PAIZ EL NARANJO",
+   "item": "Trooper Original",
+   "u": 2,
+   "q_costo": 36.5
+  },
+  {
+   "tienda": "PAIZ MAZATENANGO",
+   "item": "Sapporo Gold",
+   "u": 12,
+   "q_costo": 546.48
+  },
+  {
+   "tienda": "PAIZ MAZATENANGO",
+   "item": "Sapporo Silver",
+   "u": 12,
+   "q_costo": 546.48
+  },
+  {
+   "tienda": "PAIZ SANTA CATARINA PINUL",
+   "item": "Sapporo Black",
+   "u": 16,
+   "q_costo": 816.0
+  },
+  {
+   "tienda": "PAIZ SANTA CATARINA PINUL",
+   "item": "Sapporo Gold",
+   "u": 22,
+   "q_costo": 1001.88
+  },
+  {
+   "tienda": "PAIZ SANTA CATARINA PINUL",
+   "item": "Sapporo Silver",
+   "u": 12,
+   "q_costo": 546.48
+  }
+ ],
+ "mercaderistas": {
+  "equipo": [
+   {
+    "nombre": "Pablo R",
+    "rol": "Coordinacion / solicita presentacion de cartera con Diego Arriaza"
+   },
+   {
+    "nombre": "Victor Hugo",
+    "rol": "Supervision - replica notas prioritarias al equipo"
+   },
+   {
+    "nombre": "SERGIO",
+    "rol": "Escalamiento de planograma"
+   },
+   {
+    "nombre": "Marleny Soto",
+    "rol": "Creadora del grupo"
+   },
+   {
+    "nombre": "Dayana Soza",
+    "rol": "Administracion del grupo (fijo mensaje, agrego miembros)"
+   },
+   {
+    "nombre": "Diego Arriaza",
+    "rol": "Marca / emisor de nota prioritaria comercial"
+   },
+   {
+    "nombre": "Jelver Miranda",
+    "rol": "GSP - receptor del escalamiento de producto vencido en Paiz Pinula"
+   }
+  ],
+  "reportes": [
+   {
+    "tienda": "Paiz Liberacion",
+    "cadena": "Paiz",
+    "fecha": "2026-08-14",
+    "por": "Marisela De Leon",
+    "tipo": "liberacion de inventario",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Paiz Vista Hermosa",
+    "cadena": "Paiz",
+    "fecha": "2026-08-14",
+    "por": "Marisela De Leon",
+    "tipo": "liberacion de inventario + visibilidad",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Walmart Villa Nueva",
+    "cadena": "Walmart",
+    "fecha": "2026-08-14",
+    "por": "n/d",
+    "tipo": "conteo fisico vs sistema",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Paiz Pradera",
+    "cadena": "Paiz",
+    "fecha": "2026-08-14",
+    "por": "Marisela De Leon",
+    "tipo": "inventario + fechas de vencimiento",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Paiz Americas",
+    "cadena": "Paiz",
+    "fecha": "2026-08-17",
+    "por": "Marisela De Leon",
+    "tipo": "incidencia de planograma",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Walmart Puerta Parada",
+    "cadena": "Walmart",
+    "fecha": "2026-08-17",
+    "por": "Zetino",
+    "tipo": "observacion cualitativa de anaquel",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Paiz San Lucas",
+    "cadena": "Paiz",
+    "fecha": "2026-08-17",
+    "por": "Elizabeth",
+    "tipo": "inventario + precio + modulacion (el mas completo de la ventana)",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Paiz Naranjo",
+    "cadena": "Paiz",
+    "fecha": "2026-08-18",
+    "por": "Daya",
+    "tipo": "visibilidad (solo evidencia fotografica)",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Walmart Naranjo",
+    "cadena": "Walmart",
+    "fecha": "2026-08-18",
+    "por": "Daya",
+    "tipo": "conteo sistema vs fisico",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Paiz Utatlan",
+    "cadena": "Paiz",
+    "fecha": "2026-08-18",
+    "por": "Daya",
+    "tipo": "fisico vs sistema + planograma + ubicacion",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Paiz San Cristobal",
+    "cadena": "Paiz",
+    "fecha": "2026-08-20",
+    "por": "Ross Barrios",
+    "tipo": "inventario sistema vs fisico + vencimiento + llegadas + modulacion",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Walmart Roosevelt",
+    "cadena": "Walmart",
+    "fecha": "2026-08-20",
+    "por": "Victor Hugo",
+    "tipo": "inventario fisico vs sistema + estado logistico",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Paiz Coban",
+    "cadena": "Paiz",
+    "fecha": "2026-08-21",
+    "por": "Eduardo Yat",
+    "tipo": "visibilidad y ejecucion en sala (sin inventario numerico)",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Paiz Huehuetenango",
+    "cadena": "Paiz",
+    "fecha": "2026-08-21",
+    "por": "Cinthya",
+    "tipo": "aviso de bloqueo operativo",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Paiz Pacific Center",
+    "cadena": "Paiz",
+    "fecha": "2026-08-21",
+    "por": "n/d",
+    "tipo": "inventario + vencimientos + estado comercial",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Paiz Mega 6",
+    "cadena": "Paiz",
+    "fecha": "2026-08-21",
+    "por": "n/d",
+    "tipo": "existencia + estatus de maestro de articulos (el unico reporte con estado de catalogo)",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Walmart Villa Nueva",
+    "cadena": "Walmart",
+    "fecha": "2026-08-21",
+    "por": "n/d",
+    "tipo": "reconteo fisico vs sistema (seguimiento del reporte del 14/08)",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Paiz Vista Hermosa",
+    "cadena": "Paiz",
+    "fecha": "2026-08-21",
+    "por": "Marisela De Leon",
+    "tipo": "visibilidad (solo evidencia fotografica)",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "Paiz Pinula",
+    "cadena": "Paiz",
+    "fecha": "2026-08-24",
+    "por": "Zetino",
+    "tipo": "incidencia de calidad",
+    "origen": "v2 (al 24/08)"
+   },
+   {
+    "tienda": "PAIZ COBAN",
+    "cadena": "Paiz",
+    "fecha": "26-28/08",
+    "por": "Eduardo Yat",
+    "tipo": "visibilidad",
+    "nota": "Producto colocado y rotulado; no modulados pasaron a liquidación con planograma nuevo",
+    "origen": "chat fresco (26-29/08)"
+   },
+   {
+    "tienda": "PAIZ NOVICENTRO ZONA 11",
+    "cadena": "Paiz",
+    "fecha": "26 y 29/08",
+    "por": "mercaderista GSP",
+    "tipo": "conteo ×2",
+    "nota": "No modulados en CERO físico; FOTD y Suffolk marcados Liquidado",
+    "origen": "chat fresco (26-29/08)"
+   },
+   {
+    "tienda": "WM VILLA NUEVA",
+    "cadena": "WM",
+    "fecha": "26 y 28/08",
+    "por": "mercaderista GSP",
+    "tipo": "reconteo ×2",
+    "nota": "FANTASMA MASIVO: 417 u de diferencia · bodega saturada · escalado a coordinador de abarrotes",
+    "origen": "chat fresco (26-29/08)"
+   },
+   {
+    "tienda": "PAIZ UTATLAN",
+    "cadena": "Paiz",
+    "fecha": "27/08",
+    "por": "Daya",
+    "tipo": "conteo",
+    "nota": "Tienda limpia: 8 ítems, físico = sistema en todos",
+    "origen": "chat fresco (26-29/08)"
+   },
+   {
+    "tienda": "WM NARANJO",
+    "cadena": "WM",
+    "fecha": "27/08",
+    "por": "Daya",
+    "tipo": "conteo",
+    "nota": "No modulados \"no resurtible\"; varios BORRADO DE SISTEMA; Suffolk 28 u en merma; llegada HB Original 20 u el 29/08",
+    "origen": "chat fresco (26-29/08)"
+   },
+   {
+    "tienda": "PAIZ ALTOS DE SAN CRISTOB",
+    "cadena": "Paiz",
+    "fecha": "27/08",
+    "por": "Ross Barrios",
+    "tipo": "conteo",
+    "nota": "Fantasmas: Rasputin 17→1 · Scrimshaw 17→8 · Session 3→0",
+    "origen": "chat fresco (26-29/08)"
+   },
+   {
+    "tienda": "PAIZ SAN CRISTOBAL",
+    "cadena": "Paiz",
+    "fecha": "27/08",
+    "por": "Ross Barrios",
+    "tipo": "conteo",
+    "nota": "Casi cuadra; FOTD 22→16; Munchner y Helles \"se buscan\"",
+    "origen": "chat fresco (26-29/08)"
+   },
+   {
+    "tienda": "WM BOSQ SAN NICOLAS",
+    "cadena": "WM",
+    "fecha": "27/08",
+    "por": "mercaderista GSP",
+    "tipo": "conteo",
+    "nota": "VENCIDOS en tienda: FOTD completo (5/2026) + 12 Sapporo Black + 12 Gold + 12 Suffolk; Gold entra a plano de cámara fría",
+    "origen": "chat fresco (26-29/08)"
+   },
+   {
+    "tienda": "PAIZ ROOSEVELT",
+    "cadena": "Paiz",
+    "fecha": "27/08",
+    "por": "Daya",
+    "tipo": "conteo",
+    "nota": "Fantasmas modulados: Sapporo Black 20→0 · FOTD 27→3; Helles sano con 34 u",
+    "origen": "chat fresco (26-29/08)"
+   },
+   {
+    "tienda": "PAIZ AGUILAR BATRES",
+    "cadena": "Paiz",
+    "fecha": "27/08",
+    "por": "Ross Barrios",
+    "tipo": "conteo",
+    "nota": "Silver: llegada de 12 u del 16/08 desaparecida (sistema 0); Helles/Rasputin/Scrimshaw cuadran",
+    "origen": "chat fresco (26-29/08)"
+   },
+   {
+    "tienda": "WM ROOSEVELT",
+    "cadena": "WM",
+    "fecha": "28/08",
+    "por": "Victor Hugo",
+    "tipo": "conteo",
+    "nota": "Cuadra 100% PERO 68 Dunkel + 108 HB Original + 36 Silver empacados sin plano tras el modular de hace 15 días",
+    "origen": "chat fresco (26-29/08)"
+   },
+   {
+    "tienda": "PAIZ SALIDA AL PACIFICO",
+    "cadena": "Paiz",
+    "fecha": "29/08",
+    "por": "mercaderista GSP",
+    "tipo": "conteo",
+    "nota": "No modulados en cero; FOTD y Suffolk en liquidación (mapeo de tienda por confirmar)",
+    "origen": "chat fresco (26-29/08)"
+   },
+   {
+    "tienda": "PAIZ CHIQUIMULA PRADERA",
+    "cadena": "Paiz",
+    "fecha": "28/08",
+    "por": "Susy Guerra",
+    "tipo": "visibilidad",
+    "nota": "Visibilidad con fotos",
+    "origen": "chat fresco (26-29/08)"
+   },
+   {
+    "tienda": "PAIZ LAS AMERICAS",
+    "cadena": "Paiz",
+    "fecha": "27/08",
+    "por": "Marisela De León",
+    "tipo": "visibilidad",
+    "nota": "Visibilidad con fotos",
+    "origen": "chat fresco (26-29/08)"
+   }
+  ]
+ },
+ "hallazgos": [
+  {
+   "titulo": "Vencidos en WM Bosques",
+   "gravedad": "alta",
+   "detalle": "Todo el Trooper FOTD de la tienda venció en 5/2026 y sigue ahí; más 12 Sapporo Black, 12 Gold (vencidas desde 31/5/25) y 12 Suffolk. Coordinar retiro/merma — es espacio muerto en góndola."
+  },
+  {
+   "titulo": "Producto empacado tras el modular · WM Roosevelt",
+   "gravedad": "alta",
+   "detalle": "68 Dunkel + 108 HB Original + 36 Silver reempacados hace 15 días y el plano nuevo no los contempla. El sistema cuadra al 100% pero 135+ unidades no están a la venta."
+  },
+  {
+   "titulo": "La llegada perdida de Aguilar Batres",
+   "gravedad": "media",
+   "detalle": "12 Silver llegaron el 16/08 y no aparecen ni en sistema ni en físico. Rastrear la recepción."
+  },
+  {
+   "titulo": "Reclamos concentrados en Sapporo",
+   "gravedad": "media",
+   "detalle": "79 u reclamadas esta semana (≈Q3,630); 50 u en Pinula y 24 en Mazatenango. Averiguar la causa del reclamo antes de que se repita."
+  },
+  {
+   "titulo": "Mega 6: 12 de 18 SKU BORRADOS del maestro",
+   "gravedad": "alta",
+   "detalle": "Ya no es quiebre: es baja de surtido. Cerrar con Cristian el estatus (pendiente del backlog desde la reunión)."
+  },
+  {
+   "titulo": "Sapporo Gold vende sin estar activo",
+   "gravedad": "info",
+   "detalle": "Q1,018 esta semana (20 u) estando INACTIVO y en liquidación. Bosques ya lo mete a plano de cámara fría. Candidato a reactivación formal."
+  }
+ ],
+ "narrativa": {
+  "capitulos": [
+   {
+    "id": "c1",
+    "titulo": "I · El marcador de la semana",
+    "parrafos": [
+     "La semana 202630 cerró en Q10,544 (297 unidades) — tercera semana consecutiva en la meseta de los Q10 mil, un 3% abajo de la anterior. La referencia sigue siendo la del 2024: Q20,486 por semana. Vendemos la mitad de lo que este mismo catálogo vendía hace dos años, y ya sabemos que no es la demanda: es cuánto producto está de verdad en el piso.",
+     "El partido se juega el fin de semana: viernes, sábado y domingo concentran el 66% de la venta (el sábado solo, el 29%). Todo lo que no esté en góndola un jueves por la noche es venta que no existe."
+    ]
+   },
+   {
+    "id": "c2",
+    "titulo": "II · La mentira del 91%",
+    "parrafos": [
+     "El sistema de Walmart reporta un instock del 91%: casi perfecto. Los conteos físicos cuentan otra historia: 536 unidades fantasma verificadas — producto que el sistema jura tener y que nadie encuentra en piso ni en bodega. Con el estante \"lleno\" en papel, el motor de reposición no pide, la venta no ocurre, y el instock hermoso se vuelve el mejor disfraz del quiebre.",
+     "Villa Nueva es el caso de estudio: cuatro conteos entre el 14 y el 28 de agosto, siempre con el mismo final — el sistema dice 471, el piso dice 54. Ya está escalado al coordinador de abarrotes y el ajuste de inventario va en la lista para Cristian. Sin ese ajuste, esa tienda está fuera de cualquier pedido."
+    ]
+   },
+   {
+    "id": "c3",
+    "titulo": "III · Lo que vieron los mercaderistas",
+    "parrafos": [
+     "La red GSP tocó 14 tiendas solo esta semana (23 acumuladas desde el 12 de agosto, cuando arrancó la campaña). Utatlán salió limpia — físico igual a sistema en los 8 ítems. Bosques apareció con producto vencido en góndola desde mayo. WM Roosevelt cuadra al 100% en papel, pero tiene 200+ unidades empacadas en bodega porque el modular nuevo las dejó fuera del plano.",
+     "El patrón que más pega: los 7 no modulados están en cero físico en la mayoría de tiendas y en el sistema figuran \"no resurtible\" o \"bloqueado\". Eso conecta directo con el pedido de refuerzo que está esperando firma — la góndola de octubre se gana con esas cajas."
+    ]
+   },
+   {
+    "id": "c4",
+    "titulo": "IV · Los reclamos silenciosos",
+    "parrafos": [
+     "Aparecieron 79 unidades reclamadas esta semana — Q3,630 al costo que se descuentan solos de la factura. El 79% es Sapporo y la mitad salió de una sola tienda (Santa Catarina Pinula). Un reclamo aislado es ruido; 50 unidades en una tienda es una causa que hay que ir a buscar: recepción, manipulación o vencimiento."
+    ]
+   },
+   {
+    "id": "c5",
+    "titulo": "V · La jugada que sigue",
+    "parrafos": [
+     "Tres cosas salen de este cuaderno: el ajuste de inventario de Villa Nueva (y los fantasmas menores de Altos y Paiz Roosevelt) para Cristian; la causa de los reclamos de Pinula; y el pedido de refuerzo de los no modulados que ya está calculado y espera la firma — con la vigencia venciendo el martes 2.",
+     "El tablero de los lunes arranca esta semana. Este cuaderno es la versión larga; el de los lunes será el resumen de 5 números que Walmart va a ver."
+    ]
+   }
+  ]
+ }
+}
