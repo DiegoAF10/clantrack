@@ -264,7 +264,7 @@ footer{border-top:3px double var(--filete2); margin-top:36px; padding:16px 0 90p
   <div class="sec-head"><span class="no">03</span><h2>La evidencia</h2><span class="glosa">los datos detrás de cada acción</span></div>
   <div class="subnav">
     <a href="#semana">La semana</a><a href="#items">Ítems</a><a href="#tiendas">Tiendas</a>
-    <a href="#mapa">El mapa</a><a href="#piso">Piso vs sistema</a><a href="#reclamos">Reclamos</a><a href="#libreta">La libreta</a>
+    <a href="#mapa">El mapa</a><a href="#piso">Piso vs sistema</a><a href="#reclamos">Reclamos</a><a href="#hallazgos">Hallazgos</a><a href="#libreta">La libreta</a>
   </div>
 
   <h3 class="evi" id="semana"><small>E1</small>La semana en dos gráficos</h3>
@@ -295,7 +295,10 @@ footer{border-top:3px double var(--filete2); margin-top:36px; padding:16px 0 90p
   <h3 class="evi" id="reclamos"><small>E6</small>Reclamos de la semana</h3>
   <div class="tabla-marco" style="max-width:640px"><table id="t-reclamos"></table></div>
 
-  <h3 class="evi" id="libreta"><small>E7</small>La libreta de los mercaderistas</h3>
+  <h3 class="evi" id="hallazgos"><small>E7</small>Hallazgos de la semana</h3>
+  <div id="hall-lista"></div>
+
+  <h3 class="evi" id="libreta"><small>E8</small>La libreta de los mercaderistas</h3>
   <div class="mapa-controles" id="lib-filtros"></div>
   <div id="lib-lista"></div>
 </section>
@@ -321,7 +324,8 @@ window.DATA = {"meta":{"titulo":"DEMO","subtitulo":"demo","generado":"—","fuen
 (function(){
 "use strict";
 var D = window.DATA;
-var LS = 'semana630-brief-v1';
+var MODO = window.MODO || 'completo';   // 'papa' = reporte sin acciones · 'acciones' = solo la cola
+var LS = 'semana630-' + MODO + '-v1';
 var $ = function(s){ return document.querySelector(s); };
 var esc = function(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); };
 var fmtQ = function(n){ return 'Q ' + Number(n).toLocaleString('es-GT',{minimumFractionDigits:0, maximumFractionDigits:0}); };
@@ -347,7 +351,9 @@ function renderHero(){
     {lbl:'Venta de la semana', val:'Q 10,544', sub:'297 unidades · 40 tiendas', chip:'−3.3% vs 629', alerta:false},
     {lbl:'Unidades fantasma', val:'536', sub:'sistema lleno, piso vacío — verificado en conteo', alerta:true},
     {lbl:'Reclamos', val:'Q 3,630', sub:'79 u · 79% Sapporo · 50 u en Pinula', alerta:true},
-    {lbl:'Acciones abiertas', val:String(abiertas()), sub:'de ' + D.acciones.length + ' en la cola — cada una con mensaje listo', alerta:abiertas()>0}
+    MODO==='papa'
+      ? {lbl:'Cobertura de campo', val:'14 tiendas', sub:'conteos físicos GSP 26–29/08 · 23 acumuladas desde el 14/08', alerta:false}
+      : {lbl:'Acciones abiertas', val:String(abiertas()), sub:'de ' + D.acciones.length + ' en la cola — cada una con mensaje listo', alerta:abiertas()>0}
   ];
   $('#hero').innerHTML = tiles.map(function(t){
     return '<div class="tile'+(t.alerta?' alerta':'')+'"><div class="lbl">'+t.lbl+'</div>'+
@@ -357,7 +363,8 @@ function renderHero(){
 }
 
 /* ---------- brief ---------- */
-$('#brief-txt').innerHTML = D.brief.parrafos.map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('');
+var parrafosBrief = (MODO==='papa' && D.brief.parrafos_papa) ? D.brief.parrafos_papa : D.brief.parrafos;
+$('#brief-txt').innerHTML = parrafosBrief.map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('');
 $('#relojes').innerHTML = D.brief.relojes.map(function(r){
   return '<div class="reloj"><span class="f">'+esc(r.fecha)+'</span><span>'+esc(r.que)+'</span></div>';
 }).join('');
@@ -599,6 +606,19 @@ function renderReclamos(){
   $('#t-reclamos').innerHTML=h;
 }
 
+/* ---------- hallazgos ---------- */
+function renderHallazgos(){
+  var el=document.getElementById('hall-lista');
+  if(!el) return;
+  var G={alta:['var(--rojo)','ALTA'], media:['var(--ambar)','MEDIA'], info:['var(--azul)','DATO']};
+  el.innerHTML=D.hallazgos.map(function(h){
+    var g=G[h.gravedad]||G.info;
+    return '<div class="lib-fila" style="grid-template-columns:110px 1fr;border-left:3px solid '+g[0]+'">'+
+      '<span class="badge pr" style="align-self:start;background:'+g[0]+';color:#fff;text-align:center">'+g[1]+'</span>'+
+      '<span><b>'+esc(h.titulo)+'.</b> <span class="nota">'+esc(h.detalle)+'</span></span></div>';
+  }).join('');
+}
+
 /* ---------- libreta ---------- */
 function renderLibreta(){
   $('#lib-filtros').innerHTML=[['todos','Todos'],['fresco','Frescos 26–29/08'],['v2','Base 14–24/08']].map(function(f){
@@ -657,14 +677,19 @@ function copiarTexto(txt,aviso){
 }
 function resumen(){
   var L=['SEMANA 630 · CLAN CERVECERO — BRIEF',''];
-  D.brief.parrafos.forEach(function(p){ L.push(p); L.push(''); });
+  parrafosBrief.forEach(function(p){ L.push(p); L.push(''); });
   L.push('RELOJES:');
   D.brief.relojes.forEach(function(r){ L.push('· '+r.fecha+' — '+r.que); });
-  L.push(''); L.push('COLA DE ACCIONES:');
-  D.acciones.forEach(function(a){
-    var e=(state.estados[a.id]||'pendiente').toUpperCase();
-    L.push('['+e+'] '+PRI[a.prioridad]+' · '+a.titulo+' → '+a.quien);
-  });
+  if(MODO!=='papa'){
+    L.push(''); L.push('COLA DE ACCIONES:');
+    D.acciones.forEach(function(a){
+      var e=(state.estados[a.id]||'pendiente').toUpperCase();
+      L.push('['+e+'] '+PRI[a.prioridad]+' · '+a.titulo+' → '+a.quien);
+    });
+  }else{
+    L.push(''); L.push('HALLAZGOS DE LA SEMANA:');
+    D.hallazgos.forEach(function(h){ L.push('· ['+h.gravedad.toUpperCase()+'] '+h.titulo+' — '+h.detalle); });
+  }
   return L.join('\n');
 }
 
@@ -722,9 +747,35 @@ function renderBarra(){
 var _renderAcc=renderAcciones;
 renderAcciones=function(){ _renderAcc(); renderBarra(); };
 
+/* ---------- recorte por modo ---------- */
+function quitar(sel){ var e=document.querySelector(sel); if(e) e.remove(); }
+function renumerarNav(){
+  var i=0;
+  document.querySelectorAll('nav a b').forEach(function(b){ i++; b.textContent=(i<10?'0':'')+i; });
+}
+if(MODO==='papa'){
+  quitar('#acciones'); quitar('nav a[href="#acciones"]');
+  document.querySelector('h1 .fina').textContent='— reporte de la red';
+  document.title='Semana 630 · Reporte semanal — Clan Cervecero';
+  var prog=document.querySelector('#barra .der'); if(prog) prog.innerHTML='<span style="font-style:italic;color:#c8bfa8">Reporte para revisión de socios · Clan Cervecero</span>';
+  var g1=document.querySelector('#brief .sec-head .glosa'); if(g1) g1.textContent='sesenta segundos, lo esencial de la semana';
+  renumerarNav();
+}
+if(MODO==='acciones'){
+  quitar('#evidencia'); quitar('footer');
+  ['#semana','#items','#tiendas','#mapa','#piso','#reclamos','#libreta'].forEach(function(h){ quitar('nav a[href="'+h+'"]'); });
+  document.querySelector('h1 .fina').textContent='— sala de acciones';
+  document.title='Semana 630 · Sala de acciones — Clan Cervecero';
+  renumerarNav();
+}
+
 /* ---------- arranque ---------- */
-renderHero(); renderAcciones(); chSemanas(); chDias(); chVN();
-renderItems(); renderTiendas(); renderMapa(); renderDisc(); renderReclamos(); renderLibreta(); renderBarra();
+renderHero();
+if(MODO!=='acciones'){
+  chSemanas(); chDias(); chVN();
+  renderItems(); renderTiendas(); renderMapa(); renderDisc(); renderReclamos(); renderHallazgos(); renderLibreta();
+}
+if(MODO!=='papa'){ renderAcciones(); renderBarra(); }
 })();
 </script>
 </body>
