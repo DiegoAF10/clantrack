@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><title>Memo · Verificación de exhibición — Clan Cervecero</title>
+<style>
+@page{size:A4; margin:11mm 12mm}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,'Segoe UI',sans-serif; color:#111; font-size:10pt; line-height:1.4}
+.mono{font-family:Consolas,monospace}
+.memo-cab{border:3px solid #111; padding:10px 16px}
+.memo-cab h1{font-size:15pt; font-weight:800; text-transform:uppercase; letter-spacing:.02em}
+.linea-memo{display:flex; gap:6px; font-size:9.5pt; margin-top:3px}
+.linea-memo b{width:64px; display:inline-block}
+.urgente{background:#111; color:#fff; padding:8px 16px; font-size:10.5pt; margin-top:8px}
+.urgente b{text-transform:uppercase}
+.porque{border:2px dashed #111; padding:8px 14px; margin-top:8px; font-size:9.5pt}
+h2{font-size:10.5pt; font-weight:800; text-transform:uppercase; margin:12px 0 4px; padding:4px 10px; background:#eee; border-left:4px solid #111; page-break-after:avoid}
+table{border-collapse:collapse; width:100%; font-size:9pt}
+th{font-size:7pt; letter-spacing:.1em; text-transform:uppercase; text-align:left; padding:4px 7px; border:1px solid #111; background:#eee}
+td{padding:4.5px 7px; border:1px solid #111; vertical-align:middle}
+td.c{text-align:center} td.r{text-align:right}
+.tn{font-weight:700; white-space:nowrap}
+.peq{font-size:7.5pt; color:#555; font-weight:400; font-family:Consolas,monospace}
+.chk{display:inline-block; width:14px; height:14px; border:2px solid #111}
+.blanco{width:64px}
+.protocolo{border:2px solid #111; padding:9px 14px; margin-top:12px; page-break-inside:avoid}
+.protocolo h3{font-size:9.5pt; text-transform:uppercase; letter-spacing:.08em; margin-bottom:5px}
+.protocolo ol{margin-left:18px; font-size:9.5pt}
+.protocolo li{margin-bottom:3px}
+.pie{margin-top:10px; padding-top:5px; border-top:1px solid #999; font-size:7.5pt; color:#555; display:flex; justify-content:space-between}
+</style></head><body>
+
+<div class="memo-cab">
+  <h1>Memo — verificación de exhibición</h1>
+  <div class="linea-memo"><b>PARA:</b> Equipo de mercaderistas GSP · red Walmart / Paiz</div>
+  <div class="linea-memo"><b>DE:</b> Diego Arriaza · Clan Cervecero</div>
+  <div class="linea-memo"><b>FECHA:</b> 31 de agosto de 2026</div>
+  <div class="linea-memo"><b>ASUNTO:</b> 4 referencias con vigencia renovada — verificar que estén EXHIBIDAS</div>
+</div>
+
+<div class="urgente"><b>El punto:</b> estas 4 cervezas tienen 742 unidades repartidas en 27 tiendas y casi no venden.
+Walmart acaba de renovarles la vigencia: se pueden vender. Si no venden, la primera causa a descartar es que
+<b>no están a la vista del cliente</b>.</div>
+
+<div class="porque"><b>La misión en cada visita:</b> confirmar que el producto de la tabla esté EN SALA, con frente y precio
+— no dormido en bodega de tienda. Lo que esté guardado, se saca y se exhibe. Unidades listadas = lo que el sistema
+o el último conteo dice que hay en TU tienda (● = conteo físico reciente · ○ = sistema).</div>
+
+<h2>Tienda por tienda — qué buscar y exhibir</h2>
+<table>
+<thead><tr><th>Tienda</th><th>Referencia (nº ítem)</th><th class="r" style="width:56px">Unid.</th><th class="c" style="width:52px">¿Exhibido?</th><th style="width:64px">U. al frente</th><th class="c" style="width:70px">¿Había en bodega?</th></tr></thead>
+<tbody>
+<tr><td class="tn" rowspan="1">Paiz Aguilar Batres <span class="peq">#33</span></td><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>19</b> <span class="peq">●</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="2">Paiz Altos De San Cristob <span class="peq">#4176</span></td><td>Belhaven Best <span class="peq">(75437618)</span></td><td class="r mono"><b>15</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>8</b> <span class="peq">●</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="1">Paiz Asuncion <span class="peq">#457</span></td><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>18</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="1">Paiz Carretera A El Salva <span class="peq">#344</span></td><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>13</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="2">Paiz Chiquimula Pradera <span class="peq">#4126</span></td><td>Belhaven Best <span class="peq">(75437618)</span></td><td class="r mono"><b>8</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>17</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="1">Paiz Coban <span class="peq">#491</span></td><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>19</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="1">Paiz Colonia Vista Hermos <span class="peq">#727</span></td><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>20</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="2">Paiz El Naranjo <span class="peq">#4087</span></td><td>Belhaven McCallums <span class="peq">(75437620)</span></td><td class="r mono"><b>13</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>11</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="1">Paiz Fraijanes <span class="peq">#4490</span></td><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>20</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="1">Paiz Huehuetenango <span class="peq">#180</span></td><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>40</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="2">Paiz Las Americas <span class="peq">#22</span></td><td>Belhaven Best <span class="peq">(75437618)</span></td><td class="r mono"><b>2</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>7</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="2">Paiz Mazatenango <span class="peq">#419</span></td><td>HB Session <span class="peq">(75437617)</span></td><td class="r mono"><b>8</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>18</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="1">Paiz Montblanc <span class="peq">#47</span></td><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>19</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="1">Paiz Montufar <span class="peq">#20</span></td><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>12</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="1">Paiz Petapa <span class="peq">#35</span></td><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>19</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="1">Paiz Pradera <span class="peq">#108</span></td><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>13</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="1">Paiz Roosevelt <span class="peq">#24</span></td><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>20</b> <span class="peq">●</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="3">Paiz San Cristobal <span class="peq">#169</span></td><td>Belhaven McCallums <span class="peq">(75437620)</span></td><td class="r mono"><b>20</b> <span class="peq">●</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>HB Session <span class="peq">(75437617)</span></td><td class="r mono"><b>13</b> <span class="peq">●</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>19</b> <span class="peq">●</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="2">Paiz San Lucas <span class="peq">#4317</span></td><td>Belhaven McCallums <span class="peq">(75437620)</span></td><td class="r mono"><b>6</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>10</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="1">Paiz Santa Catarina Pinul <span class="peq">#4433</span></td><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>20</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="2">Paiz Vista Hermosa <span class="peq">#21</span></td><td>HB Session <span class="peq">(75437617)</span></td><td class="r mono"><b>20</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>20</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="4">Wm Alamos <span class="peq">#4412</span></td><td>Belhaven Best <span class="peq">(75437618)</span></td><td class="r mono"><b>20</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>Belhaven McCallums <span class="peq">(75437620)</span></td><td class="r mono"><b>20</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>HB Session <span class="peq">(75437617)</span></td><td class="r mono"><b>19</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>20</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="2">Wm Atanasio Tzul <span class="peq">#4414</span></td><td>HB Session <span class="peq">(75437617)</span></td><td class="r mono"><b>15</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>13</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="4">Wm Del Norte <span class="peq">#4037</span></td><td>Belhaven Best <span class="peq">(75437618)</span></td><td class="r mono"><b>30</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>Belhaven McCallums <span class="peq">(75437620)</span></td><td class="r mono"><b>13</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>HB Session <span class="peq">(75437617)</span></td><td class="r mono"><b>20</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>19</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="2">Wm Mixco <span class="peq">#4116</span></td><td>HB Session <span class="peq">(75437617)</span></td><td class="r mono"><b>20</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>20</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="2">Wm Proceres <span class="peq">#4370</span></td><td>Belhaven McCallums <span class="peq">(75437620)</span></td><td class="r mono"><b>19</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>10</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+<tr><td class="tn" rowspan="1">Wm Puerta Parada <span class="peq">#164</span></td><td>NC Scrimshaw <span class="peq">(75437612)</span></td><td class="r mono"><b>17</b> <span class="peq">○</span></td><td class="c"><span class="chk"></span></td><td class="blanco"></td><td class="c"><span class="chk"></span></td></tr>
+</tbody>
+</table>
+
+<div class="protocolo">
+  <h3>Protocolo — 4 pasos por tienda</h3>
+  <ol>
+    <li><b>Buscar:</b> sala primero; si no aparece completo, bodega de tienda (pedir apoyo del jefe de área).</li>
+    <li><b>Exhibir:</b> todo a sala — frente limpio, precio visible, fechas más próximas adelante (FIFO).</li>
+    <li><b>Anotar</b> en esta hoja: exhibido sí/no, unidades al frente, y si había producto guardado en bodega.</li>
+    <li><b>Foto al grupo</b> del frente terminado. Si el producto NO aparece (ni sala ni bodega), reportarlo — esa diferencia la reclamamos a Walmart como ajuste.</li>
+  </ol>
+</div>
+
+<div class="pie"><span>Clan Cervecero · dudas con Diego · las 4 referencias: NC Scrimshaw (75437612) · HB Session (75437617) · Belhaven Best (75437618) · Belhaven McCallums (75437620)</span><span class="mono">Fuente: Retail Link 30/08 + conteos 26–29/08</span></div>
+
+</body></html>
