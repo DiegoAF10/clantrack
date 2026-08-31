@@ -40,3 +40,21 @@ y reportes de mercaderistas. Entregable: `CUADERNO-SEMANA-630.html`. Cubre de fa
 Regla 15: Kimi K3 maquetó contra contrato de datos con muestras falsas (cero números reales a
 Moonshot); cálculo, verificación e inyección local: Claude (`scripts/tablero1.py` → `tablero2.py`
 → `inject2.py`).
+
+## v2 · 31-ago tarde — rediseño total tras feedback de Diego
+
+La v1 (maqueta Kimi) falló la revisión de Diego en dos ejes: calidad visual (barras ilegibles,
+cifras quebradas en dos líneas, sellos encimados) y concepto (era una "biblia" de lectura sin
+capa de acción). La v2 la escribió Claude completa (`scripts/SEMANA-630.html` es la fuente):
+
+- **Arquitectura nueva**: brief de 60 segundos + LOS RELOJES + **cola de 10 acciones** con
+  responsable, canal, mensaje listo para copiar (voz Clan) y estado pendiente→enviada→resuelta
+  persistido en localStorage con barra de progreso. La narrativa larga se eliminó.
+- **Craft**: paleta de estados validada con el método dataviz (rojo #b3282d · ámbar #b7791f ·
+  azul #1b6fa8 — todos los pares pasan CVD y contraste; "ok" en tinte callado), números SIEMPRE
+  monospace tabulares alineados a la derecha, barras SVG a escala de columna, sparkline de
+  tendencia 628→630, gauges con banda de color, heatmap con encabezados cortos y fantasma
+  rayado con "!", tooltips propios, panel lateral por tienda.
+- Datos idénticos a la v1 (triple-reconciliados) + bloque `acciones` (`scripts/datos_v3.py`).
+- Bugs cazados en auditoría visual propia: gauge sin display:block (no pintaba) ·
+  encabezados del mapa amontonados.
