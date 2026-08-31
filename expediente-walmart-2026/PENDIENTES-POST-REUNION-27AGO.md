@@ -95,7 +95,14 @@ Concesión pedida por Walmart en la mesa; Diego dijo «esta semana». Buscar can
 que aguante ese PVP con margen (Landshark: 12,863 u en bodega, lista Q15 — correr números;
 pocas cajas, prueba de 3 meses).
 
-### 8 · Resumen completo tienda por tienda — hecho · lo que falta · discrepancias
+### 8 · Resumen completo tienda por tienda — 🟢 CUBIERTO 31-ago por el CUADERNO DE LA SEMANA
+**Hecho:** `cuaderno-semana-630/CUADERNO-SEMANA-630.html` consolida RL 202630 + mercaderistas v2 +
+chat fresco 26-29/08: heatmap 40 tiendas × 13 ítems, 26 discrepancias piso-vs-sistema (536 u
+fantasma), 33 reportes de campo, reclamos (79 u ≈ Q3,630 — 79% Sapporo, Pinula 50 u), hallazgos
+(vencidos Bosques, empacados WM Roosevelt, llegada perdida A. Batres). El detalle original del
+pendiente sigue abajo por si se quiere una pasada más fina del chat completo.
+
+### 8-bis · (alcance original) Resumen tienda por tienda — hecho · lo que falta · discrepancias
 Consolidar 4 fuentes: JSON mercaderistas v2 (`Downloads\reporte_mercaderistas_WM_PAIZ (1).json`),
 chat WhatsApp post-24/08 (`Downloads\WhatsApp Chat - CLAN CERVECERO WM-PAIZ (1).zip`), VISUAL
 actualizado (`Downloads\VISUAL- CLAN CERVECERO.xlsx`, hoja DATOS columna AX = estado por
