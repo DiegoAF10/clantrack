@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Hallazgos de ejecución tienda por tienda · Semana 202630 — Clan Cervecero</title>
+<style>
+@page{size:A4; margin:16mm 15mm 18mm}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--petroleo:#0d211c; --oro:#c9a227; --tinta:#1c2521; --gris:#5c6660; --linea:#d8d4c8; --crema:#fbfaf6}
+body{font-family:Georgia,'Times New Roman',serif; color:var(--tinta); font-size:10.5pt; line-height:1.5; background:#fff}
+.num{font-family:Consolas,'Courier New',monospace; white-space:nowrap}
+
+/* portada compacta */
+.cabecera{background:var(--petroleo); color:#f4efe2; padding:22px 26px 18px; page-break-after:avoid}
+.cabecera .marca{font-size:9pt; letter-spacing:.42em; text-transform:uppercase; color:var(--oro); margin-bottom:8px}
+.cabecera h1{font-size:20pt; font-weight:700; letter-spacing:.05em; line-height:1.15; text-transform:uppercase}
+.cabecera .sub{font-size:10pt; font-style:italic; color:#cfd8cf; margin-top:6px}
+.franja{height:4px; background:var(--oro)}
+.intro{padding:16px 26px 6px}
+.intro p{margin-bottom:8px; max-width:92%}
+.resumen{display:flex; gap:14px; margin:12px 26px 4px}
+.rbox{flex:1; border:1px solid var(--linea); border-top:3px solid var(--oro); padding:9px 12px; background:var(--crema)}
+.rbox .v{font-family:Consolas,monospace; font-size:15pt; font-weight:700; color:var(--petroleo)}
+.rbox .l{font-size:8pt; letter-spacing:.18em; text-transform:uppercase; color:var(--gris)}
+
+.leyenda{margin:10px 26px 0; font-size:8.5pt; color:var(--gris); font-style:italic}
+
+/* tiendas */
+main{padding:8px 26px 20px}
+.tienda{border:1px solid var(--linea); margin-top:12px; page-break-inside:avoid; background:#fff}
+.t-head{display:flex; align-items:baseline; gap:10px; background:var(--crema); border-bottom:1px solid var(--linea); padding:8px 14px}
+.t-head .n{font-size:12.5pt; font-weight:700; color:var(--petroleo); letter-spacing:.03em; text-transform:uppercase}
+.t-head .id{font-family:Consolas,monospace; font-size:8.5pt; color:var(--gris)}
+.t-head .fecha{margin-left:auto; font-family:Consolas,monospace; font-size:8.5pt; color:var(--gris)}
+.t-head .tag{font-size:7.5pt; letter-spacing:.2em; font-weight:700; padding:2px 8px; text-transform:uppercase}
+.tag-critico{background:#7a1f22; color:#fff}
+.tag-alto{background:var(--oro); color:var(--petroleo)}
+.tag-medio{border:1px solid var(--gris); color:var(--gris)}
+.tag-ok{background:#1e5c46; color:#fff}
+.t-cuerpo{display:grid; grid-template-columns:1.5fr 1fr; gap:0}
+.t-hallazgo{padding:10px 14px; border-right:1px solid var(--linea)}
+.t-pedido{padding:10px 14px; background:#faf7ee}
+.t-cuerpo b.rotulo{display:block; font-size:7.5pt; letter-spacing:.24em; text-transform:uppercase; color:var(--gris); margin-bottom:4px}
+.t-pedido b.rotulo{color:#8a6d1c}
+.datos{margin-top:6px; font-size:9pt}
+.datos td{padding:2px 10px 2px 0; font-family:Consolas,monospace}
+.datos td:first-child{font-family:Georgia,serif; color:var(--gris)}
+
+.cierre{margin:18px 26px 0; padding:12px 16px; border:1px solid var(--linea); background:var(--crema); page-break-inside:avoid}
+.cierre b{color:var(--petroleo)}
+.pie{margin:14px 26px 0; padding-top:8px; border-top:1px solid var(--linea); font-size:8pt; color:var(--gris); display:flex; justify-content:space-between}
+</style>
+</head>
+<body>
+
+<div class="cabecera">
+  <div class="marca">Clan Cervecero</div>
+  <h1>Hallazgos de ejecución · tienda por tienda</h1>
+  <div class="sub">Red Walmart / Paiz · Semana Walmart 202630 (22–28 de agosto de 2026) · verificación física en piso de venta</div>
+</div>
+<div class="franja"></div>
+
+<div class="intro">
+  <p style="margin-top:4px">Estimados Max, Cristian: desde el 12 de agosto nuestra red de mercaderistas (agencia GSP) recorre
+  la red con conteos físicos ítem por ítem. Este documento resume, tienda por tienda, lo encontrado entre el
+  <b>14 y el 29 de agosto</b> —con énfasis en los conteos frescos del 26 al 29— y el <b>apoyo puntual que pedimos
+  en cada caso</b>. Todas las cifras provienen de Retail Link (corte 30/08) y de los conteos en piso, con fecha y hora registradas.</p>
+</div>
+
+<div class="resumen">
+  <div class="rbox"><div class="v">23</div><div class="l">Tiendas verificadas</div></div>
+  <div class="rbox"><div class="v">536 u</div><div class="l">Diferencia sistema vs físico</div></div>
+  <div class="rbox"><div class="v">3</div><div class="l">Casos mayores (VN · Bosques · WM Roosevelt)</div></div>
+  <div class="rbox"><div class="v">79 u</div><div class="l">Reclamos de la semana (2 tiendas concentran 74)</div></div>
+</div>
+<div class="leyenda">Sistema = existencia en Retail Link al 30/08 · Físico = conteo del mercaderista en piso y bodega de tienda, con fecha indicada.</div>
+
+<main>
+
+<div class="tienda">
+  <div class="t-head"><span class="n">Walmart Villa Nueva</span><span class="id">tienda 414</span><span class="tag tag-critico">Crítico</span><span class="fecha">conteos 26/08 y 28/08</span></div>
+  <div class="t-cuerpo">
+    <div class="t-hallazgo"><b class="rotulo">Hallazgo</b>
+      Diferencia de <b>417 unidades</b> entre sistema y físico en 13 de 14 ítems. El conteo se repitió a las 48 horas con
+      resultado idéntico; la bodega de la tienda está saturada y el caso quedó escalado en tienda al coordinador de abarrotes.
+      <table class="datos">
+        <tr><td>Sapporo Silver</td><td>sistema 68</td><td>físico 0</td></tr>
+        <tr><td>Trooper Original</td><td>sistema 183</td><td>físico 23</td></tr>
+        <tr><td>Trooper Fear of the Dark</td><td>sistema 20</td><td>físico 0</td></tr>
+        <tr><td>Sapporo Black</td><td>sistema 20</td><td>físico 0</td></tr>
+        <tr><td>+ 9 ítems más</td><td colspan="2">detalle disponible ítem por ítem</td></tr>
+      </table></div>
+    <div class="t-pedido"><b class="rotulo">Apoyo que pedimos</b>
+      Ajuste de inventario de los 13 ítems. Con la existencia corregida, el resurtido automático vuelve a operar;
+      mientras el sistema muestre esas unidades, la tienda no genera pedido y la góndola sigue vacía.</div>
+  </div>
+</div>
+
+<div class="tienda">
+  <div class="t-head"><span class="n">WM Bosques San Nicolás</span><span class="id">tienda 459</span><span class="tag tag-critico">Crítico</span><span class="fecha">conteo 27/08</span></div>
+  <div class="t-cuerpo">
+    <div class="t-hallazgo"><b class="rotulo">Hallazgo</b>
+      Producto vencido aún exhibido o almacenado: la totalidad del Trooper Fear of the Dark de la tienda (venció 5/2026),
+      12 u de Sapporo Black, 12 u de Sapporo Gold (vencidas desde 31/5/2025) y 12 u de St. Peter's Suffolk.
+      La tienda ya integró Sapporo Gold al plano de cámara fría.</div>
+    <div class="t-pedido"><b class="rotulo">Apoyo que pedimos</b>
+      Autorizar el retiro a merma esta semana. Nuestro mercaderista coordina en sitio; es imagen de la categoría
+      y espacio de góndola que hoy no vende.</div>
+  </div>
+</div>
+
+<div class="tienda">
+  <div class="t-head"><span class="n">Walmart Roosevelt</span><span class="id">tienda 121</span><span class="tag tag-alto">Alto</span><span class="fecha">conteo 28/08</span></div>
+  <div class="t-cuerpo">
+    <div class="t-hallazgo"><b class="rotulo">Hallazgo</b>
+      El inventario cuadra al 100 % — pero <b>200+ unidades están reempacadas y sin ubicación</b> desde el modular
+      de hace 15 días: 68 HB Dunkel, 108 HB Original, 36 Sapporo Silver, más Trooper FOTD y St. Peter's.
+      Disponibles en sistema, fuera del piso de venta.</div>
+    <div class="t-pedido"><b class="rotulo">Apoyo que pedimos</b>
+      Reubicación en el plano vigente o corrección del planograma de la tienda, para devolver esas unidades a la venta.</div>
+  </div>
+</div>
+
+<div class="tienda">
+  <div class="t-head"><span class="n">Paiz Altos de San Cristóbal</span><span class="id">tienda 4176</span><span class="tag tag-alto">Alto</span><span class="fecha">conteo 27/08</span></div>
+  <div class="t-cuerpo">
+    <div class="t-hallazgo"><b class="rotulo">Hallazgo</b>
+      Diferencias sistema vs físico en tres ítems:
+      <table class="datos">
+        <tr><td>NC Old Rasputin</td><td>sistema 11</td><td>físico 1</td></tr>
+        <tr><td>NC Scrimshaw</td><td>sistema 17</td><td>físico 8</td></tr>
+        <tr><td>HB Session</td><td>sistema 3</td><td>físico 0</td></tr>
+      </table></div>
+    <div class="t-pedido"><b class="rotulo">Apoyo que pedimos</b>Ajuste de inventario de los tres ítems.</div>
+  </div>
+</div>
+
+<div class="tienda">
+  <div class="t-head"><span class="n">Paiz Roosevelt</span><span class="id">tienda 24</span><span class="tag tag-alto">Alto</span><span class="fecha">conteo 27/08</span></div>
+  <div class="t-cuerpo">
+    <div class="t-hallazgo"><b class="rotulo">Hallazgo</b>
+      Dos ítems modulados con existencia de sistema que el piso desmiente:
+      <table class="datos">
+        <tr><td>Sapporo Black</td><td>sistema 20</td><td>físico 0</td></tr>
+        <tr><td>Trooper Fear of the Dark</td><td>sistema 26</td><td>físico 3</td></tr>
+      </table></div>
+    <div class="t-pedido"><b class="rotulo">Apoyo que pedimos</b>Ajuste de los dos ítems para que el resurtido reaccione.</div>
+  </div>
+</div>
+
+<div class="tienda">
+  <div class="t-head"><span class="n">Paiz Novicentro Zona 11</span><span class="id">tienda 23</span><span class="tag tag-alto">Alto</span><span class="fecha">conteos 26/08 y 29/08</span></div>
+  <div class="t-cuerpo">
+    <div class="t-hallazgo"><b class="rotulo">Hallazgo</b>
+      Es la tienda de mayor venta de la semana para la categoría (Q653) y sus no modulados están en cero físico;
+      el sistema aún muestra 18 u de NC Scrimshaw y 14 u de NC Old Rasputin que no aparecen. Trooper FOTD y
+      St. Peter's Suffolk figuran en liquidación.</div>
+    <div class="t-pedido"><b class="rotulo">Apoyo que pedimos</b>Ajuste de los dos ítems North Coast.</div>
+  </div>
+</div>
+
+<div class="tienda">
+  <div class="t-head"><span class="n">Paiz Santa Catarina Pinula</span><span class="id">tienda 4433</span><span class="tag tag-alto">Alto</span><span class="fecha">semana 202630</span></div>
+  <div class="t-cuerpo">
+    <div class="t-hallazgo"><b class="rotulo">Hallazgo</b>
+      Reclamos al proveedor por <b>50 unidades de Sapporo</b> en una sola semana (16 Black, 22 Gold, 12 Silver) —
+      la concentración sugiere una causa única en recepción, manejo o vencimiento.</div>
+    <div class="t-pedido"><b class="rotulo">Apoyo que pedimos</b>
+      Conocer la causa registrada del reclamo para corregir de raíz (nuestro mercaderista visita esta semana).</div>
+  </div>
+</div>
+
+<div class="tienda">
+  <div class="t-head"><span class="n">Paiz Mazatenango</span><span class="id">tienda 419</span><span class="tag tag-medio">Medio</span><span class="fecha">semana 202630</span></div>
+  <div class="t-cuerpo">
+    <div class="t-hallazgo"><b class="rotulo">Hallazgo</b>Reclamos por 24 unidades de Sapporo (12 Gold, 12 Silver) en la semana.</div>
+    <div class="t-pedido"><b class="rotulo">Apoyo que pedimos</b>Causa registrada del reclamo, igual que en Pinula.</div>
+  </div>
+</div>
+
+<div class="tienda">
+  <div class="t-head"><span class="n">Paiz Aguilar Batres</span><span class="id">tienda 33</span><span class="tag tag-medio">Medio</span><span class="fecha">conteo 27/08</span></div>
+  <div class="t-cuerpo">
+    <div class="t-hallazgo"><b class="rotulo">Hallazgo</b>
+      Una llegada de 12 u de Sapporo Silver recibida el 16/08 no aparece ni en sistema ni en físico.</div>
+    <div class="t-pedido"><b class="rotulo">Apoyo que pedimos</b>Verificación de la recepción (ingreso pendiente o código cruzado).</div>
+  </div>
+</div>
+
+<div class="tienda">
+  <div class="t-head"><span class="n">Paiz Mega 6</span><span class="id">tienda 46</span><span class="tag tag-alto">Alto</span><span class="fecha">verificado 24/08</span></div>
+  <div class="t-cuerpo">
+    <div class="t-hallazgo"><b class="rotulo">Hallazgo</b>
+      12 de 18 códigos de nuestro portafolio figuran como BORRADO en el maestro de la tienda; solo 3 permanecen activos.
+      No es quiebre de inventario: es baja de surtido.</div>
+    <div class="t-pedido"><b class="rotulo">Apoyo que pedimos</b>
+      Confirmar si la baja es de cadena o local; si es local, reactivar los códigos con el modular de octubre.</div>
+  </div>
+</div>
+
+<div class="tienda">
+  <div class="t-head"><span class="n">Walmart Naranjo</span><span class="id">tienda 948</span><span class="tag tag-medio">Medio</span><span class="fecha">conteo 27/08</span></div>
+  <div class="t-cuerpo">
+    <div class="t-hallazgo"><b class="rotulo">Hallazgo</b>
+      Los ítems no modulados aparecen como «no resurtible» o «borrado de sistema» en el handheld de tienda;
+      28 u de St. Peter's Suffolk permanecen en área de merma sin retirar.</div>
+    <div class="t-pedido"><b class="rotulo">Apoyo que pedimos</b>
+      Confirmar el estatus de esos ítems una vez extendida la vigencia (gestión ID 90884) y autorizar el retiro de la merma.</div>
+  </div>
+</div>
+
+<div class="tienda">
+  <div class="t-head"><span class="n">Paiz San Cristóbal</span><span class="id">tienda 169</span><span class="tag tag-medio">Medio</span><span class="fecha">conteo 27/08</span></div>
+  <div class="t-cuerpo">
+    <div class="t-hallazgo"><b class="rotulo">Hallazgo</b>
+      Inventario en general consistente. Trooper FOTD: sistema 22 vs físico 16; HB Helles y HB Munchner «en búsqueda» por personal de tienda.</div>
+    <div class="t-pedido"><b class="rotulo">Apoyo que pedimos</b>Verificación menor de esos tres ítems.</div>
+  </div>
+</div>
+
+<div class="tienda">
+  <div class="t-head"><span class="n">Paiz Salida al Pacífico</span><span class="id">tienda 458</span><span class="tag tag-medio">Medio</span><span class="fecha">conteo 29/08</span></div>
+  <div class="t-cuerpo">
+    <div class="t-hallazgo"><b class="rotulo">Hallazgo</b>
+      No modulados en cero físico; Trooper FOTD y St. Peter's Suffolk marcados en liquidación en tienda.</div>
+    <div class="t-pedido"><b class="rotulo">Apoyo que pedimos</b>Se resuelve con la extensión de vigencia + la orden de refuerzo en curso.</div>
+  </div>
+</div>
+
+<div class="tienda">
+  <div class="t-head"><span class="n">Paiz Utatlán</span><span class="id">tienda 34</span><span class="tag tag-ok">Referencia</span><span class="fecha">conteo 27/08</span></div>
+  <div class="t-cuerpo">
+    <div class="t-hallazgo"><b class="rotulo">Hallazgo</b>
+      Ejecución limpia: físico igual a sistema en los 8 ítems contados, con fechas de vencimiento largas.
+      La citamos como referencia de cómo debe verse la red.</div>
+    <div class="t-pedido"><b class="rotulo">Apoyo que pedimos</b>Ninguno — reconocimiento al equipo de la tienda.</div>
+  </div>
+</div>
+
+<div class="cierre">
+  <b>En resumen:</b> pedimos apoyo con (1) los <b>ajustes de inventario</b> de Villa Nueva, Altos, Paiz Roosevelt y
+  Novicentro — 536 unidades que hoy bloquean el resurtido automático; (2) el <b>retiro de vencidos</b> en Bosques;
+  (3) la <b>reubicación del producto sin plano</b> en Walmart Roosevelt; y (4) la <b>causa de los reclamos</b> de Pinula
+  y Mazatenango. Nuestra red de mercaderistas queda a disposición para ejecutar en sitio lo que se autorice.
+  Seguimos con el tablero de cada lunes.
+</div>
+
+<div class="pie">
+  <span>Clan Cervecero, S.A. · Diego Arriaza · diego@clancervecero.com</span>
+  <span class="num">Semana 202630 · generado 31/08/2026</span>
+</div>
+
+</main>
+</body>
+</html>

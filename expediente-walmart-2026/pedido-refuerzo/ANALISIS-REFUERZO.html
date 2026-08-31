@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memoria de cálculo · Pedido de refuerzo — Clan Cervecero</title>
+<style>
+:root{
+  --fondo:#0e2c4b; --fondo2:#0a2138; --linea:rgba(150,195,225,.28); --linea2:rgba(150,195,225,.55);
+  --tinta:#dce9f4; --tinta2:#9db8cc; --cian:#69d2e7; --ambar:#ffc94d; --rojo:#ff7a70; --verde:#7fe3a8;
+  --mono:Consolas,'Courier New',monospace; --serif:Georgia,'Times New Roman',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--fondo); color:var(--tinta); font-family:var(--mono); font-size:13.5px; line-height:1.6;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 31px, rgba(150,195,225,.055) 31px 32px),
+    repeating-linear-gradient(90deg, transparent 0 31px, rgba(150,195,225,.045) 31px 32px);
+}
+.wrap{max-width:1180px; margin:0 auto; padding:0 34px 90px}
+.num{font-variant-numeric:tabular-nums; white-space:nowrap}
+b{color:#fff}
+
+header{padding:42px 0 20px; border-bottom:2px solid var(--linea2); position:relative}
+.ov{font-size:11px; letter-spacing:.4em; color:var(--cian); text-transform:uppercase}
+h1{font-family:var(--serif); font-size:38px; font-weight:700; letter-spacing:.01em; margin:8px 0 4px; color:#fff}
+.sub{color:var(--tinta2); font-size:13px}
+.sello{position:absolute; right:0; top:46px; border:3px double var(--rojo); color:var(--rojo); padding:8px 18px;
+  font-size:15px; letter-spacing:.3em; font-weight:700; transform:rotate(6deg); background:rgba(255,122,112,.07)}
+.plano-meta{display:flex; gap:28px; margin-top:12px; font-size:11px; color:var(--tinta2); flex-wrap:wrap}
+.plano-meta b{color:var(--tinta)}
+
+h2{font-family:var(--serif); font-size:21px; color:#fff; margin:38px 0 6px; display:flex; align-items:baseline; gap:12px}
+h2 .lam{font-family:var(--mono); font-size:10px; color:var(--ambar); letter-spacing:.2em; border:1px solid var(--ambar); padding:2px 8px}
+.glosa{color:var(--tinta2); font-size:12px; font-style:italic; font-family:var(--serif); margin-bottom:16px}
+
+.marco{border:1px solid var(--linea2); background:rgba(10,33,56,.75); position:relative; padding:16px 18px; margin-bottom:14px}
+.marco::before,.marco::after{content:''; position:absolute; width:9px; height:9px; border:1px solid var(--cian)}
+.marco::before{top:-1px; left:-1px; border-right:none; border-bottom:none}
+.marco::after{bottom:-1px; right:-1px; border-left:none; border-top:none}
+
+/* condiciones */
+.conds{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px}
+.cond .st{font-size:10px; letter-spacing:.22em; padding:2px 8px; border:1px solid; display:inline-block; margin-bottom:6px}
+.cond .st.pend{color:var(--ambar); border-color:var(--ambar)}
+.cond .st.ok{color:var(--verde); border-color:var(--verde)}
+.cond p{font-size:12px; color:var(--tinta2)}
+.cond b{display:block; font-size:13px; margin-bottom:3px}
+
+/* reglas */
+.reglas{counter-reset:r; display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
+.regla{border:1px dashed var(--linea2); padding:12px 14px 12px 52px; position:relative; font-size:12.5px; color:var(--tinta2)}
+.regla::before{counter-increment:r; content:'R.'counter(r); position:absolute; left:12px; top:12px; color:var(--cian); font-weight:700}
+.regla b{color:var(--tinta)}
+
+/* decision por item */
+.item-card{margin-bottom:16px}
+.ic-head{display:flex; align-items:baseline; gap:14px; border-bottom:1px solid var(--linea); padding-bottom:8px; margin-bottom:12px}
+.ic-head .nombre{font-family:var(--serif); font-size:19px; color:#fff; font-weight:700}
+.ic-head .id{font-size:10px; color:var(--tinta2)}
+.ic-head .veredicto{margin-left:auto; font-size:13px; font-weight:700; letter-spacing:.06em; padding:3px 12px; border:1.5px solid}
+.v-pedir{color:var(--verde); border-color:var(--verde)}
+.v-cond{color:var(--ambar); border-color:var(--ambar)}
+.v-cero{color:var(--tinta2); border-color:var(--tinta2)}
+.ic-grid{display:grid; grid-template-columns:1fr 1fr 1.25fr; gap:16px}
+.ic-col .rot{font-size:9.5px; letter-spacing:.24em; color:var(--cian); margin-bottom:6px; text-transform:uppercase}
+.ic-col.decision .rot{color:var(--ambar)}
+.dato{display:flex; justify-content:space-between; gap:12px; padding:3px 0; border-bottom:1px dotted var(--linea); font-size:12.5px}
+.dato span:first-child{color:var(--tinta2)}
+.ic-col p{font-size:12.5px; color:var(--tinta2); margin-top:4px}
+.cambia{margin-top:10px; padding:8px 12px; border-left:3px solid var(--ambar); background:rgba(255,201,77,.06); font-size:12px; color:var(--tinta2)}
+.cambia b{color:var(--ambar)}
+
+/* trazado */
+.trazo{font-size:12.5px}
+.paso{display:flex; gap:10px; padding:5px 0; align-items:baseline}
+.paso .n{color:var(--cian); font-weight:700; min-width:24px}
+.paso .flecha{color:var(--ambar)}
+
+/* tabla asignacion */
+table{border-collapse:collapse; width:100%; font-size:12px}
+th{font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--cian); text-align:left; padding:8px 10px; border-bottom:1.5px solid var(--linea2); white-space:nowrap}
+th.r,td.r{text-align:right}
+td{padding:6px 10px; border-bottom:1px solid var(--linea); vertical-align:top}
+tr:hover td{background:rgba(105,210,231,.05)}
+.motivo{color:var(--tinta2); font-size:11px; font-family:var(--serif); font-style:italic}
+.cajas-chip{display:inline-block; min-width:26px; text-align:center; border:1px solid var(--verde); color:var(--verde); font-weight:700; padding:0 5px}
+.tienda-n{color:#fff; font-weight:700; white-space:nowrap}
+.tienda-n small{color:var(--tinta2); font-weight:400}
+tfoot td{border-top:2px solid var(--linea2); border-bottom:none; color:#fff; font-weight:700; padding-top:9px}
+
+/* comparador */
+.comp td,.comp th{text-align:right} .comp td:first-child,.comp th:first-child{text-align:left}
+.delta{color:var(--ambar)}
+
+.volver{position:fixed; bottom:0; left:0; right:0; background:var(--fondo2); border-top:1px solid var(--linea2); padding:11px 34px; display:flex; gap:18px; align-items:center; font-size:12px; z-index:50}
+.volver a{color:var(--cian); text-decoration:none; border:1px solid var(--cian); padding:6px 14px; letter-spacing:.08em}
+.volver a:hover{background:var(--cian); color:var(--fondo)}
+.volver .aviso{color:var(--tinta2); font-family:var(--serif); font-style:italic}
+@media print{.volver{display:none} body{background:#fff; color:#123} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="ov">Clan Cervecero · Expediente Walmart</div>
+  <h1>Memoria de cálculo — pedido de refuerzo</h1>
+  <div class="sub">El razonamiento completo detrás de cada cantidad, para revisar antes de firmar. Lámina técnica · datos: semana 202630 + conteos físicos 26–29/08 + Odoo vivo 31/08.</div>
+  <div class="sello">SIN FIRMA</div>
+  <div class="plano-meta">
+    <span>PLAN RECOMENDADO: <b class="num">67 cajas · 1,340 u · Q 29,314</b></span>
+    <span>ALTERNATIVA MODELO: <b class="num">122 cajas · 2,440 u · Q 55,434</b></span>
+    <span>TIENDAS BENEFICIADAS: <b class="num">29 de 40</b></span>
+  </div>
+</header>
+
+<h2><span class="lam">LÁM. 01</span>Las tres condiciones antes de la firma</h2>
+<div class="marco"><div class="conds">
+  <div class="cond"><span class="st pend">EN GESTIÓN</span><b>Vigencia ID 90884 cerrada</b>
+    <p>6 ítems vencen el 02/09. Sin extensión, el capítulo Rasputin (14 cajas · Q12,264) se cae solo — Helles y Belhaven Black pueden firmarse ya (vigencias 10/11 y extensión respectiva).</p></div>
+  <div class="cond"><span class="st ok">RESUELTA</span><b>Villa Nueva fuera del pedido</b>
+    <p>417 u fantasma verificadas dos veces. Excluida de toda cantidad; su refuerzo entra recién cuando Walmart aplique el ajuste (ya pedido en el correo de acción).</p></div>
+  <div class="cond"><span class="st pend">POR AVISAR</span><b>OC 2401060275 parcial</b>
+    <p>El aviso a Cristian del despacho parcial (HB Original 9 de 200 · Trooper 64 de 120) viaja en el mismo correo — el refuerzo no debe llegar como sorpresa después de un faltante ciego.</p></div>
+</div></div>
+
+<h2><span class="lam">LÁM. 02</span>Las cinco reglas del reparto</h2>
+<p class="glosa">Toda cantidad de la matriz sale de estas reglas — no hay números a mano.</p>
+<div class="reglas">
+  <div class="regla"><b>El peso de cada tienda</b> es su venta promedio de las últimas 3 semanas cerradas (628+629+630, en quetzales). Tres semanas amortiguan una semana suelta buena o mala.</div>
+  <div class="regla"><b>Stock sano salta.</b> Si la tienda ya tiene existencia REAL del ítem por encima del umbral (Helles ≥30 u · Rasputin ≥12 u · Black ≥8 u), no recibe — reforzar ahí es financiar inventario parado.</div>
+  <div class="regla"><b>Existencia REAL, no de sistema:</b> donde hubo conteo físico (14 tiendas, 26–29/08) manda el conteo; los fantasmas verificados no cuentan como stock.</div>
+  <div class="regla"><b>Mínimo una caja</b> (20 u) por tienda beneficiada y redondeo hacia arriba a cajas completas — así lo despacha bodega y así lo recibe el CD.</div>
+  <div class="regla"><b>Villa Nueva excluida</b> por regla dura del expediente: sin ajuste de inventario no entra al pedido (meterle producto esconde el problema debajo de más cajas).</div>
+  <div class="regla"><b>Techo de bodega:</b> ninguna cantidad puede superar el disponible libre en Odoo al 31/08. Verificado: todo cabe con holgura.</div>
+</div>
+
+<h2><span class="lam">LÁM. 03</span>La decisión, ítem por ítem</h2>
+<p class="glosa">Cada ítem enfrenta lo que dice el modelo (horizonte de temporada, tasa optimista) contra lo que dijo la semana fresca — y la decisión queda en medio, con su condición de cambio explícita.</p>
+
+<div class="marco item-card">
+  <div class="ic-head"><span class="nombre">HB Helles Lager</span><span class="id">75437615 · vigencia 10/11/2026 · Q16.00/u · caja 20</span><span class="veredicto v-pedir">PEDIR · 51 CAJAS (1,020 u · Q16,320)</span></div>
+  <div class="ic-grid">
+    <div class="ic-col"><div class="rot">El modelo pedía</div>
+      <div class="dato"><span>Sugerido</span><span class="num">1,708 u</span></div>
+      <div class="dato"><span>Tasa asumida</span><span class="num">4.4 u/tienda/sem</span></div>
+      <p>La 4.4 es la tasa de su mejor semana (629: 35 u con ~9 tiendas abastecidas). Proyectada a 16 semanas × 27 tiendas.</p></div>
+    <div class="ic-col"><div class="rot">La semana fresca dijo</div>
+      <div class="dato"><span>Venta 630</span><span class="num">18 u</span></div>
+      <div class="dato"><span>Existencia real red</span><span class="num">247 u</span></div>
+      <div class="dato"><span>Tiendas en cero</span><span class="num">~18 de 27</span></div>
+      <p>Vendió menos porque hay MENOS piso, no menos demanda: es el mejor sell-through del catálogo (10.7% sem 629).</p></div>
+    <div class="ic-col decision"><div class="rot">La decisión</div>
+      <p><b style="color:#fff">2 cajas por tienda elegible, 3 en las 8 de mayor peso.</b> Eso da ~13 semanas de piso por tienda a tasa realista (3 u/sem) — suficiente para probar la tesis sin fabricar otro sobre-stock. La vigencia corre hasta noviembre: hay espacio para una segunda ola.</p>
+      <div class="cambia"><b>Cambia si:</b> el corte de uplift del 05/09 confirma tasa ≥4 con las tiendas ya abastecidas → segunda ola hacia el plan modelo (1,708 u). Bodega alcanza: 4,222 u libres.</div></div>
+  </div>
+</div>
+
+<div class="marco item-card">
+  <div class="ic-head"><span class="nombre">NC Old Rasputin</span><span class="id">75437613 · vigencia 02/09/2026 · Q43.80/u · caja 20</span><span class="veredicto v-cond">CONDICIONADO · 14 CAJAS (280 u · Q12,264)</span></div>
+  <div class="ic-grid">
+    <div class="ic-col"><div class="rot">El modelo pedía</div>
+      <div class="dato"><span>Sugerido</span><span class="num">579 u</span></div>
+      <div class="dato"><span>Demanda asumida</span><span class="num">42 u/sem red</span></div>
+      <p>El modelo proyecta la tasa destemporalizada de Retail Link — optimista contra la venta observada.</p></div>
+    <div class="ic-col"><div class="rot">La semana fresca dijo</div>
+      <div class="dato"><span>Venta 629 / 630</span><span class="num">7 u / 9 u</span></div>
+      <div class="dato"><span>Existencia real red</span><span class="num">304 u (~34 sem)</span></div>
+      <div class="dato"><span>Dónde está el stock</span><span class="num">las tiendas fuertes YA tienen</span></div>
+      <p>San Cristóbal 16 · Roosevelt 19 · Aguilar Batres 17: los puntos que lo venden están servidos.</p></div>
+    <div class="ic-col decision"><div class="rot">La decisión</div>
+      <p><b style="color:#fff">1 caja solo donde el stock real es &lt;12 u; 2 en el top-5 de peso.</b> Es el premium de mejor ticket (PVP Q56.70) y el refuerzo va a los huecos, no encima del stock. <b style="color:var(--ambar)">TODO condicionado a que la extensión de vigencia cierre antes del martes</b> — sin extensión, esta línea se firma en cero.</p>
+      <div class="cambia"><b>Cambia si:</b> la vigencia no se extiende → 0 cajas. Si se extiende y querés empuje premium de temporada → el modelo (580 u) también cabe en bodega (918).</div></div>
+  </div>
+</div>
+
+<div class="marco item-card">
+  <div class="ic-head"><span class="nombre">Belhaven Black</span><span class="id">75437619 · vigencia 02/09/2026 · Q18.25/u · caja 20</span><span class="veredicto v-pedir">PEDIR · 2 CAJAS (40 u · Q730)</span></div>
+  <div class="ic-grid">
+    <div class="ic-col"><div class="rot">El modelo pedía</div>
+      <div class="dato"><span>Sugerido</span><span class="num">111 u</span></div></div>
+    <div class="ic-col"><div class="rot">La semana fresca dijo</div>
+      <div class="dato"><span>Venta 629 / 630</span><span class="num">2 u / 1 u</span></div>
+      <div class="dato"><span>Existencia real red</span><span class="num">48 u en 6 tiendas</span></div></div>
+    <div class="ic-col decision"><div class="rot">La decisión</div>
+      <p><b style="color:#fff">Refuerzo quirúrgico: 1 caja en las 2 tiendas donde probó moverse y están bajas.</b> Vende poco pero vende — se mantiene la mecha encendida sin apostar la caja.</p>
+      <div class="cambia"><b>Cambia si:</b> igual que Rasputin, depende de la extensión de vigencia.</div></div>
+  </div>
+</div>
+
+<div class="marco item-card">
+  <div class="ic-head"><span class="nombre">Session · Scrimshaw · Best · McCallums</span><span class="id">4 ítems · vigencia 02/09/2026</span><span class="veredicto v-cero">NO PEDIR · 0 CAJAS</span></div>
+  <div class="ic-grid">
+    <div class="ic-col"><div class="rot">El modelo pedía</div>
+      <div class="dato"><span>Session</span><span class="num">40 u</span></div>
+      <div class="dato"><span>Scrimshaw / Best / McCall</span><span class="num">0 u</span></div></div>
+    <div class="ic-col"><div class="rot">La semana fresca dijo</div>
+      <div class="dato"><span>Venta 630 (los 4 juntos)</span><span class="num">1 u</span></div>
+      <div class="dato"><span>Existencia real (los 4)</span><span class="num">742 u paradas</span></div>
+      <div class="dato"><span>Cobertura</span><span class="num">de 34 a 100+ semanas</span></div></div>
+    <div class="ic-col decision"><div class="rot">La decisión</div>
+      <p><b style="color:#fff">Cero. Pedir aquí es financiar inventario muerto.</b> La jugada con estos 4 es doble: (1) pedir la extensión de vigencia para PODER VENDER las 742 u que ya están en tiendas, y (2) que los mercaderistas les den frente y visibilidad. El piloto de Best/McCallums se corre con el stock existente, no con cajas nuevas.</p>
+      <div class="cambia"><b>Cambia si:</b> alguna tienda muestra venta sostenida post-visibilidad → se activa con mínimo (1 caja) en la siguiente orden.</div></div>
+  </div>
+</div>
+
+<h2><span class="lam">LÁM. 04</span>Dos asignaciones trazadas paso a paso</h2>
+<div class="marco" style="display:grid; grid-template-columns:1fr 1fr; gap:22px">
+  <div class="trazo"><div class="rot" style="color:var(--cian); font-size:10px; letter-spacing:.2em; margin-bottom:8px">POR QUÉ NOVICENTRO RECIBE 5 CAJAS</div>
+    <div class="paso"><span class="n">1</span><span>Peso: Q621/sem promedio → <b>tienda #1 de la red</b> → entra al top-8 (caja extra de Helles) y al top-5 (caja extra de Rasputin).</span></div>
+    <div class="paso"><span class="n">2</span><span>Helles: conteo físico 29/08 = <b>0 u</b> → objetivo 60 u → <span class="flecha">→</span> <b>3 cajas</b>.</span></div>
+    <div class="paso"><span class="n">3</span><span>Rasputin: sistema decía 14 u, físico <b>0</b> (fantasma verificado) → objetivo 40 u → <span class="flecha">→</span> <b>2 cajas</b>, marcadas «entra tras ajuste».</span></div>
+    <div class="paso"><span class="n">4</span><span>Total: <b>5 cajas</b> — la tienda que más vende recibe más, y solo lo que no tiene.</span></div>
+  </div>
+  <div class="trazo"><div class="rot" style="color:var(--cian); font-size:10px; letter-spacing:.2em; margin-bottom:8px">POR QUÉ SAN CRISTÓBAL NO RECIBE RASPUTIN</div>
+    <div class="paso"><span class="n">1</span><span>Peso: Q349/sem — tienda fuerte, elegible.</span></div>
+    <div class="paso"><span class="n">2</span><span>Rasputin: conteo físico 27/08 = <b>16 u</b> (≥ umbral 12) → <span class="flecha">→</span> <b>salta</b> («stock sano»).</span></div>
+    <div class="paso"><span class="n">3</span><span>Helles: físico <b>0</b> → sí recibe <b>3 cajas</b> (top-8).</span></div>
+    <div class="paso"><span class="n">4</span><span>La regla protege la caja: el premium caro no se apila donde ya hay 16 unidades rotando lento.</span></div>
+  </div>
+</div>
+
+<h2><span class="lam">LÁM. 05</span>La asignación completa, con su porqué</h2>
+<p class="glosa">Las 38 líneas del plan recomendado. El motivo de cada caja está a la par — nada es caja negra. Para AJUSTAR cantidades y exportar la orden, el manifiesto (botón abajo) es la mesa de firma.</p>
+<div class="marco" style="padding:6px 10px">
+<table id="t-asig">
+<thead><tr><th>Tienda</th><th class="r">Peso Q/sem</th><th>Ítem</th><th class="r">Cajas</th><th>Motivo</th></tr></thead><tbody>
+<tr><td class="tienda-n" rowspan="2">PAIZ NOVICENTRO ZONA 11 <small>#23</small></td><td class="r num" rowspan="2">Q 621</td><td>Rasputin</td><td class="r"><span class="cajas-chip num">2</span></td><td class="motivo">fantasma verificado — entra tras ajuste</td></tr>
+<tr><td>Helles</td><td class="r"><span class="cajas-chip num">3</span></td><td class="motivo">cero demostrado (físico)</td></tr>
+<tr><td class="tienda-n" rowspan="1">PAIZ PRADERA <small>#108</small></td><td class="r num" rowspan="1">Q 615</td><td>Rasputin</td><td class="r"><span class="cajas-chip num">2</span></td><td class="motivo">stock bajo: 7 u</td></tr>
+<tr><td class="tienda-n" rowspan="2">PAIZ COLONIA VISTA HERMOS <small>#727</small></td><td class="r num" rowspan="2">Q 473</td><td>Rasputin</td><td class="r"><span class="cajas-chip num">2</span></td><td class="motivo">stock bajo: 2 u</td></tr>
+<tr><td>Helles</td><td class="r"><span class="cajas-chip num">3</span></td><td class="motivo">stock bajo: 10 u</td></tr>
+<tr><td class="tienda-n" rowspan="1">WM DEL NORTE <small>#4037</small></td><td class="r num" rowspan="1">Q 425</td><td>Helles</td><td class="r"><span class="cajas-chip num">2</span></td><td class="motivo">stock bajo: 20 u</td></tr>
+<tr><td class="tienda-n" rowspan="1">PAIZ SAN CRISTOBAL <small>#169</small></td><td class="r num" rowspan="1">Q 349</td><td>Helles</td><td class="r"><span class="cajas-chip num">3</span></td><td class="motivo">cero demostrado (físico)</td></tr>
+<tr><td class="tienda-n" rowspan="1">WM ALAMOS <small>#4412</small></td><td class="r num" rowspan="1">Q 332</td><td>Helles</td><td class="r"><span class="cajas-chip num">2</span></td><td class="motivo">stock bajo: 20 u</td></tr>
+<tr><td class="tienda-n" rowspan="2">PAIZ EL NARANJO <small>#4087</small></td><td class="r num" rowspan="2">Q 327</td><td>Rasputin</td><td class="r"><span class="cajas-chip num">1</span></td><td class="motivo">stock bajo: 5 u</td></tr>
+<tr><td>Helles</td><td class="r"><span class="cajas-chip num">3</span></td><td class="motivo">stock bajo: 12 u</td></tr>
+<tr><td class="tienda-n" rowspan="2">WM ATANASIO TZUL <small>#4414</small></td><td class="r num" rowspan="2">Q 296</td><td>Rasputin</td><td class="r"><span class="cajas-chip num">1</span></td><td class="motivo">stock bajo: 8 u</td></tr>
+<tr><td>Helles</td><td class="r"><span class="cajas-chip num">3</span></td><td class="motivo">stock bajo: 8 u</td></tr>
+<tr><td class="tienda-n" rowspan="2">PAIZ SANTA AMELIA <small>#4173</small></td><td class="r num" rowspan="2">Q 287</td><td>Helles</td><td class="r"><span class="cajas-chip num">3</span></td><td class="motivo">cero demostrado (físico)</td></tr>
+<tr><td>Bel. Black</td><td class="r"><span class="cajas-chip num">1</span></td><td class="motivo">cero demostrado (físico)</td></tr>
+<tr><td class="tienda-n" rowspan="1">PAIZ FRAIJANES <small>#4490</small></td><td class="r num" rowspan="1">Q 278</td><td>Helles</td><td class="r"><span class="cajas-chip num">2</span></td><td class="motivo">cero demostrado (físico)</td></tr>
+<tr><td class="tienda-n" rowspan="1">PAIZ MONTUFAR <small>#20</small></td><td class="r num" rowspan="1">Q 267</td><td>Helles</td><td class="r"><span class="cajas-chip num">2</span></td><td class="motivo">stock bajo: 4 u</td></tr>
+<tr><td class="tienda-n" rowspan="2">PAIZ MONTBLANC <small>#47</small></td><td class="r num" rowspan="2">Q 257</td><td>Rasputin</td><td class="r"><span class="cajas-chip num">1</span></td><td class="motivo">stock bajo: 10 u</td></tr>
+<tr><td>Helles</td><td class="r"><span class="cajas-chip num">2</span></td><td class="motivo">stock bajo: 2 u</td></tr>
+<tr><td class="tienda-n" rowspan="1">PAIZ UTATLAN <small>#34</small></td><td class="r num" rowspan="1">Q 249</td><td>Helles</td><td class="r"><span class="cajas-chip num">2</span></td><td class="motivo">stock bajo: 8 u</td></tr>
+<tr><td class="tienda-n" rowspan="2">PAIZ SAN LUCAS <small>#4317</small></td><td class="r num" rowspan="2">Q 234</td><td>Rasputin</td><td class="r"><span class="cajas-chip num">1</span></td><td class="motivo">stock bajo: 8 u</td></tr>
+<tr><td>Helles</td><td class="r"><span class="cajas-chip num">2</span></td><td class="motivo">cero demostrado (físico)</td></tr>
+<tr><td class="tienda-n" rowspan="1">PAIZ MEGA 6 <small>#46</small></td><td class="r num" rowspan="1">Q 215</td><td>Helles</td><td class="r"><span class="cajas-chip num">2</span></td><td class="motivo">stock bajo: 2 u</td></tr>
+<tr><td class="tienda-n" rowspan="1">PAIZ VISTA HERMOSA <small>#21</small></td><td class="r num" rowspan="1">Q 204</td><td>Helles</td><td class="r"><span class="cajas-chip num">1</span></td><td class="motivo">stock bajo: 20 u</td></tr>
+<tr><td class="tienda-n" rowspan="1">PAIZ AGUILAR BATRES <small>#33</small></td><td class="r num" rowspan="1">Q 198</td><td>Helles</td><td class="r"><span class="cajas-chip num">1</span></td><td class="motivo">stock bajo: 20 u</td></tr>
+<tr><td class="tienda-n" rowspan="2">PAIZ CHIQUIMULA PRADERA <small>#4126</small></td><td class="r num" rowspan="2">Q 193</td><td>Rasputin</td><td class="r"><span class="cajas-chip num">1</span></td><td class="motivo">stock bajo: 8 u</td></tr>
+<tr><td>Helles</td><td class="r"><span class="cajas-chip num">1</span></td><td class="motivo">stock bajo: 20 u</td></tr>
+<tr><td class="tienda-n" rowspan="2">PAIZ MAZATENANGO <small>#419</small></td><td class="r num" rowspan="2">Q 192</td><td>Rasputin</td><td class="r"><span class="cajas-chip num">1</span></td><td class="motivo">stock bajo: 9 u</td></tr>
+<tr><td>Helles</td><td class="r"><span class="cajas-chip num">2</span></td><td class="motivo">stock bajo: 6 u</td></tr>
+<tr><td class="tienda-n" rowspan="1">PAIZ ROOSEVELT <small>#24</small></td><td class="r num" rowspan="1">Q 188</td><td>Bel. Black</td><td class="r"><span class="cajas-chip num">1</span></td><td class="motivo">cero demostrado (físico)</td></tr>
+<tr><td class="tienda-n" rowspan="1">WALMART SAN CRISTóBAL <small>#1054</small></td><td class="r num" rowspan="1">Q 175</td><td>Helles</td><td class="r"><span class="cajas-chip num">1</span></td><td class="motivo">stock bajo: 20 u</td></tr>
+<tr><td class="tienda-n" rowspan="1">WM MIXCO <small>#4116</small></td><td class="r num" rowspan="1">Q 175</td><td>Helles</td><td class="r"><span class="cajas-chip num">1</span></td><td class="motivo">stock bajo: 20 u</td></tr>
+<tr><td class="tienda-n" rowspan="1">PAIZ HUEHUETENANGO <small>#180</small></td><td class="r num" rowspan="1">Q 164</td><td>Helles</td><td class="r"><span class="cajas-chip num">2</span></td><td class="motivo">stock bajo: 16 u</td></tr>
+<tr><td class="tienda-n" rowspan="1">PAIZ SANTA CATARINA PINUL <small>#4433</small></td><td class="r num" rowspan="1">Q 162</td><td>Helles</td><td class="r"><span class="cajas-chip num">2</span></td><td class="motivo">stock bajo: 4 u</td></tr>
+<tr><td class="tienda-n" rowspan="1">PAIZ PETAPA <small>#35</small></td><td class="r num" rowspan="1">Q 138</td><td>Helles</td><td class="r"><span class="cajas-chip num">2</span></td><td class="motivo">cero demostrado (físico)</td></tr>
+<tr><td class="tienda-n" rowspan="1">PAIZ CARRETERA A EL SALVA <small>#344</small></td><td class="r num" rowspan="1">Q 104</td><td>Rasputin</td><td class="r"><span class="cajas-chip num">1</span></td><td class="motivo">stock bajo: 11 u</td></tr>
+<tr><td class="tienda-n" rowspan="1">PAIZ ALTOS DE SAN CRISTOB <small>#4176</small></td><td class="r num" rowspan="1">Q 96</td><td>Rasputin</td><td class="r"><span class="cajas-chip num">1</span></td><td class="motivo">fantasma verificado — entra tras ajuste</td></tr>
+<tr><td class="tienda-n" rowspan="1">WM PROCERES <small>#4370</small></td><td class="r num" rowspan="1">Q 95</td><td>Helles</td><td class="r"><span class="cajas-chip num">2</span></td><td class="motivo">cero demostrado (físico)</td></tr>
+<tr><td class="tienda-n" rowspan="1">WM XELA <small>#460</small></td><td class="r num" rowspan="1">Q 59</td><td>Helles</td><td class="r"><span class="cajas-chip num">2</span></td><td class="motivo">stock bajo: 1 u</td></tr>
+<tr><td colspan="3" style="border-top:2px solid var(--linea2);color:#fff;font-weight:700;padding-top:9px">TOTAL · 29 tiendas</td><td class="r" style="border-top:2px solid var(--linea2);padding-top:9px"><span class="cajas-chip num">67</span></td><td style="border-top:2px solid var(--linea2)"></td></tr>
+</tbody>
+</table>
+</div>
+
+<h2><span class="lam">LÁM. 06</span>Recomendado contra modelo — el delta</h2>
+<div class="marco" style="max-width:760px">
+<table class="comp">
+<thead><tr><th>Ítem</th><th class="r">Recomendado</th><th class="r">Modelo</th><th class="r">Delta u</th><th class="r">Delta Q</th></tr></thead>
+<tbody>
+<tr><td>HB Helles</td><td class="num">51 cj · 1,020 u</td><td class="num">85 cj · 1,700 u</td><td class="num delta">−680</td><td class="num delta">−Q 10,880</td></tr>
+<tr><td>NC Old Rasputin</td><td class="num">14 cj · 280 u</td><td class="num">29 cj · 580 u</td><td class="num delta">−300</td><td class="num delta">−Q 13,140</td></tr>
+<tr><td>Belhaven Black</td><td class="num">2 cj · 40 u</td><td class="num">6 cj · 120 u</td><td class="num delta">−80</td><td class="num delta">−Q 1,460</td></tr>
+<tr><td>HB Session</td><td class="num">0</td><td class="num">2 cj · 40 u</td><td class="num delta">−40</td><td class="num delta">−Q 640</td></tr>
+</tbody>
+<tfoot><tr><td>TOTAL</td><td class="num">67 cj · Q 29,314</td><td class="num">122 cj · Q 55,434</td><td class="num delta">−1,100 u</td><td class="num delta">−Q 26,120</td></tr></tfoot>
+</table>
+<p class="glosa" style="margin-top:10px">La diferencia (Q26,120) no se pierde: queda en bodega con la vigencia corriendo, lista para la segunda ola si el uplift del 05/09 la justifica. El recomendado compra la misma tesis con la mitad del riesgo de inventario.</p>
+</div>
+
+</div>
+<div class="volver">
+  <a href="file:///C:/Users/Diego/projects/clan/coo/walmart/expediente-walmart-2026/pedido-refuerzo/PEDIDO-REFUERZO.html">ABRIR EL MANIFIESTO PARA AJUSTAR Y FIRMAR →</a>
+  <span class="aviso">Esta lámina es de lectura; las cantidades se tocan y exportan en el manifiesto.</span>
+</div>
+</body>
+</html>
