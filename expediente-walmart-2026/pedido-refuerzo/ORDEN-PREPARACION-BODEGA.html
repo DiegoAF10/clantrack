@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Orden de preparación · Pedido Walmart — bodega Clan</title>
+<style>
+@page{size:A4; margin:12mm 13mm}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,'Segoe UI',sans-serif; color:#111; font-size:10.5pt; line-height:1.4; background:#fff}
+.num{font-family:Consolas,'Courier New',monospace; white-space:nowrap}
+.cab{border:3px solid #111; padding:10px 16px; display:flex; align-items:center; gap:16px}
+.cab h1{font-size:16pt; font-weight:800; text-transform:uppercase}
+.cab .sub{font-size:9pt; color:#333}
+.cab .caja-f{margin-left:auto; border:1.5px solid #111; padding:6px 12px; font-size:9pt; text-align:center}
+.cab .caja-f b{display:block; font-size:8pt; letter-spacing:.14em}
+.regla{border:2px dashed #111; margin-top:8px; padding:7px 14px; font-size:10pt}
+.regla b{text-transform:uppercase}
+h2{font-size:11.5pt; font-weight:800; text-transform:uppercase; margin:13px 0 4px; padding:5px 10px; background:#111; color:#fff; page-break-after:avoid}
+h2 small{font-weight:400; font-size:8.5pt; float:right; margin-top:2px}
+table{border-collapse:collapse; width:100%; font-size:10pt; page-break-inside:avoid}
+th{font-size:7.5pt; letter-spacing:.1em; text-transform:uppercase; text-align:left; padding:5px 8px; border:1px solid #111; background:#eee}
+th.r{text-align:right} th.c{text-align:center}
+td{padding:7px 8px; border:1px solid #111; vertical-align:middle}
+td.c{text-align:center} td.r{text-align:right}
+.chk{display:inline-block; width:16px; height:16px; border:2px solid #111}
+.it{font-family:Consolas,monospace; font-size:8.5pt; color:#444}
+.prod{font-weight:700}
+.grande{font-family:Consolas,monospace; font-size:12pt; font-weight:800}
+.bajar{font-size:9.5pt}
+.bajar b{font-family:Consolas,monospace}
+tfoot td{background:#eee; font-weight:800}
+.pasos{margin-top:12px; border:2px solid #111; padding:9px 14px; page-break-inside:avoid}
+.pasos h3{font-size:10pt; text-transform:uppercase; letter-spacing:.1em; margin-bottom:5px}
+.pasos ol{margin-left:20px; font-size:9.5pt}
+.pasos li{margin-bottom:4px}
+.alerta{margin-top:10px; border:3px double #111; padding:8px 14px; font-size:10pt; page-break-inside:avoid}
+.firmas{display:flex; gap:24px; margin-top:18px; page-break-inside:avoid}
+.firma{flex:1; text-align:center; font-size:9pt}
+.firma .linea{border-bottom:1.5px solid #111; height:32px; margin-bottom:4px}
+.pie{margin-top:12px; padding-top:6px; border-top:1px solid #999; font-size:8pt; color:#555; display:flex; justify-content:space-between}
+</style>
+</head>
+<body>
+
+<div class="cab">
+  <div>
+    <h1>Orden de preparación — pedido Walmart</h1>
+    <div class="sub">Clan Cervecero · bodega · ítems no modulados · preparar y dejar en STAGING (se despacha contra la orden de compra de Walmart)</div>
+  </div>
+  <div class="caja-f"><b>FECHA DE PREPARACIÓN</b><div style="height:18px"></div></div>
+</div>
+
+<div class="regla"><b>Regla de cajas:</b> TODO este pedido sale en <b>caja reempaquetada de 20 unidades</b> con su código.
+La caja original (24 u en HB y Belhaven · 12 u en North Coast) solo se usa para <b>bajar el producto del rack</b> — no viaja a Walmart.</div>
+
+<h2>Qué preparar <small>total: 167 cajas de 20 · 3,340 unidades</small></h2>
+<table>
+<thead><tr>
+<th style="width:26px" class="c">✓</th><th>Cerveza</th><th class="r">Unidades</th>
+<th class="r">Cajas de 20 a armar</th><th>Bajar de bodega (cajas ORIGINALES)</th>
+</tr></thead>
+<tbody>
+<tr><td class="c"><span class="chk"></span></td><td><span class="prod">Belhaven Best lata 440 ml</span> <span class="it">(75437618)</span></td>
+<td class="r num">660</td><td class="r grande">33</td><td class="bajar"><b>27</b> cajas de 24 + <b>12</b> u sueltas</td></tr>
+<tr><td class="c"><span class="chk"></span></td><td><span class="prod">Belhaven Black lata 440 ml</span> <span class="it">(75437619)</span></td>
+<td class="r num">660</td><td class="r grande">33</td><td class="bajar"><b>27</b> cajas de 24 + <b>12</b> u sueltas</td></tr>
+<tr><td class="c"><span class="chk"></span></td><td><span class="prod">HB Session Lager lata 500 ml</span> <span class="it">(75437617)</span></td>
+<td class="r num">600</td><td class="r grande">30</td><td class="bajar"><b>25</b> cajas de 24 exactas</td></tr>
+<tr><td class="c"><span class="chk"></span></td><td><span class="prod">Belhaven McCallums lata 440 ml</span> <span class="it">(75437620)</span></td>
+<td class="r num">600</td><td class="r grande">30</td><td class="bajar"><b>25</b> cajas de 24 exactas</td></tr>
+<tr><td class="c"><span class="chk"></span></td><td><span class="prod">HB Helles Lager lata 500 ml</span> <span class="it">(75437615)</span></td>
+<td class="r num">400</td><td class="r grande">20</td><td class="bajar"><b>16</b> cajas de 24 + <b>16</b> u sueltas</td></tr>
+<tr><td class="c"><span class="chk"></span></td><td><span class="prod">NC Old Rasputin lata 473 ml</span> <span class="it">(75437613)</span></td>
+<td class="r num">280</td><td class="r grande">14</td><td class="bajar"><b>23</b> cajas de 12 + <b>4</b> u sueltas</td></tr>
+<tr><td class="c"><span class="chk"></span></td><td><span class="prod">NC Scrimshaw lata 473 ml</span> <span class="it">(75437612)</span></td>
+<td class="r num">140</td><td class="r grande">7</td><td class="bajar"><b>11</b> cajas de 12 + <b>8</b> u sueltas</td></tr>
+</tbody>
+<tfoot><tr><td></td><td>TOTAL</td><td class="r num">3,340</td><td class="r num">167</td><td></td></tr></tfoot>
+</table>
+
+<div class="alerta"><b>NO TOCAR:</b> las 9 unidades de HB Original (75437614) y las 64 de Trooper Original lata (75437621)
+quedan <b>reservadas en bodega</b> por instrucción de Diego — no van en este pedido ni en la OC de esta semana.</div>
+
+<div class="pasos">
+  <h3>Cómo se prepara — 5 pasos</h3>
+  <ol>
+    <li><b>Fechas largas para Walmart:</b> bajar los lotes con vencimiento MÁS LEJANO. Lo próximo a vencer se queda en bodega.</li>
+    <li><b>Armar las cajas de 20</b> y rotular cada una con el producto y su número de ítem (el de esta hoja).</li>
+    <li><b>Sellar y contar</b> — marcar en esta hoja cada línea completada.</li>
+    <li><b>Dejar en STAGING</b> por producto, separado del resto — no se carga a camión hasta que llegue la orden de compra.</li>
+    <li><b>Reportar a Diego:</b> foto del staging + esta hoja firmada. Avisar si algún producto no alcanza la cantidad.</li>
+  </ol>
+</div>
+
+<div class="firmas">
+  <div class="firma"><div class="linea"></div>Preparó — nombre y firma</div>
+  <div class="firma"><div class="linea"></div>Verificó — nombre y firma</div>
+  <div class="firma"><div class="linea"></div>Fecha y hora de cierre</div>
+</div>
+
+<div class="pie">
+  <span>Clan Cervecero · orden emitida 31/08/2026 · dudas con Diego</span>
+  <span class="num">Pedido de medición Walmart · empaques según Odoo</span>
+</div>
+
+</body>
+</html>
