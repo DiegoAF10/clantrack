@@ -4,40 +4,40 @@
 <meta charset="utf-8">
 <title>Orden de preparación · Pedido Walmart — bodega Clan</title>
 <style>
-@page{size:A4; margin:12mm 13mm}
+@page{size:A4; margin:9mm 12mm}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,'Segoe UI',sans-serif; color:#111; font-size:10.5pt; line-height:1.4; background:#fff}
+body{font-family:Arial,'Segoe UI',sans-serif; color:#111; font-size:9.5pt; line-height:1.3; background:#fff}
 .num{font-family:Consolas,'Courier New',monospace; white-space:nowrap}
-.cab{border:3px solid #111; padding:10px 16px; display:flex; align-items:center; gap:16px}
-.cab h1{font-size:16pt; font-weight:800; text-transform:uppercase}
-.cab .sub{font-size:9pt; color:#333}
-.cab .caja-f{margin-left:auto; border:1.5px solid #111; padding:6px 12px; font-size:9pt; text-align:center}
-.cab .caja-f b{display:block; font-size:8pt; letter-spacing:.14em}
-.regla{border:2px dashed #111; margin-top:8px; padding:7px 14px; font-size:10pt}
+.cab{border:3px solid #111; padding:7px 16px; display:flex; align-items:center; gap:16px}
+.cab h1{font-size:15pt; font-weight:800; text-transform:uppercase}
+.cab .sub{font-size:8.5pt; color:#333}
+.cab .caja-f{margin-left:auto; border:1.5px solid #111; padding:5px 12px; font-size:9pt; text-align:center}
+.cab .caja-f b{display:block; font-size:7.5pt; letter-spacing:.14em}
+.regla{border:2px dashed #111; margin-top:6px; padding:5px 14px; font-size:9pt}
 .regla b{text-transform:uppercase}
-h2{font-size:11.5pt; font-weight:800; text-transform:uppercase; margin:13px 0 4px; padding:5px 10px; background:#111; color:#fff; page-break-after:avoid}
+h2{font-size:10.5pt; font-weight:800; text-transform:uppercase; margin:8px 0 3px; padding:4px 10px; background:#111; color:#fff; page-break-after:avoid}
 h2 small{font-weight:400; font-size:8.5pt; float:right; margin-top:2px}
-table{border-collapse:collapse; width:100%; font-size:10pt; page-break-inside:avoid}
-th{font-size:7.5pt; letter-spacing:.1em; text-transform:uppercase; text-align:left; padding:5px 8px; border:1px solid #111; background:#eee}
+table{border-collapse:collapse; width:100%; font-size:9.5pt; page-break-inside:avoid}
+th{font-size:7.5pt; letter-spacing:.1em; text-transform:uppercase; text-align:left; padding:4px 8px; border:1px solid #111; background:#eee}
 th.r{text-align:right} th.c{text-align:center}
-td{padding:7px 8px; border:1px solid #111; vertical-align:middle}
+td{padding:4.5px 8px; border:1px solid #111; vertical-align:middle}
 td.c{text-align:center} td.r{text-align:right}
-.chk{display:inline-block; width:16px; height:16px; border:2px solid #111}
+.chk{display:inline-block; width:15px; height:15px; border:2px solid #111}
 .it{font-family:Consolas,monospace; font-size:8.5pt; color:#444}
 .prod{font-weight:700}
-.grande{font-family:Consolas,monospace; font-size:12pt; font-weight:800}
-.bajar{font-size:9.5pt}
-.bajar b{font-family:Consolas,monospace}
+.grande{font-family:Consolas,monospace; font-size:11pt; font-weight:800}
+.uds{font-size:8pt; color:#555; font-family:Consolas,monospace}
+.tipo{font-weight:700; font-size:9pt}
+.tipo.orig{text-decoration:underline}
 tfoot td{background:#eee; font-weight:800}
-.pasos{margin-top:12px; border:2px solid #111; padding:9px 14px; page-break-inside:avoid}
-.pasos h3{font-size:10pt; text-transform:uppercase; letter-spacing:.1em; margin-bottom:5px}
-.pasos ol{margin-left:20px; font-size:9.5pt}
-.pasos li{margin-bottom:4px}
-.alerta{margin-top:10px; border:3px double #111; padding:8px 14px; font-size:10pt; page-break-inside:avoid}
-.firmas{display:flex; gap:24px; margin-top:18px; page-break-inside:avoid}
-.firma{flex:1; text-align:center; font-size:9pt}
-.firma .linea{border-bottom:1.5px solid #111; height:32px; margin-bottom:4px}
-.pie{margin-top:12px; padding-top:6px; border-top:1px solid #999; font-size:8pt; color:#555; display:flex; justify-content:space-between}
+.alerta{margin-top:7px; border:3px double #111; padding:5px 14px; font-size:9pt; page-break-inside:avoid}
+.pasos{margin-top:7px; border:2px solid #111; padding:5px 14px; page-break-inside:avoid}
+.pasos h3{font-size:9.5pt; text-transform:uppercase; letter-spacing:.1em; margin-bottom:4px}
+.pasos ol{margin-left:20px; font-size:8.5pt}
+.pasos li{margin-bottom:2.5px}
+.firmas{display:flex; gap:24px; margin-top:9px; page-break-inside:avoid}
+.firma{flex:1; text-align:center; font-size:8.5pt}
+.firma .linea{border-bottom:1.5px solid #111; height:22px; margin-bottom:3px}
 </style>
 </head>
 <body>
@@ -45,50 +45,67 @@ tfoot td{background:#eee; font-weight:800}
 <div class="cab">
   <div>
     <h1>Orden de preparación — pedido Walmart</h1>
-    <div class="sub">Clan Cervecero · bodega · ítems no modulados · preparar y dejar en STAGING (se despacha contra la OC de Walmart) · emitida 31/08/2026 · dudas con Diego</div>
+    <div class="sub">Clan Cervecero · bodega · emitida 31/08/2026 · dudas con Diego</div>
   </div>
-  <div class="caja-f"><b>FECHA DE PREPARACIÓN</b><div style="height:18px"></div></div>
+  <div class="caja-f"><b>FECHA DE PREPARACIÓN</b><div style="height:16px"></div></div>
 </div>
 
-<div class="regla"><b>Regla de cajas:</b> TODO este pedido sale en <b>caja reempaquetada de 20 unidades</b> con su código.
-La caja original (24 u en HB y Belhaven · 12 u en North Coast) solo se usa para <b>bajar el producto del rack</b> — no viaja a Walmart.</div>
+<div class="regla"><b>Regla de cajas:</b> la columna del centro dice <b>en qué caja va cada cerveza</b> —
+la ORIGINAL del fabricante, o la REEMPAQUETADA de 20 que armamos nosotros (rotulada con su número de ítem).</div>
 
-<h2>Qué preparar <small>total: 167 cajas de 20 · 3,340 unidades</small></h2>
+<h2>Bloque A · OC 2401060275 — se despacha YA contra esa orden <small>16 cajas · 256 unidades</small></h2>
 <table>
 <thead><tr>
-<th style="width:26px" class="c">✓</th><th>Cerveza</th><th class="r">Unidades</th>
-<th class="r">Cajas de 20 a armar</th>
+<th style="width:24px" class="c">✓</th><th>Ítem</th><th style="width:200px">Cajas a utilizar</th><th class="r" style="width:150px">Cantidad de cajas a entregar</th>
+</tr></thead>
+<tbody>
+<tr><td class="c"><span class="chk"></span></td><td><span class="prod">Sapporo Silver 650 ml</span> <span class="it">(75214930)</span></td>
+<td><span class="tipo orig">ORIGINAL de 12</span></td><td class="r"><span class="grande">8</span> <span class="uds">= 96 u</span></td></tr>
+<tr><td class="c"><span class="chk"></span></td><td><span class="prod">Sapporo Black 650 ml</span> <span class="it">(75437610)</span></td>
+<td><span class="tipo">REEMPAQUETADA de 20</span></td><td class="r"><span class="grande">2</span> <span class="uds">= 40 u</span></td></tr>
+<tr><td class="c"><span class="chk"></span></td><td><span class="prod">HB Dunkel botella 500 ml</span> <span class="it">(75437616)</span></td>
+<td><span class="tipo orig">ORIGINAL de 20</span></td><td class="r"><span class="grande">1</span> <span class="uds">= 20 u</span></td></tr>
+<tr><td class="c"><span class="chk"></span></td><td><span class="prod">Trooper Fear of the Dark lata 500 ml</span> <span class="it">(75437623)</span></td>
+<td><span class="tipo">REEMPAQUETADA de 20</span></td><td class="r"><span class="grande">5</span> <span class="uds">= 100 u</span></td></tr>
+</tbody>
+<tfoot><tr><td></td><td>SUBTOTAL BLOQUE A</td><td></td><td class="r num">16 cajas · 256 u</td></tr></tfoot>
+</table>
+
+<h2>Bloque B · Pedido de medición — preparar y dejar en STAGING <small>167 cajas · 3,340 unidades · espera OC nueva</small></h2>
+<table>
+<thead><tr>
+<th style="width:24px" class="c">✓</th><th>Ítem</th><th style="width:200px">Cajas a utilizar</th><th class="r" style="width:150px">Cantidad de cajas a entregar</th>
 </tr></thead>
 <tbody>
 <tr><td class="c"><span class="chk"></span></td><td><span class="prod">Belhaven Best lata 440 ml</span> <span class="it">(75437618)</span></td>
-<td class="r num">660</td><td class="r grande">33</td></tr>
+<td><span class="tipo">REEMPAQUETADA de 20</span></td><td class="r"><span class="grande">33</span> <span class="uds">= 660 u</span></td></tr>
 <tr><td class="c"><span class="chk"></span></td><td><span class="prod">Belhaven Black lata 440 ml</span> <span class="it">(75437619)</span></td>
-<td class="r num">660</td><td class="r grande">33</td></tr>
+<td><span class="tipo">REEMPAQUETADA de 20</span></td><td class="r"><span class="grande">33</span> <span class="uds">= 660 u</span></td></tr>
 <tr><td class="c"><span class="chk"></span></td><td><span class="prod">HB Session Lager lata 500 ml</span> <span class="it">(75437617)</span></td>
-<td class="r num">600</td><td class="r grande">30</td></tr>
+<td><span class="tipo">REEMPAQUETADA de 20</span></td><td class="r"><span class="grande">30</span> <span class="uds">= 600 u</span></td></tr>
 <tr><td class="c"><span class="chk"></span></td><td><span class="prod">Belhaven McCallums lata 440 ml</span> <span class="it">(75437620)</span></td>
-<td class="r num">600</td><td class="r grande">30</td></tr>
+<td><span class="tipo">REEMPAQUETADA de 20</span></td><td class="r"><span class="grande">30</span> <span class="uds">= 600 u</span></td></tr>
 <tr><td class="c"><span class="chk"></span></td><td><span class="prod">HB Helles Lager lata 500 ml</span> <span class="it">(75437615)</span></td>
-<td class="r num">400</td><td class="r grande">20</td></tr>
+<td><span class="tipo">REEMPAQUETADA de 20</span></td><td class="r"><span class="grande">20</span> <span class="uds">= 400 u</span></td></tr>
 <tr><td class="c"><span class="chk"></span></td><td><span class="prod">NC Old Rasputin lata 473 ml</span> <span class="it">(75437613)</span></td>
-<td class="r num">280</td><td class="r grande">14</td></tr>
+<td><span class="tipo">REEMPAQUETADA de 20</span></td><td class="r"><span class="grande">14</span> <span class="uds">= 280 u</span></td></tr>
 <tr><td class="c"><span class="chk"></span></td><td><span class="prod">NC Scrimshaw lata 473 ml</span> <span class="it">(75437612)</span></td>
-<td class="r num">140</td><td class="r grande">7</td></tr>
+<td><span class="tipo">REEMPAQUETADA de 20</span></td><td class="r"><span class="grande">7</span> <span class="uds">= 140 u</span></td></tr>
 </tbody>
-<tfoot><tr><td></td><td>TOTAL</td><td class="r num">3,340</td><td class="r num">167</td></tr></tfoot>
+<tfoot><tr><td></td><td>SUBTOTAL BLOQUE B</td><td></td><td class="r num">167 cajas · 3,340 u</td></tr></tfoot>
 </table>
 
 <div class="alerta"><b>NO TOCAR:</b> las 9 unidades de HB Original (75437614) y las 64 de Trooper Original lata (75437621)
-quedan <b>reservadas en bodega</b> por instrucción de Diego — no van en este pedido ni en la OC de esta semana.</div>
+quedan <b>reservadas en bodega</b> por instrucción de Diego — no van en esta OC ni en el pedido de medición.</div>
 
 <div class="pasos">
   <h3>Cómo se prepara — 5 pasos</h3>
   <ol>
     <li><b>Fechas largas para Walmart:</b> bajar los lotes con vencimiento MÁS LEJANO. Lo próximo a vencer se queda en bodega.</li>
-    <li><b>Armar las cajas de 20</b> y rotular cada una con el producto y su número de ítem (el de esta hoja).</li>
-    <li><b>Sellar y contar</b> — marcar en esta hoja cada línea completada.</li>
-    <li><b>Dejar en STAGING</b> por producto, separado del resto — no se carga a camión hasta que llegue la orden de compra.</li>
-    <li><b>Reportar a Diego:</b> foto del staging + esta hoja firmada. Avisar si algún producto no alcanza la cantidad.</li>
+    <li><b>Armar las reempaquetadas de 20</b> y rotular cada una con el producto y su número de ítem. Las originales van selladas tal cual.</li>
+    <li><b>Sellar y contar</b> — marcar cada línea completada en esta hoja.</li>
+    <li><b>Bloque A carga ya</b> contra la OC 2401060275. <b>Bloque B queda en STAGING</b> separado por producto, hasta la OC nueva.</li>
+    <li><b>Reportar a Diego:</b> foto del staging + esta hoja firmada. Avisar si algo no alcanza la cantidad.</li>
   </ol>
 </div>
 
