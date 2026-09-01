@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Los 3 packs · lo que falta — Clan × Walmart</title>
+<style>
+:root{ --papel:#f6f3ec; --carta:#fffdf8; --tinta:#2c2a24; --sub:#8a8374; --linea:#ddd6c6;
+  --verde:#2e6b45; --ambar:#b07d1a; --rojo:#b5432e; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--papel);color:var(--tinta);font-family:'Segoe UI',Arial,sans-serif;padding:0 0 100px}
+header{padding:26px 5vw 14px;border-bottom:3px double var(--tinta)}
+h1{font-size:22px;letter-spacing:.4px}
+h1 em{font-style:normal;color:var(--verde)}
+.sub{color:var(--sub);font-size:13.5px;margin-top:6px;max-width:860px;line-height:1.55}
+main{padding:18px 5vw;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px}
+.pack{background:var(--carta);border:1.5px solid var(--linea);border-radius:8px;padding:16px 18px;
+  box-shadow:2px 2px 0 var(--linea)}
+.pack h2{font-size:16px;border-bottom:1px solid var(--linea);padding-bottom:8px;margin-bottom:4px}
+.pack h2 small{display:block;font-size:11.5px;color:var(--sub);font-weight:400;margin-top:3px}
+.dato{font-size:12px;color:var(--sub);margin:10px 0 2px;text-transform:uppercase;letter-spacing:1px}
+.dato.req{color:var(--rojo)}
+input{width:100%;background:#fbf9f2;border:1.5px solid var(--linea);border-radius:5px;
+  padding:9px 10px;font-size:14px;font-family:Consolas,monospace;color:var(--tinta)}
+input:focus{outline:none;border-color:var(--verde)}
+.fijo{font-size:13px;background:#eef3ea;border-radius:5px;padding:8px 10px;color:var(--verde);margin-top:2px}
+.nota{font-size:11.5px;color:var(--sub);margin-top:3px;line-height:1.45}
+.panel{position:fixed;bottom:0;left:0;right:0;background:var(--tinta);color:#f6f3ec;display:flex;
+  align-items:center;gap:16px;padding:12px 5vw}
+.ptxt{flex:1;font-size:13.5px}
+button{border:0;border-radius:5px;padding:11px 20px;font-size:14px;font-weight:700;cursor:pointer}
+#exportar{background:#e9c46a;color:var(--tinta)}
+#reiniciar{background:transparent;color:#bdb5a4;border:1px solid #57534a}
+#aviso{color:#9fdc8f;font-size:13px;display:none}
+</style>
+</head>
+<body>
+<header>
+  <h1>LOS 3 PACKS · <em>solo lo que falta</em></h1>
+  <div class="sub">Todo lo demás ya está en el borrador (códigos GS1, costos, 6 packs por master,
+  recetas en Odoo). Medí el pack armado y su caja master cuando existan físicos, elegí el registro
+  sanitario que ampara cada pack, y <b>Exportar para Claude</b> — con eso valido y sale la segunda
+  gestión al robot. Imprenta ~5/09.</div>
+</header>
+
+<main id="lista"></main>
+
+<div class="panel">
+  <div class="ptxt" id="ptxt">0 campos llenos</div>
+  <span id="aviso">Copiado — pegámelo en el chat</span>
+  <button id="reiniciar">Reiniciar</button>
+  <button id="exportar">Exportar para Claude</button>
+</div>
+
+<script>
+const PACKS = [
+ {id:"troop", nom:"TROOPER 4 PACK 50 ANIVERSARIO", det:"GTIN 7404009520010 · PVP Q150 · costo caja Q657 · 6/master",
+  rs_ops:"Certificados disponibles: A-104403 Pale Ale (Clan, 2029) · A-104404 Day of the Dead (Clan, 2029) · A-95713/15/19 (Birra Bier, 2027). Sugerido: uno de los Clan 2029.",
+  foto:"dummy ya disponible en el expediente"},
+ {id:"hob", nom:"HOBGOBLIN 4 PACK", det:"GTIN 7404009520027 · PVP Q125 · costo caja Q547.50 · 6/master",
+  rs_ops:"Certificados: A-102834 Stout (Clan, 2029) · A-95714 IPA / A-95716 Ruby / A-95717 Gold (Birra Bier, 2027). Sugerido: A-102834 si aplica, o el de Ruby.",
+  foto:"dummy 3D ya disponible"},
+ {id:"hb", nom:"PACK ALEMÁN · Dunkel + Münchner Weisse + vaso", det:"GTIN 7404009520102 · master 7404009520119 · costo firmado Q50/pack → Walmart lo vendería a Q68.50",
+  rs_ops:"Certificados: HB Dunkel (vence 16/04/2029) o HB Münchner Weisse (03/06/2029) — ambos en 01-CERTIFICADOS del archivo de registros.",
+  foto:"FALTA foto del pack armado (dummy físico)"},
+];
+const CAMPOS = [
+ ["pack_medidas", "Pack armado: alto × ancho × profundo (cm)", true, "ej. 26 x 14 x 14"],
+ ["pack_peso", "Pack armado: peso (kg)", true, "ej. 4.2"],
+ ["master_medidas", "Caja master: largo × ancho × alto (cm)", true, "ej. 43 x 29 x 27"],
+ ["master_peso", "Caja master: peso (kg)", true, "ej. 26"],
+ ["rs", "Registro sanitario que ampara el pack + vencimiento", true, "ej. A-104403 · 26/11/2029"],
+ ["tarima", "Cajas por cama / camas por tarima", false, "ej. 10 / 4"],
+];
+const K = "clan-packs-captura-v1";
+const store = {
+  get(){ try { return localStorage.getItem(K); } catch(e){ return null; } },
+  set(v){ try { localStorage.setItem(K, v); } catch(e){} },
+  del(){ try { localStorage.removeItem(K); } catch(e){} }
+};
+let S = JSON.parse(store.get() || "null") || {};
+PACKS.forEach(p => { if(!S[p.id]) S[p.id] = {}; });
+
+const main = document.getElementById("lista");
+function pintar(){
+  main.innerHTML = "";
+  let llenos = 0, tot = 0;
+  PACKS.forEach(p=>{
+    const s = S[p.id];
+    let campos = "";
+    CAMPOS.forEach(([k, lbl, req, ph])=>{
+      tot++;
+      if((s[k]||"").trim()) llenos++;
+      campos += `<div class="dato ${req?'req':''}">${lbl}</div>
+        <input data-p="${p.id}" data-k="${k}" placeholder="${ph}" value="${s[k]||""}">`;
+      if(k === "rs") campos += `<div class="nota">${p.rs_ops}</div>`;
+    });
+    const div = document.createElement("div");
+    div.className = "pack";
+    div.innerHTML = `<h2>${p.nom}<small>${p.det}</small></h2>
+      <div class="fijo">✓ Ya resuelto: códigos, costo, 6 packs por master, receta en Odoo</div>
+      ${campos}
+      <div class="dato">Foto para el robot</div><div class="nota">${p.foto}</div>`;
+    main.appendChild(div);
+  });
+  document.getElementById("ptxt").textContent = `${llenos} de ${tot} campos llenos`;
+}
+main.addEventListener("input", e=>{
+  const p = e.target.dataset.p, k = e.target.dataset.k;
+  if(!p) return;
+  S[p][k] = e.target.value;
+  store.set(JSON.stringify(S));
+  let llenos = 0, tot = 0;
+  PACKS.forEach(pp => CAMPOS.forEach(([kk])=>{ tot++; if((S[pp.id][kk]||"").trim()) llenos++; }));
+  document.getElementById("ptxt").textContent = `${llenos} de ${tot} campos llenos`;
+});
+document.getElementById("reiniciar").onclick = ()=>{
+  if(confirm("¿Borrar lo capturado?")){ store.del(); location.reload(); }
+};
+document.getElementById("exportar").onclick = ()=>{
+  const out = {tipo:"PACKS-CAPTURA-FINAL", packs:{}};
+  PACKS.forEach(p=>{ out.packs[p.id] = Object.assign({nombre:p.nom}, S[p.id]); });
+  navigator.clipboard.writeText(JSON.stringify(out, null, 1)).then(()=>{
+    const a = document.getElementById("aviso"); a.style.display = "inline";
+    setTimeout(()=>a.style.display="none", 2800);
+  });
+};
+pintar();
+</script>
+</body>
+</html>

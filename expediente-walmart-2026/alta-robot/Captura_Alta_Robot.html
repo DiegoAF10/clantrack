@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Bandeja de bodega · Alta Walmart — Clan Cervecero</title>
+<style>
+:root{
+  --fondo:#16181c; --panel:#1e2126; --linea:#2e3238; --kraft:#c9a86a;
+  --tinta:#e8e4da; --sub:#9a958a; --amarillo:#f5b70a; --ok:#5fbf77; --rojo:#e05c4b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--fondo);color:var(--tinta);font-family:'Segoe UI',Arial,sans-serif;padding:0 0 110px}
+header{border-bottom:3px solid var(--amarillo);padding:20px 4vw 14px}
+header h1{font-size:21px;font-weight:800}
+header h1 span{color:var(--amarillo)}
+.sub{color:var(--sub);font-size:13.5px;margin-top:6px;max-width:880px;line-height:1.55}
+.sub b{color:var(--kraft)}
+#carpeta{margin-top:12px;background:var(--panel);border:1px dashed var(--kraft);color:var(--kraft);
+  padding:10px 18px;border-radius:6px;font-size:13.5px;cursor:pointer;font-weight:700}
+#carpeta.lista{border-style:solid;color:var(--ok);border-color:var(--ok)}
+
+main{padding:14px 4vw}
+.item{background:var(--panel);border:1px solid var(--linea);border-radius:8px;margin-bottom:12px;
+  padding:12px 16px;display:grid;grid-template-columns:230px 1fr 1fr;gap:14px;align-items:start}
+.item.activo{border-color:var(--amarillo);box-shadow:0 0 0 1px var(--amarillo)}
+.item.confotos{border-left:4px solid var(--ok)}
+.nom b{font-size:15px;display:block}
+.nom small{color:var(--sub);font-size:11.5px;display:block;margin-top:3px;line-height:1.4}
+.zona{min-height:74px;border:1.5px dashed var(--linea);border-radius:6px;display:flex;gap:8px;
+  flex-wrap:wrap;align-items:center;padding:8px;cursor:pointer;position:relative}
+.zona .guia{color:var(--sub);font-size:12.5px;width:100%;text-align:center}
+.item.activo .zona{border-color:var(--amarillo)}
+.zona img{height:58px;border-radius:4px;border:1px solid var(--linea)}
+.zona .n{position:absolute;top:6px;right:8px;font-size:11px;color:var(--ok);font-weight:700}
+textarea{width:100%;min-height:74px;background:#14161a;border:1px solid var(--linea);color:var(--tinta);
+  border-radius:6px;padding:9px 10px;font-size:14px;font-family:inherit;resize:vertical;line-height:1.45}
+textarea:focus{outline:1px solid var(--amarillo)}
+textarea::placeholder{color:#5c5850}
+
+.panel{position:fixed;bottom:0;left:0;right:0;background:#101215;border-top:2px solid var(--amarillo);
+  display:flex;align-items:center;gap:16px;padding:11px 4vw;z-index:10}
+.ptxt{flex:1;font-size:13.5px;color:var(--sub)}
+.ptxt b{color:var(--tinta)}
+button{border:0;border-radius:5px;padding:11px 20px;font-size:14px;font-weight:700;cursor:pointer}
+#exportar{background:var(--amarillo);color:#16181c}
+#reiniciar{background:transparent;color:var(--sub);border:1px solid var(--linea)}
+#aviso{color:var(--ok);font-size:13px;display:none}
+#flash{position:fixed;top:14px;right:14px;background:var(--ok);color:#0c130e;font-weight:700;
+  padding:10px 18px;border-radius:6px;display:none;z-index:20;font-size:13.5px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>BANDEJA DE BODEGA · <span>alta Walmart</span></h1>
+  <div class="sub">Abrí el chat de WhatsApp al lado. <b>1)</b> Clic en el producto (queda marcado en
+  amarillo). <b>2)</b> Copiá la foto en WhatsApp y pegala con <b>Ctrl+V</b> — se guarda sola con el
+  nombre correcto. <b>3)</b> En la cajita de texto escribí las medidas tal como las mandaron. Al final:
+  <b>Exportar</b> y me lo pegás en el chat de Claude.</div>
+  <button id="carpeta">📁 Primero: clic acá y elegí la carpeta donde guardar las fotos (una sola vez)</button>
+</header>
+
+<main id="lista"></main>
+
+<div class="panel">
+  <div class="ptxt"><b id="kFotos">0</b> fotos guardadas · <b id="kMed">0/16</b> con medidas</div>
+  <span id="aviso">Copiado — pegámelo en el chat</span>
+  <button id="reiniciar">Reiniciar</button>
+  <button id="exportar">Exportar para Claude</button>
+</div>
+<div id="flash"></div>
+
+<script>
+const ITEMS = [
+ {ref:"CC-GUI-01",  nom:"Guinness Draught (lata)"},
+ {ref:"CC-MUR-01",  nom:"Murphy's Irish Stout (lata)"},
+ {ref:"CC-BM-01",   nom:"Blue Moon botella"},
+ {ref:"CC-BM-02",   nom:"Blue Moon lata 16 oz"},
+ {ref:"CC-SAM-02",  nom:"Samuel Adams lata 16 oz"},
+ {ref:"CC-YUE-01",  nom:"Yuengling Lager (lata)"},
+ {ref:"CC-GRO-02",  nom:"Grolsch Premium Lager lata 500"},
+ {ref:"CC-PIL-01",  nom:"Pilsner Urquell (lata)"},
+ {ref:"CC-KRON-03", nom:"Kronenbourg 1664 (lata)"},
+ {ref:"CC-SNM-001", nom:"San Miguel Especial (lata)"},
+ {ref:"CC-CAR-01",  nom:"Carlsberg (lata)"},
+ {ref:"CC-MBU-04",  nom:"Mastri Birrai Umbri · Cotta 21"},
+ {ref:"CC-MBU-02",  nom:"Mastri Birrai Umbri · Cotta 37"},
+ {ref:"CC-MBU-01",  nom:"Mastri Birrai Umbri · Cotta 68"},
+ {ref:"CC-MBU-05",  nom:"Mastri Birrai Umbri · IPA"},
+ {ref:"CC-TWI-01",  nom:"Twisted Tea (lata)"},
+];
+const K = "clan-bodega-alta-v2";
+const store = {
+  get(){ try { return localStorage.getItem(K); } catch(e){ return null; } },
+  set(v){ try { localStorage.setItem(K, v); } catch(e){} },
+  del(){ try { localStorage.removeItem(K); } catch(e){} }
+};
+let S = JSON.parse(store.get() || "null") || {items:{}};
+ITEMS.forEach((it,i) => { if(!S.items[it.ref]) S.items[it.ref] = {med:"", fotos:[]}; });
+
+let dirHandle = null;
+let activo = null;
+
+const lista = document.getElementById("lista");
+function pintar(){
+  lista.innerHTML = "";
+  let totFotos = 0, conMed = 0;
+  ITEMS.forEach((it,i)=>{
+    const s = S.items[it.ref];
+    totFotos += s.fotos.length;
+    if(s.med.trim()) conMed++;
+    const div = document.createElement("div");
+    div.className = "item" + (activo===it.ref?" activo":"") + (s.fotos.length?" confotos":"");
+    div.dataset.ref = it.ref;
+    const thumbs = s.fotos.map(f=>`<img src="${f.thumb}" title="${f.archivo}">`).join("");
+    div.innerHTML = `
+      <div class="nom"><b>${String(i+1).padStart(2,"0")} · ${it.nom}</b>
+        <small>${s.fotos.length? s.fotos.length+" foto(s): "+s.fotos.map(f=>f.archivo).join(" · ") : "sin fotos aún"}</small></div>
+      <div class="zona">${thumbs || '<div class="guia">clic acá y pegá la foto (Ctrl+V)</div>'}
+        ${s.fotos.length? `<span class="n">✓ ${s.fotos.length}</span>`:""}</div>
+      <textarea placeholder="medidas tal como las mandaron — caja, lata/botella, cuántas por caja, peso…" data-ref="${it.ref}">${s.med||""}</textarea>`;
+    lista.appendChild(div);
+  });
+  document.getElementById("kFotos").textContent = totFotos;
+  document.getElementById("kMed").textContent = conMed + "/16";
+}
+
+lista.addEventListener("click", e=>{
+  const card = e.target.closest(".item");
+  if(!card) return;
+  activo = card.dataset.ref;
+  document.querySelectorAll(".item").forEach(d=>d.classList.toggle("activo", d.dataset.ref===activo));
+});
+lista.addEventListener("input", e=>{
+  if(e.target.tagName!=="TEXTAREA") return;
+  S.items[e.target.dataset.ref].med = e.target.value;
+  store.set(JSON.stringify(S));
+  let conMed = 0; ITEMS.forEach(it=>{ if(S.items[it.ref].med.trim()) conMed++; });
+  document.getElementById("kMed").textContent = conMed + "/16";
+});
+
+document.getElementById("carpeta").onclick = async ()=>{
+  if(!window.showDirectoryPicker){
+    flash("Este navegador no deja elegir carpeta — las fotos se irán a Descargas");
+    document.getElementById("carpeta").textContent = "📥 Las fotos se descargan a la carpeta Descargas";
+    document.getElementById("carpeta").classList.add("lista");
+    return;
+  }
+  try{
+    dirHandle = await showDirectoryPicker({mode:"readwrite"});
+    document.getElementById("carpeta").textContent = "📁 Guardando fotos en: " + dirHandle.name + " ✓";
+    document.getElementById("carpeta").classList.add("lista");
+  }catch(e){}
+};
+
+function flash(msg){
+  const f = document.getElementById("flash");
+  f.textContent = msg; f.style.display = "block";
+  setTimeout(()=> f.style.display="none", 2600);
+}
+
+document.addEventListener("paste", async e=>{
+  const imgs = [...(e.clipboardData?.items||[])].filter(x=>x.type.startsWith("image/"));
+  if(!imgs.length) return;
+  if(!activo){ flash("Primero hacé clic en el producto y volvé a pegar"); return; }
+  e.preventDefault();
+  for(const item of imgs){
+    const blob = item.getAsFile();
+    await guardarFoto(activo, blob);
+  }
+  pintar();
+});
+
+async function guardarFoto(ref, blob){
+  const it = ITEMS.find(x=>x.ref===ref);
+  const s = S.items[ref];
+  const n = s.fotos.length + 1;
+  const idx = String(ITEMS.indexOf(it)+1).padStart(2,"0");
+  const nombre = `${idx}_${ref}_f${n}.jpg`;
+  // comprimir a máx 1600px jpg
+  const bmp = await createImageBitmap(blob);
+  const esc = Math.min(1, 1600/Math.max(bmp.width,bmp.height));
+  const cv = document.createElement("canvas");
+  cv.width = Math.round(bmp.width*esc); cv.height = Math.round(bmp.height*esc);
+  cv.getContext("2d").drawImage(bmp,0,0,cv.width,cv.height);
+  const jpg = await new Promise(r=>cv.toBlob(r,"image/jpeg",.87));
+  // thumbnail chiquito para la vista
+  const tv = document.createElement("canvas");
+  const te = 120/Math.max(bmp.width,bmp.height);
+  tv.width = Math.round(bmp.width*te); tv.height = Math.round(bmp.height*te);
+  tv.getContext("2d").drawImage(bmp,0,0,tv.width,tv.height);
+  const thumb = tv.toDataURL("image/jpeg",.6);
+  // guardar archivo
+  if(dirHandle){
+    try{
+      const fh = await dirHandle.getFileHandle(nombre, {create:true});
+      const w = await fh.createWritable();
+      await w.write(jpg); await w.close();
+    }catch(err){ descargar(jpg, nombre); }
+  } else {
+    descargar(jpg, nombre);
+  }
+  s.fotos.push({archivo:nombre, thumb});
+  store.set(JSON.stringify(S));
+  flash("✓ guardada " + nombre);
+}
+function descargar(blob, nombre){
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = nombre;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
+}
+
+document.getElementById("reiniciar").onclick = ()=>{
+  if(confirm("¿Borrar medidas y lista de fotos? (los archivos de fotos ya guardados no se tocan)")){
+    store.del(); location.reload();
+  }
+};
+document.getElementById("exportar").onclick = ()=>{
+  const out = {tipo:"BODEGA-ALTA-WALMART-V2", items:{}};
+  ITEMS.forEach(it=>{
+    const s = S.items[it.ref];
+    out.items[it.ref] = {nombre:it.nom, medidas:s.med.trim()||"SIN MEDIDAS",
+      fotos:s.fotos.map(f=>f.archivo)};
+  });
+  navigator.clipboard.writeText(JSON.stringify(out,null,1)).then(()=>{
+    const a=document.getElementById("aviso"); a.style.display="inline";
+    setTimeout(()=>a.style.display="none", 2800);
+  });
+};
+pintar();
+</script>
+</body>
+</html>

@@ -17,7 +17,17 @@ Especial Q25 · Carlsberg Q25. Descartadas: Landshark, Lagunitas, Paulaner, Fran
 
 ## Pendientes en orden de fuego
 
-### 1 · Creación masiva de ítems en «el robot» — 🟡 EN MARCHA (avance 27-ago, sesión post-reunión)
+### 1 · Creación masiva de ítems en «el robot» — 🟢 ENVIADO 31-ago · GESTIÓN 22080
+**El alta de los 19 pasó todas las revisiones automáticas del robot (31-ago 13:48) — en aprobación
+de Max Sosa.** Correos de adjuntos enviados con `Gestion (22080)` (serie V_31082026_1259; REGSAN
+recomprimido a 5 MB). Corrida completa archivada en el prevalidador
+(`_archivo-envios-anteriores/gestion-22080-alta-19items/`). Trampas nuevas documentadas: el robot
+exige macro 1.0.8 + plantilla 1.0.5 (la web publica la vieja — usar `alta-robot/walmart-oficial/`);
+la plantilla e-commerce AlcoholicBeverages exige 8 campos por ítem contados por sus fórmulas
+internas (col X = palabras clave incluida). **Los 3 packs van en SEGUNDA gestión:**
+`PlantillaF_Clan_3packs_BORRADOR.xlsm` listo (costos Q657/Q547.50/Q300, 6/master, versión 1.0.5);
+faltan solo medidas físicas + RS elegido por pack → capturar en `alta-robot/Captura_Packs.html`.
+Detalle histórico del avance del 27-28 abajo.
 **Hecho:** proceso oficial documentado en `alta-robot/PROCESO-CREACION-ITEMS-WALMART.md` (fuente:
 walmartcentroamerica.com/proveedores/actualizacion + historial de correos de Diego con el robot).
 PlantillaF oficial y Prevalidador descargados en `alta-robot/walmart-oficial/`. Borrador de las 19

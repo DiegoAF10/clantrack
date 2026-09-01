@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Pre-vuelo del Robot · Alta Walmart — Clan Cervecero</title>
+<style>
+:root{
+  --papel:#eef1f4; --carta:#ffffff; --tinta:#1c2b3a; --sub:#5f7183; --linea:#c9d4de;
+  --azul:#155e9e; --cielo:#e8f1f9; --ok:#1e7d46; --rojo:#c0392b; --ambar:#c07f10;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--papel);color:var(--tinta);font-family:'Segoe UI',Arial,sans-serif;padding:0 0 110px}
+header{background:var(--carta);border-bottom:4px solid var(--azul);padding:24px 5vw 16px}
+h1{font-size:22px;letter-spacing:2px;text-transform:uppercase;font-weight:800}
+h1 span{color:var(--azul)}
+.sub{color:var(--sub);font-size:13.5px;margin-top:6px;max-width:900px;line-height:1.55}
+.fechas{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.f{border:1px solid var(--linea);border-radius:4px;padding:6px 14px;font-size:12px;background:var(--cielo)}
+.f b{display:block;font-size:15px;color:var(--azul)}
+.f.dura{border-color:var(--rojo)}.f.dura b{color:var(--rojo)}
+
+main{padding:18px 5vw}
+h2{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sub);
+  margin:26px 0 10px;border-bottom:1px solid var(--linea);padding-bottom:6px}
+.item{background:var(--carta);border:1px solid var(--linea);border-left:5px solid var(--azul);
+  border-radius:5px;padding:13px 16px;margin-bottom:10px;display:flex;gap:14px;align-items:flex-start}
+.item.hecho{border-left-color:var(--ok);opacity:.62}
+.item.hecho .tit{text-decoration:line-through}
+.check{width:22px;height:22px;flex:none;margin-top:2px;accent-color:var(--ok);cursor:pointer}
+.cuerpo{flex:1}
+.tit{font-size:15px;font-weight:700}
+.det{font-size:12.5px;color:var(--sub);margin-top:3px;line-height:1.5}
+.inputs{display:flex;gap:10px;margin-top:9px;flex-wrap:wrap;align-items:center}
+.inputs input[type=text]{background:#fbfcfe;border:1.5px solid var(--linea);border-radius:4px;
+  padding:8px 10px;font-size:14px;font-family:Consolas,monospace;color:var(--tinta)}
+.inputs input:focus{outline:none;border-color:var(--azul)}
+.inputs label{font-size:12px;color:var(--sub)}
+.radio{display:flex;gap:16px;margin-top:8px;font-size:13.5px;flex-wrap:wrap}
+.radio label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.sello{font-size:10px;letter-spacing:1.5px;font-weight:800;padding:3px 10px;border-radius:3px;
+  border:1.5px solid;white-space:nowrap;margin-top:2px}
+.sello.diego{color:var(--rojo);border-color:var(--rojo)}
+.sello.equipo{color:var(--ambar);border-color:var(--ambar)}
+.sello.claude{color:var(--azul);border-color:var(--azul)}
+
+.panel{position:fixed;bottom:0;left:0;right:0;background:var(--tinta);color:#fff;display:flex;
+  align-items:center;gap:16px;padding:12px 5vw;z-index:10}
+.ptxt{flex:1;font-size:13.5px;opacity:.9}
+.pbar{height:7px;background:#3a4c5e;border-radius:5px;overflow:hidden;margin-top:6px}
+.pfill{height:100%;background:linear-gradient(90deg,#3f8fd4,#7dc4f5);width:0%;transition:width .3s}
+button{border:0;border-radius:4px;padding:11px 20px;font-size:14px;font-weight:700;cursor:pointer}
+#exportar{background:#7dc4f5;color:var(--tinta)}
+#reiniciar{background:transparent;color:#9db4c8;border:1px solid #3a4c5e}
+#aviso{color:#8fe0a8;font-size:13px;display:none}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>PRE-VUELO DEL <span>ROBOT</span> · los 18 del 1 de octubre</h1>
+  <div class="sub">Lo ya resuelto quedó fuera de esta lista (códigos de bodega ✓ · registros sanitarios ✓ ·
+  GTIN del pack alemán ✓ · fecha efectiva 15/09 ✓). Esto es <b>únicamente lo que falta</b> para llenar la
+  PlantillaF, pasar el prevalidador y mandar el correo. Marcá y llená lo que vayas resolviendo;
+  al final <b>Exportar para Claude</b>.</div>
+  <div class="fechas">
+    <div class="f dura"><b>~5/09</b>packs a imprenta</div>
+    <div class="f"><b>15/09</b>fecha efectiva ítems</div>
+    <div class="f dura"><b>20/09</b>entrega en CD</div>
+    <div class="f"><b>28–30/09</b>surtido</div>
+    <div class="f dura"><b>1/10</b>góndola</div>
+  </div>
+</header>
+
+<main id="lista"></main>
+
+<div class="panel">
+  <div class="ptxt"><span id="ptxt">0 de 0</span><div class="pbar"><div class="pfill" id="pfill"></div></div></div>
+  <span id="aviso">Copiado — pegámelo en el chat</span>
+  <button id="reiniciar">Reiniciar</button>
+  <button id="exportar">Exportar para Claude</button>
+</div>
+
+<script>
+const P = [
+ {sec:"PLATA — solo vos firmás"},
+ {id:"pvp_mbu", quien:"diego", tit:"PVP de las italianas (Cotta 21 · Cotta 37 · Cotta 68 · IPA, botella 750)",
+  det:"Lista Clan: Q90. Con margen Walmart 23%: costo caja de 6 ≈ Q372 si PVP Q90. La 37 va con el RS C-12426 que firmaste.",
+  inputs:[{k:"pvp", ph:"PVP Q"}]},
+ {id:"pvp_twi", quien:"diego", tit:"PVP del Twisted Tea + cómo se crea el ítem",
+  det:"Es variety pack: la caja trae 4 sabores (Original, Half & Half, Raspberry, Peach). Los 4 códigos de lata ya están.",
+  inputs:[{k:"pvp", ph:"PVP Q"}],
+  radio:{k:"modo", ops:["Un solo ítem VARIETY PACK (con el código de la caja)","4 ítems, uno por sabor"]}},
+ {id:"pvp_hb", quien:"diego", tit:"PVP del pack alemán (Dunkel + Münchner Weisse + vaso)",
+  det:"GTIN ya activos: pack 7404009520102 · master 7404009520119. Solo falta el precio.",
+  inputs:[{k:"pvp", ph:"PVP Q"}]},
+ {id:"pvp_bm", quien:"diego", tit:"PVP de la Blue Moon LATA 16 oz (releva a la botella ~ene-2027)",
+  det:"La botella queda en Q18.75 de introducción. ¿La lata a cuánto entra en enero?",
+  inputs:[{k:"pvp", ph:"PVP Q"}]},
+ {id:"costos", quien:"diego", tit:"Firmar los costos por caja a Walmart",
+  det:"Propuestos con el margen vigente (23% sobre PVP sin IVA): Guinness Q827 · Murphy's Q496 · Blue Moon bot Q310 · latas Q25→Q413 (SamAdams, Yuengling, Grolsch, Urquell, Kronenbourg, SanMiguel, Carlsberg) · Trooper 4pk Q103/pack · Hobgoblin 4pk Q86/pack. Marcá si van así; anotá acá solo las excepciones.",
+  inputs:[{k:"excepciones", ph:"excepciones (ej. Guinness 800)", ancho:340}]},
+
+ {sec:"DECISIONES CHICAS"},
+ {id:"yue", quien:"diego", tit:"Yuengling: ¿entra LATA o BOTELLA?",
+  det:"Las fotos de bodega son de botella (UPC 0899246-8, caja 089924410034); en la mesa se habló de lata.",
+  radio:{k:"formato", ops:["Botella (lo que hay en bodega)","Lata (conseguir códigos)"]}},
+ {id:"packs_caja", quien:"diego", tit:"¿Cuántos packs trae la caja master del Trooper 4-pack y del Hobgoblin 4-pack?",
+  det:"Define el costo por caja y el DUN-14 de los empaques que van a imprenta.",
+  inputs:[{k:"trooper", ph:"Trooper: packs/caja"},{k:"hobgoblin", ph:"Hobgoblin: packs/caja"}]},
+ {id:"car", quien:"diego", tit:"Carlsberg: confirmar unidades por caja",
+  det:"La caja impresa dice 6×4 (24 latas en 4-packs internos). ¿Se venden las latas sueltas (24/caja) o el 4-pack?",
+  inputs:[{k:"ucaja", ph:"u/caja y formato"}]},
+
+ {sec:"CÓDIGOS QUE FALTAN"},
+ {id:"ean_4pks", quien:"diego", tit:"EAN de los 4-packs Trooper y Hobgoblin (del arte final)",
+  det:"Están impresos en el troquel; el PDF está en curvas y no lo pude leer. Del arte final o de la imprenta.",
+  inputs:[{k:"trooper", ph:"EAN Trooper 4pk"},{k:"hobgoblin", ph:"EAN Hobgoblin 4pk"}]},
+ {id:"ean_gui", quien:"equipo", tit:"Guinness: foto nítida del código de la CAJA + alto de la caja",
+  det:"Bodega mandó 40×27 cm sin alto, y la foto del código de caja salió borrosa.",
+  inputs:[{k:"ean", ph:"EAN caja"},{k:"alto", ph:"alto cm"}]},
+ {id:"ean_bmbot", quien:"equipo", tit:"Blue Moon BOTELLA: código de su caja",
+  det:"La caja fotografiada (071990095116) es de la lata. Falta la de botella.",
+  inputs:[{k:"ean", ph:"EAN caja botella"}]},
+ {id:"ean_twi_caja", quien:"equipo", tit:"Twisted Tea: foto nítida del código de la CAJA",
+  det:"La lectura dio 0876920037886 pero el verificador no cuadró — una foto más de la caja y cerramos.",
+  inputs:[{k:"ean", ph:"EAN caja"}]},
+ {id:"pil", quien:"equipo", tit:"Pilsner Urquell: pedir producto y fotografiar códigos",
+  det:"No hay en bodega. Al llegar: foto del código de lata y de caja (los datos logísticos ya están en La Torre).",
+  inputs:[{k:"ean_u", ph:"EAN lata"},{k:"ean_c", ph:"EAN caja"}]},
+
+ {sec:"OPERATIVOS"},
+ {id:"sam_etq", quien:"equipo", tit:"Sam Adams: imprimir etiquetas de código para las cajas",
+  det:"Las cajas vienen sin código y el CD de Walmart no las acepta así. La lata usa el 1230000263016; a la caja le generamos su DUN-14 (11230000263013, indicador 1) y se imprime en etiquetas."},
+ {id:"fotos", quien:"equipo", tit:"Fotos del robot: 7–11 por artículo + 5 de e-commerce",
+  det:"Las de e-commerce van 300×300 JPG nombradas {UPC}-01.jpg… La misma foto repetida sirve, y mientras tanto valen las del e-commerce de Birra."},
+ {id:"imprenta", quien:"diego", tit:"Visto bueno a imprenta de los empaques 4-pack (~5/09)",
+  det:"Tiraje 10–14 días, 1,000 de cada uno. Los SVG de GS1 del pack alemán ya están en el expediente para el arte."},
+
+ {sec:"YA EN COLA — los hace Claude cuando lo de arriba cierre"},
+ {id:"cl_plantilla", quien:"claude", tit:"Escribir la PlantillaF final (19 filas) con todo lo consolidado", det:"Bloqueada solo por la sección de PLATA y los códigos que faltan."},
+ {id:"cl_robot", quien:"claude", tit:"Prevalidador → correo al robot (asunto VENDOR, texto plano, sin firma)", det:"Con copia a Max. El robot devuelve número de gestión y por ahí siguen las fotos."},
+];
+
+const K = "clan-prevuelo-robot-v1";
+const store = {
+  get(){ try { return localStorage.getItem(K); } catch(e){ return null; } },
+  set(v){ try { localStorage.setItem(K, v); } catch(e){} },
+  del(){ try { localStorage.removeItem(K); } catch(e){} }
+};
+let S = JSON.parse(store.get() || "null") || {};
+
+const lista = document.getElementById("lista");
+function pintar(){
+  lista.innerHTML = "";
+  let tot = 0, done = 0;
+  P.forEach(p=>{
+    if(p.sec){ const h = document.createElement("h2"); h.textContent = p.sec; lista.appendChild(h); return; }
+    tot++;
+    const s = S[p.id] || (S[p.id] = {});
+    if(s.hecho) done++;
+    const div = document.createElement("div");
+    div.className = "item" + (s.hecho ? " hecho" : "");
+    let extra = "";
+    if(p.inputs){
+      extra += '<div class="inputs">' + p.inputs.map(i=>
+        `<input type="text" data-id="${p.id}" data-k="${i.k}" placeholder="${i.ph}" value="${s[i.k]||""}"${i.ancho?` style="width:${i.ancho}px"`:""}>`).join("") + "</div>";
+    }
+    if(p.radio){
+      extra += '<div class="radio">' + p.radio.ops.map(o=>
+        `<label><input type="radio" name="r-${p.id}" data-id="${p.id}" data-k="${p.radio.k}" value="${o}"${s[p.radio.k]===o?" checked":""}>${o}</label>`).join("") + "</div>";
+    }
+    div.innerHTML = `<input type="checkbox" class="check" data-id="${p.id}" ${s.hecho?"checked":""}>
+      <div class="cuerpo"><div class="tit">${p.tit}</div><div class="det">${p.det||""}</div>${extra}</div>
+      <span class="sello ${p.quien}">${p.quien==="diego"?"DIEGO":p.quien==="equipo"?"EQUIPO":"CLAUDE"}</span>`;
+    lista.appendChild(div);
+  });
+  document.getElementById("ptxt").textContent = `${done} de ${tot} resueltos`;
+  document.getElementById("pfill").style.width = (tot? done/tot*100 : 0) + "%";
+}
+lista.addEventListener("input", e=>{
+  const id = e.target.dataset.id, k = e.target.dataset.k;
+  if(!id) return;
+  if(e.target.classList.contains("check")){ S[id].hecho = e.target.checked; pintar(); }
+  else { S[id][k] = e.target.value; }
+  store.set(JSON.stringify(S));
+});
+document.getElementById("reiniciar").onclick = ()=>{
+  if(confirm("¿Borrar todo lo marcado y escrito?")){ store.del(); location.reload(); }
+};
+document.getElementById("exportar").onclick = ()=>{
+  const out = {tipo:"PREVUELO-ROBOT-WALMART", items:{}};
+  P.forEach(p=>{
+    if(p.sec) return;
+    const s = S[p.id]||{};
+    out.items[p.id] = Object.assign({titulo:p.tit, resuelto:!!s.hecho}, s);
+    delete out.items[p.id].hecho;
+    out.items[p.id].resuelto = !!s.hecho;
+  });
+  navigator.clipboard.writeText(JSON.stringify(out,null,1)).then(()=>{
+    const a = document.getElementById("aviso"); a.style.display="inline";
+    setTimeout(()=>a.style.display="none", 2800);
+  });
+};
+pintar();
+</script>
+</body>
+</html>

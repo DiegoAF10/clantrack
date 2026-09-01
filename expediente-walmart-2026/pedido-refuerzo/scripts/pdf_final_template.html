@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
+<title>Pedido de medición · No modulados — Clan Cervecero</title><style>
+@page{size:A4; margin:13mm 14mm}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--pet:#0d211c;--oro:#c9a227;--tinta:#1c2521;--gris:#5c6660;--linea:#d8d4c8;--crema:#fbfaf6}
+body{font-family:Georgia,serif;color:var(--tinta);font-size:10pt;line-height:1.5}
+.num{font-family:Consolas,monospace;white-space:nowrap}
+.cab{background:var(--pet);color:#f4efe2;padding:15px 22px 13px}
+.cab .m{font-size:8.5pt;letter-spacing:.36em;color:var(--oro);text-transform:uppercase}
+.cab h1{font-size:15.5pt;text-transform:uppercase;letter-spacing:.04em}
+.cab .s{font-size:9.5pt;font-style:italic;color:#cfd8cf;margin-top:2px}
+.franja{height:3px;background:var(--oro)}
+.kpis{display:flex;gap:12px;margin:12px 22px 0}
+.k{flex:1;border:1px solid var(--linea);border-top:3px solid var(--oro);padding:8px 12px;background:var(--crema)}
+.k .v{font-family:Consolas,monospace;font-size:14pt;font-weight:700;color:var(--pet)}
+.k .l{font-size:7.5pt;letter-spacing:.16em;text-transform:uppercase;color:var(--gris)}
+h2{font-size:11pt;letter-spacing:.05em;text-transform:uppercase;color:var(--pet);margin:14px 22px 5px;display:flex;gap:10px;align-items:baseline;page-break-after:avoid}
+h2 .n{font-family:Consolas,monospace;font-size:8.5pt;background:var(--oro);color:var(--pet);padding:1px 8px;font-weight:700}
+p.tx{margin:0 22px 6px;font-size:9.5pt}
+table{border-collapse:collapse;width:calc(100% - 44px);margin:4px 22px;font-size:9pt;page-break-inside:avoid}
+th{font-size:7pt;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);text-align:left;padding:4px 8px;border-bottom:1.5px solid var(--pet);background:var(--crema)}
+th.r{text-align:right}
+td{padding:4px 8px;border-bottom:1px solid var(--linea)}
+td.r{text-align:right;font-family:Consolas,monospace}
+.it{font-family:Consolas,monospace;font-size:8pt;color:var(--gris)}
+tfoot td{border-top:2px solid var(--pet);font-weight:700}
+.marco{margin:10px 22px;border:1px solid var(--linea);background:var(--crema);padding:9px 14px;font-size:9pt;page-break-inside:avoid}
+.pie{margin:12px 22px;padding-top:6px;border-top:1px solid var(--linea);font-size:7.5pt;color:var(--gris);display:flex;justify-content:space-between}
+</style></head><body>
+<div class="cab"><div class="m">Clan Cervecero</div><h1>Pedido de medición — ítems no modulados</h1>
+<div class="s">Con vigencias renovadas · distribución uniforme para leer demanda real · evaluación diaria y reposición según comportamiento</div></div>
+<div class="franja"></div>
+<div class="kpis">
+<div class="k"><div class="v">__TC__ cajas</div><div class="l">__TU__ unidades</div></div>
+<div class="k"><div class="v">Q __TQ__</div><div class="l">costo total del pedido</div></div>
+<div class="k"><div class="v">29</div><div class="l">tiendas sin incidencias</div></div>
+<div class="k"><div class="v">1–2</div><div class="l">cajas por tienda (máximo)</div></div>
+</div>
+
+<h2><span class="n">1</span>La justificación — estos ítems venden cuando están exhibidos</h2>
+<p class="tx">La venta reciente no mide demanda: mide visibilidad. En su ventana de lanzamiento (dic-2025 a abr-2026),
+con producto fresco y exhibido, la rotación real fue esta — hoy el producto está en cero en la mayoría de tiendas:</p>
+<table>
+<thead><tr><th>Ítem (nº)</th><th class="r">Rotación en lanzamiento</th><th class="r">Venta sem 630</th><th class="r">Cajas pedidas</th><th class="r">Tiendas</th><th class="r">De 2 cajas</th></tr></thead>
+<tbody>__FILAS__</tbody>
+<tfoot><tr><td>TOTAL</td><td></td><td></td><td class="r">__TC__</td><td></td><td class="r">39</td></tr></tfoot>
+</table>
+
+<h2><span class="n">2</span>Las reglas del pedido — conservador y medible</h2>
+<div class="marco">
+<b>1.</b> Solo tiendas SIN existencias del ítem (Retail Link sem 202630 + conteos físicos 26–29/08): <b>1 caja</b> (20 u).&nbsp;
+<b>2.</b> En las mejores tiendas históricas de cada ítem: <b>máximo 2 cajas</b>.&nbsp;
+<b>3.</b> Las 11 tiendas con incidencias abiertas (ajustes de inventario, planograma, reclamos — documento de apoyos ya enviado) <b>no reciben</b> hasta resolverse.&nbsp;
+<b>4.</b> Evaluación diaria del sell-out; la reposición sigue al comportamiento, no al calendario.
+</div>
+
+<h2><span class="n">3</span>Dónde van las 2 cajas — mejores tiendas históricas por ítem</h2>
+<table><thead><tr><th style="width:170px">Ítem</th><th>Tiendas (2 cajas)</th></tr></thead><tbody>__MEJORES__</tbody></table>
+
+<div class="marco"><b>Operativa:</b> el detalle completo de las líneas viaja en el Excel adjunto
+(formato SUGERIDO_EXPORT). __SINCOMBO__ líneas corresponden a tiendas donde el ítem aún no tiene
+combo en el maestro — anexamos el listado para su habilitación. Stock listo en nuestra bodega para despacho inmediato.</div>
+
+<div class="pie"><span>Clan Cervecero, S.A. · Diego Arriaza · diego@clancervecero.com</span>
+<span class="num">Generado 31/08/2026 · fuentes: Retail Link 202630 · histórico 202550–202613 · conteos GSP</span></div>
+</body></html>
