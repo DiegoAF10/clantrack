@@ -22,11 +22,16 @@ for it, nom in NOMBRE.items():
         tt = " · ".join(tiendas40[l["tn"]]["nombre"].title() for l in ls)
         mejores += "<tr><td><b>%s</b></td><td>%s</td></tr>" % (nom, tt)
 sincombo = sum(1 for l in d["lineas"] if not l["combo"])
+tiendas_plan = len({l["tn"] for l in d["lineas"]})
+dos = sum(1 for l in d["lineas"] if l["cajas"] == 2)
 
 plantilla = open("pdf_final_template.html", encoding="utf-8").read()
 html = (plantilla.replace("__FILAS__", filas_item).replace("__MEJORES__", mejores)
         .replace("__TC__", str(tot["c"])).replace("__TU__", format(tot["u"], ","))
-        .replace("__TQ__", format(round(tot["q"]), ",")).replace("__SINCOMBO__", str(sincombo)))
+        .replace("__TQ__", format(round(tot["q"]), ",")).replace("__SINCOMBO__", str(sincombo))
+        .replace("__TT__", str(tiendas_plan)).replace('<td class="r">39</td>', '<td class="r">%d</td>' % dos))
+assert "__" not in re.sub(r"__(DATOS|FIN_DATOS)__", "", html), "placeholder sin llenar"
+print("plan:", tot, "| tiendas", tiendas_plan, "| lineas", len(d["lineas"]), "| de 2 cajas", dos, "| sin combo", sincombo)
 open(r"C:\Users\Diego\projects\clan\coo\walmart\expediente-walmart-2026\pedido-refuerzo\PEDIDO-MEDICION-NO-MODULADOS.html", "w", encoding="utf-8").write(html)
 
 with open(r"C:\Users\Diego\projects\clan\coo\walmart\expediente-walmart-2026\pedido-refuerzo\COMBOS-POR-HABILITAR.csv", "w", newline="", encoding="utf-8-sig") as f:
@@ -44,11 +49,10 @@ open(mp, "w", encoding="utf-8").write(html2)
 
 ap = r"C:\Users\Diego\projects\clan\coo\walmart\expediente-walmart-2026\pedido-refuerzo\ANALISIS-REFUERZO.html"
 a = open(ap, encoding="utf-8").read()
-a = a.replace("174 cajas · 3,480 u · Q 74,022 (OLA A · tiendas limpias)", "167 cajas · 3,340 u · Q 69,436 (FINAL conservador)")
-a = re.sub(r"Resultado en olas:.*?requieren habilitar combo ítem-tienda\.",
- "Plan FINAL (regla conservadora de Diego, 31/08 noche): <b class=\"num\">167 cajas · 3,340 u · Q 69,436</b> — "
- "1 caja por tienda SIN existencias · 2 máx en las mejores tiendas históricas del ítem (rotación de lanzamiento ClanTrack) · "
- "11 tiendas con incidencias bloqueadas · evaluación diaria y reposición por comportamiento · 118 combos por habilitar (CSV). "
- "Entregables: Excel formato Cristian (SUGERIDO_WALMART_2026-08-31.xlsx) + PDF de justificación.", a, count=1, flags=re.S)
+for viejo, nuevo in [("167 cajas · 3,340 u · Q 69,436 (FINAL conservador)", "161 cajas · 3,220 u · Q 66,269 (FINAL conservador · v2 2/09)"),
+                     ("<b class=\"num\">167 cajas · 3,340 u · Q 69,436</b>", "<b class=\"num\">161 cajas · 3,220 u · Q 66,269</b>"),
+                     ("11 tiendas con incidencias bloqueadas", "12 tiendas con incidencias bloqueadas (WM San Cristóbal se sumó el 2/09 por conteo del 1/09)"),
+                     ("118 combos por habilitar", "113 combos por habilitar")]:
+    a = a.replace(viejo, nuevo)
 open(ap, "w", encoding="utf-8").write(a)
 print("ok: html pdf-base, csv", sincombo, "lineas, manifiesto, memoria")
